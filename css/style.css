@@ -30,22 +30,52 @@ nav a {
 }
 
 .banner {
+  position: relative; /* Permite posicionar elementos filhos com position: absolute dentro deste container */
+  width: 100%; /* O banner ocupa toda a largura da tela */
+  height: 300px; /* Define a altura do banner (você pode ajustar esse valor) */
+  background-image: url("/img/banner_1_a_felicidade.jpg"); /* Coloca a imagem como plano de fundo */
+  background-size: cover; /* A imagem cobre todo o espaço do banner, sem distorcer */
+  background-position: center; /* Centraliza a imagem no espaço do banner */
+  display: flex; /* Ativa o Flexbox para posicionar o conteúdo interno */
+  align-items: center; /* Alinha o conteúdo verticalmente ao centro */
+  justify-content: center; /* Alinha o conteúdo horizontalmente ao centro */
+  color: white; /* Deixa o texto branco (para melhor contraste com a imagem) */
+}
+
+.banner-content{
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo preto com transparência (40%) para melhorar a leitura do texto */
+  padding: 20px; /* Espaçamento interno na caixinha do texto */
+  border-radius: 12px; /* Arredonda os cantos da caixinha */
+  text-align: center; /* Centraliza o texto dentro da caixinha */
+}
+.banner-content h1 {
+  font-size: 28px; /* Define o tamanho da fonte do título */
+  margin-bottom: 10px; /* Adiciona espaço abaixo do título */
+}
+.banner-content p {
+  font-size: 18px; /* Define o tamanho da fonte do parágrafo */
+}
+
+
+/* .banner {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
-  background-color: #e3f2fd;
+  
+  background-color: #c5e1f5;
 }
 
 .banner img {
-  width: 40%;
+  width: 100%;
+  height: 200px;
   border-radius: 12px;
 }
 
 .banner-content {
-  max-width: 50%;
-}
+  max-width: 150%;
+  max-height: 100%;
+} */
 
 .sobre, .impacto {
   padding: 2rem;
@@ -167,3 +197,4 @@ footer {
 .section_contato button:hover {
   background-color: #5aa6d6;
 }
+
