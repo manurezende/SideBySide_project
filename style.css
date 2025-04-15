@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f0f8ff;
+  color: #2b2b2b;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #cfe8f3;
+  padding: 1rem 2rem;
+}
+
+.logo {
+  height: 60px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: #1a6ea8;
+  font-weight: bold;
+}
+
+.banner {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  background-color: #e3f2fd;
+}
+
+.banner img {
+  width: 40%;
+  border-radius: 12px;
+}
+
+.banner-content {
+  max-width: 50%;
+}
+
+.sobre, .impacto {
+  padding: 2rem;
+  background-color: #ffffff;
+  text-align: center;
+}
+
+.impacto ul {
+  list-style: none;
+  padding: 0;
+}
+
+.impacto li {
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+footer {
+  background-color: #cfe8f3;
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: 5rem auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container input,
+.form-container select {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-container button {
+  padding: 0.8rem;
+  background-color: #7ec0ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #5aa6d6;
+}
+
+.section_endereco {
+  max-width: 400px;
+  margin: 5rem auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.section_endereco h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section_endereco form {
+  display: flex;
+  flex-direction: column;
+}
+
+.section_endereco input,
+.section_endereco select {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.section_endereco button {
+  padding: 0.8rem;
+  background-color: #7ec0ee;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.form-container button:hover {
+  background-color: #5aa6d6;
+}
