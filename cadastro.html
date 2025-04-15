@@ -5,10 +5,11 @@
   <title>Cadastro - SIDEBYSIDE</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="backgroud-color-cadastro">
+  <form action="#" method="post">
   <section class="form-container">
-    <h2>Cadastro</h2>
-    <form action="#" method="post">
+    <h2>Cadastro usuario</h2>
+    
       <div class="div_usuario">
         <input type="text" placeholder="Nome completo" required />
         <input type="email" placeholder="E-mail" required />
@@ -20,6 +21,7 @@
         </select>
       </div>
   </section>
+
   <section class="section_endereco">
     <div class="div_endereco">
       <h2>endereço</h2>
@@ -38,13 +40,23 @@
       <input type="text" placeholder="Numero" required />
       <input type="text" placeholder="complemento" required />
     </div>
-
   </section>
-    </form>
 
-      <!-- <button type="submit">Cadastrar</button> -->
+  <section class="section_contato">
+    <div class="div_contato">
+      <h2>contato</h2>
+      <input type="email" placeholder="E-mail" required />
+      <input type="tel" placeholder="Telefone celular" required />
+      <input type="tel" placeholder="Telefone fixo" required />
+      <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+      <button type="submit">Cadastrar</button>
+    </div>
+  </section>
+  </form>
+
+      
     
-    <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+    
   
 </body>
 </html>
