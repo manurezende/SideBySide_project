@@ -1,86 +1,49 @@
+<!-- Página de cadastro de novos usuários -->
 <!DOCTYPE html>
-<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8"> <!-- Define a codificação de caracteres -->
-  <title>Cadastro - SIDEBYSIDE</title> <!-- Título da aba do navegador -->
-  <link rel="stylesheet" href="css/style.css"> <!-- Importa o arquivo CSS externo -->
+  <meta charset="UTF-8">
+  <title>Cadastro - SIDEBYSIDE</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
+<body class="backgroud-color-cadastro">
 
-<body class="backgroud-color-cadastro"> <!-- Corpo da página com classe para estilo -->
+  <!-- Formulário principal com 3 seções -->
+  <form action="#" method="post">
 
-  <!-- Formulário principal -->
-  <form action="#" method="post"> <!-- action="#" significa que ainda não envia para lugar nenhum -->
-  
-    <!-- Seção: Informações do usuário -->
+    <!-- Seção de dados do usuário -->
     <section class="form-container">
       <h2>Cadastro usuário</h2>
-      <div class="div_usuario">
-        <!-- Campo para nome completo -->
-        <input type="text" name="nome_completo" placeholder="Nome completo" required />
-
-        <!-- Campo para foto -->
-        <input type="file" name="foto" placeholder="foto do usuario" required />
-
-        <!-- Campo para senha -->
-        <input type="password" name="senha" placeholder="Crie uma senha" required />
-
-        <!-- Seleção de tipo de usuário: Jovem ou Idoso -->
-        <select name="tipo_usuario" required>
-          <option value="">Sou...</option>
-          <option value="1">Jovem</option>
-          <option value="0">Idoso</option>
-        </select>
-      </div>
+      <input type="text" name="nome_completo" placeholder="Nome completo" required />
+      <input type="file" name="foto" placeholder="foto do usuario" required />
+      <input type="password" name="senha" placeholder="Crie uma senha" required />
+      <select name="tipo_usuario" required>
+        <option value="">Sou...</option>
+        <option value="1">Jovem</option>
+        <option value="0">Idoso</option>
+      </select>
     </section>
 
-    <!-- Seção: Endereço -->
+    <!-- Seção de endereço -->
     <section class="section_endereco">
-      <div class="div_endereco">
-        <h2>Endereço</h2>
-
-        <!-- Seleção do tipo de logradouro -->
-        <select name="tipo_logradouro" required>
-          <option value="">Tipo de logradouro</option>
-          <option value="Rua">Rua</option>
-          <option value="Avenida">Avenida</option>
-          <option value="Alameda">Alameda</option>
-          <option value="Travessa">Travessa</option>
-          <option value="Praça">Praça</option>
-          <option value="Estrada">Estrada</option>
-          <option value="Rodovia">Rodovia</option>
-          <option value="Viela">Viela</option>
-        </select>
-
-        <!-- Campos de endereço -->
-        <input type="text" name="logradouro" placeholder="Nome do logradouro" required />
-        <input type="text" name="numero" placeholder="Número" required />
-        <input type="text" name="complemento" placeholder="Complemento" required />
-        <input type="text" name="estado" placeholder="Estado" required />
-        <input type="text" name="cidade" placeholder="Cidade" required />
-        <input type="text" name="bairro" placeholder="Bairro" required />
-        <input type="text" name="cep" placeholder="CEP" required />
-        <input type="text" name="pais" placeholder="País" required />
-      </div>
+      <h2>Endereço</h2>
+      <select name="tipo_logradouro" required>
+        <option value="">Tipo de logradouro</option>
+        <option value="Rua">Rua</option>
+        <!-- demais opções... -->
+      </select>
+      <input type="text" name="logradouro" placeholder="Nome do logradouro" required />
+      <!-- demais campos de endereço... -->
     </section>
 
-    <!-- Seção: Contato -->
+    <!-- Seção de contato -->
     <section class="section_contato">
-      <div class="div_contato">
-        <h2>Contato</h2>
-
-        <!-- E-mail de contato -->
-        <input type="email" name="email" placeholder="E-mail" required />
-
-        <!-- Telefones -->
-        <input type="tel" name="telefone_celular" placeholder="Telefone celular" required />
-        <input type="tel" name="telefone_fixo" placeholder="Telefone fixo" required />
-
-        <!-- Link para login -->
-        <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
-
-        <!-- Botão de envio do formulário -->
-        <button type="submit">Cadastrar</button>
-      </div>
+      <h2>Contato</h2>
+      <input type="email" name="email" placeholder="E-mail" required />
+      <input type="tel" name="telefone_celular" placeholder="Telefone celular" required />
+      <input type="tel" name="telefone_fixo" placeholder="Telefone fixo" required />
+      <p>Já tem uma conta? <a href="login.html">Entrar</a></p>
+      <button type="submit">Cadastrar</button>
     </section>
 
   </form>

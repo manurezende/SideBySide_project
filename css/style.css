@@ -1,98 +1,92 @@
+/* Remove a margem padrão da página */
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f0f8ff;
-  color: #2b2b2b;
+  font-family: 'Segoe UI', sans-serif; /* Define a fonte principal da página */
+  background-color: #f0f8ff; /* Cor de fundo azul clarinho */
+  color: #2b2b2b; /* Cor do texto principal (preto acinzentado) */
 }
 
+/* Estiliza o cabeçalho */
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #cfe8f3;
-  padding: 1rem 2rem;
+  display: flex; /* Ativa o Flexbox para organizar os elementos */
+  justify-content: space-between; /* Espaça os itens igualmente (logo e menu) */
+  align-items: center; /* Centraliza verticalmente os itens */
+  background-color: #cfe8f3; /* Cor de fundo azul claro */
+  padding: 1rem 2rem; /* Espaçamento interno */
 }
 
+/* Define altura do logo */
 .logo {
   height: 60px;
 }
 
+/* Remove o estilo de lista e organiza os itens do menu */
 nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+  list-style: none; /* Remove os pontinhos da lista */
+  display: flex; /* Coloca os itens em linha */
+  gap: 1rem; /* Espaçamento entre os itens */
 }
 
+/* Estiliza os links do menu */
 nav a {
-  text-decoration: none;
-  color: #1a6ea8;
-  font-weight: bold;
+  text-decoration: none; /* Remove o sublinhado */
+  color: #1a6ea8; /* Azul escuro */
+  font-weight: bold; /* Deixa o texto em negrito */
 }
 
+/* Seção do banner (imagem grande no topo) */
 .banner {
-  position: relative; /* Permite posicionar elementos filhos com position: absolute dentro deste container */
-  width: 100%; /* O banner ocupa toda a largura da tela */
-  height: 300px; /* Define a altura do banner (você pode ajustar esse valor) */
-  background-image: url("/img/banner_1_a_felicidade.jpg"); /* Coloca a imagem como plano de fundo */
-  background-size: cover; /* A imagem cobre todo o espaço do banner, sem distorcer */
-  background-position: center; /* Centraliza a imagem no espaço do banner */
-  display: flex; /* Ativa o Flexbox para posicionar o conteúdo interno */
-  align-items: center; /* Alinha o conteúdo verticalmente ao centro */
-  justify-content: center; /* Alinha o conteúdo horizontalmente ao centro */
-  color: white; /* Deixa o texto branco (para melhor contraste com a imagem) */
-}
-
-.banner-content{
-  background-color: rgba(0, 0, 0, 0.4); /* Fundo preto com transparência (40%) para melhorar a leitura do texto */
-  padding: 20px; /* Espaçamento interno na caixinha do texto */
-  border-radius: 12px; /* Arredonda os cantos da caixinha */
-  text-align: center; /* Centraliza o texto dentro da caixinha */
-}
-.banner-content h1 {
-  font-size: 28px; /* Define o tamanho da fonte do título */
-  margin-bottom: 10px; /* Adiciona espaço abaixo do título */
-}
-.banner-content p {
-  font-size: 18px; /* Define o tamanho da fonte do parágrafo */
-}
-
-
-/* .banner {
-  display: flex;
-  flex-direction: row;
+  position: relative; /* Permite posicionamento absoluto dos filhos */
+  width: 100%; /* Ocupa toda a largura da tela */
+  height: 300px; /* Altura fixa do banner */
+  background-image: url("/img/banner_1_a_felicidade.jpg"); /* Imagem de fundo */
+  background-size: cover; /* A imagem cobre todo o espaço do banner */
+  background-position: center; /* Centraliza a imagem */
+  display: flex; /* Flexbox para centralizar o conteúdo */
   align-items: center;
-  justify-content: space-between;
-  
-  background-color: #c5e1f5;
+  justify-content: center;
+  color: white; /* Cor do texto dentro do banner */
 }
 
-.banner img {
-  width: 100%;
-  height: 200px;
-  border-radius: 12px;
-}
-
+/* Caixa de texto dentro do banner */
 .banner-content {
-  max-width: 150%;
-  max-height: 100%;
-} */
+  background-color: rgba(0, 0, 0, 0.4); /* Fundo preto com transparência */
+  padding: 20px; /* Espaçamento interno */
+  border-radius: 12px; /* Cantos arredondados */
+  text-align: center; /* Centraliza o texto */
+}
 
+/* Título no banner */
+.banner-content h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Parágrafo no banner */
+.banner-content p {
+  font-size: 18px;
+}
+
+/* Seções “sobre” e “impacto” */
 .sobre, .impacto {
   padding: 2rem;
   background-color: #ffffff;
   text-align: center;
 }
 
+/* Lista do impacto (sem marcadores) */
 .impacto ul {
   list-style: none;
   padding: 0;
 }
 
+/* Estilo dos itens da lista de impacto */
 .impacto li {
   margin: 1rem 0;
   font-size: 1.1rem;
 }
 
+/* Rodapé */
 footer {
   background-color: #cfe8f3;
   text-align: center;
@@ -100,29 +94,34 @@ footer {
   margin-top: 2rem;
 }
 
-.backgroud-color-cadastro{
+/* Cor de fundo exclusiva para a página de cadastro */
+.backgroud-color-cadastro {
   background-color: #c0e7fc;
 }
 
+/* Container do formulário principal */
 .form-container {
-  max-width: 400px;
-  margin: 30px auto;
+  max-width: 400px; /* Largura máxima */
+  margin: 30px auto; /* Centraliza na horizontal */
   background-color: #ffffff;
   padding: 2rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra leve */
 }
 
+/* Título dentro do formulário */
 .form-container h2 {
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
+/* Estilo do formulário em coluna */
 .form-container form {
   display: flex;
   flex-direction: column;
 }
 
+/* Campos de input e select no formulário */
 .form-container input,
 .form-container select {
   margin-bottom: 1rem;
@@ -131,6 +130,7 @@ footer {
   border-radius: 8px;
 }
 
+/* Seção de endereço com mesmo estilo do formulário */
 .section_endereco {
   max-width: 400px;
   margin: 30px auto;
@@ -158,7 +158,7 @@ footer {
   border-radius: 8px;
 }
 
-
+/* Seção de contato */
 .section_contato {
   max-width: 400px;
   margin: 30px auto;
@@ -185,28 +185,25 @@ footer {
   border-radius: 8px;
 }
 
+/* Botão de envio no formulário de contato */
 .section_contato button {
   padding: 0.8rem;
-  background-color: #7ec0ee;
+  background-color: #7ec0ee; /* Azul médio */
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
+/* Efeito ao passar o mouse no botão */
 .section_contato button:hover {
-  background-color: #5aa6d6;
+  background-color: #5aa6d6; /* Azul mais escuro */
 }
 
-
-.cards-display{
-  display:flex;
+/* Layout dos cards (lado a lado) */
+.cards-display {
+  display: flex;
   padding: 50px;
-
 }
-/* 
-body section.cards{
-  width: 64px;
-} */
 
 
