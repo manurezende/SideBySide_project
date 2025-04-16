@@ -2,7 +2,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif; /* Define a fonte principal da página */
-  background-color: #f0f8ff; /* Cor de fundo azul clarinho */
+  background-color: #c0e7fc; /* Cor de fundo azul clarinho */
   color: #2b2b2b; /* Cor do texto principal (preto acinzentado) */
 }
 
@@ -11,7 +11,7 @@ header {
   display: flex; /* Ativa o Flexbox para organizar os elementos */
   justify-content: space-between; /* Espaça os itens igualmente (logo e menu) */
   align-items: center; /* Centraliza verticalmente os itens */
-  background-color: #cfe8f3; /* Cor de fundo azul claro */
+  background-color: #327296; /* Cor de fundo azul claro */
   padding: 1rem 2rem; /* Espaçamento interno */
 }
 
@@ -30,7 +30,7 @@ nav ul {
 /* Estiliza os links do menu */
 nav a {
   text-decoration: none; /* Remove o sublinhado */
-  color: #1a6ea8; /* Azul escuro */
+  color: #c0e7fc; /* Azul escuro */
   font-weight: bold; /* Deixa o texto em negrito */
 }
 
@@ -70,7 +70,7 @@ nav a {
 /* Seções “sobre” e “impacto” */
 .sobre, .impacto {
   padding: 2rem;
-  background-color: #ffffff;
+  background-color: #b9d5ff;
   text-align: center;
 }
 
@@ -88,7 +88,7 @@ nav a {
 
 /* Rodapé */
 footer {
-  background-color: #cfe8f3;
+  background-color: #327296;
   text-align: center;
   padding: 1rem;
   margin-top: 2rem;
@@ -186,24 +186,82 @@ footer {
 }
 
 /* Botão de envio no formulário de contato */
-.section_contato button {
+.section_button {
   padding: 0.8rem;
-  background-color: #7ec0ee; /* Azul médio */
-  color: white;
+  background-color: #00324e; /* Azul médio */
+  color: #80c8f0;
   border: none;
   border-radius: 8px;
   cursor: pointer;
 }
 
 /* Efeito ao passar o mouse no botão */
-.section_contato button:hover {
-  background-color: #5aa6d6; /* Azul mais escuro */
+.section_button:hover {
+  background-color: #116696; /* Azul mais escuro */
+  transition: background-color 0.9s ease ;
 }
+
+/* //////////////////////////////////////////  INICIO DOS CARDS   ////////////////////////////////////////////////////////////// */
 
 /* Layout dos cards (lado a lado) */
 .cards-display {
+  margin: 30px;
   display: flex;
-  padding: 50px;
+  flex-wrap: wrap; /* Permite que os cards "quebrem" para a linha seguinte quando não houver espaço */
+  justify-content: space-between; /* Espaçamento entre os cards */
+  gap: 20px; /* Adiciona um pequeno espaço entre os cards */
 }
 
 
+.cards {
+  background-color: #fff; /* Fundo branco para o card */
+  border-radius: 12px; /* Bordas arredondadas */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para dar profundidade */
+  width: 250px; /* Definir a largura do card */
+  padding: 20px; /* Espaço interno dentro do card */
+  display: flex; /* Usando flexbox para alinhar o conteúdo dentro do card */
+  flex-direction: column; /* Alinhamento dos itens na vertical */
+  text-align: center; /* Alinhar o texto ao centro */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves para hover */
+}
+
+/* Efeito de hover - quando o usuário passa o mouse sobre o card */
+.cards:hover {
+  transform: translateY(-10px); /* Levanta o card um pouco */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Sombra mais forte */
+}
+
+.icon img {
+  width: 60%; /* Faz com que a imagem ocupe toda a largura do card */
+  border-radius: 100px; /* Arredondar as bordas da imagem */
+  border: solid #00324e 0.5px;
+}
+
+h3 {
+  margin: 15px 0; /* Espaço acima e abaixo do título */
+  font-size: 1.4rem; /* Tamanho da fonte do título */
+}
+
+span {
+  color: #555; /* Cor do texto de descrição */
+  font-size: 1rem; /* Tamanho do texto */
+  margin-bottom: 15px; /* Espaço abaixo da descrição */
+}
+
+.button-card {
+  font-size: 16px; 
+  font-family: "Poppins", sans-serif;
+  background-color: #116696; /* Cor de fundo azul para o botão */
+  color: white; /* Cor do texto do botão */
+  border: none; /* Remover borda */
+  border-radius: 20px; /* Bordas arredondadas */
+  cursor: pointer; /* Mudar o cursor para indicar interatividade */
+  transition: background-color 0.9s ease ; /* Transição suave para o hover do botão (cor de fundo do botão)*/
+  
+}
+
+.button-card:hover {
+  background-color: #00324e; /* Cor do botão quando o mouse passa por cima */
+}
+
+/* //////////////////////////////////////////  FIM DOS CARDS   ////////////////////////////////////////////////////////////// */
