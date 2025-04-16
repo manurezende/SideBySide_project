@@ -199,5 +199,14 @@ footer {
 }
 
 
+.cards-display{
+  display:flex;
+  padding: 50px;
+
+}
+/* 
+body section.cards{
+  width: 64px;
+} */
 
 
