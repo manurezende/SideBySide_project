@@ -1,3 +1,4 @@
+/* ==================== GERAL ==================== */
 /* Remove a margem padrão da página */
 body {
   margin: 0;
@@ -6,6 +7,8 @@ body {
   color: #2b2b2b; /* Cor do texto principal (preto acinzentado) */
 }
 
+
+/* ==================== HEADER ==================== */
 /* Estiliza o cabeçalho */
 header {
   display: flex; /* Ativa o Flexbox para organizar os elementos */
@@ -32,8 +35,17 @@ nav a {
   text-decoration: none; /* Remove o sublinhado */
   color: #c0e7fc; /* Azul escuro */
   font-weight: bold; /* Deixa o texto em negrito */
+  transition: background-color 0.9s ease ;
 }
 
+/* hover == quando passamos o mouse por cima do elemento */
+.itens-nav :hover {
+  transform: translateY(-3px); /* Levanta o card um pouco */
+  color: #fff; /* Sombra mais forte */
+}
+
+
+/* ==================== BANNER ==================== */
 /* Seção do banner (imagem grande no topo) */
 .banner {
   position: relative; /* Permite posicionamento absoluto dos filhos */
@@ -67,6 +79,8 @@ nav a {
   font-size: 18px;
 }
 
+
+/* ==================== SEÇÕES GERAIS (SOBRE / IMPACTO) ==================== */
 /* Seções “sobre” e “impacto” */
 .sobre, .impacto {
   padding: 2rem;
@@ -86,6 +100,8 @@ nav a {
   font-size: 1.1rem;
 }
 
+
+/* ==================== RODAPÉ ==================== */
 /* Rodapé */
 footer {
   background-color: #327296;
@@ -94,6 +110,8 @@ footer {
   margin-top: 2rem;
 }
 
+
+/* ==================== FORMULÁRIOS GERAIS ==================== */
 /* Cor de fundo exclusiva para a página de cadastro */
 .backgroud-color-cadastro {
   background-color: #c0e7fc;
@@ -130,7 +148,8 @@ footer {
   border-radius: 8px;
 }
 
-/* Seção de endereço com mesmo estilo do formulário */
+
+/* ==================== FORMULÁRIO - ENDEREÇO ==================== */
 .section_endereco {
   max-width: 400px;
   margin: 30px auto;
@@ -158,7 +177,8 @@ footer {
   border-radius: 8px;
 }
 
-/* Seção de contato */
+
+/* ==================== FORMULÁRIO - CONTATO ==================== */
 .section_contato {
   max-width: 400px;
   margin: 30px auto;
@@ -185,6 +205,8 @@ footer {
   border-radius: 8px;
 }
 
+
+/* ==================== BOTÃO ==================== */
 /* Botão de envio no formulário de contato */
 .section_button {
   padding: 0.8rem;
@@ -201,7 +223,8 @@ footer {
   transition: background-color 0.9s ease ;
 }
 
-/* //////////////////////////////////////////  INICIO DOS CARDS   ////////////////////////////////////////////////////////////// */
+
+/* ==================== CARDS ==================== */
 
 /* Layout dos cards (lado a lado) */
 .cards-display {
@@ -211,7 +234,6 @@ footer {
   justify-content: space-between; /* Espaçamento entre os cards */
   gap: 20px; /* Adiciona um pequeno espaço entre os cards */
 }
-
 
 .cards {
   background-color: #fff; /* Fundo branco para o card */
@@ -237,12 +259,12 @@ footer {
   border: solid #00324e 0.5px;
 }
 
-h3 {
+.title-card {
   margin: 15px 0; /* Espaço acima e abaixo do título */
   font-size: 1.4rem; /* Tamanho da fonte do título */
 }
 
-span {
+.descrition-card {
   color: #555; /* Cor do texto de descrição */
   font-size: 1rem; /* Tamanho do texto */
   margin-bottom: 15px; /* Espaço abaixo da descrição */
@@ -257,11 +279,9 @@ span {
   border-radius: 20px; /* Bordas arredondadas */
   cursor: pointer; /* Mudar o cursor para indicar interatividade */
   transition: background-color 0.9s ease ; /* Transição suave para o hover do botão (cor de fundo do botão)*/
-  
 }
 
 .button-card:hover {
   background-color: #00324e; /* Cor do botão quando o mouse passa por cima */
 }
 
-/* //////////////////////////////////////////  FIM DOS CARDS   ////////////////////////////////////////////////////////////// */
