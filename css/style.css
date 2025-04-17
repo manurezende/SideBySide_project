@@ -15,12 +15,13 @@ header {
   justify-content: space-between; /* Espaça os itens igualmente (logo e menu) */
   align-items: center; /* Centraliza verticalmente os itens */
   background-color: #327296; /* Cor de fundo azul claro */
-  padding: 1rem 2rem; /* Espaçamento interno */
+  padding: 8px; /* Espaçamento interno */
 }
 
 /* Define altura do logo */
 .logo {
-  height: 60px;
+  height: 75px;
+  
 }
 
 /* Remove o estilo de lista e organiza os itens do menu */
@@ -62,7 +63,7 @@ nav a {
 
 /* Caixa de texto dentro do banner */
 .banner-content {
-  background-color: rgba(0, 0, 0, 0.4); /* Fundo preto com transparência */
+  /* background-color: rgba(0, 0, 0, 0.4); Fundo preto com transparência */
   padding: 20px; /* Espaçamento interno */
   border-radius: 12px; /* Cantos arredondados */
   text-align: center; /* Centraliza o texto */
@@ -228,7 +229,7 @@ footer {
 
 /* Layout dos cards (lado a lado) */
 .cards-display {
-  margin: 30px;
+  margin: 30px; /* da o espaço entre e inicio da tela e o card, o mesmo no fim*/
   display: flex;
   flex-wrap: wrap; /* Permite que os cards "quebrem" para a linha seguinte quando não houver espaço */
   justify-content: space-between; /* Espaçamento entre os cards */
@@ -284,4 +285,3 @@ footer {
 .button-card:hover {
   background-color: #00324e; /* Cor do botão quando o mouse passa por cima */
 }
-
