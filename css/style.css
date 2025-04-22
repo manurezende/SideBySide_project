@@ -41,8 +41,8 @@ nav a {
 
 /* hover == quando passamos o mouse por cima do elemento */
 .itens-nav :hover {
-  transform: translateY(-3px); /* Levanta o card um pouco */
-  color: #fff; /* Sombra mais forte */
+  transform: translateY(-3px); /* Levanta o menu nav um pouco */
+  color: #fff; /* muda a cor */
 }
 
 
@@ -85,7 +85,7 @@ nav a {
 /* Seções “sobre” e “impacto” */
 .sobre, .impacto {
   padding: 2rem;
-  background-color: #b9d5ff;
+  background-color: #c0e7fc;
   text-align: center;
 }
 
@@ -246,6 +246,7 @@ footer {
   flex-direction: column; /* Alinhamento dos itens na vertical */
   text-align: center; /* Alinhar o texto ao centro */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves para hover */
+  margin-bottom: 150px;
 }
 
 /* Efeito de hover - quando o usuário passa o mouse sobre o card */
@@ -285,3 +286,40 @@ footer {
 .button-card:hover {
   background-color: #00324e; /* Cor do botão quando o mouse passa por cima */
 }
+
+/* ==================== BANNER POS CARDS ==================== */
+/* Seção do banner (imagem grande no topo) */
+.banner-pos-cards {
+  position: relative; /* Permite posicionamento absoluto dos filhos */
+  width: 100%; /* Ocupa toda a largura da tela */
+  height: 300px; /* Altura fixa do banner */
+  background-image: url("/img/banner_pos_card.jpg"); /* Imagem de fundo */
+  background-size: cover; /* A imagem cobre todo o espaço do banner */
+  background-position: center; /* Centraliza a imagem */
+  display: flex; /* Flexbox para centralizar o conteúdo */
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: white; /* Cor do texto dentro do banner */
+}
+
+/* ==================== CARDS de imagens ==================== */
+/* Layout dos cards (lado a lado) */
+.display-cards-de-imagem {
+  margin-left: 80px; /* da o espaço entre e inicio da tela e o card, o mesmo no fim*/
+  margin-right: 80px;
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap; /* Permite que os cards "quebrem" para a linha seguinte quando não houver espaço */
+  justify-content: space-between; /* Espaçamento entre os cards */
+  gap: 5px; /* Adiciona um pequeno espaço entre os cards */
+}
+
+.image-card img {
+  width: 250px; /* Definir a largura do card */
+  height: 200px; /* Definir a altura do card */
+  margin-bottom: 100px;
+  border-radius: 20px;
+  margin: none;
+}
+
