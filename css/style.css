@@ -3,7 +3,7 @@
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif; /* Define a fonte principal da página */
-  background-color: #ffffff; /* Cor de fundo azul clarinho */
+  background-color: #def4ff; /* Cor de fundo azul clarinho */
   color: #2b2b2b; /* Cor do texto principal (preto acinzentado) */
 }
 
@@ -351,6 +351,7 @@ footer {
 }
 
 .text-cards-img h4 {
+  font-family: popins;
   font-size: 1.2rem; /* Tamanho da fonte do título */
   margin: 0; /* Remove margem padrão */
   padding: 0 10px; /* Espaçamento horizontal interno para o texto */
