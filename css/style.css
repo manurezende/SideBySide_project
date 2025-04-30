@@ -46,6 +46,9 @@ nav a {
 }
 
 
+
+
+
 /* ==================== BANNER ==================== */
 /* Seção do banner (imagem grande no topo) */
 .banner {
@@ -112,6 +115,63 @@ footer {
 }
 
 
+/* ==================== MODAL ==================== */
+
+dialog::backdrop{
+  background-color:rgba(14, 43, 59, 0.4)
+}
+dialog{
+  border: none;
+  border-radius: 40px;
+  padding: 0px;
+}
+
+.sem-scroll {
+  overflow: hidden;
+}
+
+
+.btn-modal{
+  display: grid;
+}
+
+.btn-cancelar{
+  padding: 0.8rem;
+  background-color: #707070; /* Azul médio */
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 5px;
+  
+
+}
+
+/* Efeito ao passar o mouse no botão */
+.btn-cancelar:hover {
+  background-color: #0c0c0cd0; /* Azul mais escuro */
+  transition: background-color 0.9s ease ;
+}
+
+.btn-cadastrar{
+  margin-top: 20px;
+  padding: 0.8rem;
+  background-color: #00324e; /* Azul médio */
+  color: #80c8f0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;  
+} 
+.btn-cadastrar:hover {
+    background-color: #116696; /* Azul mais escuro */
+    transition: background-color 0.9s ease ;   
+}
+
+/* ============================================================ */
+
+
+
+
 /* ==================== FORMULÁRIOS GERAIS ==================== */
 /* Cor de fundo exclusiva para a página de cadastro */
 .backgroud-color-cadastro {
@@ -119,7 +179,7 @@ footer {
 }
 
 /* Container do formulário principal */
-.form-container {
+.form-usuario {
   max-width: 400px; /* Largura máxima */
   margin: 30px auto; /* Centraliza na horizontal */
   background-color: #ffffff;
@@ -129,20 +189,20 @@ footer {
 }
 
 /* Título dentro do formulário */
-.form-container h2 {
+.form-usuario h2 {
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
 /* Estilo do formulário em coluna */
-.form-container form {
+.form-usuario form {
   display: flex;
   flex-direction: column;
 }
 
 /* Campos de input e select no formulário */
-.form-container input,
-.form-container select {
+.form-usuario input,
+.form-usuario select {
   margin-bottom: 1rem;
   padding: 0.8rem;
   border: 1px solid #ccc;
@@ -178,33 +238,6 @@ footer {
   border-radius: 8px;
 }
 
-
-/* ==================== FORMULÁRIO - CONTATO ==================== */
-.section_contato {
-  max-width: 400px;
-  margin: 30px auto;
-  background-color: #ffffff;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.section_contato h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.section_contato form {
-  display: flex;
-  flex-direction: column;
-}
-
-.section_contato input {
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-}
 
 
 /* ==================== BOTÃO ==================== */
