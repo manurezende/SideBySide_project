@@ -1,22 +1,12 @@
-console.log("Site SIDEBYSIDE carregado com sucesso!");
+function cadastrar(){
+    console.log("Site SIDEBYSIDE carregado com sucesso!");
 const botao_cadastrar=document.getElementById("botao_cadastrar");
-botao_cadastrar.onclick=()=>{
+btn_cadastrar_usuario.onclick=()=>{
+    const email=document.getElementsByName("email")[0]
     const nome_usuario=document.getElementsByName("nome_usuario")[0]
-    const foto=document.getElementsByName("foto")[0]
+    const nome_completo=document.getElementsByName("nome_completo")[0]
     const senha=document.getElementsByName("senha")[0]
     const tipo_usuario =document.getElementsByName("tipo_usuario")[0]
-    const tipo_logradouro=document.getElementsByName("tipo_logradouro")[0]
-    const logradouro=document.getElementsByName("logradouro")[0]
-    const numero=document.getElementsByName("numero")[0]
-    const complemento=document.getElementsByName("complemento")[0]
-    const estado=document.getElementsByName("estado")[0]
-    const cidade=document.getElementsByName("cidade")[0]
-    const bairro=document.getElementsByName("bairro")[0]
-    const cep=document.getElementsByName("cep")[0]
-    const pais=document.getElementsByName("pais")[0]
-    const email=document.getElementsByName("email")[0]
-    const telefone_celular=document.getElementsByName("telefone_celular")[0]
-    const telefone_fixo=document.getElementsByName("telefone_fixo")[0]
    
     fetch("http://localhost:3000/usuario/cadastrar",{
         method:"POST",
@@ -25,8 +15,9 @@ botao_cadastrar.onclick=()=>{
             "content-type":"application/json"
         },
         body:JSON.stringify({
+            email:email.value,
             nome_usuario:nome_usuario.value,
-            foto_usuario:foto.value,
+            nome_completo:nome_completo.value,
             senha:senha.value,
             tipo_usuario:tipo_usuario.value
 
@@ -37,4 +28,19 @@ botao_cadastrar.onclick=()=>{
     })
 
 
+}
+}
+
+
+const btn_modal = document.querySelector("#btn-modal-cadastro")
+const modal = document.querySelector("dialog")
+const btn_fechar = document.querySelector("#btn_cancelar_cadastro")
+
+btn_modal.onclick = function(){
+    modal.showModal()
+    
+}
+
+btn_fechar.onclick = function(){
+    modal.close()
 }
