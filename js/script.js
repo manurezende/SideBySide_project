@@ -36,13 +36,23 @@ botao_cadastrar.onclick=()=>{
         })
     })
     .then((res)=>res.json())
-    .then((rs)=>{
-        console.log(rs)
+    .then((rs)=>
+    {
+        alert(rs)
+        document.getElementById("form-usuario").reset();
+        if(tipo_usuario.value==1){
+
+          window.location.href="cadastro_jovem.html"  
+          }
+        else{
+            window.location.href="cadastro_idoso.html"
+        }
     })
 
 
 }
 
+////////////////////    modal    ///////////////
 
 
 const btn_modal = document.querySelector("#btn-modal-cadastro")
@@ -60,3 +70,22 @@ btn_fechar.onclick = function(){
 
 
 ////////////////////    limpar dados do form    ///////////////
+
+    const form = document.getElementById("form-usuario");
+    const botaoCancelar = document.getElementById("btn_cancelar_cadastro");
+    
+  
+    
+
+    botaoCancelar.addEventListener("click", function (event) {
+        event.preventDefault(); // Impede envio e recarregamento da página
+    
+        
+    
+        // Limpa o formulário
+        form.reset();
+      });
+  
+
+  
+  ////////////////////    levar para outra guia    ///////////////
