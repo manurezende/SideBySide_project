@@ -59,3 +59,4 @@ btn_fechar.onclick = function(){
 }
 
 
+////////////////////    limpar dados do form    ///////////////
