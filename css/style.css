@@ -238,6 +238,63 @@ dialog{
   border-radius: 8px;
 }
 
+/* ==================== FORMULÁRIO - jovem ==================== */
+.section_jovem {
+  max-width: 400px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.section_jovem h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section_jovem form {
+  display: flex;
+  flex-direction: column;
+}
+
+.section_jovem input,
+.section_jovem select {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+
+/* ==================== FORMULÁRIO - idoso ==================== */
+.section_idoso {
+  max-width: 400px;
+  margin: 30px auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.section_idoso h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.section_idoso form {
+  display: flex;
+  flex-direction: column;
+}
+
+.section_idoso input,
+.section_idoso select {
+  margin-bottom: 1rem;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
 
 
 /* ==================== BOTÃO ==================== */
