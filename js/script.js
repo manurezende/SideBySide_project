@@ -1,12 +1,24 @@
-function cadastrar(){
-    console.log("Site SIDEBYSIDE carregado com sucesso!");
+
+
 const botao_cadastrar=document.getElementById("botao_cadastrar");
-btn_cadastrar_usuario.onclick=()=>{
+botao_cadastrar.onclick=()=>{
     const email=document.getElementsByName("email")[0]
     const nome_usuario=document.getElementsByName("nome_usuario")[0]
     const nome_completo=document.getElementsByName("nome_completo")[0]
     const senha=document.getElementsByName("senha")[0]
     const tipo_usuario =document.getElementsByName("tipo_usuario")[0]
+    if(tipo_usuario.checked)
+    {
+        tipo_usuario.value=1
+
+    }
+    else
+    {
+
+        tipo_usuario.value=0
+    }
+
+    // alert(`${email.value} ${nome_usuario.value} ${nome_completo.value} ${senha.value} ${tipo_usuario.value}`)
    
     fetch("http://localhost:3000/usuario/cadastrar",{
         method:"POST",
@@ -21,15 +33,16 @@ btn_cadastrar_usuario.onclick=()=>{
             senha:senha.value,
             tipo_usuario:tipo_usuario.value
 
-
-
-
         })
+    })
+    .then((res)=>res.json())
+    .then((rs)=>{
+        console.log(rs)
     })
 
 
 }
-}
+
 
 
 const btn_modal = document.querySelector("#btn-modal-cadastro")
@@ -44,3 +57,5 @@ btn_modal.onclick = function(){
 btn_fechar.onclick = function(){
     modal.close()
 }
+
+
