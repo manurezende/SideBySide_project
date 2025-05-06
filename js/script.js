@@ -68,6 +68,20 @@ btn_fechar.onclick = function(){
     modal.close()
 }
 
+ 
+const btn_modal_login = document.querySelector("#btn-modal-login")
+const modal_login = document.querySelector("#dialog-login")
+const btn_fechar_login = document.querySelector("#btn_cancelar_login")
+ 
+btn_modal_login.onclick = function(){
+    modal_login.showModal()
+   
+}
+ 
+btn_fechar_login.onclick = function(){
+    modal_login.close()
+}
+
 
 ////////////////////    limpar dados do form    ///////////////
 

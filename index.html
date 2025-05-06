@@ -18,7 +18,7 @@
     <nav>
       <ul class="itens-nav">
         <li ><a href="index.html">Início</a></li>
-        <li ><a href="login.html">Login</a></li>
+        <li ><button id="btn-modal-login" class="section_button"> Login</button></li>
         <li ><button id="btn-modal-cadastro" class="section_button">cadastro</button></li>
       </ul>
     </nav>
@@ -52,6 +52,20 @@
         </div>
       </section>
     </form>
+  </dialog>
+
+  <dialog id="dialog-login">
+    <section class="form-usuario">
+      <h2>Login</h2>
+      <form action="#" method="post">
+        <input type="email" placeholder="Seu e-mail" required />
+        <input type="password" placeholder="Sua senha" required />
+        <button class="section_button" type="submit">Entrar</button>
+        <button class="btn-cancelar" type="submit" id="btn_cancelar_login">Cancelar login</button>
+ 
+      </form>
+      <p>Não tem conta? <a href="cadastro.html">Cadastre-se</a></p>
+    </section>
   </dialog>
 
   
