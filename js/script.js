@@ -38,15 +38,23 @@ botao_cadastrar.onclick=()=>{
     .then((res)=>res.json())
     .then((rs)=>
     {
-        alert(rs)
-        document.getElementById("form-usuario").reset();
+              
+        if(rs.erro=="Email ou usuario já cadastrado!"){
+            return document.getElementById("msg_cadastro").innerHTML=rs.erro
+        }
+
+        
+        else{
+            alert(rs.msg)
+            document.getElementById("form-usuario").reset();
+        
         if(tipo_usuario.value==1){
 
           window.location.href="cadastro_jovem.html"  
           }
         else{
             window.location.href="cadastro_idoso.html"
-        }
+        }}
     })
 
 
