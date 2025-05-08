@@ -60,6 +60,32 @@ botao_cadastrar.onclick=()=>{
 
 }
 
+const botao_login=document.getElementById("botao_login");
+botao_login.onclick=()=>{
+    const email=document.getElementsByName("email")[0]
+    const nome_usuario=document.getElementsByName("nome_usuario")[0]
+    const senha=document.getElementsByName("senha")[0]
+   
+   
+       alert(`${email.value} ${nome_usuario.value} ${senha.value}`)
+
+
+    fetch("http://localhost:3000/usuario/logar",{
+        method:"POST",
+        headers:{
+            "accept":"application/json",
+            "content-type":"application/json"
+        },
+        body:JSON.stringify({
+            email:email.value,
+            nome_usuario:nome_usuario.value,
+            senha:senha.value,
+            
+        })
+    })
+    .then((res)=>res.json())
+}
+
 ////////////////////    modal    ///////////////
 
 
