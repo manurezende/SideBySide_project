@@ -94,10 +94,10 @@ botao_login.onclick=()=>{
         
         else{
             
-            // alert(rs.msg)
-            document.getElementById("dialog-login").reset();
+            alert(rs.msg)
+            document.getElementById("form-login").reset();
         
-            if(msg == "Login realizado com sucesso"){
+            if(rs.msg == "Login realizado com sucesso"){
 
                 window.location.href="pagina_inicial.html"  
                 }
@@ -109,7 +109,7 @@ botao_login.onclick=()=>{
 
 ////////////////////    modal    ///////////////
 
-
+const form = document.getElementById("form-usuario");
 const btn_modal = document.querySelector("#btn-modal-cadastro")
 const modal = document.querySelector("dialog")
 const btn_fechar = document.querySelector("#btn_cancelar_cadastro")
@@ -121,9 +121,11 @@ btn_modal.onclick = function(){
 
 btn_fechar.onclick = function(){
     modal.close()
+    form.reset();
+
 }
 
- 
+const formLogin = document.getElementById("form-login");
 const btn_modal_login = document.querySelector("#btn-modal-login")
 const modal_login = document.querySelector("#dialog-login")
 const btn_fechar_login = document.querySelector("#btn_cancelar_login")
@@ -135,26 +137,13 @@ btn_modal_login.onclick = function(){
  
 btn_fechar_login.onclick = function(){
     modal_login.close()
+    formLogin.reset();
 }
 
 
 ////////////////////    limpar dados do form    ///////////////
 
-    const form = document.getElementById("form-usuario");
-    const botaoCancelar = document.getElementById("btn_cancelar_cadastro");
+   
     
-  
-    
-
-    botaoCancelar.addEventListener("click", function (event) {
-        event.preventDefault(); // Impede envio e recarregamento da página
-    
-        
-    
-        // Limpa o formulário
-        form.reset();
-      });
-  
-
   
   ////////////////////    levar para outra guia    ///////////////

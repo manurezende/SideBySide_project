@@ -446,3 +446,118 @@ dialog{
   margin: 0; /* Remove margem padrão */
   padding: 0 10px; /* Espaçamento horizontal interno para o texto */
 }
+
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+  padding: 2rem;
+}
+
+/* Estrutura geral do formulário */
+form {
+  max-width: 600px;
+  margin: auto;
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Seções */
+.secao {
+  display: none;
+}
+
+.secao:first-child {
+  display: block;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #333333;
+}
+
+/* Agrupamento */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs */
+.input,
+select {
+  padding: 0.75rem;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border 0.3s;
+}
+
+.input:focus,
+select:focus {
+  outline: none;
+  border-color: #6666ff;
+}
+
+/* Botões */
+button {
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+/* Botões por tipo */
+.btn-proximo {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+.btn-proximo:hover {
+  background-color: #3b7dcc;
+}
+
+.btn-voltar {
+  background-color: #e0e0e0;
+  color: #333;
+  margin-right: 1rem;
+}
+
+.btn-voltar:hover {
+  background-color: #cccccc;
+}
+
+.btn-cadastrar {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-cadastrar:hover {
+  background-color: #218838;
+}
+
+/* Grupo de radio buttons */
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  color: #444;
+}
+
+.radio-group p {
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}

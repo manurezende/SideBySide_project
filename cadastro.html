@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <form action="#" method="post" onsubmit="return false">
+            <!-- Seção 1: Endereço -->
+            <div class="secao secao1">
+              <h2>Endereço</h2>
+              <div class="form-group">
+                <select name="logradouro" id="logradouro" class="input" required>
+                  <option value="">Tipo de logradouro</option>
+                  <option value="Rua">Rua</option>
+                  <option value="Avenida">Avenida</option>
+                  <option value="Alameda">Alameda</option>
+                  <option value="Travessa">Travessa</option>
+                  <option value="Praça">Praça</option>
+                  <option value="Estrada">Estrada</option>
+                  <option value="Rodovia">Rodovia</option>
+                  <option value="Viela">Viela</option>
+                </select>
+                <input type="text" name="logradouro_nome" id="logradouro_nome" placeholder="Nome do logradouro" class="input" required>
+                <input type="text" name="numero" id="numero" placeholder="Número" class="input" required>
+                <input type="text" name="complemento" id="complemento" placeholder="Complemento" class="input">
+                <input type="text" name="cidade" id="cidade" placeholder="Cidade" class="input" required>
+                <input type="text" name="estado" id="estado" placeholder="Estado" class="input" required>
+                <input type="text" name="bairro" id="bairro" placeholder="Bairro" class="input" required>
+                <input type="text" name="cep" id="cep" placeholder="CEP" class="input" required>
+                <input type="text" name="pais" id="pais" placeholder="País" class="input" value="Brasil" required>
+              </div>
+              <button type="button" class="btn-proximo" onclick="proximo('secao2')">Próximo</button>
+            </div>
+          
+            <!-- Seção 2: Dados do idoso -->
+            <div class="secao secao2" style="display: none;">
+              <h2>Cadastro Idoso</h2>
+              <div class="form-group">
+                <input type="tel" name="telefone_celular_idoso" id="telefone_celular_idoso" placeholder="Telefone celular" class="input" required>
+                <input type="text" name="cpf_idoso" id="cpf_idoso" placeholder="CPF" class="input" required>
+                <input type="date" name="data_nascimento_idoso" id="data_nascimento_idoso" class="input" required>
+          
+                <div class="radio-group">
+                  <p>Comorbidade:</p>
+                  <label><input type="radio" name="comorbidade" value="1" required> Sim</label>
+                  <label><input type="radio" name="comorbidade" value="0" required> Não</label>
+                </div>
+          
+                <input type="text" name="tipo_comorbidade" id="tipo_comorbidade" placeholder="Tipo de comorbidade (se houver)" class="input">
+                <input type="text" name="descricao_idoso" id="descricao_idoso" placeholder="Descrição" class="input" required>
+          
+                <div class="radio-group">
+                  <p>Gênero:</p>
+                  <label><input type="radio" name="genero_idoso" value="1" required> Masculino</label>
+                  <label><input type="radio" name="genero_idoso" value="0" required> Feminino</label>
+                </div>
+              </div>
+              <button type="button" class="btn-voltar" onclick="anterior('secao1')">Voltar</button>
+              <button type="submit" class="btn-cadastrar">Cadastrar</button>
+            </div>
+          </form>
+          
+</body>
+</html>
