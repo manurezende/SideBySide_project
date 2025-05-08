@@ -45,7 +45,7 @@ botao_cadastrar.onclick=()=>{
 
         
         else{
-            alert(rs.msg)
+            // alert(rs.msg)
             document.getElementById("form-usuario").reset();
         
         if(tipo_usuario.value==1){
@@ -67,7 +67,7 @@ botao_login.onclick=()=>{
     const senha=document.getElementsByName("senha")[0]
    
    
-       alert(`${email.value} ${nome_usuario.value} ${senha.value}`)
+    //    alert(`${email.value} ${nome_usuario.value} ${senha.value}`)
 
 
     fetch("http://localhost:3000/usuario/logar",{
@@ -84,6 +84,27 @@ botao_login.onclick=()=>{
         })
     })
     .then((res)=>res.json())
+    .then((rs)=>
+    {
+              
+        if(rs.erro=="Email, usuário ou senha incorretos."){
+            return document.getElementById("msg_login").innerHTML=rs.erro
+        }
+
+        
+        else{
+            
+            // alert(rs.msg)
+            document.getElementById("dialog-login").reset();
+        
+            if(msg == "Login realizado com sucesso"){
+
+                window.location.href="pagina_inicial.html"  
+                }
+            
+             }
+          })
+          
 }
 
 ////////////////////    modal    ///////////////
