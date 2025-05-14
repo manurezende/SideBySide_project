@@ -210,15 +210,24 @@ function updateProgressBar(step) {
 ////////////////////    form múltiplas etapas IDOSO     ///////////////
 
 function form_active() {
-  document.getElementsByClassName("form-step")[0].style.display = "block";
-  document.getElementsByClassName("form-step-active")[0].style.display = "none";
-  updateProgressBar(1); // Etapa 1
+    if(document.getElementById("cep").value.trim()==""){
+        alert("não deixe os campos nulo");
+        return
+    }
+    document.getElementsByClassName("form-step")[0].style.display = "block";
+    document.getElementsByClassName("form-step-active")[0].style.display = "none";
+    updateProgressBar(1); // Etapa 1
 }
 
 function form_step1() {
-  document.getElementsByClassName("form-step")[1].style.display = "block";
-  document.getElementsByClassName("form-step")[0].style.display = "none";
-  updateProgressBar(2); // Etapa 2
+    if(document.getElementById("cep").value.trim()==""){
+        alert("não deixe os campos nulo");
+        return
+    }
+    document.getElementsByClassName("form-step")[1].style.display = "block";
+    document.getElementsByClassName("form-step")[0].style.display = "none";
+    updateProgressBar(2); // Etapa 2
+
 }
 
 function form_step2() {

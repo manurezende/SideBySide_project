@@ -379,7 +379,8 @@ dialog{
   width: 100%;
   max-width: 600px; /* Largura máxima do formulário */
   box-sizing: border-box;
-  
+  margin: 10% auto
+
   
 }
 
