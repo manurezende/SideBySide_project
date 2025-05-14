@@ -365,3 +365,119 @@ dialog{
   padding: 0 10px; /* Espaçamento horizontal interno para o texto */
 }
 
+/* ==================== FORM MULTIPLA ETAPA IDOSO ==================== */
+
+
+
+
+/* Estilo geral do formulário */
+.form_idoso {
+  background: #ffffff; /* Fundo branco para o formulário */
+  padding: 40px; /* Espaçamento interno */
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100%;
+  max-width: 600px; /* Largura máxima do formulário */
+  box-sizing: border-box;
+  
+  
+}
+
+/* Barra de progresso externa */
+.progress-container {
+  width: 100%;
+  background-color: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  height: 12px;
+}
+
+/* Barra de progresso interna */
+.progress-bar {
+  width: 0%; /* Valor inicial (1/8 etapas) */
+  height: 100%;
+  background-color: #4caf50; /* Verde bonito */
+  transition: width 0.3s ease;
+}
+
+/* Cada etapa do formulário */
+.form-step {
+  display: none; /* Começa escondido */
+}
+
+/* Etapa ativa visível */
+.form-step-active {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Tags de input, select */
+.form-step input, select {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Arredondado */
+  outline: none;
+  transition: border 0.3s;
+}
+
+/* Quando focado, destaca o campo */
+.form-step input:focus, select:focus {
+  border-color: #4caf50;
+}
+
+/* Título de cada etapa */
+.title_form_mult {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+/* Estilo dos botões "Próximo" */
+.btn-next,
+.btn-submit {
+  padding: 12px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: #4caf50;
+  border: none;
+  border-radius: 25px; /* Botão redondinho */
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+  align-self: flex-end;
+}
+
+/* Efeito ao passar o mouse nos botões */
+.btn-next:hover,
+.btn-submit:hover {
+  background-color: #43a047;
+}
+
+/* Estilo para labels dos rádios */
+.label_form_mult {
+  margin-right: 15px;
+  font-weight: 500;
+}
+
+/* Estilo para inputs tipo radio */
+input[type="radio"] {
+  margin-right: 5px;
+}
+
+/* ==================== FORM MULTIPLA ETAPA JOVEM ==================== */
+
+/* Estilo geral do formulário */
+.form_jovem {
+  background: #ffffff; /* Fundo branco para o formulário */
+  padding: 40px; /* Espaçamento interno */
+  border-radius: 20px; /* Bordas arredondadas */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  width: 100%;
+  max-width: 600px; /* Largura máxima do formulário */
+  box-sizing: border-box;
+  
+  
+}

@@ -1,73 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro de Jovem</title>
+
+  <!-- Link para o CSS externo -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <form action="#" method="post" onsubmit="return false">
-      <section class="section_endereco">
-        <h2>Endereço</h2>
 
-        <div class="div_endereco_cep">
-          <h3>digite seu CEP:</h3>
-          <input type="text" name="cep" id="cep" placeholder="CEP" required />
-          <button type="button" class="btn-proximo" onclick="proximo('secao2')">Próximo</button>
-        </div>
+  <!-- Formulário principal -->
+  <form id="form-jovem" class="form_jovem" action="#" method="post" onsubmit="return false">
 
-        <div class="div_endereco_logradouro">
-          <select name="logradouro" id="logradouro" required>
-            <option value="">Tipo de logradouro</option>
-            <option value="Rua">Rua</option>
-            <option value="Avenida">Avenida</option>
-            <option value="Alameda">Alameda</option>
-            <option value="Travessa">Travessa</option>
-            <option value="Praça">Praça</option>
-            <option value="Estrada">Estrada</option>
-            <option value="Rodovia">Rodovia</option>
-            <option value="Viela">Viela</option>
-          </select>
-          <input type="text" name="logradouro_nome" id="logradouro_nome" placeholder="Nome do logradouro" required />            
-        </div>
+    <!-- Barra de progresso no topo -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
 
-        <div class="div_endereco_cep_bairro">
-          <input type="text" name="cidade" id="cidade" placeholder="Cidade" required />
-          <input type="text" name="estado" id="estado" placeholder="Estado" required />
-          <input type="text" name="bairro" id="bairro" placeholder="Bairro" required />
-          <input type="text" name="pais" id="pais" placeholder="País" value="Brasil" required />
-        </div>
+    <!-- Etapa 1: Dados Pessoais -->
+    <div class="form-step-active">
+      <h2 class="title_form_mult">Dados Pessoais</h2>
+      <input type="text" id="cpf" name="cpf" placeholder="CPF" required />
+      <input type="date" name="data_nascimento" id="data_nascimento" required />
+      <input type="text" name="descricao" id="descricao" placeholder="Descrição" required />
+      <button type="button" class="btn-next" onclick="form_step1()">Próximo</button>
+    </div>
 
-        <div class="div_endereco_complemento">
-          <input type="text" name="numero" id="numero" placeholder="Número" required />
-          <input type="text" name="complemento" id="complemento" placeholder="Complemento" />
-        </div>
-      </section>
-      
-        <!-- Jovem -->
-        <section class="section_jovem">
-          <h2>Cadastro Jovem</h2>
-          <div class="div_jovem">
-            <input type="tel" name="telefone_celular_jovem" id="telefone_celular_jovem" placeholder="Telefone celular" required />
-            <input type="text" name="cpf_jovem" id="cpf_jovem" placeholder="CPF" required />
-            <input type="date" name="data_nascimento_jovem" id="data_nascimento_jovem" placeholder="Data de nascimento" required />
-            <textarea name="experiencia" id="experiencia" placeholder="Experiência (opcional)"></textarea>
-            <input type="text" name="chave_pix" id="chave_pix" placeholder="Chave Pix (opcional)" />
-            <input type="text" name="descricao_jovem" id="descricao_jovem" placeholder="Descrição" required />
-      
-            <!-- Gênero: rádio -->
-            <div class="genero_jovem_radio">
-              <p>Gênero:</p>
-              <input type="radio" id="genero_jovem_masculino" name="genero_jovem" value="1" required />
-              <label for="genero_jovem_masculino">Masculino</label>
-      
-              <input type="radio" id="genero_jovem_feminino" name="genero_jovem" value="0" required />
-              <label for="genero_jovem_feminino">Feminino</label>
-            </div>
-          </div>
-        </section>
-        <button class="section_button" type="submit" id="botao_cadastrar_jovem_idoso">Cadastrar</button>
-    </form>
+    <!-- Etapa 2: Contato -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Contato</h2>
+      <input type="text" name="telefone" id="telefone" placeholder="Telefone" required />
+      <input type="email" name="email" id="email" placeholder="E-mail" required />
+      <button type="button" class="btn-next" onclick="form_step2()">Próximo</button>
+    </div>
+
+    <!-- Etapa 3: Endereço -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Endereço</h2>
+      <input type="text" name="logradouro" id="logradouro" placeholder="Logradouro" required />
+      <input type="text" name="bairro" id="bairro" placeholder="Bairro" required />
+      <input type="text" name="cidade" id="cidade" placeholder="Cidade" required />
+      <input type="text" name="estado" id="estado" placeholder="Estado" required />
+      <button type="button" class="btn-next" onclick="form_step3()">Próximo</button>
+    </div>
+
+    <!-- Etapa 4: Foto -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Foto</h2>
+      <input type="file" name="foto" id="foto" />
+      <button type="button" class="btn-next" onclick="form_step4()">Próximo</button>
+    </div>
+
+    <!-- Etapa 5: Assinante -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Assinante</h2>
+      <label for="assinante_sim">Sim</label>
+      <input type="radio" id="assinante_sim" name="assinante" value="1" required />
+      <label for="assinante_nao">Não</label>
+      <input type="radio" id="assinante_nao" name="assinante" value="0" required />
+      <button type="submit" class="btn-submit">Cadastrar</button>
+    </div>
+
+  </form>
+
+  <!-- JS externo -->
+  <script src="./js/script.js"></script>
 </body>
 </html>

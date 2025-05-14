@@ -18,8 +18,8 @@
     <nav>
       <ul class="itens-nav">
         <li ><a href="index.html">Início</a></li>
-        <li ><button id="btn-modal-login" class="section_button"> Login</button></li>
-        <li ><button id="btn-modal-cadastro" class="section_button">cadastro</button></li>
+        <li ><button id="btn-modal-login" onclick="abrir_modal_login()" class="section_button"> Login</button></li>
+        <li ><button id="btn-modal-cadastro" class="section_button" onclick="abrir_modal()">cadastro</button></li>
       </ul>
     </nav>
   </header>
@@ -47,8 +47,8 @@
             
           </div>
           <div class="btn-modal">
-          <button class="btn-cadastrar" type="submit" id="botao_cadastrar">Cadastrar Usuário</button>
-          <button class="btn-cancelar" type="submit" id="btn_cancelar_cadastro">Cancelar cadastro</button>
+          <button class="btn-cadastrar" type="submit" id="botao_cadastrar" onclick="cadastrar_usuario()">Cadastrar Usuário</button>
+          <button class="btn-cancelar" type="submit" id="btn_cancelar_cadastro" onclick="fechar_modal()">Cancelar cadastro</button>
         </div>
         </div>
       </section>
@@ -61,9 +61,9 @@
       <form id="form-login" action="#" method="post" onsubmit="return false">
         <input type="email" placeholder="Seu e-mail" required />
         <input type="password" placeholder="Sua senha" required />
-        <button class="section_button" id="botao_login" type="submit">Entrar</button>
+        <button class="section_button" id="botao_login" type="submit" onclick="logar_usuario()">Entrar</button>
         <label for="" id="msg_login"></label>
-        <button class="btn-cancelar" type="submit" id="btn_cancelar_login">Cancelar login</button>
+        <button class="btn-cancelar" type="submit" id="btn_cancelar_login" onclick="fechar_login()">Cancelar login</button>
  
       </form>
     </section>

@@ -1,85 +1,110 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro Multi-etapas</title>
+
+  <!-- Link para o CSS externo -->
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <form action="#" method="post" id="form-idoso" onsubmit="return false">
-      <!-- Endereço -->
-      <section class="section_endereco">
-        <h2>Endereço</h2>
-        <div class="div_endereco_cep">
-          <h3>digite seu CEP:</h3>
-          <input type="text" name="cep" id="cep" placeholder="CEP" required />
-          <button type="button" class="btn-proximo" onclick="proximo('secao2')">Próximo</button>
-        </div>
 
-        <div class="div_endereco_logradouro">
-          <select name="logradouro" id="logradouro" required>
-            <option value="">Tipo de logradouro</option>
-            <option value="Rua">Rua</option>
-            <option value="Avenida">Avenida</option>
-            <option value="Alameda">Alameda</option>
-            <option value="Travessa">Travessa</option>
-            <option value="Praça">Praça</option>
-            <option value="Estrada">Estrada</option>
-            <option value="Rodovia">Rodovia</option>
-            <option value="Viela">Viela</option>
-          </select>
-          <input type="text" name="logradouro_nome" id="logradouro_nome" placeholder="Nome do logradouro" required />            
-        </div>
+  <!-- Formulário principal -->
+  <form id="form-idoso" class="form_idoso" action="#" method="post" onsubmit="return false">
 
-        <div class="div_endereco_cep_bairro">
-          <input type="text" name="cidade" id="cidade" placeholder="Cidade" required />
-          <input type="text" name="estado" id="estado" placeholder="Estado" required />
-          <input type="text" name="bairro" id="bairro" placeholder="Bairro" required />
-          <input type="text" name="pais" id="pais" placeholder="País" value="Brasil" required />
-        </div>
+    <!-- Barra de progresso no topo -->
+    <div class="progress-container">
+      <div class="progress-bar" id="progress-bar"></div>
+    </div>
 
-        <div class="div_endereco_complemento">
-          <input type="text" name="numero" id="numero" placeholder="Número" required />
-          <input type="text" name="complemento" id="complemento" placeholder="Complemento" />
-        </div>
-      </section>
-    
-      
-        <!-- Idoso -->
-      <section class="section_idoso">
-        <h2>Cadastro Idoso</h2>
+    <!-- Etapa 1: CEP -->
+    <div class="form-step-active">
+      <!-- Campo de CEP -->
+      <h2 class="title_form_mult">Digite seu CEP</h2>
+      <input type="text" id="cep" name="cep" placeholder="CEP" required />
+      <button type="button" class="btn-next" onclick="form_active()">Próximo</button>
+    </div>
 
-        <input type="tel" name="telefone_celular_idoso" id="telefone_celular_idoso" placeholder="Telefone celular" required />
-        <input type="date" name="data_nascimento_idoso" id="data_nascimento_idoso" placeholder="Data de nascimento" required />
+    <!-- Etapa 2: Tipo e nome do logradouro -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Tipo de Logradouro</h2>
+      <select name="logradouro" id="logradouro" required>
+        <option value="">Selecione</option>
+        <option value="Rua">Rua</option>
+        <option value="Avenida">Avenida</option>
+        <option value="Alameda">Alameda</option>
+        <option value="Travessa">Travessa</option>
+        <option value="Praça">Praça</option>
+        <option value="Estrada">Estrada</option>
+        <option value="Rodovia">Rodovia</option>
+        <option value="Viela">Viela</option>
+      </select>
+      <input type="text" id="logradouro_nome" name="logradouro_nome" placeholder="Nome do logradouro" required />
+      <button type="button" class="btn-next" onclick="form_step1()">Próximo</button>
+    </div>
 
-        <input type="text" name="cpf_idoso" id="cpf_idoso" placeholder="CPF" required />
-        <input type="file" name="foto_idoso" id="foto_idoso">
+    <!-- Etapa 3: Cidade, Estado, Bairro, País -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Localização</h2>
+      <input type="text" name="cidade" id="cidade" placeholder="Cidade" required />
+      <input type="text" name="estado" id="estado" placeholder="Estado" required />
+      <input type="text" name="bairro" id="bairro" placeholder="Bairro" required />
+      <input type="text" name="pais" id="pais" placeholder="País" value="Brasil" required />
+      <button type="button" class="btn-next" onclick="form_step2()">Próximo</button>
+    </div>
 
-        <!-- Comorbidade: rádio -->
-        <div class="comorbidade_idoso_radio">
-          <p>Comorbidade:</p>
-          <input type="radio" id="comorbidade_sim" name="comorbidade" value="1" required />
-          <label for="comorbidade_sim">Sim</label>
-  
-          <input type="radio" id="comorbidade_nao" name="comorbidade" value="0" required />
-          <label for="comorbidade_nao">Não</label>
-        </div>
-        <input type="text" name="tipo_comorbidade" id="tipo_comorbidade" placeholder="Tipo de comorbidade (se houver)" />
+    <!-- Etapa 4: Número e complemento -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Número e Complemento</h2>
+      <input type="text" name="numero" id="numero" placeholder="Número" required />
+      <input type="text" name="complemento" id="complemento" placeholder="Complemento" />
+      <button type="button" class="btn-next" onclick="form_step3()">Próximo</button>
+    </div>
 
-        <input type="text" name="descricao_idoso" id="descricao_idoso" placeholder="Descrição" required />
-        <!-- Gênero: rádio -->
-        <div class="genero_idoso_radio">
-          <p>Gênero:</p>
-          <input type="radio" id="genero_idoso_masculino" name="genero_idoso" value="1" required />
-          <label for="genero_idoso_masculino">Masculino</label>
-  
-          <input type="radio" id="genero_idoso_feminino" name="genero_idoso" value="0" required />
-          <label for="genero_idoso_feminino">Feminino</label>
-        </div>
-        </section>
-      
-        <button class="section_button" type="submit" id="botao_cadastrar_jovem_idoso">Cadastrar</button>
-    </form>
+    <!-- Etapa 5: Telefone e nascimento -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Informações do Idoso</h2>
+      <input type="tel" name="telefone_celular_idoso" id="telefone_celular_idoso" placeholder="Telefone celular" required />
+      <input type="date" name="data_nascimento_idoso" id="data_nascimento_idoso" required />
+      <button type="button" class="btn-next" onclick="form_step4()">Próximo</button>
+    </div>
+
+    <!-- Etapa 6: CPF e foto -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Documento</h2>
+      <input type="text" name="cpf_idoso" id="cpf_idoso" placeholder="CPF" required />
+      <input type="file" name="foto_idoso" id="foto_idoso" />
+      <button type="button" class="btn-next" onclick="form_step5()">Próximo</button>
+    </div>
+
+    <!-- Etapa 7: Comorbidade -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Comorbidade</h2>
+      <p>Você possui alguma comorbidade?</p>
+      <input type="radio" id="comorbidade_sim" name="comorbidade" value="1" required />
+      <label class="label_form_mult" for="comorbidade_sim">Sim</label>
+      <input type="radio" id="comorbidade_nao" name="comorbidade" value="0" required />
+      <label class="label_form_mult" for="comorbidade_nao">Não</label>
+      <input type="text" name="tipo_comorbidade" id="tipo_comorbidade" placeholder="Qual (se houver)?" />
+      <button type="button" class="btn-next" onclick="form_step6()">Próximo</button>
+    </div>
+
+    <!-- Etapa 8: Descrição e Gênero -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Mais sobre você</h2>
+      <input type="text" name="descricao_idoso" id="descricao_idoso" placeholder="Descrição" required />
+      <p>Gênero:</p>
+      <input type="radio" id="genero_masc" name="genero_idoso" value="1" required />
+      <label class="label_form_mult" for="genero_masc">Masculino</label>
+      <input type="radio" id="genero_fem" name="genero_idoso" value="0" required />
+      <label class="label_form_mult" for="genero_fem">Feminino</label>
+      <button type="submit" class="btn-submit" onclick="cadastrar_endereço()">Cadastrar</button>
+    </div>
+
+  </form>
+
+  <!-- JS externo -->
+  <script src="./js/script.js"></script>
 </body>
 </html>
