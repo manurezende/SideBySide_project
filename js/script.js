@@ -211,7 +211,7 @@ function updateProgressBar(step) {
 
 function form_active() {
     if(document.getElementById("cep").value.trim()==""){
-        alert("não deixe os campos nulo");
+        alert("os campos não podem ser nulos");
         return
     }
     document.getElementsByClassName("form-step")[0].style.display = "block";
@@ -220,8 +220,10 @@ function form_active() {
 }
 
 function form_step1() {
-    if(document.getElementById("cep").value.trim()==""){
-        alert("não deixe os campos nulo");
+    if(document.getElementById("logradouro").value=="Selecione" 
+    || document.getElementById("logradouro_nome").value.trim()=="")
+    {
+        alert("os campos não podem ser nulos");
         return
     }
     document.getElementsByClassName("form-step")[1].style.display = "block";
@@ -231,30 +233,71 @@ function form_step1() {
 }
 
 function form_step2() {
-  document.getElementsByClassName("form-step")[2].style.display = "block";
-  document.getElementsByClassName("form-step")[1].style.display = "none";
-  updateProgressBar(3); // Etapa 3
-}
+    if
+    (document.getElementById("cidade").value.trim()==""
+    || document.getElementById("estado").value.trim()=="" 
+    || document.getElementById("bairro").value.trim()==""
+    || document.getElementById("pais").value.trim()==""
+    ){
+        alert("os campos não podem ser nulos");
+        return
+    }
+
+    document.getElementsByClassName("form-step")[2].style.display = "block";
+    document.getElementsByClassName("form-step")[1].style.display = "none";
+    updateProgressBar(3); // Etapa 3
+    }
 
 function form_step3() {
+    if(document.getElementById("numero").value.trim()=="" 
+    || document.getElementById("complemento").value.trim()=="")
+    {
+        alert("os campos não podem ser nulos");
+        return
+    }
+
   document.getElementsByClassName("form-step")[3].style.display = "block";
   document.getElementsByClassName("form-step")[2].style.display = "none";
   updateProgressBar(4); // Etapa 4
 }
 
 function form_step4() {
+
+    if(document.getElementById("telefone_celular_idoso").value.trim()=="" 
+    || document.getElementById("data_nascimento_idoso").value.trim()=="")
+    {
+        alert("os campos não podem ser nulos");
+        return
+    }
+
   document.getElementsByClassName("form-step")[4].style.display = "block";
   document.getElementsByClassName("form-step")[3].style.display = "none";
   updateProgressBar(5); // Etapa 5
 }
 
 function form_step5() {
+
+    if(document.getElementById("cpf_idoso").value.trim()==""
+    || document.getElementById("foto_idoso").value.trim()=="")
+    {
+        alert("os campos não podem ser nulos");
+        return
+    }
+
   document.getElementsByClassName("form-step")[5].style.display = "block";
   document.getElementsByClassName("form-step")[4].style.display = "none";
   updateProgressBar(6); // Etapa 6
 }
 
 function form_step6() {
+
+    if(document.getElementById("genero_masc").value.trim()=="" 
+    || document.getElementById("genero_fem").value.trim()=="")
+    {
+        alert("os campos não podem ser nulos");
+        return
+    }
+
   document.getElementsByClassName("form-step")[6].style.display = "block";
   document.getElementsByClassName("form-step")[5].style.display = "none";
   updateProgressBar(7); // Etapa 7
