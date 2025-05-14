@@ -47,63 +47,65 @@ nav a {
 }
 
 
+/*////////////////////////////////////VIDEO BANNER//////////////////////////////////////////////////////////////////////////////////////*/
+ #video-banner
 
 
 
-/* ==================== BANNER ==================== */
-/* Seção do banner (imagem grande no topo) */
-.banner {
-  position: relative; /* Permite posicionamento absoluto dos filhos */
-  width: 100%; /* Ocupa toda a largura da tela */
-  height: 300px; /* Altura fixa do banner */
-  background-image: url("/img/banner_pos_card.jpg"); /* Imagem de fundo */
-  background-size: cover; /* A imagem cobre todo o espaço do banner */
-  background-position: center; /* Centraliza a imagem */
-  display: flex; /* Flexbox para centralizar o conteúdo */
+
+ /*//////////////////////// Benefits box /////////////////////////////////////////////////////////////////////////////////////////////////////*/
+.side-by-side-benefits {
+  background-color: lch(70.43% 21.28 242.78);
+  color: white;
+  padding: 60px 20px;
+  text-align: center;
+  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+}
+
+.side-by-side-benefits .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+}
+
+.benefit-box {
+  flex: 1 1 220px;
+  max-width: 260px;
+  margin: 20px auto;
+}
+
+.icon-circle {
+  background-color: #f5e9ee;
+  color: rgb(104, 87, 165);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
   justify-content: center;
-  color: white; /* Cor do texto dentro do banner */
+  font-size: 24px;
+  margin: 0 auto 15px;
 }
 
-/* Caixa de texto dentro do banner */
-.banner-content {
-  /* background-color: rgba(0, 0, 0, 0.4); Fundo preto com transparência */
-  padding: 20px; /* Espaçamento interno */
-  border-radius: 12px; /* Cantos arredondados */
-  text-align: center; /* Centraliza o texto */
-}
-
-/* Título no banner */
-.banner-content h1 {
-  font-size: 28px;
+.benefit-box h3 {
+  font-weight: bold;
+  font-size: 1.1rem;
   margin-bottom: 10px;
 }
 
-/* Parágrafo no banner */
-.banner-content p {
-  font-size: 18px;
+.benefit-box p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  
 }
 
 
 /* ==================== SEÇÕES GERAIS (SOBRE / IMPACTO) ==================== */
-/* Seções “sobre” e “impacto” */
-.sobre, .impacto {
-  padding: 2rem;
-  background-color: #c0e7fc;
-  text-align: center;
-}
 
-/* Lista do impacto (sem marcadores) */
-.impacto ul {
-  list-style: none;
-  padding: 0;
-}
-
-/* Estilo dos itens da lista de impacto */
-.impacto li {
-  margin: 1rem 0;
-  font-size: 1.1rem;
-}
 
 
 /* ==================== RODAPÉ ==================== */
@@ -296,20 +298,7 @@ dialog{
 }
 
 /* ==================== BANNER POS CARDS ==================== */
-/* Seção do banner (imagem grande no topo) */
-.banner-pos-cards {
-  position: relative; /* Permite posicionamento absoluto dos filhos */
-  width: 100%; /* Ocupa toda a largura da tela */
-  height: 300px; /* Altura fixa do banner */
-  background-image: url("/img/banner_pos_card.jpg"); /* Imagem de fundo */
-  background-size: cover; /* A imagem cobre todo o espaço do banner */
-  background-position: center; /* Centraliza a imagem */
-  display: flex; /* Flexbox para centralizar o conteúdo */
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
-  color: white; /* Cor do texto dentro do banner */
-}
+
 
 /* ==================== CARDS de imagens ==================== */
 /* Layout dos cards (lado a lado) */
