@@ -48,10 +48,12 @@ nav a {
 
 
 /*////////////////////////////////////VIDEO BANNER//////////////////////////////////////////////////////////////////////////////////////*/
- #video-banner
-
-
-
+#video-banner video {
+  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+    max-height: 500px; /* Define uma altura máxima, ajuste conforme necessário */
+    object-fit: cover; /* Ajusta como o vídeo se encaixa no espaço */
+  }
+  
 
  /*//////////////////////// Benefits box /////////////////////////////////////////////////////////////////////////////////////////////////////*/
 .side-by-side-benefits {
@@ -114,7 +116,7 @@ footer {
   background-color: #327296;
   text-align: center;
   padding: 1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 
 
@@ -256,7 +258,8 @@ dialog{
   flex-direction: column; /* Alinhamento dos itens na vertical */
   text-align: center; /* Alinhar o texto ao centro */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves para hover */
-  margin-bottom: 150px;
+  margin-bottom: 40px;
+  margin-top: 30px;
 }
 
 /* Efeito de hover - quando o usuário passa o mouse sobre o card */
@@ -266,9 +269,8 @@ dialog{
 }
 
 .icon img {
-  width: 60%; /* Faz com que a imagem ocupe toda a largura do card */
-  border-radius: 100px; /* Arredondar as bordas da imagem */
-  border: solid #00324e 0.5px;
+  width: 80%; /* Faz com que a imagem ocupe toda a largura do card */
+ 
 }
 
 .title-card {
@@ -470,4 +472,82 @@ input[type="radio"] {
   box-sizing: border-box;
   
   
+}
+/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fefefe;
+  color: #333;
+  line-height: 1.6;
+}
+
+.sessao {
+  padding: 60px 20px;
+  clip-path: ellipse(130% 100% at 50% 0%);
+}
+
+.azul {
+  background-color: #bfe0fd;
+}
+
+.amarelo {
+  background-color: #adc6cc;
+}
+
+.conteudo {
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.conteudo.reverso {
+  flex-direction: row-reverse;
+}
+
+.texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.texto h2 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.texto h2 span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color:#327296
+}
+
+.texto p {
+  font-size: 1.1rem;
+  color: #222;
+}
+
+.imagem {
+  flex: 1;
+  min-width: 300px;
+}
+
+.imagem img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
 }
