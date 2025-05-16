@@ -13,16 +13,22 @@
 <body>
 
   <!-- Cabeçalho com logo e navegação -->
-  <header>
-    <img src="./img/logo2.png" alt="Logo SideBySide" class="logo" />
-    <nav>
-      <ul class="itens-nav">
-        <li ><a href="index.html">Início</a></li>
-        <li ><button id="btn-modal-login" onclick="abrir_modal_login()" class="section_button"> Login</button></li>
-        <li ><button id="btn-modal-cadastro" class="section_button" onclick="abrir_modal()">cadastro</button></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- Cabeçalho com logo e navegação -->
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">SIDEBYSIDE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <a href="index.html" class="btn btn-custom ms-3">Inicio</a>
+              <li ><button id="btn-modal-login" onclick="abrir_modal_login()" class="btn btn-custom ms-3">Entrar</button></li>
+              <li ><button id="btn-modal-cadastro" class="btn btn-custom ms-3" onclick="abrir_modal()">Inscreva-se</button></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 
   <dialog>
     <form id="form-usuario" action="#" method="post" onsubmit="return false">
@@ -81,9 +87,9 @@
 
 <!--///////////////////////////////////////////////cards//////////////////////////////////////////////////////////////////////-->
 <!-- Cards com imagem e chamada  -->
-<section class="cards-display">
+<section class="cards-display - sessao azul" >
  <section class="cards">
-   <div class="icon">
+   <div class="icon - conteudo" >
      <img src="./img/empresa.jpg" alt="Ícone 1">
    </div>
    <h3 class="title-card">Quem Somos</h3>
@@ -114,8 +120,8 @@
 
 
  <!-- Seção descritiva -->
- <section class="side-by-side-benefits">
-  <div class="container">
+ <section class="sessao azul">
+  <div class="conteudo" >
     
     <div class="benefit-box">
       <div class="icon-circle">✔</div>
@@ -144,8 +150,8 @@
 </section>
 
 <!--//////////////////////////////////////////////////////tres imagens///////////////////////////////////////////////////////////////////////////-->
-<section class="display-cards-de-imagem">
- <div class="image-card">
+<section class="display-cards-de-imagem - sessao azul">
+ <div class="image-card - conteudo">
    <img src="./img/img_card (1).jpg" alt="Imagem 1">
    <div class="text-cards-img">
      <h4>Juntos cuidamos de todos</h4>
@@ -200,7 +206,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Font Awesome (for social icons) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-  </footer>
+  
 
   <!-- Script JS -->
   <script src="js/script.js"></script>

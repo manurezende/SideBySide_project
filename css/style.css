@@ -10,6 +10,48 @@ body {
 
 
 /* ==================== HEADER ==================== */
+
+
+.navbar-custom {
+  background-color: #9ba5e0; /* azul bebe */
+  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.navbar-brand:hover {
+  color: #5432cf;
+}
+
+.nav-link {
+  color:  #5432cf;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #5432cf;
+}
+
+.btn-custom {
+  background-color: #5432cf
+  color: #fff;
+  border-radius: 20px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-custom:hover {
+  background-color: #fff;
+  color:#5432cf
+  
+}
+
+
+
+
 /* Estiliza o cabeçalho */
 header {
   display: flex; /* Ativa o Flexbox para organizar os elementos */
@@ -19,33 +61,33 @@ header {
   padding: 8px; /* Espaçamento interno */
 }
 
-/* Define altura do logo */
+/* Define altura do logo
 .logo {
   height: 75px;
   
 }
 
 /* Remove o estilo de lista e organiza os itens do menu */
-nav ul {
-  list-style: none; /* Remove os pontinhos da lista */
-  display: flex; /* Coloca os itens em linha */
-  gap: 1rem; /* Espaçamento entre os itens */
-}
+/* nav ul { */
+  /* list-style: none; Remove os pontinhos da lista */
+  /* display: flex; Coloca os itens em linha */
+  /* gap: 1rem; Espaçamento entre os itens */
+/* } */
 
 /* Estiliza os links do menu */
-nav a {
-  text-decoration: none; /* Remove o sublinhado */
-  color: #c0e7fc; /* Azul escuro */
-  font-weight: bold; /* Deixa o texto em negrito */
-  transition: background-color 0.9s ease ;
-}
+/* nav a { */
+  /*  Remove o sublinhado */
+  /* color: #c0e7fc; Azul escuro */
+  /* font-weight: bold; Deixa o texto em negrito */
+  /* transition: background-color 0.9s ease ;
+} */
 
 /* hover == quando passamos o mouse por cima do elemento */
-.itens-nav :hover {
-  transform: translateY(-3px); /* Levanta o menu nav um pouco */
-  color: #fff; /* muda a cor */
+/* .itens-nav :hover { */
+  /* transform: translateY(-3px); Levanta o menu nav um pouco */
+  /* color: #fff; muda a cor
 }
-
+ */ 
 
 /*////////////////////////////////////VIDEO BANNER//////////////////////////////////////////////////////////////////////////////////////*/
 #video-banner video {
@@ -113,7 +155,7 @@ nav a {
 /* ==================== RODAPÉ ==================== */
 /* Rodapé */
 footer {
-  background-color: #327296;
+  background-color: #9ba5e0;
   text-align: center;
   padding: 1rem;
   margin-top: 1rem;
@@ -546,7 +588,7 @@ body {
 }
 
 .imagem img {
-  width: 100%;
+  width: 70%;
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   object-fit: cover;
