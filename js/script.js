@@ -107,15 +107,15 @@ function logar_usuario(){
 
 
 function cadastrar_endereço(){
-    const cep=document.getElementById("cep")[0]
-    const logradouro=document.getElementById("logradouro")[0]
-    const logradouro_nome=document.getElementById("logradouro_nome")[0]
-    const cidade=document.getElementById("cidade")[0]
-    const estado =document.getElementById("estado")[0]
-    const bairro=document.getElementById("bairro")[0]
-    const pais =document.getElementById("pais")[0]
+    const cep = document.getElementById("cep");
+    const logradouro = document.getElementById("logradouro");
+    const logradouro_nome = document.getElementById("logradouro_nome");
+    const cidade = document.getElementById("cidade");
+    const estado = document.getElementById("estado");
+    const bairro = document.getElementById("bairro");
+    const pais = document.getElementById("pais");
 
-    alert(`${cep.value} ${logradouro.value} ${logradouro_nome.value} ${cidade.value} ${estado.value} ${bairro.value} ${pais.value}`)
+    // alert(`${cep.value} ${logradouro.value} ${logradouro_nome.value} ${cidade.value} ${estado.value} ${bairro.value} ${pais.value}`)
    
     fetch("http://localhost:3000/endereco/cadastrar",{
         method:"POST",
@@ -124,37 +124,37 @@ function cadastrar_endereço(){
             "content-type":"application/json"
         },
         body:JSON.stringify({
-            email:email.value,
-            nome_usuario:nome_usuario.value,
-            nome_completo:nome_completo.value,
-            senha:senha.value,
-            tipo_usuario:tipo_usuario.value
-
+            cep: cep.value,
+            logradouro: logradouro.value,
+            logradouro_nome: logradouro_nome.value,
+            cidade: cidade.value,
+            estado: estado.value,
+            bairro: bairro.value,
+            pais: pais.value
         })
     })
     .then((res)=>res.json())
     .then((rs)=>
     {
               
-        if(rs.erro=="Email ou usuario já cadastrado!"){
-            return document.getElementById("msg_cadastro").innerHTML=rs.erro
+        if(rs.erro=="erro ao tentar cadastrar endereco"){
+            return document.getElementById("msg_login").innerHTML=rs.erro
         }
 
         
         else{
-            // alert(rs.msg)
-            document.getElementById("form-usuario").reset();
+            
+            alert(rs.msg)
+            document.getElementById("form-idoso").reset();
         
-        if(tipo_usuario.value==1){
+            if(rs.msg == "endereco cadastrado"){
 
-          window.location.href="cadastro_jovem.html"  
-          }
-        else{
-            window.location.href="cadastro_idoso.html"
-        }}
-    })
-
-
+                window.location.href="pagina_inicial.html"  
+                }
+            
+             }
+          })
+          
 }
 
 ////////////////////    modal    ///////////////
