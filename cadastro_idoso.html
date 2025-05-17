@@ -20,9 +20,9 @@
 
     <!-- Etapa 1: CEP -->
     <div class="form-step-active">
-      <!-- Campo de CEP -->
       <h2 class="title_form_mult">Digite seu CEP</h2>
       <input type="text" id="cep" name="cep" placeholder="CEP" required />
+      <label class="erro-msg" id="erro-etapa-1"></label>
       <button type="button" class="btn-next" id="btn-cep" onclick="form_active()">Próximo</button>
     </div>
 
@@ -41,8 +41,11 @@
         <option value="Viela">Viela</option>
       </select>
       <input type="text" id="logradouro_nome" name="logradouro_nome" placeholder="Nome do logradouro" required />
-      <button type="button" class="btn-next" onclick="form_step1()">Próximo</button>
-      <button type="button" class="btn-past" onclick="form_past1()">Voltar</button>
+      <label class="erro-msg" id="erro-etapa-2"></label> <!--erro na etapa-->
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past1()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step1()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 3: Cidade, Estado, Bairro, País -->
@@ -52,8 +55,11 @@
       <input type="text" name="estado" id="estado" placeholder="Estado" required />
       <input type="text" name="bairro" id="bairro" placeholder="Bairro" required />
       <input type="text" name="pais" id="pais" placeholder="País" value="Brasil" required />
-      <button type="button" class="btn-next" onclick="form_step2()">Próximo</button>
-      <button type="button" class="btn-past" onclick="form_past2()">Voltar</button>
+      <label class="erro-msg" id="erro-etapa-3"></label> <!--erro na etapa-->
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past2()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step2()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 4: Número e complemento -->
@@ -61,8 +67,11 @@
       <h2 class="title_form_mult">Número e Complemento</h2>
       <input type="text" name="numero" id="numero" placeholder="Número" required />
       <input type="text" name="complemento" id="complemento" placeholder="Complemento" />
-      <button type="button" class="btn-next" onclick="form_step3()">Próximo</button>
-      <button type="button" class="btn-past" onclick="form_past3()">Voltar</button>
+      <label class="erro-msg" id="erro-etapa-4"></label> <!--erro na etapa-->
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past3()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step3()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 5: Telefone e nascimento -->
@@ -70,19 +79,25 @@
       <h2 class="title_form_mult">Informações do Idoso</h2>
       <input type="tel" name="telefone_celular_idoso" id="telefone_celular_idoso" placeholder="Telefone celular" required />
       <input type="date" name="data_nascimento_idoso" id="data_nascimento_idoso" required />
-      <button type="button" class="btn-next" onclick="form_step4()">Próximo</button>
-      <button type="button" class="btn-past" onclick="form_past4()">Voltar</button>
+      <label class="erro-msg" id="erro-etapa-5"></label> <!--erro na etapa-->
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past4()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step4()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 6: CPF e foto -->
     <div class="form-step">
       <h2 class="title_form_mult">Documento</h2>
       <input type="text" name="cpf_idoso" id="cpf_idoso" placeholder="CPF" required />
+      <label class="erro-msg" id="erro-etapa-6"></label> <!--erro na etapa-->
       <input type="file" name="foto_idoso" id="foto_idoso" />
-      <button type="button" class="btn-next" onclick="form_step5()">Próximo</button>
-      <button type="button" class="btn-past" onclick="form_past5()">Voltar</button>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past5()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step5()">Próximo</button>
+      </div>
     </div>
-  
+
     <!-- Etapa 7: Comorbidade -->
     <div class="form-step">
       <h2 class="title_form_mult">Comorbidade</h2>
@@ -92,8 +107,11 @@
       <input type="radio" id="comorbidade_nao" name="comorbidade" value="0" required  onclick="desativar_comorbidade()"/>
       <label class="label_form_mult" for="comorbidade_nao">Não</label>
       <input type="text" name="tipo_comorbidade" id="tipo_comorbidade" placeholder="Qual (se houver)?" />
-      <button type="button" class="btn-next" onclick="form_step6()">Próximo</button>
-      <button type="button" class="btn-past" onclick="form_past6()">Voltar</button>
+      <label class="erro-msg" id="erro-etapa-7"></label> <!--erro na etapa-->      
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past6()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step6()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 8: Descrição e Gênero -->
@@ -105,8 +123,11 @@
       <label class="label_form_mult" for="genero_masc">Masculino</label>
       <input type="radio" id="genero_fem" name="genero_idoso" value="0" required />
       <label class="label_form_mult" for="genero_fem">Feminino</label>
-      <button type="submit" class="btn-submit" onclick="cadastrar_endereço()">Cadastrar</button>
-      <button type="button" class="btn-past" onclick="form_past7()">Voltar</button>
+      <label class="erro-msg" id="erro-etapa-8"></label> <!--erro na etapa-->      
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past7()">Voltar</button>
+        <button type="submit" class="btn-submit" onclick="cadastrar_endereço()">Cadastrar</button>
+      </div>
     </div>
 
   </form>

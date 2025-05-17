@@ -210,65 +210,74 @@ function updateProgressBar(step) {
 ////////////////////    form múltiplas etapas IDOSO     ///////////////
 
 function form_active() {
-    const cepInput = document.getElementById('cep');
-    const cep = cepInput.value.replace(/\D/g, '');
-  
-    if (cep === '') {
-      alert('O campo CEP não pode estar vazio.');
-      return;
-    }
-  
-    if (cep.length !== 8) {
-      alert('CEP inválido. Deve conter 8 dígitos.');
-      return;
-    }
-  
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Erro ao consultar o CEP.');
+  const cepInput = document.getElementById('cep');
+  const cep = cepInput.value.replace(/\D/g, '');
+  const erroMsg_cep = document.getElementById('erro-etapa-1');
+
+  // Limpa mensagens de erro anteriores
+  erroMsg_cep.style.display = 'none';
+  erroMsg_cep.textContent = '';
+
+  // Validação local
+  if (cep === '') {
+    erroMsg_cep.style.display = 'block';
+    erroMsg_cep.textContent = 'O campo CEP não pode estar vazio.';
+    return;
+  }
+
+  if (cep.length !== 8) {
+    erroMsg_cep.style.display = 'block';
+    erroMsg_cep.textContent = 'CEP inválido. Deve conter 8 dígitos.';
+    return;
+  }
+
+  // Consulta ao ViaCEP
+  fetch(`https://viacep.com.br/ws/${cep}/json/`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Erro ao consultar o CEP.');
+      }
+      return response.json();
+    })
+    .then(data => {
+      if (data.erro) {
+        erroMsg_cep.style.display = 'block';
+        erroMsg_cep.textContent = 'CEP não encontrado.';
+        return; // NÃO AVANÇA DE ETAPA
+      }
+
+      // Preenche os campos com os dados do ViaCEP
+      const logradouroCompleto = data.logradouro || '';
+      const logradouroParts = logradouroCompleto.split(' ');
+      const tipoLogradouro = logradouroParts[0];
+      const nomeLogradouro = logradouroParts.slice(1).join(' ');
+
+      const logradouroSelect = document.getElementById('logradouro');
+      for (let i = 0; i < logradouroSelect.options.length; i++) {
+        if (logradouroSelect.options[i].value.toLowerCase() === tipoLogradouro.toLowerCase()) {
+          logradouroSelect.selectedIndex = i;
+          break;
         }
-        return response.json();
-      })
-      .then(data => {
-        if (data.erro) {
-          alert('CEP não encontrado.');
-          return;
-        }
-  
-        // Preenche os campos do formulário com os dados retornados
-        const logradouroCompleto = data.logradouro || '';
-        const logradouroParts = logradouroCompleto.split(' ');
-        const tipoLogradouro = logradouroParts[0];
-        const nomeLogradouro = logradouroParts.slice(1).join(' ');
-  
-        // Define o tipo de logradouro no select
-        const logradouroSelect = document.getElementById('logradouro');
-        for (let i = 0; i < logradouroSelect.options.length; i++) {
-          if (logradouroSelect.options[i].value.toLowerCase() === tipoLogradouro.toLowerCase()) {
-            logradouroSelect.selectedIndex = i;
-            break;
-          }
-        }
-  
-        document.getElementById('logradouro_nome').value = nomeLogradouro;
-        document.getElementById('bairro').value = data.bairro || '';
-        document.getElementById('cidade').value = data.localidade || '';
-        document.getElementById('estado').value = data.uf || '';
-        document.getElementById('pais').value = 'Brasil';
-  
-    
-      })
-      .catch(error => {
-        console.error(error);
-        alert('Erro ao buscar o endereço. Tente novamente.');
-      });
-      
-      
-    document.getElementsByClassName("form-step")[0].style.display = "block";
-    document.getElementsByClassName("form-step-active")[0].style.display = "none";
-    updateProgressBar(1); // Etapa 1
+      }
+
+      document.getElementById('logradouro_nome').value = nomeLogradouro;
+      document.getElementById('bairro').value = data.bairro || '';
+      document.getElementById('cidade').value = data.localidade || '';
+      document.getElementById('estado').value = data.uf || '';
+      document.getElementById('pais').value = 'Brasil';
+
+      // SÓ AGORA pode mudar de etapa:
+      document.getElementsByClassName("form-step")[0].style.display = "block";
+      document.getElementsByClassName("form-step-active")[0].style.display = "none";
+      updateProgressBar(1); // Etapa 1
+    })
+    .catch(error => {
+      console.error(error);
+      erroMsg_cep.style.display = 'block';
+      erroMsg_cep.textContent = 'Erro ao buscar o endereço. Tente novamente.';
+    });
 }
+
 
 function form_step1() {
     if(document.getElementById("logradouro").value=="Selecione" 
@@ -346,6 +355,8 @@ function form_step5() {
         return
     }
 
+    cpf_mascara();
+
   document.getElementsByClassName("form-step")[5].style.display = "block";
   document.getElementsByClassName("form-step")[4].style.display = "none";
   updateProgressBar(6); // Etapa 6
@@ -374,9 +385,7 @@ function ativar_comorbidade(){
     document.querySelector("#tipo_comorbidade").disabled = false;
 }
 
-document.getElementById("comorbidade_sim").onclick=()=>{
-    tipo_comorbidade.disabled = false;
-}
+
 
 
 function form_past1() 
@@ -427,4 +436,111 @@ function form_past7()
     document.getElementsByClassName("form-step")[6].style.display = "none";
     updateProgressBar(6);
 }
-  ////////////////////    levar para outra guia    ///////////////
+  ////////////////////    MENSSAGEM    ///////////////
+
+  // login elements
+const login = document.querySelector(".login")
+const loginForm = login.querySelector(".login__form")
+const loginInput = login.querySelector(".login__input")
+
+// chat elements
+const chat = document.querySelector(".chat")
+const chatForm = chat.querySelector(".chat__form")
+const chatInput = chat.querySelector(".chat__input")
+const chatMessages = chat.querySelector(".chat__messages")
+
+const colors = [
+    "cadetblue",
+    "darkgoldenrod",
+    "cornflowerblue",
+    "darkkhaki",
+    "hotpink",
+    "gold"
+]
+
+const user = { id: "", name: "", color: "" }
+
+let websocket
+
+const createMessageSelfElement = (content) => {
+    const div = document.createElement("div")
+
+    div.classList.add("message--self")
+    div.innerHTML = content
+
+    return div
+}
+
+const createMessageOtherElement = (content, sender, senderColor) => {
+    const div = document.createElement("div")
+    const span = document.createElement("span")
+
+    div.classList.add("message--other")
+
+    span.classList.add("message--sender")
+    span.style.color = senderColor
+
+    div.appendChild(span)
+
+    span.innerHTML = sender
+    div.innerHTML += content
+
+    return div
+}
+
+const getRandomColor = () => {
+    const randomIndex = Math.floor(Math.random() * colors.length)
+    return colors[randomIndex]
+}
+
+const scrollScreen = () => {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    })
+}
+
+const processMessage = ({ data }) => {
+    const { userId, userName, userColor, content } = JSON.parse(data)
+
+    const message =
+        userId == user.id
+            ? createMessageSelfElement(content)
+            : createMessageOtherElement(content, userName, userColor)
+
+    chatMessages.appendChild(message)
+
+    scrollScreen()
+}
+
+const handleLogin = (event) => {
+    event.preventDefault()
+
+    user.id = crypto.randomUUID()
+    user.name = loginInput.value
+    user.color = getRandomColor()
+
+    login.style.display = "none"
+    chat.style.display = "flex"
+
+    websocket = new WebSocket("ws://localhost:8080")
+    websocket.onmessage = processMessage
+}
+
+const sendMessage = (event) => {
+    event.preventDefault()
+
+    const message = {
+        userId: user.id,
+        userName: user.name,
+        userColor: user.color,
+        content: chatInput.value
+    }
+
+    websocket.send(JSON.stringify(message))
+
+    chatInput.value = ""
+}
+
+loginForm.addEventListener("submit", handleLogin)
+chatForm.addEventListener("submit", sendMessage)

@@ -37,7 +37,7 @@ body {
 }
 
 .btn-custom {
-  background-color: #5432cf
+  background-color: #5432cf;
   color: #fff;
   border-radius: 20px;
   transition: background-color 0.3s ease;
@@ -170,7 +170,8 @@ dialog::backdrop{
 dialog{
   border: none;
   border-radius: 40px;
-  padding: 0px;
+  padding: 10px;
+  margin: 40px auto;
 }
 
 .sem-scroll {
@@ -230,7 +231,7 @@ dialog{
   max-width: 400px; /* Largura máxima */
   margin: 30px auto; /* Centraliza na horizontal */
   background-color: #ffffff;
-  padding: 2rem;
+
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra leve */
 }
@@ -301,7 +302,7 @@ dialog{
   text-align: center; /* Alinhar o texto ao centro */
   transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transições suaves para hover */
   margin-bottom: 40px;
-  margin-top: 30px;
+  margin:  30px auto;
 }
 
 /* Efeito de hover - quando o usuário passa o mouse sobre o card */
@@ -312,7 +313,8 @@ dialog{
 
 .icon img {
   width: 80%; /* Faz com que a imagem ocupe toda a largura do card */
- 
+ margin: auto;
+ border-radius: 10px;
 }
 
 .title-card {
@@ -327,6 +329,7 @@ dialog{
 }
 
 .button-card {
+  padding: 8px;
   font-size: 16px; 
   font-family: "Poppins", sans-serif;
   background-color: #116696; /* Cor de fundo azul para o botão */
@@ -352,6 +355,7 @@ dialog{
   gap: 20px; /* Espaçamento entre os cards */
   padding: 40px 80px; /* Espaçamento interno: 40px no topo/baixo e 80px nas laterais */
   justify-content: center; /* Centraliza o grid dentro do contêiner pai */
+  align-items: flex-end;
 }
 
 .image-card {
@@ -360,6 +364,7 @@ dialog{
   border-radius: 20px; /* Bordas arredondadas */
   box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra suave ao redor do card */
   height: 200px; /* Altura fixa para os cards */
+  width: 250px;
 }
 
 .image-card img {
@@ -431,7 +436,7 @@ dialog{
 .progress-bar {
   width: 0%; /* Valor inicial (1/8 etapas) */
   height: 100%;
-  background-color: #4caf50; /* Verde bonito */
+  background-color: #4c7aaf; /* Verde bonito */
   transition: width 0.3s ease;
 }
 
@@ -446,6 +451,14 @@ dialog{
   flex-direction: column;
   gap: 15px;
 }
+#cep{
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px; /* Arredondado */
+  outline: none;
+  transition: border 0.3s;
+}
 
 /* Tags de input, select */
 .form-step input, select {
@@ -459,7 +472,7 @@ dialog{
 
 /* Quando focado, destaca o campo */
 .form-step input:focus, select:focus {
-  border-color: #4caf50;
+  border-color: #4c7aaf;
 }
 
 /* Título de cada etapa */
@@ -471,11 +484,12 @@ dialog{
 
 /* Estilo dos botões "Próximo" */
 .btn-next,
-.btn-submit {
+.btn-submit,
+.btn-past {
   padding: 12px 20px;
   font-size: 16px;
   color: white;
-  background-color: #4caf50;
+  background-color: #4c7aaf;
   border: none;
   border-radius: 25px; /* Botão redondinho */
   cursor: pointer;
@@ -486,8 +500,9 @@ dialog{
 
 /* Efeito ao passar o mouse nos botões */
 .btn-next:hover,
-.btn-submit:hover {
-  background-color: #43a047;
+.btn-submit:hover,
+.btn-past:hover{
+  background-color: #4364a0;
 }
 
 /* Estilo para labels dos rádios */
@@ -500,6 +515,32 @@ dialog{
 input[type="radio"] {
   margin-right: 5px;
 }
+
+/* Container dos botões de navegação (voltar/próximo) */
+.form-navigation {
+  display: flex;                /* Coloca os botões lado a lado */
+  justify-content: space-between; /* Um em cada canto */
+  gap: 10px;                    /* Espaço entre eles */
+  margin-top: 20px;            /* Espaço acima */
+}
+
+/* Botão de "Voltar" alinhado à esquerda */
+.btn-past {
+  align-self: flex-start;
+}
+
+/* Botão de "Próximo" alinhado à direita */
+.btn-next {
+  align-self: flex-end;
+}
+
+.erro-msg {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+  display: none; /* Começa invisível */
+}
+
 
 /* ==================== FORM MULTIPLA ETAPA JOVEM ==================== */
 
@@ -517,11 +558,7 @@ input[type="radio"] {
 }
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+
 
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -592,4 +629,162 @@ body {
   border-radius: 20px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   object-fit: cover;
+}
+
+
+/*//////////////////////////////     MENSSAGENS      ///////////////////////////////////////////////////////////////////////////////////*/
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+
+
+
+.body-msg {
+    background: url("../img/background.png");
+    color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+.container {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    width: 100%;
+    max-width: 330px;
+    background-color: #212121;
+    border-radius: 5px;
+    padding: 20px;
+}
+
+.login > h2 {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.login__form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login__input {
+    border: none;
+    padding: 15px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background-color: #121212;
+    color: #f2f2f2;
+    outline: none;
+    border-radius: 5px;
+}
+
+.login__input:focus {
+    outline: 2px solid #f2f2f2;
+}
+
+.login__button {
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    background-color: #ddd;
+    cursor: pointer;
+    color: #121212;
+}
+
+.login__button:hover {
+    background-color: #fff;
+}
+
+.chat {
+    width: 100%;
+    height: 100%;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat__messages {
+    flex-grow: 1;
+    padding: 30px 30px 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.chat__form {
+    background-color: #191919;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.chat__input {
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    flex-grow: 1;
+    background-color: #212121;
+    outline: none;
+    color: #f2f2f2;
+    font-size: 1rem;
+}
+
+.chat__button {
+    border: none;
+    background: none;
+    color: #f2f2f2;
+    cursor: pointer;
+}
+
+.chat__button > span {
+    font-size: 1.8rem;
+}
+
+.chat__messages > div {
+    padding: 10px;
+    width: 100%;
+    max-width: 250px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 15px;
+    line-height: 22px;
+}
+
+.message--self {
+    background-color: #f2f2f2;
+    color: #121212;
+    border-radius: 10px 10px 0 10px;
+    align-self: flex-end;
+}
+
+.message--other {
+    background-color: #333;
+    color: #f2f2f2;
+    border-radius: 0 10px 10px 10px;
+    align-self: flex-start;
+}
+
+.message--sender {
+    display: block;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: cadetblue;
 }
