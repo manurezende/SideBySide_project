@@ -45,6 +45,15 @@ function cadastrar_usuario(){
         else{
             // alert(rs.msg)
             document.getElementById("form-usuario").reset();
+
+
+            // criando o cookie
+            let usuario = {
+              idusuario:rs.payload.insertId
+          }
+          document.cookie = `id_usuario=${JSON.stringify(usuario)};`
+
+          // terminando de criar o cookie
         
         if(tipo_usuario.value==1){
 
@@ -52,10 +61,34 @@ function cadastrar_usuario(){
           }
         else{
             window.location.href="cadastro_idoso.html"
-        }}
+        }
+       
+      
+      }
     })
 
 
+}
+
+function dadosUsuarios(){
+
+    const id_usuario = document.getElementById("id_usuario")
+
+  //Obter os dados que foram inseridos no cookie
+   let cookie = document.cookie;
+   console.log(cookie)
+   let separa_igual = cookie.split('=')
+   console.log(separa_igual)
+   let separa_virgula = separa_igual[1].split(',')
+   console.log(separa_virgula)
+   //pegar a quantidade de caracteres do idusuario
+   console.log(separa_virgula[0].length)
+   
+   console.log(separa_virgula[0].substring(13,separa_virgula[0].length))
+   let idusuario = separa_virgula[0].substring(13,separa_virgula[0].length)
+
+
+   id_usuario.innerHTML=`id: ${idusuario}`;
 }
 
 function logar_usuario(){
@@ -148,6 +181,14 @@ function cadastrar_endereço(){
             document.getElementById("form-idoso").reset();
         
             if(rs.msg == "endereco cadastrado"){
+
+              // criando o cookie
+            let endereco = {
+              id_endereco:rs.payload.insertId
+          }
+          document.cookie = `id_endereco=${JSON.stringify(endereco)};`
+
+          // terminando de criar o cookie
 
                 window.location.href="pagina_inicial.html"  
                 }
@@ -280,33 +321,120 @@ function form_active() {
 
 
 function form_step1() {
+    const erroMsg = document.getElementById('erro-etapa-2');
+    erroMsg.style.display = 'none';
+    erroMsg.textContent = '';
+  
     if(document.getElementById("logradouro").value=="Selecione" 
-    || document.getElementById("logradouro_nome").value.trim()=="")
-    {
-        alert("os campos não podem ser nulos");
-        return
+    || document.getElementById("logradouro_nome").value.trim()=="") {
+        erroMsg.style.display = 'block';
+        erroMsg.textContent = 'Os campos não podem ser nulos.';
+        return;
     }
+  
     document.getElementsByClassName("form-step")[1].style.display = "block";
     document.getElementsByClassName("form-step")[0].style.display = "none";
     updateProgressBar(2); // Etapa 2
-
-}
-
-function form_step2() {
-    if
-    (document.getElementById("cidade").value.trim()==""
-    || document.getElementById("estado").value.trim()=="" 
-    || document.getElementById("bairro").value.trim()==""
-    || document.getElementById("pais").value.trim()==""
-    ){
-        alert("os campos não podem ser nulos");
-        return
+  }
+  
+  function form_step2() {
+    const erroMsg = document.getElementById('erro-etapa-3');
+    erroMsg.style.display = 'none';
+    erroMsg.textContent = '';
+  
+    if (
+      document.getElementById("cidade").value.trim() == "" ||
+      document.getElementById("estado").value.trim() == "" ||
+      document.getElementById("bairro").value.trim() == "" ||
+      document.getElementById("pais").value.trim() == ""
+    ) {
+      erroMsg.style.display = 'block';
+      erroMsg.textContent = 'Os campos não podem ser nulos.';
+      return;
     }
-
+  
     document.getElementsByClassName("form-step")[2].style.display = "block";
     document.getElementsByClassName("form-step")[1].style.display = "none";
     updateProgressBar(3); // Etapa 3
+  }
+  
+  function form_step3() {
+    const erroMsg = document.getElementById('erro-etapa-4');
+    erroMsg.style.display = 'none';
+    erroMsg.textContent = '';
+  
+    if(document.getElementById("numero").value.trim() == "") {
+      erroMsg.style.display = 'block';
+      erroMsg.textContent = 'Os campos não podem ser nulos.';
+      return;
     }
+  
+    document.getElementsByClassName("form-step")[3].style.display = "block";
+    document.getElementsByClassName("form-step")[2].style.display = "none";
+    updateProgressBar(4); // Etapa 4
+  }
+  
+
+  function form_step4() {
+    const erroMsg = document.getElementById('erro-etapa-5');
+    erroMsg.style.display = 'none';
+    erroMsg.textContent = '';
+  
+    if(
+      document.getElementById("telefone_celular_idoso").value.trim() == "" ||
+      document.getElementById("data_nascimento_idoso").value.trim() == ""
+    ) {
+      erroMsg.style.display = 'block';
+      erroMsg.textContent = 'Os campos não podem ser nulos.';
+      return;
+    }
+  
+    document.getElementsByClassName("form-step")[4].style.display = "block";
+    document.getElementsByClassName("form-step")[3].style.display = "none";
+    updateProgressBar(5); // Etapa 5
+  }
+  
+  function form_step5() {
+    const erroMsg = document.getElementById('erro-etapa-6');
+    erroMsg.style.display = 'none';
+    erroMsg.textContent = '';
+  
+    if(
+      document.getElementById("cpf_idoso").value.trim() == "" ||
+      document.getElementById("foto_idoso").value.trim() == ""
+    ) {
+      erroMsg.style.display = 'block';
+      erroMsg.textContent = 'Os campos não podem ser nulos.';
+      return;
+    }
+  
+    document.getElementsByClassName("form-step")[5].style.display = "block";
+    document.getElementsByClassName("form-step")[4].style.display = "none";
+    updateProgressBar(6); // Etapa 6
+  }
+  
+  function form_step6() {
+    const erroMsg = document.getElementById('erro-etapa-7');
+    erroMsg.style.display = 'none';
+    erroMsg.textContent = '';
+  
+    // Note: Aqui o código original verifica valores dos radio, que não está correto. 
+    // O correto é verificar se algum dos radios está marcado (checked).
+    const simChecked = document.getElementById("comorbidade_sim").checked;
+    const naoChecked = document.getElementById("comorbidade_nao").checked;
+  
+    if(!simChecked && !naoChecked) {
+      erroMsg.style.display = 'block';
+      erroMsg.textContent = 'Selecione uma opção.';
+      return;
+    }
+  
+    document.getElementsByClassName("form-step")[6].style.display = "block";
+    document.getElementsByClassName("form-step")[5].style.display = "none";
+    updateProgressBar(7); // Etapa 7
+  }
+  
+
 
 function cpf_mascara(){
     document.getElementById('cpf_idoso').addEventListener('input', function(e) {
@@ -319,74 +447,6 @@ function cpf_mascara(){
         e.target.value = cpfPattern;
       });
     }
-
-function form_step3() {
-    if(document.getElementById("numero").value.trim()=="" )
-    {
-        alert("os campos não podem ser nulos");
-        return
-    }
-
-  document.getElementsByClassName("form-step")[3].style.display = "block";
-  document.getElementsByClassName("form-step")[2].style.display = "none";
-  updateProgressBar(4); // Etapa 4
-}
-
-function form_step4() {
-
-    if(document.getElementById("telefone_celular_idoso").value.trim()=="" 
-    || document.getElementById("data_nascimento_idoso").value.trim()=="")
-    {
-        alert("os campos não podem ser nulos");
-        return
-    }
-
-  document.getElementsByClassName("form-step")[4].style.display = "block";
-  document.getElementsByClassName("form-step")[3].style.display = "none";
-  updateProgressBar(5); // Etapa 5
-}
-
-function form_step5() {
-
-    if(document.getElementById("cpf_idoso").value.trim()==""
-    || document.getElementById("foto_idoso").value.trim()=="")
-    {
-        alert("os campos não podem ser nulos");
-        return
-    }
-
-    cpf_mascara();
-
-  document.getElementsByClassName("form-step")[5].style.display = "block";
-  document.getElementsByClassName("form-step")[4].style.display = "none";
-  updateProgressBar(6); // Etapa 6
-}
-
-function form_step6() 
-{
-    if(document.getElementById("comorbidade_sim").value=="" 
-    || document.getElementById("comorbidade_nao").value=="")
-    {
-        alert("os campos não podem ser nulos");
-        return
-    }
-  
-    
-
-  document.getElementsByClassName("form-step")[6].style.display = "block";
-  document.getElementsByClassName("form-step")[5].style.display = "none";
-  updateProgressBar(7); // Etapa 7
-}
-
-function desativar_comorbidade(){
-    document.querySelector("#tipo_comorbidade").disabled = true;
-}
-function ativar_comorbidade(){
-    document.querySelector("#tipo_comorbidade").disabled = false;
-}
-
-
-
 
 function form_past1() 
 {
@@ -544,3 +604,5 @@ const sendMessage = (event) => {
 
 loginForm.addEventListener("submit", handleLogin)
 chatForm.addEventListener("submit", sendMessage)
+
+

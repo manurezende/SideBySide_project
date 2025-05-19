@@ -553,7 +553,7 @@ input[type="radio"] {
   width: 100%;
   max-width: 600px; /* Largura máxima do formulário */
   box-sizing: border-box;
-  
+  margin: 60px auto;
   
 }
 /*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -786,3 +786,48 @@ body {
     font-weight: 700;
     color: cadetblue;
 }
+/* // /////////////        etapa 6 form jovem       /////////////////////// */
+
+  .container-etapa-6 {
+    background-color: #e8f2fc;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    font-family: sans-serif;
+  }
+
+  .option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid #a0c4ff;
+    padding: 1rem;
+    margin: 0.5rem auto;
+    border-radius: 12px;
+    max-width: 400px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+
+  .option:hover {
+    background-color: #f0f4ff;
+  }
+
+  .option input {
+    display: none;
+  }
+
+  .option.selected {
+    border-color: #d63384;
+    box-shadow: 0 0 0 2px #d63384;
+  }
+
+  .arrow {
+    color: white;
+    background: #d63384;
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+    font-weight: bold;
+  }
+

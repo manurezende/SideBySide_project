@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cadastro de Jovem</title>
+  <title>Cadastro Multi-etapas - Jovem</title>
 
   <!-- Link para o CSS externo -->
   <link rel="stylesheet" href="./css/style.css">
@@ -13,25 +13,26 @@
   <!-- Formulário principal -->
   <form id="form-jovem" class="form_jovem" action="#" method="post" onsubmit="return false">
 
-
     <!-- Barra de progresso no topo -->
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
 
+    <!-- ETAPAS DE ENDEREÇO - Cópia exata do seu formulário -->
+
     <!-- Etapa 1: CEP -->
     <div class="form-step-active">
-      <!-- Campo de CEP -->
       <h2 class="title_form_mult">Digite seu CEP</h2>
       <input type="text" id="cep" name="cep" placeholder="CEP" required />
-      <button type="button" class="btn-next" id="btn-cep" onclick="form_active()">Próximo</button>
+      <label class="erro-msg" id="erro-etapa-1"></label>
+      <button type="button" class="btn-next" id="btn-cep" onclick="form_active_jovem()">Próximo</button>
     </div>
 
     <!-- Etapa 2: Tipo e nome do logradouro -->
     <div class="form-step">
       <h2 class="title_form_mult">Tipo de Logradouro</h2>
       <select name="logradouro" id="logradouro" required>
-        <option value="Selecione"  disabled selected hidden >Selecione</option>
+        <option value="Selecione" disabled selected hidden>Selecione</option>
         <option value="Rua">Rua</option>
         <option value="Avenida">Avenida</option>
         <option value="Alameda">Alameda</option>
@@ -42,7 +43,11 @@
         <option value="Viela">Viela</option>
       </select>
       <input type="text" id="logradouro_nome" name="logradouro_nome" placeholder="Nome do logradouro" required />
-      <button type="button" class="btn-next" onclick="form_step1()">Próximo</button>
+      <label class="erro-msg" id="erro-etapa-2"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past1_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step1_jovem()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 3: Cidade, Estado, Bairro, País -->
@@ -52,7 +57,11 @@
       <input type="text" name="estado" id="estado" placeholder="Estado" required />
       <input type="text" name="bairro" id="bairro" placeholder="Bairro" required />
       <input type="text" name="pais" id="pais" placeholder="País" value="Brasil" required />
-      <button type="button" class="btn-next" onclick="form_step2()">Próximo</button>
+      <label class="erro-msg" id="erro-etapa-3"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past2_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step2_jovem()">Próximo</button>
+      </div>
     </div>
 
     <!-- Etapa 4: Número e complemento -->
@@ -60,7 +69,135 @@
       <h2 class="title_form_mult">Número e Complemento</h2>
       <input type="text" name="numero" id="numero" placeholder="Número" required />
       <input type="text" name="complemento" id="complemento" placeholder="Complemento" />
-      <button type="button" class="btn-next" onclick="form_step3()">Próximo</button>
+      <label class="erro-msg" id="erro-etapa-4"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past3_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step3_jovem()">Próximo</button>
+      </div>
+    </div>
+
+    <!-- NOVAS ETAPAS PARA DADOS DO JOVEM -->
+
+    <!-- Etapa 5: CPF -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Digite seu CPF</h2>
+      <input type="text" id="cpf_jovem" name="cpf_jovem" placeholder="CPF (somente números)" maxlength="14" required />
+      <label class="erro-msg" id="erro-etapa-5"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past4_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step4_jovem()">Próximo</button>
+      </div>
+    </div>
+
+    <!-- Etapa 6: Valor e Telefone -->
+    <!-- Etapa 6: Valor por hora (estilo visual com opções) -->
+<div class="form-step">
+  <h2 class="title_form_mult">QUAL SEU VALOR/HORA?</h2>
+
+  <div class="container">
+    <label class="option">
+      <input type="radio" name="valor_jovem" value="<25" required>
+      <span>&lt;25 reais</span>
+      <span class="arrow">➔</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="valor_jovem" value="25-35">
+      <span>25-35 reais</span>
+      <span class="arrow">➔</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="valor_jovem" value="35-45">
+      <span>35-45 reais</span>
+      <span class="arrow">➔</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="valor_jovem" value="45-55">
+      <span>45-55 reais</span>
+      <span class="arrow">➔</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="valor_jovem" value=">55">
+      <span>&gt;55 reais</span>
+      <span class="arrow">➔</span>
+    </label>
+
+    <label class="option">
+      <input type="radio" name="valor_jovem" value="negociavel">
+      <span>Negociável</span>
+      <span class="arrow">➔</span>
+    </label>
+  </div>
+
+  <label class="erro-msg" id="erro-etapa-6"></label>
+  <div class="form-navigation">
+    <button type="button" class="btn-past" onclick="form_past5_jovem()">Voltar</button>
+    <button type="button" class="btn-next" onclick="form_step5_jovem()">Próximo</button>
+  </div>
+</div>
+
+    </div>
+
+    <!-- Etapa 7: Data de nascimento -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Data de nascimento</h2>
+      <input type="date" name="data_nascimento_jovem" id="data_nascimento_jovem" required />
+      <label class="erro-msg" id="erro-etapa-7"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past6_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step6_jovem()">Próximo</button>
+      </div>
+    </div>
+
+    <!-- Etapa 8: Foto -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Foto e numero</h2>
+      <input type="tel" name="telefone_jovem" id="telefone_jovem" placeholder="Telefone celular" maxlength="14" required />
+      <input type="file" name="foto_jovem" id="foto_jovem" accept="image/*" />
+      <label class="erro-msg" id="erro-etapa-8"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past7_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step7_jovem()">Próximo</button>
+      </div>
+    </div>
+
+    <!-- Etapa 9: Experiência -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Experiência</h2>
+      <textarea name="experiencia" id="experiencia" placeholder="Descreva sua experiência" rows="5"></textarea>
+      <label class="erro-msg" id="erro-etapa-9"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past8_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step8_jovem()">Próximo</button>
+      </div>
+    </div>
+
+    <!-- Etapa 10: Descrição -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Descrição</h2>
+      <input type="text" name="descricao_jovem" id="descricao_jovem" maxlength="150" placeholder="Descrição breve" required />
+      <label class="erro-msg" id="erro-etapa-10"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past9_jovem()">Voltar</button>
+        <button type="button" class="btn-next" onclick="form_step9_jovem()">Próximo</button>
+      </div>
+    </div>
+
+    <!-- Etapa 11: Gênero -->
+    <div class="form-step">
+      <h2 class="title_form_mult">Gênero</h2>
+      <input type="radio" id="genero_masc" name="genero_jovem" value="1" required />
+      <label class="label_form_mult" for="genero_masc">Masculino</label>
+      <input type="radio" id="genero_fem" name="genero_jovem" value="0" required />
+      <label class="label_form_mult" for="genero_fem">Feminino</label>
+      <label class="erro-msg" id="erro-etapa-11"></label>
+      <div class="form-navigation">
+        <button type="button" class="btn-past" onclick="form_past10_jovem()">Voltar</button>
+        <button type="submit" class="btn-submit" onclick="cadastrar_jovem()">Cadastrar</button>
+      </div>
     </div>
 
   </form>
