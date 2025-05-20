@@ -566,16 +566,20 @@ body {
 }
 
 .sessao {
-  padding: 60px 20px;
+  padding: 100px 70px;
   clip-path: ellipse(130% 100% at 50% 0%);
+   flex-direction: row-reverse;
 }
 
 .azul {
   background-color: #bfe0fd;
+  padding: 100px 70px;
+  
 }
 
-.amarelo {
+.roxinho {
   background-color: #adc6cc;
+  padding: 100px 70px;
 }
 
 .conteudo {
@@ -830,4 +834,196 @@ body {
     padding: 0.3rem 0.5rem;
     font-weight: bold;
   }
+  
+
+
+/*////////////////////////////////////////////////PERGUNTAS E RESPOSTAS//////////////////////////////////////////////*/
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #e5f3ff;
+  color: #333;
+}
+
+.faq-section {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.faq-header {
+  text-align: center;
+  
+}
+
+.faq-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fcf8f8;
+  margin-bottom: 20px;
+}
+
+.faq-image {
+  width: 150px;
+  height: auto;
+  margin-top: 10px;
+}
+
+.faq-questions {
+  margin-top: 20px;
+}
+
+details {
+  border-bottom: 1px solid #999;
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+summary {
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  
+  
+}
+
+summary::marker {
+  color: #333;
+}
+
+details p {
+  margin: 10px 0;
+  font-size: 0.95rem;
+  color: #363535;
+}
+
+.faq-footer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.faq-footer p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.faq-footer a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.faq-footer a:hover {
+  text-decoration: underline;
+}
+
+/* .faq-section{
+
+  background-color: lch(70.43% 21.28 242.78);
+
+
+}
+   */
+/*/////////////////////////////////////////////////////////////cads video////////////////////////////////////////////////////*/
+.display-cards-de-imagem {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.image-card {
+  flex: 1;
+  /* background-color: #f9f9f9; */
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 10px;
+}
+
+.video-card {
+  width: 100%; /* Faz o vídeo ocupar toda a largura do card */
+  height: auto; /* Ajusta a altura proporcionalmente */
+  border-radius: 8px;
+  object-fit: cover; /* Garante que o vídeo se ajuste sem cortar */
+}
+
+.text-cards-img {
+  margin-top: 10px; /* Adiciona espaço entre o vídeo e o texto */
+  font-size: 16px;
+  font-weight: bold;
+  color: #fafafa;
+  text-align: center; /* Centraliza o texto */
+}
+
+/*////////////////////////////////////////////SEGURANÇA//////////////////////////////////////////////////////////////////////*/
+
+.safety-section {
+  text-align: center;
+  padding: 2rem;
+  /* background-color: #f9fafb; */
+  transition: background-color 0.3s ease; Transição suave da mudança de fundo
+
+}
+
+
+.safety-section h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #312c2c;
+}
+
+.safety-section .intro-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.tips-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tip {
+  background: rgb(185, 211, 230);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+  max-width: 300px;
+  text-align: left;
+}
+
+.tip .icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #4CAF50;
+
+  /* Centralização */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* Altura ajustável conforme necessário */
+  width: 60px;  /* Largura ajustável conforme necessário */
+  margin: 0 auto; /* Centraliza horizontalmente dentro do pai */
+}
+
+  
+
+
+.tip h3 {
+  font-size: 1.25rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.tip p {
+  font-size: 0.95rem;
+  color: #666;
+  line-height: 1.5;
+}
+
 
