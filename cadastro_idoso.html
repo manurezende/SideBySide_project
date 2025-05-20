@@ -13,6 +13,10 @@
   <!-- Formulário principal -->
   <form id="form-idoso" class="form_idoso" action="#" method="post" onsubmit="return false">
 
+
+    <input type="hidden" id="id_usuario">
+    <input type="hidden" id="assinante_idoso" value="0">
+
     <!-- Barra de progresso no topo -->
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
@@ -125,8 +129,9 @@
       <label class="label_form_mult" for="genero_fem">Feminino</label>
       <label class="erro-msg" id="erro-etapa-8"></label> <!--erro na etapa-->      
       <div class="form-navigation">
+        <label for="" id="msg_erro_idoso"></label>
         <button type="button" class="btn-past" onclick="form_past7()">Voltar</button>
-        <button type="submit" class="btn-submit" onclick="cadastrar_endereço()">Cadastrar</button>
+        <button type="submit" class="btn-submit" onclick="cadastrar_endereco()">Cadastrar</button>
       </div>
     </div>
 

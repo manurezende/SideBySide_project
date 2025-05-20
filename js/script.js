@@ -1,5 +1,6 @@
 
 function cadastrar_usuario(){
+  document.cookie=""
     const email=document.getElementsByName("email")[0]
     const nome_usuario=document.getElementsByName("nome_usuario")[0]
     const nome_completo=document.getElementsByName("nome_completo")[0]
@@ -51,7 +52,7 @@ function cadastrar_usuario(){
             let usuario = {
               idusuario:rs.payload.insertId
           }
-          document.cookie = `id_usuario=${JSON.stringify(usuario)};`
+          document.cookie = `usuario_id=${JSON.stringify(usuario)};`
 
           // terminando de criar o cookie
         
@@ -72,23 +73,16 @@ function cadastrar_usuario(){
 
 function dadosUsuarios(){
 
-    const id_usuario = document.getElementById("id_usuario")
+    const txt_id_usuario = document.getElementById("id_usuario")
 
   //Obter os dados que foram inseridos no cookie
    let cookie = document.cookie;
    console.log(cookie)
-   let separa_igual = cookie.split('=')
-   console.log(separa_igual)
-   let separa_virgula = separa_igual[1].split(',')
-   console.log(separa_virgula)
-   //pegar a quantidade de caracteres do idusuario
-   console.log(separa_virgula[0].length)
-   
-   console.log(separa_virgula[0].substring(13,separa_virgula[0].length))
-   let idusuario = separa_virgula[0].substring(13,separa_virgula[0].length)
-
-
-   id_usuario.innerHTML=`id: ${idusuario}`;
+  // //  console.log(cookie)
+   let separa_igual = cookie.split(':')
+   //console.log(separa_igual[1].substring(0,separa_igual[1].length-1))
+ let id_usuario = separa_igual[1].substring(0,separa_igual[1].length-1)
+ txt_id_usuario.value = id_usuario;
 }
 
 function logar_usuario(){
@@ -137,66 +131,96 @@ function logar_usuario(){
           
 }
 
+function cadastrar_endereco() {
+  // Campos de endereço
+  const cep = document.getElementById("cep");
+  const logradouro = document.getElementById("logradouro");
+  const logradouro_nome = document.getElementById("logradouro_nome");
+  const cidade = document.getElementById("cidade");
+  const estado = document.getElementById("estado");
+  const bairro = document.getElementById("bairro");
+  const pais = document.getElementById("pais");
+  const complemento = document.getElementById("complemento");
+  const numero = document.getElementById("numero");
 
 
-function cadastrar_endereço(){
-    const cep = document.getElementById("cep");
-    const logradouro = document.getElementById("logradouro");
-    const logradouro_nome = document.getElementById("logradouro_nome");
-    const cidade = document.getElementById("cidade");
-    const estado = document.getElementById("estado");
-    const bairro = document.getElementById("bairro");
-    const pais = document.getElementById("pais");
+  // Campos do idoso
+  const id_usuario = document.getElementById("id_usuario");
+  const foto_idoso = document.getElementById("foto_idoso");
+  const assinante_idoso = document.getElementById("assinante_idoso");
+  const cpf = document.getElementById("cpf_idoso");
+  const data_nascimento = document.getElementById("data_nascimento_idoso");
+  const comorbidade =document.getElementsByName("comorbidade")[0]
+  const tipo_comorbidade = document.getElementById("tipo_comorbidade");
+  const descricao = document.getElementById("descricao_idoso");
+  const telefone_idoso = document.getElementById("telefone_celular_idoso");
+  const genero =document.getElementsByName("genero_idoso")[0]
 
-    // alert(`${cep.value} ${logradouro.value} ${logradouro_nome.value} ${cidade.value} ${estado.value} ${bairro.value} ${pais.value}`)
-   
-    fetch("http://localhost:3000/endereco/cadastrar",{
-        method:"POST",
-        headers:{
-            "accept":"application/json",
-            "content-type":"application/json"
-        },
-        body:JSON.stringify({
-            cep: cep.value,
-            logradouro: logradouro.value,
-            logradouro_nome: logradouro_nome.value,
-            cidade: cidade.value,
-            estado: estado.value,
-            bairro: bairro.value,
-            pais: pais.value
-        })
-    })
-    .then((res)=>res.json())
-    .then((rs)=>
-    {
-              
-        if(rs.erro=="erro ao tentar cadastrar endereco"){
-            return document.getElementById("msg_login").innerHTML=rs.erro
-        }
-
+  // Envio para o backend
+  fetch("http://localhost:3000/idoso/cadastrar", {
+      method: "POST",
+      headers: {
+          "accept": "application/json",
+          "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        cep: cep.value,
+        logradouro: logradouro.value,
+        logradouro_nome: logradouro_nome.value,
+        cidade: cidade.value,
+        estado: estado.value,
+        bairro: bairro.value,
+        pais: pais.value,
+        numero: numero.value,
+        complemento: complemento.value,      
+        id_usuario: id_usuario.value,
+        foto_idoso: foto_idoso.value,
+        assinante_idoso:assinante_idoso.value,
+        cpf:cpf.value,
+        data_nascimento: data_nascimento.value,
+        comorbidade: comorbidade.value,
+        tipo_comorbidade: tipo_comorbidade.value,
+        descricao: descricao.value,
+        telefone_idoso: telefone_idoso.value,
+        genero: genero.value
         
-        else{
-            
-            alert(rs.msg)
-            document.getElementById("form-idoso").reset();
-        
-            if(rs.msg == "endereco cadastrado"){
-
-              // criando o cookie
-            let endereco = {
-              id_endereco:rs.payload.insertId
+      })
+  })
+  .then(res => res.json())
+  .then(rs => {
+      if (rs.erro) {
+          document.getElementById("msg_erro_idoso").innerHTML = rs.erro;
+      } else {
+          alert(rs.msg);
+          document.getElementById("form-idoso").reset();
+          if (rs.msg === "endereco cadastrado") {
+              window.location.href = "pagina_inicial.html";
           }
-          document.cookie = `id_endereco=${JSON.stringify(endereco)};`
-
-          // terminando de criar o cookie
-
-                window.location.href="pagina_inicial.html"  
-                }
-            
-             }
-          })
-          
+      }
+  });
 }
+
+function dadosEndereco(){
+
+//   const id_endereco = document.getElementById("id_endereco")
+
+// //Obter os dados que foram inseridos no cookie
+//  let cookie = document.cookie;
+//  console.log(cookie)
+//  let separa_igual = cookie.split('=')
+//  console.log(separa_igual)
+//  let separa_virgula = separa_igual[1].split(',')
+//  console.log(separa_virgula)
+//  //pegar a quantidade de caracteres do idusuario
+//  console.log(separa_virgula[0].length)
+ 
+//  console.log(separa_virgula[0].substring(13,separa_virgula[0].length))
+//  let idendereco = separa_virgula[0].substring(13,separa_virgula[0].length)
+
+
+//  id_endereco.innerHTML=`id: ${idendereco}`;
+}
+
 
 ////////////////////    modal    ///////////////
 
@@ -499,110 +523,110 @@ function form_past7()
   ////////////////////    MENSSAGEM    ///////////////
 
   // login elements
-const login = document.querySelector(".login")
-const loginForm = login.querySelector(".login__form")
-const loginInput = login.querySelector(".login__input")
+// const login = document.querySelector(".login")
+// const loginForm = login.querySelector(".login__form")
+// const loginInput = login.querySelector(".login__input")
 
-// chat elements
-const chat = document.querySelector(".chat")
-const chatForm = chat.querySelector(".chat__form")
-const chatInput = chat.querySelector(".chat__input")
-const chatMessages = chat.querySelector(".chat__messages")
+// // chat elements
+// const chat = document.querySelector(".chat")
+// const chatForm = chat.querySelector(".chat__form")
+// const chatInput = chat.querySelector(".chat__input")
+// const chatMessages = chat.querySelector(".chat__messages")
 
-const colors = [
-    "cadetblue",
-    "darkgoldenrod",
-    "cornflowerblue",
-    "darkkhaki",
-    "hotpink",
-    "gold"
-]
+// const colors = [
+//     "cadetblue",
+//     "darkgoldenrod",
+//     "cornflowerblue",
+//     "darkkhaki",
+//     "hotpink",
+//     "gold"
+// ]
 
-const user = { id: "", name: "", color: "" }
+// const user = { id: "", name: "", color: "" }
 
-let websocket
+// let websocket
 
-const createMessageSelfElement = (content) => {
-    const div = document.createElement("div")
+// const createMessageSelfElement = (content) => {
+//     const div = document.createElement("div")
 
-    div.classList.add("message--self")
-    div.innerHTML = content
+//     div.classList.add("message--self")
+//     div.innerHTML = content
 
-    return div
-}
+//     return div
+// }
 
-const createMessageOtherElement = (content, sender, senderColor) => {
-    const div = document.createElement("div")
-    const span = document.createElement("span")
+// const createMessageOtherElement = (content, sender, senderColor) => {
+//     const div = document.createElement("div")
+//     const span = document.createElement("span")
 
-    div.classList.add("message--other")
+//     div.classList.add("message--other")
 
-    span.classList.add("message--sender")
-    span.style.color = senderColor
+//     span.classList.add("message--sender")
+//     span.style.color = senderColor
 
-    div.appendChild(span)
+//     div.appendChild(span)
 
-    span.innerHTML = sender
-    div.innerHTML += content
+//     span.innerHTML = sender
+//     div.innerHTML += content
 
-    return div
-}
+//     return div
+// }
 
-const getRandomColor = () => {
-    const randomIndex = Math.floor(Math.random() * colors.length)
-    return colors[randomIndex]
-}
+// const getRandomColor = () => {
+//     const randomIndex = Math.floor(Math.random() * colors.length)
+//     return colors[randomIndex]
+// }
 
-const scrollScreen = () => {
-    window.scrollTo({
-        top: document.body.scrollHeight,
-        behavior: "smooth"
-    })
-}
+// const scrollScreen = () => {
+//     window.scrollTo({
+//         top: document.body.scrollHeight,
+//         behavior: "smooth"
+//     })
+// }
 
-const processMessage = ({ data }) => {
-    const { userId, userName, userColor, content } = JSON.parse(data)
+// const processMessage = ({ data }) => {
+//     const { userId, userName, userColor, content } = JSON.parse(data)
 
-    const message =
-        userId == user.id
-            ? createMessageSelfElement(content)
-            : createMessageOtherElement(content, userName, userColor)
+//     const message =
+//         userId == user.id
+//             ? createMessageSelfElement(content)
+//             : createMessageOtherElement(content, userName, userColor)
 
-    chatMessages.appendChild(message)
+//     chatMessages.appendChild(message)
 
-    scrollScreen()
-}
+//     scrollScreen()
+// }
 
-const handleLogin = (event) => {
-    event.preventDefault()
+// const handleLogin = (event) => {
+//     event.preventDefault()
 
-    user.id = crypto.randomUUID()
-    user.name = loginInput.value
-    user.color = getRandomColor()
+//     user.id = crypto.randomUUID()
+//     user.name = loginInput.value
+//     user.color = getRandomColor()
 
-    login.style.display = "none"
-    chat.style.display = "flex"
+//     login.style.display = "none"
+//     chat.style.display = "flex"
 
-    websocket = new WebSocket("ws://localhost:8080")
-    websocket.onmessage = processMessage
-}
+//     websocket = new WebSocket("ws://localhost:8080")
+//     websocket.onmessage = processMessage
+// }
 
-const sendMessage = (event) => {
-    event.preventDefault()
+// const sendMessage = (event) => {
+//     event.preventDefault()
 
-    const message = {
-        userId: user.id,
-        userName: user.name,
-        userColor: user.color,
-        content: chatInput.value
-    }
+//     const message = {
+//         userId: user.id,
+//         userName: user.name,
+//         userColor: user.color,
+//         content: chatInput.value
+//     }
 
-    websocket.send(JSON.stringify(message))
+//     websocket.send(JSON.stringify(message))
 
-    chatInput.value = ""
-}
+//     chatInput.value = ""
+// }
 
-loginForm.addEventListener("submit", handleLogin)
-chatForm.addEventListener("submit", sendMessage)
+// loginForm.addEventListener("submit", handleLogin)
+// chatForm.addEventListener("submit", sendMessage)
 
 
