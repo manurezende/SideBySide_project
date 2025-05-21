@@ -61,33 +61,7 @@ header {
   padding: 8px; /* Espaçamento interno */
 }
 
-/* Define altura do logo
-.logo {
-  height: 75px;
-  
-}
 
-/* Remove o estilo de lista e organiza os itens do menu */
-/* nav ul { */
-  /* list-style: none; Remove os pontinhos da lista */
-  /* display: flex; Coloca os itens em linha */
-  /* gap: 1rem; Espaçamento entre os itens */
-/* } */
-
-/* Estiliza os links do menu */
-/* nav a { */
-  /*  Remove o sublinhado */
-  /* color: #c0e7fc; Azul escuro */
-  /* font-weight: bold; Deixa o texto em negrito */
-  /* transition: background-color 0.9s ease ;
-} */
-
-/* hover == quando passamos o mouse por cima do elemento */
-/* .itens-nav :hover { */
-  /* transform: translateY(-3px); Levanta o menu nav um pouco */
-  /* color: #fff; muda a cor
-}
- */ 
 
 /*////////////////////////////////////VIDEO BANNER//////////////////////////////////////////////////////////////////////////////////////*/
 #video-banner video {
@@ -792,13 +766,7 @@ body {
 }
 /* // /////////////        etapa 6 form jovem       /////////////////////// */
 
-  .container-etapa-6 {
-    background-color: #e8f2fc;
-    padding: 2rem;
-    border-radius: 8px;
-    text-align: center;
-    font-family: sans-serif;
-  }
+ 
 
   .option {
     display: flex;
