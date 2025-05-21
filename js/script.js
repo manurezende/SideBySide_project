@@ -131,7 +131,7 @@ function logar_usuario(){
           
 }
 
-function cadastrar_endereco() {
+function cadastrar_jovem() {
   // Campos de endereço .
   const cep = document.getElementById("cep");
   const logradouro = document.getElementById("logradouro");
@@ -146,15 +146,15 @@ function cadastrar_endereco() {
 
   // Campos do idoso
   const id_usuario = document.getElementById("id_usuario");
-  const foto_idoso = document.getElementById("foto_idoso");
-  const assinante_idoso = document.getElementById("assinante_idoso");
-  const cpf = document.getElementById("cpf_idoso");
-  const data_nascimento = document.getElementById("data_nascimento_idoso");
-  const comorbidade =document.getElementsByName("comorbidade")[0]
-  const tipo_comorbidade = document.getElementById("tipo_comorbidade");
-  const descricao = document.getElementById("descricao_idoso");
-  const telefone_idoso = document.getElementById("telefone_celular_idoso");
-  const genero =document.getElementsByName("genero_idoso")[0]
+  const cpf_jovem = document.getElementById("cpf_jovem");
+  const valor_jovem = document.getElementById("valor_jovem");
+  const telefone_jovem = document.getElementById("telefone_jovem");
+  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
+  const foto_jovem =document.getElementsByName("foto_jovem")[0]
+  const experiencia_jovem = document.getElementById("experiencia");
+  const descricao_jovem = document.getElementById("descricao_jovem");
+  const assinante_jovem = document.getElementById("assinante_jovem");
+  const genero_jovem =document.getElementsByName("genero_jovem")[0]
 
   // Envio para o backend
   fetch("http://localhost:3000/jovem/cadastrar", {
@@ -176,11 +176,11 @@ function cadastrar_endereco() {
 
         id_usuario: id_usuario.value,
         cpf_jovem: cpf_jovem.value,
-        valor_jovem:valor_jovem.value,
-        telefone_jovem:telefone_jovem.value,
+        valor_jovem: valor_jovem.value,
+        telefone_jovem: telefone_jovem.value,
         data_nascimento_jovem: data_nascimento_jovem.value,
         foto_jovem: foto_jovem.value,
-        experiencia: experiencia.value,
+        experiencia_jovem: experiencia_jovem.value,
         descricao_jovem: descricao_jovem.value,
         assinante_jovem: assinante_jovem.value,
         genero_jovem: genero_jovem.value
@@ -194,14 +194,14 @@ function cadastrar_endereco() {
       } else {
           alert(rs.msg);
           document.getElementById("form-jovem").reset();
-          if (rs.msg === "endereco cadastrado") {
+          if (rs.msg === "jovem cadastrado") {
               window.location.href = "pagina_pos_login.html";
           }
       }
   });
 }
 
-function cadastrar_jovem() {
+function cadastrar_endereco() {
   // Campos de endereço .
   const cep = document.getElementById("cep");
   const logradouro = document.getElementById("logradouro");
@@ -216,15 +216,15 @@ function cadastrar_jovem() {
 
   // Campos do jovem
   const id_usuario = document.getElementById("id_usuario");
-  const cpf_jovem = document.getElementById("cpf_jovem");
-  const valor_jovem = document.getElementById("valor_jovem");
-  const telefone_jovem = document.getElementById("telefone_jovem");
-  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
-  const foto_jovem =document.getElementsByName("foto_jovem")[0]
-  const experiencia = document.getElementById("experiencia");
-  const descricao_jovem = document.getElementById("descricao_jovem");
-  const assinante_jovem = document.getElementById("assinante_jovem");
-  const genero_jovem =document.getElementsByName("genero_jovem")[0]
+  const foto_idoso = document.getElementById("foto_idoso");
+  const assinante_idoso = document.getElementById("assinante_idoso");
+  const cpf = document.getElementById("cpf_idoso");
+  const data_nascimento = document.getElementById("data_nascimento_idoso");
+  const comorbidade =document.getElementsByName("comorbidade")[0]
+  const tipo_comorbidade = document.getElementById("tipo_comorbidade");
+  const descricao = document.getElementById("descricao_idoso");
+  const telefone_idoso = document.getElementById("telefone_celular_idoso");
+  const genero =document.getElementsByName("genero_idoso")[0]
 
   // Envio para o backend
   fetch("http://localhost:3000/idoso/cadastrar", {
