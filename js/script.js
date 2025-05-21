@@ -157,7 +157,7 @@ function cadastrar_endereco() {
   const genero =document.getElementsByName("genero_idoso")[0]
 
   // Envio para o backend
-  fetch("http://localhost:3000/idoso/cadastrar", {
+  fetch("http://localhost:3000/jovem/cadastrar", {
       method: "POST",
       headers: {
           "accept": "application/json",
@@ -172,27 +172,28 @@ function cadastrar_endereco() {
         bairro: bairro.value,
         pais: pais.value,
         numero: numero.value,
-        complemento: complemento.value,      
+        complemento: complemento.value, 
+
         id_usuario: id_usuario.value,
-        foto_idoso: foto_idoso.value,
-        assinante_idoso:assinante_idoso.value,
-        cpf:cpf.value,
-        data_nascimento: data_nascimento.value,
-        comorbidade: comorbidade.value,
-        tipo_comorbidade: tipo_comorbidade.value,
-        descricao: descricao.value,
-        telefone_idoso: telefone_idoso.value,
-        genero: genero.value
+        cpf_jovem: cpf_jovem.value,
+        valor_jovem:valor_jovem.value,
+        telefone_jovem:telefone_jovem.value,
+        data_nascimento_jovem: data_nascimento_jovem.value,
+        foto_jovem: foto_jovem.value,
+        experiencia: experiencia.value,
+        descricao_jovem: descricao_jovem.value,
+        assinante_jovem: assinante_jovem.value,
+        genero_jovem: genero_jovem.value
         
       })
   })
   .then(res => res.json())
   .then(rs => {
       if (rs.erro) {
-          document.getElementById("msg_erro_idoso").innerHTML = rs.erro;
+          document.getElementById("msg_erro_jovem").innerHTML = rs.erro;
       } else {
           alert(rs.msg);
-          document.getElementById("form-idoso").reset();
+          document.getElementById("form-jovem").reset();
           if (rs.msg === "endereco cadastrado") {
               window.location.href = "pagina_pos_login.html";
           }
@@ -217,13 +218,13 @@ function cadastrar_jovem() {
   const id_usuario = document.getElementById("id_usuario");
   const cpf_jovem = document.getElementById("cpf_jovem");
   const valor_jovem = document.getElementById("valor_jovem");
-  const cpf = document.getElementById("telefone_jovem");
-  const data_nascimento = document.getElementById("data_nascimento_jovem");
-  const comorbidade =document.getElementsByName("foto_jovem")[0]
-  const tipo_comorbidade = document.getElementById("experiencia");
-  const descricao = document.getElementById("descricao_jovem");
-  const telefone_idoso = document.getElementById("genero_jovem");
-  const genero =document.getElementsByName("assinante_jovem")[0]
+  const telefone_jovem = document.getElementById("telefone_jovem");
+  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
+  const foto_jovem =document.getElementsByName("foto_jovem")[0]
+  const experiencia = document.getElementById("experiencia");
+  const descricao_jovem = document.getElementById("descricao_jovem");
+  const assinante_jovem = document.getElementById("assinante_jovem");
+  const genero_jovem =document.getElementsByName("genero_jovem")[0]
 
   // Envio para o backend
   fetch("http://localhost:3000/idoso/cadastrar", {
