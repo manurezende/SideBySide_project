@@ -157,6 +157,76 @@ function cadastrar_endereco() {
   const genero =document.getElementsByName("genero_idoso")[0]
 
   // Envio para o backend
+  fetch("http://localhost:3000/jovem/cadastrar", {
+      method: "POST",
+      headers: {
+          "accept": "application/json",
+          "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        cep: cep.value,
+        logradouro: logradouro.value,
+        logradouro_nome: logradouro_nome.value,
+        cidade: cidade.value,
+        estado: estado.value,
+        bairro: bairro.value,
+        pais: pais.value,
+        numero: numero.value,
+        complemento: complemento.value, 
+
+        id_usuario: id_usuario.value,
+        cpf_jovem: cpf_jovem.value,
+        valor_jovem:valor_jovem.value,
+        telefone_jovem:telefone_jovem.value,
+        data_nascimento_jovem: data_nascimento_jovem.value,
+        foto_jovem: foto_jovem.value,
+        experiencia: experiencia.value,
+        descricao_jovem: descricao_jovem.value,
+        assinante_jovem: assinante_jovem.value,
+        genero_jovem: genero_jovem.value
+        
+      })
+  })
+  .then(res => res.json())
+  .then(rs => {
+      if (rs.erro) {
+          document.getElementById("msg_erro_jovem").innerHTML = rs.erro;
+      } else {
+          alert(rs.msg);
+          document.getElementById("form-jovem").reset();
+          if (rs.msg === "endereco cadastrado") {
+              window.location.href = "pagina_pos_login.html";
+          }
+      }
+  });
+}
+
+function cadastrar_jovem() {
+  // Campos de endereço .
+  const cep = document.getElementById("cep");
+  const logradouro = document.getElementById("logradouro");
+  const logradouro_nome = document.getElementById("logradouro_nome");
+  const cidade = document.getElementById("cidade");
+  const estado = document.getElementById("estado");
+  const bairro = document.getElementById("bairro");
+  const pais = document.getElementById("pais");
+  const complemento = document.getElementById("complemento");
+  const numero = document.getElementById("numero");
+
+
+  // Campos do jovem
+  const id_usuario = document.getElementById("id_usuario");
+  const cpf_jovem = document.getElementById("cpf_jovem");
+  const valor_jovem = document.getElementById("valor_jovem");
+  const telefone_jovem = document.getElementById("telefone_jovem");
+  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
+  const foto_jovem =document.getElementsByName("foto_jovem")[0]
+  const experiencia = document.getElementById("experiencia");
+  const descricao_jovem = document.getElementById("descricao_jovem");
+  const assinante_jovem = document.getElementById("assinante_jovem");
+  const genero_jovem =document.getElementsByName("genero_jovem")[0]
+
+  // Envio para o backend
   fetch("http://localhost:3000/idoso/cadastrar", {
       method: "POST",
       headers: {
@@ -198,27 +268,6 @@ function cadastrar_endereco() {
           }
       }
   });
-}
-
-function dadosEndereco(){
-
-//   const id_endereco = document.getElementById("id_endereco")
-
-// //Obter os dados que foram inseridos no cookie
-//  let cookie = document.cookie;
-//  console.log(cookie)
-//  let separa_igual = cookie.split('=')
-//  console.log(separa_igual)
-//  let separa_virgula = separa_igual[1].split(',')
-//  console.log(separa_virgula)
-//  //pegar a quantidade de caracteres do idusuario
-//  console.log(separa_virgula[0].length)
- 
-//  console.log(separa_virgula[0].substring(13,separa_virgula[0].length))
-//  let idendereco = separa_virgula[0].substring(13,separa_virgula[0].length)
-
-
-//  id_endereco.innerHTML=`id: ${idendereco}`;
 }
 
 

@@ -151,27 +151,43 @@ function form_step5_jovem() {
     return;
   }
  
-  document.getElementsByClassName("form-step")[5].style.display = "none";
-  document.getElementsByClassName("form-step")[6].style.display = "block";
+  document.getElementsByClassName("form-step")[4].style.display = "none";
+  document.getElementsByClassName("form-step")[5].style.display = "block";
   updateProgressBar(6);
 }
  
-function form_step4_back_jovem() {
-  document.getElementsByClassName("form-step")[4].style.display = "block";
-  document.getElementsByClassName("form-step")[5].style.display = "none";
-  updateProgressBar(4);
-}
+
  
 function form_step6_jovem() {
   const erroMsg = document.getElementById('erro-etapa-7');
   erroMsg.style.display = 'none';
   erroMsg.textContent = '';
  
-  const disponibilidade = document.getElementById("disponibilidade").value.trim();
+  const telefone_jovem = document.getElementById("telefone_jovem").value.trim();
+  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value.trim();
  
-  if (disponibilidade === "") {
+  if (telefone_jovem =="" || data_nascimento_jovem =="") {
     erroMsg.style.display = 'block';
-    erroMsg.textContent = 'Preencha o campo de disponibilidade.';
+    erroMsg.textContent = 'Preencha o campo de telefone e data de nascimento.';
+    return;
+  }
+ 
+  document.getElementsByClassName("form-step")[5].style.display = "none";
+  document.getElementsByClassName("form-step")[6].style.display = "block";
+  updateProgressBar(7);
+}
+// ETAPA 8 
+
+function form_step7_jovem() {
+  const erroMsg = document.getElementById('erro-etapa-7');
+  erroMsg.style.display = 'none';
+  erroMsg.textContent = '';
+ 
+  const foto_jovem = document.getElementById("foto_jovem").value.trim();
+ 
+  if (foto_jovem =="") {
+    erroMsg.style.display = 'block';
+    erroMsg.textContent = 'Envei uma foto, este campo não pode ser nulo.';
     return;
   }
  
@@ -179,49 +195,118 @@ function form_step6_jovem() {
   document.getElementsByClassName("form-step")[7].style.display = "block";
   updateProgressBar(7);
 }
- 
-function form_step5_back_jovem() {
-  document.getElementsByClassName("form-step")[5].style.display = "block";
-  document.getElementsByClassName("form-step")[6].style.display = "none";
-  updateProgressBar(5);
-}
- 
-function form_step7_jovem() {
-  const erroMsg = document.getElementById('erro-etapa-8');
-  erroMsg.style.display = 'none';
-  erroMsg.textContent = '';
- 
-  const habilidades = document.getElementById("habilidades").value.trim();
- 
-  if (habilidades === "") {
-    erroMsg.style.display = 'block';
-    erroMsg.textContent = 'Preencha o campo de habilidades.';
-    return;
-  }
- 
-  document.getElementsByClassName("form-step")[7].style.display = "none";
-  document.getElementsByClassName("form-step")[8].style.display = "block";
-  updateProgressBar(8);
-}
- 
-function form_step6_back_jovem() {
-  document.getElementsByClassName("form-step")[6].style.display = "block";
-  document.getElementsByClassName("form-step")[7].style.display = "none";
-  updateProgressBar(6);
-}
- 
+
+
+// Etapa 9 - Valida experiência
 function form_step8_jovem() {
   const erroMsg = document.getElementById('erro-etapa-9');
   erroMsg.style.display = 'none';
   erroMsg.textContent = '';
  
-  // Aqui você pode validar algo final se quiser
-  // ou diretamente enviar o formulário:
-  document.getElementById('form-cadastro-jovem').submit();
+
+  document.getElementsByClassName("form-step")[7].style.display = "none";
+  document.getElementsByClassName("form-step")[8].style.display = "block";
+}
+
+// Etapa 10 - Valida descrição
+function form_step9_jovem() {
+  const erroMsg = document.getElementById('erro-etapa-10');
+  erroMsg.style.display = 'none';
+  erroMsg.textContent = '';
+ 
+  const descricao_jovem = document.getElementById("descricao_jovem").value.trim();
+ 
+  if (descricao_jovem =="") {
+    erroMsg.style.display = 'block';
+    erroMsg.textContent = 'Envei uma descrição, este campo não pode ser nulo.';
+    return;
+  }
+ 
+  document.getElementsByClassName("form-step")[8].style.display = "none";
+  document.getElementsByClassName("form-step")[9].style.display = "block";
+}
+
+// Etapa 11 - Valida gênero
+function form_step10_jovem() {
+  const erroMsg = document.getElementById('erro-etapa-11');
+  erroMsg.style.display = 'none';
+  erroMsg.textContent = '';
+
+  const generoMasc = document.getElementById("genero_masc").checked;
+  const generoFem = document.getElementById("genero_fem").checked;
+
+  if (!generoMasc && !generoFem) {
+    erroMsg.textContent = "Por favor, selecione seu gênero.";
+    return;
+  }
+
+  // Última etapa, não avança
 }
  
-function form_step7_back_jovem() {
+
+ 
+
+ 
+function form_past1_jovem() {
+  document.getElementsByClassName("form-step-active")[0].style.display = "block";
+  document.getElementsByClassName("form-step")[0].style.display = "none";
+  
+}
+
+function form_past2_jovem() {
+  document.getElementsByClassName("form-step")[0].style.display = "block";
+  document.getElementsByClassName("form-step")[1].style.display = "none";
+  
+}
+ 
+
+
+function form_past3_jovem() {
+  document.getElementsByClassName("form-step")[1].style.display = "block";
+  document.getElementsByClassName("form-step")[2].style.display = "none";
+  
+}
+
+function form_past4_jovem() {
+  document.getElementsByClassName("form-step")[2].style.display = "block";
+  document.getElementsByClassName("form-step")[3].style.display = "none";
+  
+}
+
+function form_past5_jovem() {
+  document.getElementsByClassName("form-step")[3].style.display = "block";
+  document.getElementsByClassName("form-step")[4].style.display = "none";
+  
+}
+
+function form_past6_jovem() {
+  document.getElementsByClassName("form-step")[4].style.display = "block";
+  document.getElementsByClassName("form-step")[5].style.display = "none";
+  
+}
+ 
+
+
+function form_past7_jovem() {
+  document.getElementsByClassName("form-step")[5].style.display = "block";
+  document.getElementsByClassName("form-step")[6].style.display = "none";
+  
+}
+
+function form_past8_jovem() {
+  document.getElementsByClassName("form-step")[6].style.display = "block";
+  document.getElementsByClassName("form-step")[7].style.display = "none";
+  
+}
+
+function form_past9_jovem() {
   document.getElementsByClassName("form-step")[7].style.display = "block";
   document.getElementsByClassName("form-step")[8].style.display = "none";
-  updateProgressBar(7);
+  
+}
+
+function form_past10_jovem() {
+  document.getElementsByClassName("form-step")[8].style.display = "block";
+  document.getElementsByClassName("form-step")[9].style.display = "none";
+  
 }

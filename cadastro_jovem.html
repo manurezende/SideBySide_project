@@ -9,9 +9,9 @@
   <link rel="stylesheet" href="./css/style.css">
   <link rel="stylesheet" href="./css/style2.css">
 </head>
-<body>
+<body onload="dadosUsuarios()">
  
-  <!-- Formulário principal -->
+  <!-- Formulário principal. -->
   <form id="form-jovem" class="form_jovem" action="#" method="post" onsubmit="return false">
  
     <!-- Barra de progresso no topo -->
@@ -20,7 +20,9 @@
     </div>
  
     <!-- ETAPAS DE ENDEREÇO - Cópia exata do seu formulário -->
- 
+    <input type="hidden" id="id_usuario">
+    <input type="hidden" id="assinante_jovem" value="0">
+
     <!-- Etapa 1: CEP -->
     <div class="form-step-active">
       <h2 class="title_form_mult">Digite seu CEP</h2>
@@ -144,6 +146,7 @@
     <!-- Etapa 7: Data de nascimento -->
     <div class="form-step">
       <h2 class="title_form_mult">Data de nascimento</h2>
+      <input type="tel" name="telefone_jovem" id="telefone_jovem" placeholder="Telefone celular" maxlength="14" required />
       <input type="date" name="data_nascimento_jovem" id="data_nascimento_jovem" required />
       <label class="erro-msg" id="erro-etapa-7"></label>
       <div class="form-navigation">
@@ -155,7 +158,6 @@
     <!-- Etapa 8: Foto -->
     <div class="form-step">
       <h2 class="title_form_mult">Foto e numero</h2>
-      <input type="tel" name="telefone_jovem" id="telefone_jovem" placeholder="Telefone celular" maxlength="14" required />
       <input type="file" name="foto_jovem" id="foto_jovem" accept="image/*" />
       <label class="erro-msg" id="erro-etapa-8"></label>
       <div class="form-navigation">
@@ -178,7 +180,7 @@
     <!-- Etapa 10: Descrição -->
     <div class="form-step">
       <h2 class="title_form_mult">Descrição</h2>
-      <input type="text" name="descricao_jovem" id="descricao_jovem" maxlength="150" placeholder="Descrição breve" required />
+      <input type="text" name="descricao_jovem" id="descricao_idoso" placeholder="Descrição" required />
       <label class="erro-msg" id="erro-etapa-10"></label>
       <div class="form-navigation">
         <button type="button" class="btn-past" onclick="form_past9_jovem()">Voltar</button>
@@ -190,9 +192,9 @@
     <div class="form-step">
       <h2 class="title_form_mult">Gênero</h2>
       <input type="radio" id="genero_masc" name="genero_jovem" value="1" required />
-      <label class="label_form_mult" for="genero_masc">Masculino</label>
+      <label name="genero_jovem" class="label_form_mult" for="genero_masc">Masculino</label>
       <input type="radio" id="genero_fem" name="genero_jovem" value="0" required />
-      <label class="label_form_mult" for="genero_fem">Feminino</label>
+      <label name="genero_jovem" class="label_form_mult" for="genero_fem">Feminino</label>
       <label class="erro-msg" id="erro-etapa-11"></label>
       <div class="form-navigation">
         <button type="button" class="btn-past" onclick="form_past10_jovem()">Voltar</button>

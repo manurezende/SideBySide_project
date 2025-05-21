@@ -30,7 +30,7 @@
     box-shadow: 0 0 0 2px #339ad6; /* Sombra ao redor da caixa (destaque rosa) */
 }
 
-/* Estilo da seta (ícone) dentro da opção */
+/* Estilo da seta (ícone) dentro da opção. */
 .arrow {
     color: white; /* Cor do texto (seta) branca */
     background: #339ad6; /* Fundo rosa */

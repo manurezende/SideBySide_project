@@ -31,7 +31,7 @@ body {
 /* Links de navegação */
 .nav-link {
   color: #5432cf; /* Cor padrão dos links (roxo) */
-  transition: color 0.3s ease; /* Transição suave ao alterar a cor */
+  transition: color 0.3s ease; /* Transição suave ao alterar a cor. */
 }
 
 /* Efeito ao passar o mouse nos links */
