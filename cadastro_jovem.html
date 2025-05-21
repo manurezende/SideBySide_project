@@ -4,22 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cadastro Multi-etapas - Jovem</title>
-
+ 
   <!-- Link para o CSS externo -->
   <link rel="stylesheet" href="./css/style.css">
+  <link rel="stylesheet" href="./css/style2.css">
 </head>
 <body>
-
+ 
   <!-- Formulário principal -->
   <form id="form-jovem" class="form_jovem" action="#" method="post" onsubmit="return false">
-
+ 
     <!-- Barra de progresso no topo -->
     <div class="progress-container">
       <div class="progress-bar" id="progress-bar"></div>
     </div>
-
+ 
     <!-- ETAPAS DE ENDEREÇO - Cópia exata do seu formulário -->
-
+ 
     <!-- Etapa 1: CEP -->
     <div class="form-step-active">
       <h2 class="title_form_mult">Digite seu CEP</h2>
@@ -27,7 +28,7 @@
       <label class="erro-msg" id="erro-etapa-1"></label>
       <button type="button" class="btn-next" id="btn-cep" onclick="form_active_jovem()">Próximo</button>
     </div>
-
+ 
     <!-- Etapa 2: Tipo e nome do logradouro -->
     <div class="form-step">
       <h2 class="title_form_mult">Tipo de Logradouro</h2>
@@ -49,7 +50,7 @@
         <button type="button" class="btn-next" onclick="form_step1_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- Etapa 3: Cidade, Estado, Bairro, País -->
     <div class="form-step">
       <h2 class="title_form_mult">Localização</h2>
@@ -63,7 +64,7 @@
         <button type="button" class="btn-next" onclick="form_step2_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- Etapa 4: Número e complemento -->
     <div class="form-step">
       <h2 class="title_form_mult">Número e Complemento</h2>
@@ -75,9 +76,9 @@
         <button type="button" class="btn-next" onclick="form_step3_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- NOVAS ETAPAS PARA DADOS DO JOVEM -->
-
+ 
     <!-- Etapa 5: CPF -->
     <div class="form-step">
       <h2 class="title_form_mult">Digite seu CPF</h2>
@@ -88,59 +89,58 @@
         <button type="button" class="btn-next" onclick="form_step4_jovem()">Próximo</button>
       </div>
     </div>
-
-    <!-- Etapa 6: Valor e Telefone -->
-    <!-- Etapa 6: Valor por hora (estilo visual com opções) -->
+ 
 <div class="form-step">
   <h2 class="title_form_mult">QUAL SEU VALOR/HORA?</h2>
-
-  <div class="container">
+ 
+  <div class="container-etapa-6">
+    <!-- Cada opção é um label que inclui o input e os elementos visuais -->
     <label class="option">
       <input type="radio" name="valor_jovem" value="<25" required>
-      <span>&lt;25 reais</span>
-      <span class="arrow">➔</span>
+      <div class="texto-opcao">&lt;25 reais</div>
+      <div class="arrow">➔</div>
     </label>
-
+ 
     <label class="option">
       <input type="radio" name="valor_jovem" value="25-35">
-      <span>25-35 reais</span>
-      <span class="arrow">➔</span>
+      <div class="texto-opcao">25-35 reais</div>
+      <div class="arrow">➔</div>
     </label>
-
+ 
     <label class="option">
       <input type="radio" name="valor_jovem" value="35-45">
-      <span>35-45 reais</span>
-      <span class="arrow">➔</span>
+      <div class="texto-opcao">35-45 reais</div>
+      <div class="arrow">➔</div>
     </label>
-
+ 
     <label class="option">
       <input type="radio" name="valor_jovem" value="45-55">
-      <span>45-55 reais</span>
-      <span class="arrow">➔</span>
+      <div class="texto-opcao">45-55 reais</div>
+      <div class="arrow">➔</div>
     </label>
-
+ 
     <label class="option">
       <input type="radio" name="valor_jovem" value=">55">
-      <span>&gt;55 reais</span>
-      <span class="arrow">➔</span>
+      <div class="texto-opcao">&gt;55 reais</div>
+      <div class="arrow">➔</div>
     </label>
-
+ 
     <label class="option">
       <input type="radio" name="valor_jovem" value="negociavel">
-      <span>Negociável</span>
-      <span class="arrow">➔</span>
+      <div class="texto-opcao">Negociável</div>
+      <div class="arrow">➔</div>
     </label>
   </div>
-
+ 
   <label class="erro-msg" id="erro-etapa-6"></label>
+ 
   <div class="form-navigation">
     <button type="button" class="btn-past" onclick="form_past5_jovem()">Voltar</button>
     <button type="button" class="btn-next" onclick="form_step5_jovem()">Próximo</button>
   </div>
 </div>
-
-    </div>
-
+ 
+ 
     <!-- Etapa 7: Data de nascimento -->
     <div class="form-step">
       <h2 class="title_form_mult">Data de nascimento</h2>
@@ -151,7 +151,7 @@
         <button type="button" class="btn-next" onclick="form_step6_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- Etapa 8: Foto -->
     <div class="form-step">
       <h2 class="title_form_mult">Foto e numero</h2>
@@ -163,7 +163,7 @@
         <button type="button" class="btn-next" onclick="form_step7_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- Etapa 9: Experiência -->
     <div class="form-step">
       <h2 class="title_form_mult">Experiência</h2>
@@ -174,7 +174,7 @@
         <button type="button" class="btn-next" onclick="form_step8_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- Etapa 10: Descrição -->
     <div class="form-step">
       <h2 class="title_form_mult">Descrição</h2>
@@ -185,7 +185,7 @@
         <button type="button" class="btn-next" onclick="form_step9_jovem()">Próximo</button>
       </div>
     </div>
-
+ 
     <!-- Etapa 11: Gênero -->
     <div class="form-step">
       <h2 class="title_form_mult">Gênero</h2>
@@ -199,13 +199,11 @@
         <button type="submit" class="btn-submit" onclick="cadastrar_jovem()">Cadastrar</button>
       </div>
     </div>
-
+ 
   </form>
-
-  <!-- JS externo. -->
+ 
+  <!-- JS externo -->
   <script src="./js/script.js"></script>
-  <footer>
-    <p>&copy; 2025 SIDEBYSIDE - Conectando gerações</p>
-  </footer>
+  <script src="./js/script2.js"></script>
 </body>
 </html>

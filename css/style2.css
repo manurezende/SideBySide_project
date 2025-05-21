@@ -1,1 +1,62 @@
-/* . */
+/* // /////////////        etapa 6 form jovem       /////////////////////// */
+ 
+ 
+ 
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    border: 1px solid #a0c4ff;
+    padding: 1rem;
+    margin: 0.5rem auto;
+    border-radius: 12px;
+    max-width: 400px;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+ 
+  .option:hover {
+    background-color: #f0f4ff;
+  }
+ 
+  .option input {
+    display: none;
+  }
+ 
+  .option.selected {
+   
+    box-shadow: 0 0 0 2px #d63384;
+  }
+ 
+  .arrow {
+    color: white;
+    background: #d63384;
+    border-radius: 50%;
+    padding: 0.3rem 0.5rem;
+    font-weight: bold;
+  }
+ 
+ 
+ 
+  /* Estilo para a opção quando o input estiver selecionado */
+.option input:checked + .texto-opcao {
+  font-weight: bold;
+}
+ 
+/* Aplica estilo visual à label completa quando o input estiver marcado */
+.option input:checked ~ .texto-opcao,
+.option input:checked ~ .arrow {
+  color: #d63384;
+}
+ 
+/* Aplica borda e sombra na opção selecionada */
+.option input:checked ~ .texto-opcao::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid #d63384;
+  border-radius: 12px;
+  pointer-events: none;
+}
+ 
