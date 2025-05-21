@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Salvos - SIDEBYSIDE</title>
+  <link rel="stylesheet" href="css/style3.css">
+</head>
+<body>
+    <header>
+        <div class="logo">SIDEBYSIDE</div>
+        <nav>
+          <a href="#">Jovens</a>
+          <a href="./pagina_salvo.html">Salvo</a>
+          <a href="#">Agendamento</a>
+          <a href="#">Mensagens </a>
+          <div class="user-menu">
+            <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+            <div class="dropdown" id="dropdown">
+              <a href="#">Meu perfil</a>
+              <a href="#">Ajustes da conta</a>
+              <div class="premium">
+                <div>
+                  <strong>Obter Premium</strong>
+                  <p>Converse com quantas babás você quiser.</p>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        </nav>
+      </header>
+    
+      <script>
+        function toggleDropdown() {
+          const menu = document.getElementById("dropdown");
+          menu.classList.toggle("active");
+        }
+    
+        window.onclick = function(e) {
+          if (!e.target.matches('.avatar')) {
+            const dropdown = document.getElementById("dropdown");
+            dropdown.classList.remove("active");
+          }
+        }
+      </script>
+  <main class="salvo-container">
+    <div class="mensagem-salvo">
+      <!-- <img src="img/heart.svg" alt="Favorito" /> -->
+      <p> &#x2764;&#xFE0F; Você ainda não tem favoritos selecionados</p>
+    </div>
+    <button class="btn-salvo">Busque Jovens</button>
+  </main>
+</body>
+</html>

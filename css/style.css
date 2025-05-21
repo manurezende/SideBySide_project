@@ -8,57 +8,58 @@ body {
   color: #2b2b2b; /* Cor do texto principal (preto acinzentado) */
 }
 
+/* ==================== HEADER (Cabeçalho) ==================== */
 
-/* ==================== HEADER ==================== */
-
-
+/* Navbar personalizada */
 .navbar-custom {
-  background-color: #9ba5e0; /* azul bebe */
-  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+  background-color: #9ba5e0; /* Fundo azul bebê, suave e agradável */
+  border-bottom: 2px solid #0c7077; /* Linha verde no final para destacar */
 }
 
+/* Estilo para o nome ou logo da marca na navbar */
 .navbar-brand {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fff;
+  font-size: 1.5rem; /* Tamanho maior para destaque */
+  font-weight: bold; /* Deixa o texto em negrito */
+  color: #fff; /* Cor branca para contraste com o fundo */
 }
 
+/* Efeito ao passar o mouse sobre o nome ou logo da marca */
 .navbar-brand:hover {
-  color: #5432cf;
+  color: #5432cf; /* Muda para roxo para criar um efeito de destaque */
 }
 
+/* Links de navegação */
 .nav-link {
-  color:  #5432cf;
-  transition: color 0.3s ease;
+  color: #5432cf; /* Cor padrão dos links (roxo) */
+  transition: color 0.3s ease; /* Transição suave ao alterar a cor */
 }
 
+/* Efeito ao passar o mouse nos links */
 .nav-link:hover {
-  color: #5432cf;
+  color: #5432cf; /* Mantém o mesmo roxo para consistência */
 }
 
+/* Botão personalizado */
 .btn-custom {
-  background-color: #5432cf;
-  color: #fff;
-  border-radius: 20px;
-  transition: background-color 0.3s ease;
+  background-color: #5432cf; /* Fundo roxo para o botão */
+  color: #fff; /* Texto branco para contraste */
+  border-radius: 20px; /* Bordas arredondadas para um visual mais amigável */
+  transition: background-color 0.3s ease; /* Transição suave ao alterar a cor */
 }
 
+/* Efeito ao passar o mouse no botão */
 .btn-custom:hover {
-  background-color: #fff;
-  color:#5432cf
-  
+  background-color: #fff; /* Troca para fundo branco */
+  color: #5432cf; /* Muda o texto para roxo */
 }
 
-
-
-
-/* Estiliza o cabeçalho */
+/* Estiliza o cabeçalho principal */
 header {
-  display: flex; /* Ativa o Flexbox para organizar os elementos */
-  justify-content: space-between; /* Espaça os itens igualmente (logo e menu) */
-  align-items: center; /* Centraliza verticalmente os itens */
-  background-color: #327296; /* Cor de fundo azul claro */
-  padding: 8px; /* Espaçamento interno */
+  display: flex; /* Flexbox para organizar os itens (logo, menu, etc.) */
+  justify-content: space-between; /* Espaça os itens igualmente entre as bordas */
+  align-items: center; /* Centraliza os itens verticalmente */
+  background-color: #327296; /* Fundo azul claro */
+  padding: 8px; /* Espaçamento interno para conforto visual */
 }
 
 
@@ -71,187 +72,172 @@ header {
   }
   
 
- /*//////////////////////// Benefits box /////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*=================== Benefits box (Caixa de Benefícios) ===================*/
 .side-by-side-benefits {
-  background-color: lch(70.43% 21.28 242.78);
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
-  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+  background-color: lch(70.43% 21.28 242.78); /* Azul suave para um fundo agradável */
+  color: white; /* Texto branco para contraste */
+  padding: 60px 20px; /* Espaçamento interno para dar respiro ao conteúdo */
+  text-align: center; /* Centraliza o texto */
+  border-bottom: 2px solid #0c7077; /* Linha decorativa em verde no final */
 }
 
 .side-by-side-benefits .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  gap: 30px;
-  border-bottom: 2px solid #0c7077; /* Detalhe em verde*/
+  max-width: 1200px; /* Limita a largura máxima do container */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  display: flex; /* Layout flexível para organizar os itens */
+  flex-wrap: wrap; /* Permite que os itens "quebrem linha" se necessário */
+  justify-content: space-around; /* Espaça os itens uniformemente */
+  gap: 30px; /* Espaço entre os itens */
+  border-bottom: 2px solid #0c7077; /* Linha verde adicional decorativa */
 }
 
 .benefit-box {
-  flex: 1 1 220px;
-  max-width: 260px;
-  margin: 20px auto;
+  flex: 1 1 220px; /* Flexibilidade para redimensionar conforme o espaço disponível */
+  max-width: 260px; /* Largura máxima para manter as caixas uniformes */
+  margin: 20px auto; /* Adiciona espaçamento interno e centraliza */
 }
 
 .icon-circle {
-  background-color: #f5e9ee;
-  color: rgb(104, 87, 165);
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  margin: 0 auto 15px;
+  background-color: #f5e9ee; /* Fundo rosa claro */
+  color: rgb(104, 87, 165); /* Cor roxa para o ícone */
+  width: 60px; /* Largura fixa do círculo */
+  height: 60px; /* Altura fixa do círculo */
+  border-radius: 50%; /* Torna o elemento circular */
+  display: flex; /* Centraliza o conteúdo com Flexbox */
+  align-items: center; /* Alinhamento vertical */
+  justify-content: center; /* Alinhamento horizontal */
+  font-size: 24px; /* Tamanho do ícone */
+  margin: 0 auto 15px; /* Centraliza horizontalmente e adiciona espaço inferior */
 }
 
 .benefit-box h3 {
-  font-weight: bold;
-  font-size: 1.1rem;
-  margin-bottom: 10px;
+  font-weight: bold; /* Destaque para o título */
+  font-size: 1.1rem; /* Tamanho do texto moderado */
+  margin-bottom: 10px; /* Espaço inferior */
 }
 
 .benefit-box p {
-  font-size: 0.95rem;
-  line-height: 1.5;
-  
+  font-size: 0.95rem; /* Texto levemente menor para descrições */
+  line-height: 1.5; /* Espaçamento entre linhas para melhorar a legibilidade */
 }
 
-
-/* ==================== SEÇÕES GERAIS (SOBRE / IMPACTO) ==================== */
-
-
-
-/* ==================== RODAPÉ ==================== */
-/* Rodapé */
+/*=================== Rodapé ===================*/
 footer {
-  background-color: #9ba5e0;
-  text-align: center;
-  padding: 1rem;
-  margin-top: 1rem;
+  background-color: #9ba5e0; /* Fundo lilás suave */
+  text-align: center; /* Centraliza o texto */
+  padding: 1rem; /* Espaçamento interno */
+  margin-top: 1rem; /* Espaço acima do rodapé */
 }
 
-
-/* ==================== MODAL ==================== */
-
-dialog::backdrop{
-  background-color:rgba(14, 43, 59, 0.4)
+/*=================== Modal ===================*/
+dialog::backdrop {
+  background-color: rgba(14, 43, 59, 0.4); /* Fundo semi-transparente escuro */
 }
-dialog{
-  border: none;
-  border-radius: 40px;
-  padding: 10px;
-  margin: 40px auto;
+
+dialog {
+  border: none; /* Remove bordas padrão */
+  border-radius: 40px; /* Bordas arredondadas para o modal */
+  padding: 10px; /* Espaçamento interno */
+  margin: 40px auto; /* Centraliza o modal */
 }
 
 .sem-scroll {
-  overflow: hidden;
+  overflow: hidden; /* Remove barras de rolagem */
 }
 
-
-.btn-modal{
-  display: grid;
+/* Botões no Modal */
+.btn-modal {
+  display: grid; /* Exibe os botões organizados em grade */
 }
 
-.btn-cancelar{
-  padding: 0.8rem;
-  background-color: #707070; /* Azul médio */
-  color: #000000;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  margin-top: 5px;
-  
-
+.btn-cancelar {
+  padding: 0.8rem; /* Espaçamento interno */
+  background-color: #707070; /* Cinza para indicar cancelamento */
+  color: #000000; /* Texto preto */
+  border: none; /* Sem borda para visual limpo */
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer; /* Mostra que o botão é clicável */
+  margin-top: 5px; /* Espaço acima do botão */
 }
 
-/* Efeito ao passar o mouse no botão */
+/* Efeito ao passar o mouse no botão de cancelar */
 .btn-cancelar:hover {
-  background-color: #0c0c0cd0; /* Azul mais escuro */
-  transition: background-color 0.9s ease ;
+  background-color: #0c0c0cd0; /* Cinza mais escuro */
+  transition: background-color 0.9s ease; /* Transição suave para o efeito */
 }
 
-.btn-cadastrar{
-  margin-top: 20px;
-  padding: 0.8rem;
+.btn-cadastrar {
+  margin-top: 20px; /* Espaço acima do botão */
+  padding: 0.8rem; /* Espaçamento interno */
   background-color: #00324e; /* Azul médio */
-  color: #80c8f0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;  
-} 
-.btn-cadastrar:hover {
-    background-color: #116696; /* Azul mais escuro */
-    transition: background-color 0.9s ease ;   
+  color: #80c8f0; /* Texto azul claro */
+  border: none; /* Sem borda */
+  border-radius: 8px; /* Bordas arredondadas */
+  cursor: pointer; /* Mostra que o botão é clicável */
 }
 
-/* ============================================================ */
-
-
+.btn-cadastrar:hover {
+  background-color: #116696; /* Azul mais escuro */
+  transition: background-color 0.9s ease; /* Transição suave para o efeito */
+}
 
 
 /* ==================== FORMULÁRIOS GERAIS ==================== */
 /* Cor de fundo exclusiva para a página de cadastro */
+/* Cor de fundo para a página ou seção de cadastro */
 .backgroud-color-cadastro {
-  background-color: #c0e7fc;
+  background-color: #c0e7fc; /* Um azul claro, proporcionando um tom suave e amigável */
 }
 
 /* Container do formulário principal */
 .form-usuario {
-  max-width: 400px; /* Largura máxima */
-  margin: 30px auto; /* Centraliza na horizontal */
-  background-color: #ffffff;
-
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Sombra leve */
+  max-width: 400px; /* Limita a largura do formulário para evitar que ele fique muito largo */
+  margin: 30px auto; /* Centraliza o formulário horizontalmente e adiciona um espaço acima */
+  background-color: #ffffff; /* Fundo branco para destacar o formulário no fundo azul */
+  border-radius: 12px; /* Bordas arredondadas para um design moderno e acolhedor */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra suave que cria uma leve elevação no formulário */
 }
 
-/* Título dentro do formulário */
+/* Estilo do título dentro do formulário */
 .form-usuario h2 {
-  text-align: center;
-  margin-bottom: 1.5rem;
+  text-align: center; /* Centraliza o texto do título */
+  margin-bottom: 1.5rem; /* Espaçamento inferior para separar o título dos campos do formulário */
 }
 
-/* Estilo do formulário em coluna */
+/* Configuração do formulário para que os elementos fiquem em uma coluna */
 .form-usuario form {
-  display: flex;
-  flex-direction: column;
+  display: flex; /* Ativa o Flexbox para o formulário */
+  flex-direction: column; /* Organiza os elementos em uma pilha vertical */
 }
 
-/* Campos de input e select no formulário */
+/* Estilo para campos de entrada (input) e seletores (select) */
 .form-usuario input,
 .form-usuario select {
-  margin-bottom: 1rem;
-  padding: 0.8rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  margin-bottom: 1rem; /* Espaçamento inferior para separar os campos uns dos outros */
+  padding: 0.8rem; /* Adiciona espaçamento interno para facilitar a digitação */
+  border: 1px solid #ccc; /* Uma borda cinza clara para delimitar os campos */
+  border-radius: 8px; /* Bordas suavemente arredondadas para manter a harmonia visual */
 }
-
-
-
-
 
 
 /* ==================== BOTÃO ==================== */
 /* Botão de envio no formulário de contato */
+/* Estilo para o botão na seção */
 .section_button {
-  padding: 0.8rem;
-  background-color: #00324e; /* Azul médio */
-  color: #80c8f0;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  padding: 0.8rem; /* Adiciona um espaço interno uniforme para deixar o botão confortável de clicar */
+  background-color: #00324e; /* Azul médio que contrasta bem com o texto */
+  color: #80c8f0; /* Texto azul claro, garantindo boa visibilidade contra o fundo */
+  border: none; /* Remove qualquer borda padrão para um visual mais limpo */
+  border-radius: 8px; /* Bordas suavemente arredondadas para um design moderno */
+  cursor: pointer; /* Altera o cursor para indicar que o botão é clicável */
 }
 
 /* Efeito ao passar o mouse no botão */
 .section_button:hover {
-  background-color: #116696; /* Azul mais escuro */
-  transition: background-color 0.9s ease ;
+  background-color: #116696; /* Azul mais escuro para criar um contraste ao passar o mouse */
+  transition: background-color 0.9s ease; /* Suaviza a mudança de cor com uma transição de quase 1 segundo */
 }
+
 
 
 /* ==================== CARDS ==================== */
@@ -318,7 +304,7 @@ dialog{
   background-color: #00324e; /* Cor do botão quando o mouse passa por cima */
 }
 
-/* ==================== BANNER POS CARDS ==================== */
+
 
 
 /* ==================== CARDS de imagens ==================== */
@@ -380,139 +366,138 @@ dialog{
 /* ==================== FORM MULTIPLA ETAPA IDOSO ==================== */
 
 
-
-
 /* Estilo geral do formulário */
 .form_idoso {
-  background: #ffffff; /* Fundo branco para o formulário */
-  padding: 40px; /* Espaçamento interno */
-  border-radius: 20px; /* Bordas arredondadas */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  width: 100%;
-  max-width: 600px; /* Largura máxima do formulário */
-  box-sizing: border-box;
-  margin: 10% auto
-
-  
+  background: #ffffff; /* Fundo branco para destacar o formulário */
+  padding: 40px; /* Espaçamento interno para evitar que os elementos fiquem "grudados" nas bordas */
+  border-radius: 20px; /* Bordas suavemente arredondadas para um visual moderno */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra discreta para dar um efeito de elevação */
+  width: 100%; /* Ocupa toda a largura do contêiner pai */
+  max-width: 600px; /* Limita a largura para garantir que o formulário não fique muito grande */
+  box-sizing: border-box; /* Inclui padding e bordas na largura total do elemento */
+  margin: 10% auto; /* Centraliza o formulário vertical e horizontalmente */
 }
 
 /* Barra de progresso externa */
 .progress-container {
-  width: 100%;
-  background-color: #e0e0e0;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  height: 12px;
+  width: 100%; /* Barra ocupa toda a largura do formulário */
+  background-color: #e0e0e0; /* Cor cinza claro para indicar o progresso restante */
+  border-radius: 10px; /* Bordas arredondadas para manter a consistência visual */
+  overflow: hidden; /* Garante que o conteúdo da barra não "escape" dos limites */
+  margin-bottom: 20px; /* Espaço inferior para separar da próxima seção */
+  height: 12px; /* Altura da barra de progresso */
 }
 
 /* Barra de progresso interna */
 .progress-bar {
-  width: 0%; /* Valor inicial (1/8 etapas) */
-  height: 100%;
-  background-color: #4c7aaf; /* Verde bonito */
-  transition: width 0.3s ease;
+  width: 0%; /* Começa vazia, representando a primeira etapa */
+  height: 100%; /* Preenche a altura da barra externa */
+  background-color: #4c7aaf; /* Cor azul para indicar progresso */
+  transition: width 0.3s ease; /* Anima o preenchimento da barra para uma transição suave */
 }
 
 /* Cada etapa do formulário */
 .form-step {
-  display: none; /* Começa escondido */
+  display: none; /* Todas as etapas começam invisíveis */
 }
 
 /* Etapa ativa visível */
 .form-step-active {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-#cep{
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px; /* Arredondado */
-  outline: none;
-  transition: border 0.3s;
+  display: flex; /* Elementos organizados em uma coluna */
+  flex-direction: column; /* Coloca os itens verticalmente */
+  gap: 15px; /* Espaço entre os campos de entrada */
 }
 
-/* Tags de input, select */
+/* Campo para CEP */
+#cep {
+  padding: 12px; /* Espaço interno para facilitar o clique e a digitação */
+  font-size: 16px; /* Tamanho da fonte para boa legibilidade */
+  border: 1px solid #ccc; /* Borda cinza clara */
+  border-radius: 10px; /* Bordas arredondadas */
+  outline: none; /* Remove o destaque padrão do navegador ao focar */
+  transition: border 0.3s; /* Animação para suavizar a mudança de borda */
+}
+
+/* Estilo para campos de entrada e seletores */
 .form-step input, select {
-  padding: 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 10px; /* Arredondado */
-  outline: none;
-  transition: border 0.3s;
+  padding: 12px; /* Espaçamento interno uniforme */
+  font-size: 16px; /* Fonte padrão para leitura confortável */
+  border: 1px solid #ccc; /* Borda discreta */
+  border-radius: 10px; /* Bordas arredondadas para harmonia visual */
+  outline: none; /* Remove o destaque padrão do navegador */
+  transition: border 0.3s; /* Animação para mudanças na borda */
 }
 
-/* Quando focado, destaca o campo */
+/* Quando focado, o campo recebe destaque */
 .form-step input:focus, select:focus {
-  border-color: #4c7aaf;
+  border-color: #4c7aaf; /* Destaca com uma borda azul ao focar */
 }
 
 /* Título de cada etapa */
 .title_form_mult {
-  font-size: 24px;
-  color: #333;
-  margin-bottom: 10px;
+  font-size: 24px; /* Tamanho grande para destacar o título */
+  color: #333; /* Cor cinza escura para contraste */
+  margin-bottom: 10px; /* Espaçamento inferior para separação */
 }
 
-/* Estilo dos botões "Próximo" */
+/* Estilo dos botões (Próximo, Voltar e Enviar) */
 .btn-next,
 .btn-submit,
 .btn-past {
-  padding: 12px 20px;
-  font-size: 16px;
-  color: white;
-  background-color: #4c7aaf;
-  border: none;
-  border-radius: 25px; /* Botão redondinho */
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 10px;
-  align-self: flex-end;
+  padding: 12px 20px; /* Botões confortáveis para clique */
+  font-size: 16px; /* Tamanho do texto para boa legibilidade */
+  color: white; /* Texto branco para contraste */
+  background-color: #4c7aaf; /* Azul consistente com o tema */
+  border: none; /* Remove bordas padrão */
+  border-radius: 25px; /* Botões redondinhos para suavidade */
+  cursor: pointer; /* Aponta que o botão é clicável */
+  transition: background-color 0.3s; /* Efeito de transição ao passar o mouse */
+  margin-top: 10px; /* Espaço superior para separação dos botões */
+  align-self: flex-end; /* Alinha os botões à direita */
 }
 
-/* Efeito ao passar o mouse nos botões */
+/* Efeito hover nos botões */
 .btn-next:hover,
 .btn-submit:hover,
-.btn-past:hover{
-  background-color: #4364a0;
+.btn-past:hover {
+  background-color: #4364a0; /* Azul mais escuro ao passar o mouse */
 }
 
-/* Estilo para labels dos rádios */
+/* Estilo para os rótulos de opções (radio) */
 .label_form_mult {
-  margin-right: 15px;
-  font-weight: 500;
+  margin-right: 15px; /* Espaçamento entre o rótulo e o próximo item */
+  font-weight: 500; /* Texto seminegrito */
 }
 
-/* Estilo para inputs tipo radio */
+/* Estilo para inputs do tipo rádio */
 input[type="radio"] {
-  margin-right: 5px;
+  margin-right: 5px; /* Espaço entre o botão de rádio e o texto */
 }
 
-/* Container dos botões de navegação (voltar/próximo) */
+/* Navegação entre as etapas (Voltar/Próximo) */
 .form-navigation {
-  display: flex;                /* Coloca os botões lado a lado */
-  justify-content: space-between; /* Um em cada canto */
-  gap: 10px;                    /* Espaço entre eles */
-  margin-top: 20px;            /* Espaço acima */
+  display: flex; /* Botões alinhados lado a lado */
+  justify-content: space-between; /* Botões nos extremos esquerdo e direito */
+  gap: 10px; /* Espaço entre os botões */
+  margin-top: 20px; /* Espaço superior para separação */
 }
 
 /* Botão de "Voltar" alinhado à esquerda */
 .btn-past {
-  align-self: flex-start;
+  align-self: flex-start; /* Alinha o botão à esquerda */
 }
 
 /* Botão de "Próximo" alinhado à direita */
 .btn-next {
-  align-self: flex-end;
+  align-self: flex-end; /* Alinha o botão à direita */
 }
 
+/* Estilo para mensagens de erro */
 .erro-msg {
-  color: red;
-  font-size: 14px;
-  margin-top: 5px;
-  display: none; /* Começa invisível */
+  color: red; /* Texto vermelho para chamar atenção */
+  font-size: 14px; /* Tamanho menor para indicar que é uma mensagem secundária */
+  margin-top: 5px; /* Espaço entre a mensagem e o campo */
+  display: none; /* Começa invisível para ser mostrado apenas quando necessário */
 }
 
 
@@ -530,82 +515,89 @@ input[type="radio"] {
   margin: 60px auto;
   
 }
-/*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
-
+/*////////////////////////////////////////////Sessão//////////////////////////////////////////////////////////////////////*/
+/* Estilo global do corpo */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #fefefe;
-  color: #333;
-  line-height: 1.6;
+  font-family: 'Segoe UI', sans-serif; /* Define a fonte padrão do corpo */
+  background-color: #fefefe;          /* Cor de fundo clara */
+  color: #333;                        /* Cor do texto padrão: cinza escuro */
+  line-height: 1.6;                   /* Espaçamento entre linhas para melhor legibilidade */
 }
 
+/* Seção com recortes e alinhamento */
 .sessao {
-  padding: 100px 70px;
-  clip-path: ellipse(130% 100% at 50% 0%);
-   flex-direction: row-reverse;
+  padding: 100px 70px;                /* Espaço interno (vertical: 100px, horizontal: 70px) */
+  clip-path: ellipse(130% 100% at 50% 0%); /* Recorta em forma de elipse posicionada no topo */
+  flex-direction: row-reverse;        /* Alinha os itens no sentido inverso da linha horizontal */
 }
 
+/* Seção com fundo azul claro */
 .azul {
-  background-color: #bfe0fd;
-  padding: 100px 70px;
-  
+  background-color: #bfe0fd;          /* Fundo azul claro */
+  padding: 100px 70px;                /* Mesmo padding da classe 'sessao' */
 }
 
+/* Seção com fundo roxo acinzentado */
 .roxinho {
-  background-color: #adc6cc;
-  padding: 100px 70px;
+  background-color: #adc6cc;          /* Fundo roxo acinzentado */
+  padding: 100px 70px;                /* Mesmo padding das outras classes */
 }
 
+/* Container principal para conteúdo */
 .conteudo {
-  max-width: 1200px;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 40px;
-  flex-wrap: wrap;
+  max-width: 1200px;                  /* Largura máxima para centralizar o conteúdo */
+  margin: auto;                       /* Centraliza o container horizontalmente */
+  display: flex;                      /* Configura o container como flexbox */
+  flex-direction: row;                /* Alinha os itens horizontalmente (padrão) */
+  align-items: center;                /* Centraliza os itens verticalmente */
+  gap: 40px;                          /* Espaçamento de 40px entre os itens */
+  flex-wrap: wrap;                    /* Permite que os itens quebrem para a próxima linha */
 }
 
+/* Variante de 'conteudo' com direção inversa */
 .conteudo.reverso {
-  flex-direction: row-reverse;
+  flex-direction: row-reverse;        /* Alinha os itens da direita para a esquerda */
 }
 
+/* Estilo para texto dentro do conteúdo */
 .texto {
-  flex: 1;
-  min-width: 300px;
+  flex: 1;                            /* Faz o elemento ocupar o mesmo espaço que outros flex-items */
+  min-width: 300px;                   /* Define uma largura mínima para manter o layout responsivo */
 }
 
 .texto h2 {
-  font-size: 1.8rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  font-size: 1.8rem;                  /* Tamanho do texto do título */
+  font-weight: bold;                  /* Texto em negrito */
+  margin-bottom: 10px;                /* Espaçamento inferior */
+  display: flex;                      /* Configura o título como um container flex */
+  align-items: center;                /* Centraliza o conteúdo do título verticalmente */
+  gap: 10px;                          /* Espaçamento entre os elementos filhos do título */
 }
 
 .texto h2 span {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color:#327296
+  font-size: 2.5rem;                  /* Tamanho maior para o destaque */
+  font-weight: bold;                  /* Texto em negrito */
+  color: #327296;                     /* Cor azulada para o destaque */
 }
 
 .texto p {
-  font-size: 1.1rem;
-  color: #222;
+  font-size: 1.1rem;                  /* Tamanho do texto do parágrafo */
+  color: #222;                        /* Cor cinza escuro */
 }
 
+/* Estilo para imagens */
 .imagem {
-  flex: 1;
-  min-width: 300px;
+  flex: 1;                            /* Ocupa espaço igual ao texto no layout flex */
+  min-width: 300px;                   /* Largura mínima para manter o layout responsivo */
 }
 
 .imagem img {
-  width: 70%;
-  border-radius: 20px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  object-fit: cover;
+  width: 70%;                         /* Imagem ocupa 70% da largura do container */
+  border-radius: 20px;                /* Bordas arredondadas */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra leve */
+  object-fit: cover;                  /* Garante que a imagem preencha o espaço sem distorção */
 }
+
 
 
 /*//////////////////////////////     MENSSAGENS      ///////////////////////////////////////////////////////////////////////////////////*/
@@ -613,287 +605,307 @@ body {
 
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+/* ==================== Estilização Geral ==================== */
 
-
-
+/* Define o plano de fundo geral com uma imagem e configurações básicas */
 .body-msg {
-    background: url("../img/background.png");
-    color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Inter", sans-serif;
+  background: url("../img/background.png"); /* Imagem de fundo */
+  color: #f2f2f2; /* Cor do texto para contraste com o fundo */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimento padrão */
+  box-sizing: border-box; /* Inclui bordas e preenchimento no tamanho total */
+  font-family: "Inter", sans-serif; /* Fonte moderna e legível */
 }
 
+/* Centraliza todo o conteúdo dentro de um container */
 .container-msg {
-    width: 100%;
-    height: 100dvh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%; /* Ocupa toda a largura */
+  height: 100dvh; /* Altura total da tela (viewport height) */
+  display: flex; /* Flexbox para centralizar elementos */
+  align-items: center; /* Alinhamento vertical */
+  justify-content: center; /* Alinhamento horizontal */
 }
 
+/* ==================== Estilização do Login ==================== */
+
+/* Container do formulário de login */
 .login {
-    width: 100%;
-    max-width: 330px;
-    background-color: #212121;
-    border-radius: 5px;
-    padding: 20px;
+  width: 100%; /* Ocupa toda a largura disponível */
+  max-width: 330px; /* Define uma largura máxima */
+  background-color: #212121; /* Fundo escuro */
+  border-radius: 5px; /* Bordas arredondadas */
+  padding: 20px; /* Espaçamento interno */
 }
 
+/* Título do formulário de login */
 .login > h2 {
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+  text-align: center; /* Centraliza o texto */
+  font-weight: 600; /* Peso do texto */
+  font-size: 1.5rem; /* Tamanho do texto */
+  margin-bottom: 20px; /* Espaço abaixo do título */
 }
 
+/* Estilização do formulário de login */
 .login__form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+  display: flex; /* Flexbox para organizar os elementos */
+  flex-direction: column; /* Organiza os campos em coluna */
+  gap: 15px; /* Espaço entre os campos */
 }
 
+/* Campos de entrada do formulário */
 .login__input {
-    border: none;
-    padding: 15px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    background-color: #121212;
-    color: #f2f2f2;
-    outline: none;
-    border-radius: 5px;
+  border: none; /* Remove borda padrão */
+  padding: 15px; /* Espaçamento interno */
+  font-size: 0.85rem; /* Tamanho do texto */
+  font-weight: 600; /* Peso do texto */
+  background-color: #121212; /* Fundo escuro */
+  color: #f2f2f2; /* Cor do texto */
+  outline: none; /* Remove o contorno padrão */
+  border-radius: 5px; /* Bordas arredondadas */
 }
 
+/* Efeito ao focar no campo de entrada */
 .login__input:focus {
-    outline: 2px solid #f2f2f2;
+  outline: 2px solid #f2f2f2; /* Adiciona um contorno claro */
 }
 
+/* Botão de envio do formulário */
 .login__button {
-    border: none;
-    padding: 15px;
-    border-radius: 5px;
-    font-size: 0.85rem;
-    font-weight: 700;
-    background-color: #ddd;
-    cursor: pointer;
-    color: #121212;
+  border: none; /* Remove borda padrão */
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 5px; /* Bordas arredondadas */
+  font-size: 0.85rem; /* Tamanho do texto */
+  font-weight: 700; /* Peso do texto */
+  background-color: #ddd; /* Fundo cinza claro */
+  cursor: pointer; /* Indica interatividade */
+  color: #121212; /* Cor do texto */
 }
 
+/* Efeito ao passar o mouse no botão */
 .login__button:hover {
-    background-color: #fff;
+  background-color: #fff; /* Fundo branco */
 }
 
+/* ==================== Estilização do Chat ==================== */
+
+/* Container geral do chat */
 .chat {
-    width: 100%;
-    height: 100%;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
+  width: 100%; /* Ocupa toda a largura */
+  height: 100%; /* Ocupa toda a altura */
+  display: none; /* Começa oculto */
+  flex-direction: column; /* Organiza elementos em coluna */
+  justify-content: space-between; /* Espaço entre os elementos superiores e inferiores */
 }
 
+/* Área de mensagens do chat */
 .chat__messages {
-    flex-grow: 1;
-    padding: 30px 30px 90px;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+  flex-grow: 1; /* Expande para ocupar o máximo de espaço possível */
+  padding: 30px 30px 90px; /* Espaçamento interno */
+  display: flex; /* Flexbox para organizar as mensagens */
+  flex-direction: column; /* Mensagens empilhadas verticalmente */
+  justify-content: flex-end; /* Alinha mensagens ao final */
 }
 
+/* Barra de entrada no chat */
 .chat__form {
-    background-color: #191919;
-    padding: 15px 20px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+  background-color: #191919; /* Fundo escuro */
+  padding: 15px 20px; /* Espaçamento interno */
+  display: flex; /* Flexbox para alinhar elementos */
+  align-items: center; /* Centraliza os itens verticalmente */
+  gap: 10px; /* Espaço entre os itens */
+  position: fixed; /* Fixa a barra na parte inferior */
+  bottom: 0; /* Posiciona no final da tela */
+  left: 0; /* Alinha à esquerda */
+  width: 100%; /* Ocupa toda a largura */
 }
 
+/* Campo de entrada de mensagens */
 .chat__input {
-    border: none;
-    padding: 15px;
-    border-radius: 8px;
-    flex-grow: 1;
-    background-color: #212121;
-    outline: none;
-    color: #f2f2f2;
-    font-size: 1rem;
+  border: none; /* Remove borda padrão */
+  padding: 15px; /* Espaçamento interno */
+  border-radius: 8px; /* Bordas arredondadas */
+  flex-grow: 1; /* Expande para ocupar espaço disponível */
+  background-color: #212121; /* Fundo escuro */
+  outline: none; /* Remove contorno padrão */
+  color: #f2f2f2; /* Cor do texto */
+  font-size: 1rem; /* Tamanho do texto */
 }
 
+/* Botão de envio da mensagem */
 .chat__button {
-    border: none;
-    background: none;
-    color: #f2f2f2;
-    cursor: pointer;
+  border: none; /* Remove borda padrão */
+  background: none; /* Remove fundo padrão */
+  color: #f2f2f2; /* Cor do ícone */
+  cursor: pointer; /* Indica interatividade */
 }
 
+/* Ícone dentro do botão */
 .chat__button > span {
-    font-size: 1.8rem;
+  font-size: 1.8rem; /* Tamanho do ícone */
 }
 
-.chat__messages > div {
-    padding: 10px;
-    width: 100%;
-    max-width: 250px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 15px;
-    line-height: 22px;
-}
-
+/* Mensagem enviada */
 .message--self {
-    background-color: #f2f2f2;
-    color: #121212;
-    border-radius: 10px 10px 0 10px;
-    align-self: flex-end;
+  background-color: #f2f2f2; /* Fundo claro */
+  color: #121212; /* Cor do texto */
+  border-radius: 10px 10px 0 10px; /* Bordas arredondadas */
+  align-self: flex-end; /* Alinha à direita */
 }
 
+/* Mensagem recebida */
 .message--other {
-    background-color: #333;
-    color: #f2f2f2;
-    border-radius: 0 10px 10px 10px;
-    align-self: flex-start;
+  background-color: #333; /* Fundo escuro */
+  color: #f2f2f2; /* Cor do texto */
+  border-radius: 0 10px 10px 10px; /* Bordas arredondadas */
+  align-self: flex-start; /* Alinha à esquerda */
 }
 
+/* Nome do remetente na mensagem */
 .message--sender {
-    display: block;
-    margin-bottom: 15px;
-    font-weight: 700;
-    color: cadetblue;
+  display: block; /* Exibe como bloco */
+  margin-bottom: 15px; /* Espaço abaixo */
+  font-weight: 700; /* Peso do texto */
+  color: cadetblue; /* Destaque na cor azul esverdeado */
 }
+
 /* // /////////////        etapa 6 form jovem       /////////////////////// */
 
  
+/* ==================== ESTILIZAÇÃO DE OPÇÕES ==================== */
 
-  .option {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: white;
-    border: 1px solid #a0c4ff;
-    padding: 1rem;
-    margin: 0.5rem auto;
-    border-radius: 12px;
-    max-width: 400px;
-    cursor: pointer;
-    transition: 0.3s ease;
-  }
+/* Estiliza cada opção com borda arredondada, sombra e alinhamento */
+.option {
+  display: flex; /* Flexbox para organizar conteúdo horizontalmente */
+  justify-content: space-between; /* Espaço entre os elementos */
+  align-items: center; /* Alinha verticalmente os itens */
+  background: white; /* Fundo branco */
+  border: 1px solid #a0c4ff; /* Borda com azul claro */
+  padding: 1rem; /* Espaçamento interno */
+  margin: 0.5rem auto; /* Margem automática para centralizar */
+  border-radius: 12px; /* Bordas arredondadas */
+  max-width: 400px; /* Largura máxima para manter formato */
+  cursor: pointer; /* Indica que é clicável */
+  transition: 0.3s ease; /* Transição suave ao interagir */
+}
 
-  .option:hover {
-    background-color: #f0f4ff;
-  }
+/* Estilo ao passar o mouse sobre a opção */
+.option:hover {
+  background-color: #f0f4ff; /* Fundo muda para azul claro */
+}
 
-  .option input {
-    display: none;
-  }
+/* Esconde o input dentro da opção */
+.option input {
+  display: none; /* Oculta visualmente o elemento */
+}
 
-  .option.selected {
-    border-color: #d63384;
-    box-shadow: 0 0 0 2px #d63384;
-  }
+/* Estiliza a opção selecionada */
+.option.selected {
+  border-color: #d63384; /* Destaque na borda com rosa */
+  box-shadow: 0 0 0 2px #d63384; /* Sombra destacada */
+}
 
-  .arrow {
-    color: white;
-    background: #d63384;
-    border-radius: 50%;
-    padding: 0.3rem 0.5rem;
-    font-weight: bold;
-  }
-  
+/* Estiliza o ícone da seta dentro das opções */
+.arrow {
+  color: white; /* Texto branco */
+  background: #d63384; /* Fundo rosa */
+  border-radius: 50%; /* Formato circular */
+  padding: 0.3rem 0.5rem; /* Espaçamento interno */
+  font-weight: bold; /* Texto em negrito */
+}
 
+/* ==================== FAQ - PERGUNTAS E RESPOSTAS ==================== */
 
-/*////////////////////////////////////////////////PERGUNTAS E RESPOSTAS//////////////////////////////////////////////*/
-
+/* Configurações básicas para a página */
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #e5f3ff;
-  color: #333;
+  font-family: Arial, sans-serif; /* Fonte padrão e legível */
+  margin: 0; /* Remove margens padrão */
+  padding: 0; /* Remove preenchimento padrão */
+  background-color: #e5f3ff; /* Fundo azul claro */
+  color: #333; /* Texto em cinza escuro */
 }
 
+/* Seção principal do FAQ */
 .faq-section {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 1500px; /* Largura máxima da seção */
+  margin: 0 auto; /* Centraliza horizontalmente */
+  padding: 20px; /* Espaçamento interno */
 }
 
+/* Estiliza o cabeçalho da seção FAQ */
 .faq-header {
-  text-align: center;
-  
+  text-align: center; /* Centraliza o texto */
 }
 
+/* Estilo para o título principal */
 .faq-header h1 {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #fcf8f8;
-  margin-bottom: 20px;
+  font-size: 2rem; /* Tamanho grande para destaque */
+  font-weight: bold; /* Texto em negrito */
+  color: #fcf8f8; /* Texto branco */
+  margin-bottom: 20px; /* Espaço abaixo do título */
 }
 
+/* Estiliza a imagem do FAQ */
 .faq-image {
-  width: 150px;
-  height: auto;
-  margin-top: 10px;
+  width: 150px; /* Largura fixa */
+  height: auto; /* Proporção automática */
+  margin-top: 10px; /* Espaço acima da imagem */
 }
 
+/* Configura margem para a lista de perguntas */
 .faq-questions {
-  margin-top: 20px;
+  margin-top: 20px; /* Espaçamento acima da lista */
 }
 
+/* Estilização dos detalhes */
 details {
-  border-bottom: 1px solid #999;
-  margin: 10px 0;
-  padding: 10px 0;
+  border-bottom: 1px solid #999; /* Linha separadora cinza */
+  margin: 10px 0; /* Espaço vertical entre os itens */
+  padding: 10px 0; /* Espaçamento interno */
 }
 
+/* Estilização do resumo */
 summary {
-  font-size: 1.1rem;
-  font-weight: bold;
-  cursor: pointer;
-  
-  
+  font-size: 1.1rem; /* Tamanho do texto para destaque */
+  font-weight: bold; /* Texto em negrito */
+  cursor: pointer; /* Indica interatividade */
 }
 
+/* Estiliza o marcador padrão do resumo */
 summary::marker {
-  color: #333;
+  color: #333; /* Cor do marcador */
 }
 
+/* Texto dentro de cada item de detalhes */
 details p {
-  margin: 10px 0;
-  font-size: 0.95rem;
-  color: #363535;
+  margin: 10px 0; /* Espaçamento vertical entre os parágrafos */
+  font-size: 0.95rem; /* Tamanho do texto */
+  color: #363535; /* Cor cinza escuro */
 }
 
+/* Rodapé da seção FAQ */
 .faq-footer {
-  margin-top: 30px;
-  text-align: center;
+  margin-top: 30px; /* Espaço acima do rodapé */
+  text-align: center; /* Centraliza o texto */
 }
 
+/* Texto no rodapé */
 .faq-footer p {
-  font-size: 1rem;
-  margin-bottom: 10px;
+  font-size: 1rem; /* Tamanho do texto */
+  margin-bottom: 10px; /* Espaço abaixo do parágrafo */
 }
 
+/* Links no rodapé */
 .faq-footer a {
-  color: #007BFF;
-  text-decoration: none;
+  color: #007BFF; /* Azul para indicar link */
+  text-decoration: none; /* Remove sublinhado */
 }
 
+/* Estilo ao passar o mouse no link */
 .faq-footer a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Sublinhado ao passar o mouse */
 }
 
-/* .faq-section{
-
-  background-color: lch(70.43% 21.28 242.78);
-
-
-}
-   */
-/*/////////////////////////////////////////////////////////////cads video////////////////////////////////////////////////////*/
+/*/////////////////////////////////////////////////////////////cards video////////////////////////////////////////////////////*/
 .display-cards-de-imagem {
   display: flex;
   justify-content: space-between;
@@ -926,72 +938,76 @@ details p {
 }
 
 /*////////////////////////////////////////////SEGURANÇA//////////////////////////////////////////////////////////////////////*/
+/* ==================== SEÇÃO DE SEGURANÇA ==================== */
 
 .safety-section {
-  text-align: center;
-  padding: 2rem;
-  /* background-color: #f9fafb; */
-  transition: background-color 0.3s ease; /*Transição suave da mudança de fundo*/
-
+  text-align: center; /* Centraliza texto */
+  padding: 2rem; /* Espaçamento interno */
+  /* background-color: #f9fafb; */ /* Cor de fundo comentada, pode ativar se quiser */
+  transition: background-color 0.3s ease; /* Transição suave na troca do fundo */
 }
 
-
+/* Título principal da seção */
 .safety-section h2 {
-  font-size: 2rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: #312c2c;
+  font-size: 2rem; /* Tamanho grande */
+  font-weight: bold; /* Negrito */
+  margin-bottom: 1rem; /* Espaço abaixo do título */
+  color: #312c2c; /* Cor escura */
 }
 
+/* Texto introdutório */
 .safety-section .intro-text {
-  font-size: 1.1rem;
-  color: #555;
-  margin-bottom: 2rem;
+  font-size: 1.1rem; /* Texto maior que o padrão */
+  color: #555; /* Cinza médio */
+  margin-bottom: 2rem; /* Espaço abaixo do texto */
 }
 
+/* Container para as dicas */
 .tips-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
+  display: flex; /* Usa Flexbox */
+  flex-wrap: wrap; /* Permite que as dicas quebrem linha */
+  justify-content: center; /* Centraliza horizontalmente */
+  gap: 2rem; /* Espaço entre as dicas */
 }
 
+/* Cada dica individual */
 .tip {
-  background: rgb(185, 211, 230);
-  border-radius: 0.5rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  padding: 1.5rem;
-  max-width: 300px;
-  text-align: left;
+  background: rgb(185, 211, 230); /* Fundo azul claro */
+  border-radius: 0.5rem; /* Bordas arredondadas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 1.5rem; /* Espaçamento interno */
+  max-width: 300px; /* Largura máxima */
+  text-align: left; /* Texto alinhado à esquerda */
 }
 
+/* Ícone dentro da dica */
 .tip .icon {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: #4CAF50;
+  font-size: 2rem; /* Tamanho do ícone */
+  margin-bottom: 1rem; /* Espaço abaixo do ícone */
+  color: #4CAF50; /* Verde */
 
-  /* Centralização */
+  /* Centraliza o ícone dentro do container */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px; /* Altura ajustável conforme necessário */
-  width: 60px;  /* Largura ajustável conforme necessário */
-  margin: 0 auto; /* Centraliza horizontalmente dentro do pai */
+  height: 60px; /* Altura fixa */
+  width: 60px;  /* Largura fixa */
+  margin: 0 auto; /* Centraliza horizontalmente */
 }
 
-  
-
-
+/* Título da dica */
 .tip h3 {
-  font-size: 1.25rem;
-  color: #222;
-  margin-bottom: 0.5rem;
+  font-size: 1.25rem; /* Um pouco maior que o texto normal */
+  color: #222; /* Cor quase preta */
+  margin-bottom: 0.5rem; /* Espaço abaixo do título */
 }
 
+/* Texto descritivo da dica */
 .tip p {
-  font-size: 0.95rem;
-  color: #666;
-  line-height: 1.5;
+  font-size: 0.95rem; /* Tamanho do texto */
+  color: #666; /* Cinza médio */
+  line-height: 1.5; /* Espaçamento entre linhas para melhor leitura */
 }
+
 
 
