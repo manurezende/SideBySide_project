@@ -132,7 +132,7 @@ function logar_usuario(){
 }
 
 function cadastrar_endereco() {
-  // Campos de endereço
+  // Campos de endereço .
   const cep = document.getElementById("cep");
   const logradouro = document.getElementById("logradouro");
   const logradouro_nome = document.getElementById("logradouro_nome");

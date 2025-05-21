@@ -3,7 +3,7 @@ function form_active_jovem() {
   const cep = cepInput.value.replace(/\D/g, '');
   const erroMsg_cep = document.getElementById('erro-etapa-1');
 
-  // Limpa mensagens de erro anteriores
+  // Limpa mensagens de erro anteriores .
   erroMsg_cep.style.display = 'none';
   erroMsg_cep.textContent = '';
 
@@ -20,7 +20,7 @@ function form_active_jovem() {
     return;
   }
 
-  // Consulta ao ViaCEP
+  // Consulta ao ViaCEP .
   fetch(`https://viacep.com.br/ws/${cep}/json/`)
     .then(response => {
       if (!response.ok) {
