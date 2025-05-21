@@ -194,31 +194,79 @@ function cadastrar_endereco() {
           alert(rs.msg);
           document.getElementById("form-idoso").reset();
           if (rs.msg === "endereco cadastrado") {
-              window.location.href = "pagina_inicial.html";
+              window.location.href = "pagina_pos_login.html";
           }
       }
   });
 }
 
-function dadosEndereco(){
-
-//   const id_endereco = document.getElementById("id_endereco")
-
-// //Obter os dados que foram inseridos no cookie
-//  let cookie = document.cookie;
-//  console.log(cookie)
-//  let separa_igual = cookie.split('=')
-//  console.log(separa_igual)
-//  let separa_virgula = separa_igual[1].split(',')
-//  console.log(separa_virgula)
-//  //pegar a quantidade de caracteres do idusuario
-//  console.log(separa_virgula[0].length)
- 
-//  console.log(separa_virgula[0].substring(13,separa_virgula[0].length))
-//  let idendereco = separa_virgula[0].substring(13,separa_virgula[0].length)
+function cadastrar_jovem() {
+  // Campos de endereço .
+  const cep = document.getElementById("cep");
+  const logradouro = document.getElementById("logradouro");
+  const logradouro_nome = document.getElementById("logradouro_nome");
+  const cidade = document.getElementById("cidade");
+  const estado = document.getElementById("estado");
+  const bairro = document.getElementById("bairro");
+  const pais = document.getElementById("pais");
+  const complemento = document.getElementById("complemento");
+  const numero = document.getElementById("numero");
 
 
-//  id_endereco.innerHTML=`id: ${idendereco}`;
+  // Campos do jovem
+  const id_usuario = document.getElementById("id_usuario");
+  const cpf_jovem = document.getElementById("cpf_jovem");
+  const valor_jovem = document.getElementById("valor_jovem");
+  const cpf = document.getElementById("telefone_jovem");
+  const data_nascimento = document.getElementById("data_nascimento_jovem");
+  const comorbidade =document.getElementsByName("foto_jovem")[0]
+  const tipo_comorbidade = document.getElementById("experiencia");
+  const descricao = document.getElementById("descricao_jovem");
+  const telefone_idoso = document.getElementById("genero_jovem");
+  const genero =document.getElementsByName("assinante_jovem")[0]
+
+  // Envio para o backend
+  fetch("http://localhost:3000/idoso/cadastrar", {
+      method: "POST",
+      headers: {
+          "accept": "application/json",
+          "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        cep: cep.value,
+        logradouro: logradouro.value,
+        logradouro_nome: logradouro_nome.value,
+        cidade: cidade.value,
+        estado: estado.value,
+        bairro: bairro.value,
+        pais: pais.value,
+        numero: numero.value,
+        complemento: complemento.value,      
+        id_usuario: id_usuario.value,
+        foto_idoso: foto_idoso.value,
+        assinante_idoso:assinante_idoso.value,
+        cpf:cpf.value,
+        data_nascimento: data_nascimento.value,
+        comorbidade: comorbidade.value,
+        tipo_comorbidade: tipo_comorbidade.value,
+        descricao: descricao.value,
+        telefone_idoso: telefone_idoso.value,
+        genero: genero.value
+        
+      })
+  })
+  .then(res => res.json())
+  .then(rs => {
+      if (rs.erro) {
+          document.getElementById("msg_erro_idoso").innerHTML = rs.erro;
+      } else {
+          alert(rs.msg);
+          document.getElementById("form-idoso").reset();
+          if (rs.msg === "endereco cadastrado") {
+              window.location.href = "pagina_inicial.html";
+          }
+      }
+  });
 }
 
 
