@@ -1,0 +1,86 @@
+/* Estilização da página */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+  }
+  
+  /* Container principal do chat */
+  .container-chat {
+    width: 400px;
+    margin: 40px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  
+  /* Cabeçalho com o nome do usuário */
+  .cabecalho-chat {
+    background-color: #0066cc;
+    color: white;
+    padding: 16px;
+    text-align: center;
+  }
+  
+  /* Campo do destinatário */
+  .contatos {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  /* Área que mostra as mensagens */
+  .mensagens {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Estilo para cada mensagem */
+  .mensagem {
+    margin: 6px 0;
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 75%;
+    word-wrap: break-word;
+  }
+  
+  /* Mensagens enviadas */
+  .enviada {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+    text-align: right;
+  }
+  
+  /* Mensagens recebidas */
+  .recebida {
+    background-color: #e5e5ea;
+    align-self: flex-start;
+  }
+  
+  /* Campo para digitar e enviar mensagem */
+  .formulario-mensagem {
+    display: flex;
+    border-top: 1px solid #ccc;
+  }
+  
+  #mensagem {
+    flex: 1;
+    border: none;
+    padding: 12px;
+    font-size: 14px;
+  }
+  
+  #enviar {
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    cursor: pointer;
+  }
+  
