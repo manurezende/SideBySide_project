@@ -98,37 +98,37 @@
   <div class="container-etapa-6">
     <!-- Cada opção é um label que inclui o input e os elementos visuais -->
     <label class="option">
-      <input type="radio" name="valor_jovem" value="<25" required>
+      <input type="radio" name="valor_jovem" id="valor_jovem" value="<25" required>
       <div class="texto-opcao">&lt;25 reais</div>
       <div class="arrow">➔</div>
     </label>
  
     <label class="option">
-      <input type="radio" name="valor_jovem" value="25-35">
+      <input type="radio" name="valor_jovem" id="valor_jovem" value="25-35">
       <div class="texto-opcao">25-35 reais</div>
       <div class="arrow">➔</div>
     </label>
  
     <label class="option">
-      <input type="radio" name="valor_jovem" value="35-45">
+      <input type="radio" name="valor_jovem" id="valor_jovem" value="35-45">
       <div class="texto-opcao">35-45 reais</div>
       <div class="arrow">➔</div>
     </label>
  
     <label class="option">
-      <input type="radio" name="valor_jovem" value="45-55">
+      <input type="radio" name="valor_jovem" id="valor_jovem" value="45-55">
       <div class="texto-opcao">45-55 reais</div>
       <div class="arrow">➔</div>
     </label>
  
     <label class="option">
-      <input type="radio" name="valor_jovem" value=">55">
+      <input type="radio" name="valor_jovem" id="valor_jovem" value=">55">
       <div class="texto-opcao">&gt;55 reais</div>
       <div class="arrow">➔</div>
     </label>
  
     <label class="option">
-      <input type="radio" name="valor_jovem" value="negociavel">
+      <input type="radio" name="valor_jovem" id="valor_jovem" value="negociavel">
       <div class="texto-opcao">Negociável</div>
       <div class="arrow">➔</div>
     </label>
@@ -169,9 +169,46 @@
     <!-- Etapa 9: Experiência -->
     <div class="form-step">
       <h2 class="title_form_mult">Experiência</h2>
-      <textarea name="experiencia" id="experiencia" placeholder="Descreva sua experiência" rows="5"></textarea>
+      <div class="container-etapa-6">
+        <!-- Cada opção é um label que inclui o input e os elementos visuais -->
+        <label class="option">
+          <input type="radio" name="Experiencia" id="" value="<1 ano" required>
+          <div class="texto-opcao">&lt;25 reais</div>
+          <div class="arrow">➔</div>
+        </label>
+     
+        <label class="option">
+          <input type="radio" name="Experiencia" id="" value="1 ano">
+          <div class="texto-opcao">25-35 reais</div>
+          <div class="arrow">➔</div>
+        </label>
+     
+        <label class="option">
+          <input type="radio" name="Experiencia" id="" value="2 anos">
+          <div class="texto-opcao">35-45 reais</div>
+          <div class="arrow">➔</div>
+        </label>
+     
+        <label class="option">
+          <input type="radio" name="Experiencia" id="" value="3 anos">
+          <div class="texto-opcao">45-55 reais</div>
+          <div class="arrow">➔</div>
+        </label>
+     
+        <label class="option">
+          <input type="radio" name="Experiencia" id="" value="4 anos">
+          <div class="texto-opcao">&gt;55 reais</div>
+          <div class="arrow">➔</div>
+        </label>
+     
+        <label class="option">
+          <input type="radio" name="Experiencia" id="" value=">4 anos">
+          <div class="texto-opcao">Negociável</div>
+          <div class="arrow">➔</div>
+        </label>
+      </div>
+      <label for=""></label>
       <label class="erro-msg" id="erro-etapa-9"></label>
-      <div class="form-navigation">
         <button type="button" class="btn-past" onclick="form_past8_jovem()">Voltar</button>
         <button type="button" class="btn-next" onclick="form_step8_jovem()">Próximo</button>
       </div>
@@ -180,7 +217,7 @@
     <!-- Etapa 10: Descrição -->
     <div class="form-step">
       <h2 class="title_form_mult">Descrição</h2>
-      <input type="text" name="descricao_jovem" id="descricao_idoso" placeholder="Descrição" required />
+      <input type="text" name="descricao_jovem" id="descricao_jovem" placeholder="Descrição" required />
       <label class="erro-msg" id="erro-etapa-10"></label>
       <div class="form-navigation">
         <button type="button" class="btn-past" onclick="form_past9_jovem()">Voltar</button>

@@ -151,7 +151,7 @@ function cadastrar_jovem() {
   const telefone_jovem = document.getElementById("telefone_jovem");
   const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
   const foto_jovem =document.getElementsByName("foto_jovem")[0]
-  const experiencia_jovem = document.getElementById("experiencia");
+  const experiencia_jovem = document.getElementById("experiencia_jovem");
   const descricao_jovem = document.getElementById("descricao_jovem");
   const assinante_jovem = document.getElementById("assinante_jovem");
   const genero_jovem =document.getElementsByName("genero_jovem")[0]
@@ -471,7 +471,7 @@ function form_step1() {
     const erroMsg = document.getElementById('erro-etapa-6');
     erroMsg.style.display = 'none';
     erroMsg.textContent = '';
-  
+    
     if(
       document.getElementById("cpf_idoso").value.trim() == "" ||
       document.getElementById("foto_idoso").value.trim() == ""
@@ -484,6 +484,7 @@ function form_step1() {
     document.getElementsByClassName("form-step")[5].style.display = "block";
     document.getElementsByClassName("form-step")[4].style.display = "none";
     updateProgressBar(6); // Etapa 6
+    
   }
   
   function form_step6() {

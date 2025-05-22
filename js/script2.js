@@ -1,3 +1,20 @@
+// barra de progresso
+// Atualiza a barra de progresso com base na etapa atual
+function atualizarBarraProgresso(step) {
+  const totalSteps = 11;
+
+  const progressBar = document.getElementById('progress-bar');
+  const percentage = (step / totalSteps) * 100;
+  progressBar.style.width = percentage + '%';
+
+
+
+}
+
+
+
+
+
 function form_active_jovem() {
   const cepInput = document.getElementById('cep');
   const cep = cepInput.value.replace(/\D/g, '');
@@ -65,6 +82,7 @@ function form_active_jovem() {
       erroMsg_cep.style.display = 'block';
       erroMsg_cep.textContent = 'Erro ao buscar o endereço. Tente novamente.';
     });
+    atualizarBarraProgresso();
 }
  
  
@@ -82,7 +100,7 @@ function form_step1_jovem() {
  
     document.getElementsByClassName("form-step")[1].style.display = "block";
     document.getElementsByClassName("form-step")[0].style.display = "none";
-    updateProgressBar(2); // Etapa 2
+    atualizarBarraProgresso(2); // Etapa 2
   }
  
   function form_step2_jovem() {
@@ -103,8 +121,7 @@ function form_step1_jovem() {
  
     document.getElementsByClassName("form-step")[2].style.display = "block";
     document.getElementsByClassName("form-step")[1].style.display = "none";
-    updateProgressBar(3); // Etapa 3
-  }
+    atualizarBarraProgresso(3);  }
  
   function form_step3_jovem() {
     const erroMsg = document.getElementById('erro-etapa-4');
@@ -119,8 +136,7 @@ function form_step1_jovem() {
  
     document.getElementsByClassName("form-step")[3].style.display = "block";
     document.getElementsByClassName("form-step")[2].style.display = "none";
-    updateProgressBar(4); // Etapa 4
-  }
+    atualizarBarraProgresso(4);  }
  
   function form_step4_jovem() {
     const erroMsg = document.getElementById('erro-etapa-5');
@@ -135,8 +151,7 @@ function form_step1_jovem() {
  
     document.getElementsByClassName("form-step")[4].style.display = "block";
     document.getElementsByClassName("form-step")[3].style.display = "none";
-    updateProgressBar(5);
-  }
+    atualizarBarraProgresso(5);  }
  
 function form_step5_jovem() {
   const erroMsg = document.getElementById('erro-etapa-6');
@@ -153,8 +168,7 @@ function form_step5_jovem() {
  
   document.getElementsByClassName("form-step")[4].style.display = "none";
   document.getElementsByClassName("form-step")[5].style.display = "block";
-  updateProgressBar(6);
-}
+  atualizarBarraProgresso(6);}
  
 
  
@@ -165,17 +179,44 @@ function form_step6_jovem() {
  
   const telefone_jovem = document.getElementById("telefone_jovem").value.trim();
   const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value.trim();
+
+  // Obtém a data do input
+  const data_nascimento_validar = document.getElementById("data_nascimento_jovem");
+  const dataNascimento = data_nascimento_validar.value;
+
+  // Cria um objeto Date a partir da data de nascimento
+  const data_nascimento = new Date(dataNascimento);
+
+  // Obtém a data atual
+  const data_atual = new Date();
+
+  // Calcula a idade
+  let idade = data_atual.getFullYear() - data_nascimento.getFullYear();
+
+  // Ajusta a idade se a data de nascimento ainda não aconteceu este ano
+  if (data_nascimento.getMonth() > data_atual.getMonth() ||
+      (data_nascimento.getMonth() === data_atual.getMonth() && data_nascimento.getDate() > data_atual.getDate())) {
+    idade--;
+  }
+
+  // Realiza a validação
+  if (idade >= 18 ) {
+  } else {
+    erroMsg.style.display = 'block';
+    erroMsg.textContent = 'Você não tem idade o suficiente';
+    return;
+  }
  
   if (telefone_jovem =="" || data_nascimento_jovem =="") {
     erroMsg.style.display = 'block';
     erroMsg.textContent = 'Preencha o campo de telefone e data de nascimento.';
     return;
   }
+  
  
   document.getElementsByClassName("form-step")[5].style.display = "none";
   document.getElementsByClassName("form-step")[6].style.display = "block";
-  updateProgressBar(7);
-}
+  atualizarBarraProgresso(7);}
 // ETAPA 8 
 
 function form_step7_jovem() {
@@ -193,8 +234,7 @@ function form_step7_jovem() {
  
   document.getElementsByClassName("form-step")[6].style.display = "none";
   document.getElementsByClassName("form-step")[7].style.display = "block";
-  updateProgressBar(7);
-}
+  atualizarBarraProgresso(8);}
 
 
 // Etapa 9 - Valida experiência
@@ -203,10 +243,17 @@ function form_step8_jovem() {
   erroMsg.style.display = 'none';
   erroMsg.textContent = '';
  
-
+  const valorSelecionado = document.querySelector('input[name="Experiencia"]:checked');
+ 
+  if (!valorSelecionado) {
+    erroMsg.style.display = 'block';
+    erroMsg.textContent = 'Selecione uma opção de valor.';
+    return;
+  }
+ 
   document.getElementsByClassName("form-step")[7].style.display = "none";
   document.getElementsByClassName("form-step")[8].style.display = "block";
-}
+  atualizarBarraProgresso(9);}
 
 // Etapa 10 - Valida descrição
 function form_step9_jovem() {
@@ -310,3 +357,6 @@ function form_past10_jovem() {
   document.getElementsByClassName("form-step")[9].style.display = "none";
   
 }
+
+
+// ///////////////////  MASCARAS DOS INPUTS //////////////////////////////////
