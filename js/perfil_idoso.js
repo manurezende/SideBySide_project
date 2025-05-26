@@ -32,14 +32,15 @@ async function carregarPerfilIdosos(){
 
     
     const container = document.getElementById("perfilIdoso");
-    const idade = calcularIdade(idoso.data_nascimento);
+    const idade = calcularIdade(idoso.msg[0].data_nascimento);
 
     container.innerHTML = `
       <img src="${idoso.msg[0].foto_idoso}" alt="Foto do idoso">
-      <h2>${idoso.nome}</h2>
+      <h2>${idoso.msg[0].nome_completo}</h2>
       <p><strong>Idade:</strong> ${idade} anos</p>
-      <p><strong>Nascimento:</strong> ${idoso.data_nascimento}</p>
-      <p><strong>Descrição:</strong> ${idoso.descricao}</p>
+      <p><strong>Nascimento:</strong> ${idoso.msg[0].data_nascimento.substring(0,10)}</p>
+      <p><strong>Descrição:</strong> ${idoso.msg[0].descricao}</p>
+      <p><strong>comorbidade:</strong> ${idoso.msg[0].tipo_comorbidade}</p>
     `;
   } catch (erro) {
     console.error("Erro ao carregar dados:", erro);
