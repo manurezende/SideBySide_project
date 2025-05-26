@@ -92,7 +92,7 @@ body {
   }
   
   .premium strong {
-    color: #d2268f;
+    color: #a300ff; 
     display: block;
   }
   /*=========================================index3-pagina-salv.===============================================================================*/
@@ -363,4 +363,146 @@ body {
   border-radius: 6px;
   margin: 5 auto;
   
+}
+/*================================================Parte Premium ================================================================================*/
+/* Define o estilo básico para o corpo da página */
+
+
+/* Estilização do modal Premium */
+.premium-modal {
+    background-color: white; /* Fundo branco para destaque */
+    border-radius: 16px; /* Bordas arredondadas para suavizar o design */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2); /* Adiciona sombra para profundidade */
+    padding: 20px; /* Espaçamento interno */
+    max-width: 600px; /* Largura máxima do modal */
+    width: 90%; /* Largura ajustável com base na tela. */
+    margin: 50px auto;
+}
+
+/* Centralização do conteúdo dentro do modal */
+.premium-content {
+    text-align: center; /* Centraliza o texto */
+}
+
+/* Configuração da logo premium */
+.premium-logo {
+    max-width: 150px; /* Limita a largura máxima da logo */
+    margin-bottom: 20px; /* Espaço abaixo da logo */
+}
+
+/* Estilo do cabeçalho no modal */
+.premium-header h1 {
+    font-size: 24px; /* Define o tamanho do texto */
+    margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
+}
+
+/* Lista de benefícios premium */
+.premium-benefits {
+    list-style-type: none; /* Remove os marcadores de lista padrão */
+    padding: 0; /* Remove o espaçamento interno padrão */
+    margin-bottom: 30px; /* Espaçamento abaixo da lista */
+    text-align: left; /* Alinha os itens à esquerda */
+}
+
+/* Estilo individual de cada benefício */
+.premium-benefits li {
+    font-size: 16px; /* Tamanho do texto */
+    margin-bottom: 10px; /* Espaçamento entre itens */
+    display: flex; /* Usa layout flexível para alinhar ícones e texto */
+    align-items: center; /* Alinha verticalmente o ícone e o texto */
+}
+
+/* Estilização de ícones na lista de benefícios */
+.premium-benefits .icon {
+    width: 20px; /* Tamanho da largura do ícone */
+    height: 20px; /* Tamanho da altura do ícone */
+    margin-right: 10px; /* Espaçamento entre o ícone e o texto */
+}
+
+/* Container dos planos Premium */
+.premium-plans {
+    display: flex; /* Layout flexível para distribuir os planos */
+    gap: 20px; /* Espaço entre os planos */
+    justify-content: center; /* Centraliza os planos */
+}
+
+/* Estilização individual de cada card de plano */
+.plan-card {
+    background-color: #fff; /* Fundo branco */
+    border: 2px solid #ddd; /* Borda cinza clara */
+    border-radius: 12px; /* Bordas arredondadas */
+    padding: 20px; /* Espaçamento interno */
+    text-align: center; /* Centraliza o texto */
+    flex: 1; /* Faz os cards se expandirem proporcionalmente */
+    max-width: 200px; /* Largura máxima de cada card */
+}
+
+/* Estilo do card em destaque */
+.plan-card.destaque {
+    border-color: #332b55; /* Cor da borda destacada */
+    background-color: #f7e8ff; /* Fundo diferenciado */
+}
+
+/* Tag de destaque no card */
+.tag {
+    display: inline-block; /* Elemento inline com tamanho ajustável */
+    background-color: #b077d1; /* Fundo roxo */
+    color: white; /* Cor do texto */
+    font-size: 12px; /* Tamanho do texto */
+    padding: 5px 10px; /* Espaçamento interno */
+    border-radius: 8px; /* Bordas arredondadas */
+    margin-bottom: 10px; /* Espaço abaixo da tag */
+}
+
+/* Estilo do título do plano */
+.plan-card h2 {
+    font-size: 18px; /* Tamanho do texto */
+    margin-bottom: 10px; /* Espaçamento abaixo do título */
+}
+
+/* Estilo das descrições nos planos */
+.plan-card p {
+    font-size: 14px; /* Tamanho do texto */
+    margin: 5px 0; /* Espaçamento vertical */
+}
+
+/* Estilo do preço destacado */
+.plan-card h3 {
+    font-size: 24px; /* Tamanho do texto */
+    color: #a300ff; /* Cor roxa vibrante */
+}
+
+/* Estilo para preços com desconto */
+.discounted-price {
+    text-decoration: line-through; /* Linha sobre o texto para indicar desconto */
+    font-size: 14px; /* Tamanho do texto */
+    color: #888; /* Cor cinza */
+}
+
+/* Botões */
+.btn {
+    margin-top: 10px; /* Espaço acima do botão */
+    width: 100%; /* Largura total do card */
+    font-size: 14px; /* Tamanho do texto */
+}
+/* Remove os estilos padrão da lista */
+.premium-benefits {
+    list-style: none; /* Remove os marcadores padrão da lista */
+    padding: 0; /* Remove o espaçamento interno padrão da lista */
+    margin: 0; /* Remove as margens externas padrão da lista */
+}
+
+/* Estilização para cada item da lista de benefícios */
+.premium-benefits li {
+    display: flex; /* Usa layout flexível para alinhar ícones e texto horizontalmente */
+    align-items: center; /* Garante que o ícone e o texto estejam alinhados verticalmente */
+    font-size: 1rem; /* Define o tamanho do texto em unidades relativas */
+    margin-bottom: 1rem; /* Adiciona espaçamento entre os itens da lista */
+}
+
+/* Estilo para os ícones ao lado dos textos */
+.premium-benefits .icon {
+    width: 20px; /* Define a largura do ícone */
+    height: 20px; /* Define a altura do ícone para manter proporção */
+    margin-right: 10px; /* Adiciona espaçamento entre o ícone e o texto */
 }
