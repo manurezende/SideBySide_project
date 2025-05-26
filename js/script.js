@@ -71,6 +71,28 @@ function cadastrar_usuario(){
 
 }
 
+function getCookie(nome) {
+  const valor = `; ${document.cookie}`;
+  const partes = valor.split(`; ${nome}=`);
+  if (partes.length === 2) return partes.pop().split(';').shift();
+}
+
+
+function ligarcookies(){
+const socket = new WebSocket("http://127.0.0.1:3000");
+
+socket.addEventListener("open", () => {
+  const id = getCookie("id_usuario"); // pega o ID do cookie
+
+  if (id) {
+    socket.send(JSON.stringify({
+      tipo: "login",
+      id: parseInt(id) // envia para o backend
+    }));
+  }
+});
+}
+
 function dadosUsuarios(){
 
     const txt_id_usuario = document.getElementById("id_usuario")
@@ -147,11 +169,11 @@ function cadastrar_jovem() {
   // Campos do idoso
   const id_usuario = document.getElementById("id_usuario");
   const cpf_jovem = document.getElementById("cpf_jovem");
-  const valor_jovem = document.getElementById("valor_jovem");
+  const valor_jovem = document.getElementsByName("valor_jovem");
   const telefone_jovem = document.getElementById("telefone_jovem");
   const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
-  const foto_jovem =document.getElementsByName("foto_jovem")[0]
-  const experiencia_jovem = document.getElementById("experiencia_jovem");
+  const foto_jovem =document.getElementsById("foto_jovem")[0]
+  const experiencia_jovem = document.getElementsByName("experiencia_jovem");
   const descricao_jovem = document.getElementById("descricao_jovem");
   const assinante_jovem = document.getElementById("assinante_jovem");
   const genero_jovem =document.getElementsByName("genero_jovem")[0]
