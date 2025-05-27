@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>SIDEBYSIDE</title>
+  <link rel="stylesheet" href="css/style3.css" />
+  <link rel="stylesheet" href="./css/listar_jovem.css">
+</head>
+<body>
+  <header>
+    <div class="logo">SIDEBYSIDE</div>
+     <a href="pagina_pos_login_idoso.html"></a>
+    <nav>
+      <a href="#">Jovens</a>
+      <a href="./pagina_salvo.html">Salvo</a>
+      <a href="#">Mensagens </a>
+      <div class="user-menu">
+        <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+        <div class="dropdown" id="dropdown">
+          <a href="#">Meu perfil</a>
+          <a href="#">Ajustes da conta</a>
+          <div class="premium">
+            <div>
+              <strong>Obter Premium</strong>
+              <a href="premium.html"><p>Converse com quantos Idosos você quiser.</p></a>
+              
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+  <section class="carrossel-jovens">
+    
+    <h2>Últimos jovens cadastrados</h2>
+    <div class="carrossel-container" id="carrosselJovens">
+      <!-- Aqui os cards dos idosos serão inseridos via JavaScript. -->
+    </div>
+  </section>
+</main>
+<script src="./js/pagina_inicial_idoso.js"></script>
+
+
+  <script>
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdown");
+      menu.classList.toggle("active");
+    }
+
+    window.onclick = function(e) {
+      if (!e.target.matches('.avatar')) {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.remove("active");
+      }
+    }
+  </script>
+</body>
+</html>
+<!--  -->
