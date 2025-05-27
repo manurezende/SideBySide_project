@@ -18,7 +18,7 @@ function carregarJovens() {
       const container = document.getElementById("carrosselJovens");
 
       dados.msg.forEach(jovem => {
-        const idade = calcularIdade(idoso.data_nascimento);
+        const idade = calcularIdade(jovem.data_nascimento_jovem);
         const online = Math.random() > 0.5; // Simula se o idoso está online
 
         const card = document.createElement("div");
@@ -44,11 +44,11 @@ function carregarJovens() {
 // Quando o DOM estiver carregado, chama a função
 
 // Função que salva o ID do idoso no cookie e redireciona para a página de perfil
-function verPerfil(idIdoso) {
+function verPerfil(idJovem) {
   
   // Define o cookie com o ID do idoso, expira em 1 dia
   // document.cookie = `id_idoso_selecionado=${idIdoso}; path=/; max-age=86400`;
 
   // Redireciona para a página de perfil
-  window.location.href = `perfil_idoso.html?id_idoso=${idIdoso}`;
+  window.location.href = `perfil_jovem.html?id_jovem=${idJovem}`;
 }

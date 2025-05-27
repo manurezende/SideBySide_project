@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mensagens</title>
+  <link rel="stylesheet" href="css/mensagens.css" />
+</head>
+<header>
+    <div class="logo">SIDEBYSIDE</div>
+     <a href="pagina_pos_login.html"></a>
+    <nav>
+      <a href="#">Jovens</a>
+      <a href="./pagina_salvo.html">Salvo</a>
+      <a href="./mensagem.html">Mensagens </a>
+      <div class="user-menu">
+        <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+        <div class="dropdown" id="dropdown">
+          <a href="#">Meu perfil</a>
+          <a href="#">Ajustes da conta</a>
+          <div class="premium">
+            <div>
+              <strong>Obter Premium</strong>
+              <a href="premium.html"><p>Converse com quantos Idosos você quiser.</p></a>
+              
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+<body>
+  <div class="container">
+
+    <!-- Lateral com contatos -->
+    <aside class="contatos">
+      <h2>Conversas</h2>
+      <ul id="listaContatos">
+        <!-- Contatos serão adicionados aqui via JS -->
+      </ul>
+    </aside>
+
+    <!-- Janela de chat -->
+    <main class="chat">
+      <header id="nomeContato">
+        <!-- Nome do contato aparecerá aqui -->
+      </header>
+      <div id="mensagens" class="mensagens">
+        <!-- Mensagens trocadas aparecerão aqui -->
+      </div>
+      <footer>
+        <input type="text" id="mensagemInput" placeholder="Digite sua mensagem..."/>
+        <button onclick="enviarMensagem()">Enviar</button>
+      </footer>
+    </main>
+
+  </div>
+
+  <script src="js/mensagem_idoso.js"></script>
+</body>
+</html>

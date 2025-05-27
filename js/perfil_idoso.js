@@ -50,7 +50,7 @@ async function carregarPerfilIdosos(){
 
 // Ir para a página de mensagens
 function enviarMensagem() {
-  window.location.href = "menssagens.html"; // substitua com o nome real se for diferente
+  window.location.href = "mensagem_jovem.html"; // substitua com o nome real se for diferente
 }
 
 // Voltar para a tela anterior
