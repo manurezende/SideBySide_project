@@ -5,7 +5,7 @@
 //   if (partes.length === 2) return partes.pop().split(';').shift();
 // }
 
-// Função para calcular idade a partir da data de nascimento
+// Função para calcular idade a partir da data de nascimento;
 function calcularIdade(dataNascimento) {
     const nascimento = new Date(dataNascimento);
     const hoje = new Date();

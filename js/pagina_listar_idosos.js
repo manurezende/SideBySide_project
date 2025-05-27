@@ -19,7 +19,7 @@ function carregarIdosos() {
 
       dados.msg.forEach(idoso => {
         const idade = calcularIdade(idoso.data_nascimento);
-        const online = Math.random() > 0.5; // Simula se o idoso está online
+        const online = Math.random() > 0.5; // Simula se o idoso está online;
 
         const card = document.createElement("div");
         card.classList.add("card-idoso");

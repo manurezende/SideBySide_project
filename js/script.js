@@ -118,7 +118,7 @@ function cadastrar_jovem() {
   const assinante_jovem = document.getElementById("assinante_jovem");
   const genero_jovem =document.getElementsByName("genero_jovem")[0]
 
-  // Envio para o backend
+  // Envio para o backend;
   fetch("http://localhost:3000/jovem/cadastrar", {
       method: "POST",
       headers: {

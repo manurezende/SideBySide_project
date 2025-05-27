@@ -10,7 +10,7 @@ function calcularIdade(dataNascimento) {
     return idade;
   }
   
-  // Função para carregar e exibir os idosos no carrossel
+  // Função para carregar e exibir os idosos no carrossel;
   function carregarJovens() {
     fetch("http://localhost:3000/jovem/listar_para_idoso")
       .then(res => res.json())
