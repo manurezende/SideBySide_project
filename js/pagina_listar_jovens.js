@@ -28,7 +28,8 @@ function calcularIdade(dataNascimento) {
           <h3>${jovem.nome_completo || 'Jovem'}</h3>
           <p><strong>Idade:</strong> ${idade} anos</p>
           <p><strong>Status:</strong> <span style="color:${online ? 'green' : 'gray'}">${online ? 'Online' : 'Offline'}</span></p>
-          <button  onclick="verPerfil(${jovem.id_jovem})">Ver perfil</button>
+           <a href=perfil_jovem.html?idJovem=${jovem.id_jovem}>Ver perfil</a>
+
         `;
   
           container.appendChild(card);

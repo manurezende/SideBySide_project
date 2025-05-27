@@ -23,7 +23,7 @@ function calcularIdade(dataNascimento) {
   async function carregarPerfilJovens(){
   
       let idJovem = window.location.search;
-      idJovem=idJovem.substring(10,idJovem.length)
+      idJovem=idJovem.substring(9,idJovem.length)
       console.log(idJovem)
   
     try {
