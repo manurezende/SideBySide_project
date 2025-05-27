@@ -1,18 +1,40 @@
 // Função auxiliar para pegar cookies
-function pegarCookie(nome) {
-    const valor = `; ${document.cookie}`;
-    const partes = valor.split(`; ${nome}=`);
-    if (partes.length === 2) return partes.pop().split(';').shift();
-  }
+  let buscar_dados = window.location.search;
+  buscar_dados=buscar_dados.split("&")
+  let id_usuario = buscar_dados[0]
+  id_usuario = id_usuario.split("=")
+  id_usuario = id_usuario[1]
+  nome_completo=buscar_dados[2]
+  nome_completo=nome_completo.split("=" && "%" )
+  let primeiro_nome = nome_completo[1]
+  primeiro_nome=primeiro_nome.split("2" )
+  primeiro_nome=primeiro_nome[2]
+  let segundo_nome = nome_completo[2]
+  segundo_nome=segundo_nome.split("20" )
+  segundo_nome=segundo_nome[1]
+
+  // nome_completo=nome_completo.split("2")
   
-  // Pegamos o ID do idoso selecionado
-  const idIdoso = pegarCookie('id_idoso_selecionado');
+
+  // console.log(id_usuario)
+
+  console.log(id_usuario)
+  console.log(primeiro_nome)
+  console.log(segundo_nome)
+
+  
+    
+  
+  
+  // // Pegamos o ID do idoso selecionado
+  
   
   // Simulação de nome (no real, virá do banco)
-  document.getElementById("nomeContato").innerText = "Conversando com ID " + idIdoso;
+  document.getElementById("nomeContato").innerText = "Conversando com " + primeiro_nome +" "+ segundo_nome;
   
   // Simulação de mensagens
   const mensagens = [
+    
     { texto: "Olá! Tudo bem?", tipo: "recebida" },
     { texto: "Oi! Tudo sim, e com você?", tipo: "enviada" }
   ];
