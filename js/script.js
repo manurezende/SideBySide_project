@@ -157,7 +157,7 @@ function cadastrar_jovem() {
           alert(rs.msg);
           document.getElementById("form-jovem").reset();
           if (rs.msg === "jovem cadastrado") {
-              window.location.href = "pagina_pos_login.html";
+              window.location.href = "pagina_listar_idosos.html";
           }
       }
   });
@@ -590,7 +590,7 @@ function logar_usuario(){
 
 
 
-function cadastrar_endereco() {
+function cadastrar_idoso() {
   // Campos de endereço .
   const cep = document.getElementById("cep");
   const logradouro = document.getElementById("logradouro");
@@ -653,7 +653,7 @@ function cadastrar_endereco() {
           alert(rs.msg);
           document.getElementById("form-idoso").reset();
           if (rs.msg === "endereco cadastrado") {
-              window.location.href = "pagina_inicial.html";
+              window.location.href = "pagina_listar_jovens.html";
           }
       }
   });

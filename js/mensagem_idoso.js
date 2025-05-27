@@ -49,6 +49,24 @@
     areaMensagens.appendChild(div);
   });
   
+
+  function adicionarContatoLateral(id, nomeCompleto) {
+    // Verifica se já existe (evita duplicar)
+    const jaExiste = document.getElementById("contato-" + id);
+    if (jaExiste) return;
+  
+    const li = document.createElement("li");
+    li.id = "contato-" + id;
+    li.textContent = nomeCompleto;
+  
+    // Evento de clique para abrir a conversa (opcional)
+    li.addEventListener("click", () => {
+      document.getElementById("nomeContato").innerText = "Conversando com " + nomeCompleto;
+    });
+  
+    document.getElementById("listaContatos").appendChild(li);
+  }
+  
   // Envia nova mensagem
   function enviarMensagem() {
     const input = document.getElementById("mensagemInput");
@@ -62,5 +80,9 @@
   
     input.value = "";
     areaMensagens.scrollTop = areaMensagens.scrollHeight;
+  
+    // Adiciona o contato ao aside (se ainda não estiver)
+    const nomeCompleto = primeiro_nome + " " + segundo_nome;
+    adicionarContatoLateral(id_usuario, nomeCompleto);
   }
   
