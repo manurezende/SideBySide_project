@@ -533,3 +533,69 @@ body {
   max-height: 500px;           /* Limita a altura da div para evitar que a imagem aumente demais o container */
   overflow: hidden;            /* Esconde qualquer conteúdo que ultrapasse a altura máxima */
 }
+
+
+/*=====================================================PERFIL USUARIO==============================================================================*/
+
+/* =============================
+   CSS PARA PÁGINA DE PERFIL
+   ============================= */
+/* 
+   body bg-light {
+    background-color: #85abd1; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  } */
+  
+  h2 {
+    color: #333;
+    font-weight: 600;
+  }
+  
+  form label {
+    font-weight: 500;
+    color: #444;
+  }
+  
+  form input,
+  form textarea,
+  form select {
+    border-radius: 8px;
+    box-shadow: none;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 0.95rem;
+  }
+  
+  form textarea {
+    resize: none;
+  }
+  
+  .btn-primary {
+    background-color:  #5432cf;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-weight: 600;
+    transition: 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color:  #5432cf;
+  }
+  
+  img.img-fluid.rounded {
+    max-width: 250px;
+    height: auto;
+    border-radius: 12px;
+    border: 2px solid #ccc;
+  }
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .text-end {
+      text-align: center !important;
+      margin-top: 20px;
+    }
+  }
+  
+  
