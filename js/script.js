@@ -578,16 +578,23 @@ function logar_usuario(){
             alert(rs.msg)
             document.getElementById("form-login").reset();
         
-            if(rs.msg == "Login realizado com sucesso"){
 
-                window.location.href="pagina_inicial.html"  
-                }
-            
-             }
-          })
-          
+
+            console.log(rs)
+            // Redirecionando por tipo de usuário
+            if (rs.usuario.tipo_usuario == 0) {
+                window.location.href = "./pagina_listar_idoso.html"; // Para jovens
+            } 
+            else if (rs.usuario.tipo_usuario == 0){
+                window.location.href = "./pagina_listar_jovens.html"; // Para idosos
+            }
+        }
+    })
+    .catch((erro) => {
+        console.error("Erro na requisição de login:", erro);
+        document.getElementById("msg_login").innerHTML = "Erro ao tentar fazer login. Tente novamente.";
+    });
 }
-
 
 
 function cadastrar_idoso() {

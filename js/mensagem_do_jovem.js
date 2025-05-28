@@ -85,3 +85,5 @@ function enviarMensagem() {
   const nomeCompleto = primeiro_nome + " " + segundo_nome;
   adicionarContatoLateral(id_usuario, nomeCompleto);
 }
+
+

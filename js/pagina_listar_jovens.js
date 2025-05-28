@@ -53,4 +53,11 @@ function calcularIdade(dataNascimento) {
     // Redireciona para a página de perfil
     window.location.href = `perfil_jovem.html?id_jovem=${idJovem}`;
   }
+
+  function scrollCarrossel(direcao) {
+    const container = document.getElementById("carrosselJovens");
+    const larguraCard = container.querySelector(".card-jovem")?.offsetWidth || 250;
+    container.scrollLeft += direcao * (larguraCard + 16); // 16 = gap entre os cards
+  }
+  
   

@@ -32,13 +32,20 @@
     </nav>
   </header>
   <main>
-  <section class="carrossel-jovens">
+    <section class="carrossel-jovens">
+      <h2>Últimos jovens cadastrados</h2>
     
-    <h2>Últimos jovens cadastrados</h2>
-    <div class="carrossel-container" id="carrosselJovens">
-      <!-- Aqui os cards dos jovens serão inseridos via JavaScript. -->
-    </div>
-  </section>
+      <div class="carrossel-wrapper">
+        <button class="carrossel-btn esquerda" onclick="scrollCarrossel(-1)">❮</button>
+        
+        <div class="carrossel-container" id="carrosselJovens">
+          <!-- Os cards dos jovens serão inseridos aqui via JS -->
+        </div>
+    
+        <button class="carrossel-btn direita" onclick="scrollCarrossel(1)">❯</button>
+      </div>
+    </section>
+    
 </main>
 <script src="./js/pagina_listar_jovens.js"></script>
 
