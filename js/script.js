@@ -156,8 +156,8 @@ function cadastrar_jovem() {
       } else {
           alert(rs.msg);
           document.getElementById("form-jovem").reset();
-          if (rs.msg === "jovem cadastrado") {
-              window.location.href = "pagina_listar_idosos.html";
+          if (rs.msg == "jovem cadastrado") {
+              window.location.href = "pagina_listar_idoso.html";
           }
       }
   });
@@ -652,7 +652,7 @@ function cadastrar_idoso() {
       } else {
           alert(rs.msg);
           document.getElementById("form-idoso").reset();
-          if (rs.msg === "endereco cadastrado") {
+          if (rs.msg === "idoso cadastrado") {
               window.location.href = "pagina_listar_jovens.html";
           }
       }
