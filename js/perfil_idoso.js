@@ -28,6 +28,7 @@ async function carregarPerfilIdosos(){
     const idoso = await resposta.json();
 
     console.log(idoso)
+    dados_idoso = idoso.msg[0]
 
 
     
@@ -49,10 +50,13 @@ async function carregarPerfilIdosos(){
 }
 
 // Ir para a página de mensagens
-function enviarMensagem() {
-  window.location.href = "mensagem_jovem.html"; // substitua com o nome real se for diferente
-}
+const btnmensagem_para_idoso = document.getElementById("mensagem_para_idoso");
+  btnmensagem_para_idoso.onclick = ()=>{
+    console.log(dados_idoso)
+    console.log(dados_idoso.descricao_idoso)
+    window.location.href = `mensagens_do_idoso.html?id_usuario=${dados_idoso.id_idoso}&id_idoso=${dados_idoso.id_idoso}&nome="${dados_idoso.nome_completo}"`; // substitua com o nome real se for diferente
 
+  }
 // Voltar para a tela anterior
 function voltar() {
   window.history.back();
