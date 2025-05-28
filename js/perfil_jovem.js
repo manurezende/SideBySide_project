@@ -56,7 +56,7 @@ function calcularIdade(dataNascimento) {
   btnmensagem_para_jovem.onclick = ()=>{
     console.log(dados_jovem)
     console.log(dados_jovem.descricao_jovem)
-    window.location.href = `mensagem_idoso.html?id_usuario=${dados_jovem.id_jovem}&id_jovem=${dados_jovem.id_jovem}&nome="${dados_jovem.nome_completo}"`; // substitua com o nome real se for diferente
+    window.location.href = `mensagens_do_idoso.html?id_usuario=${dados_jovem.id_jovem}&id_jovem=${dados_jovem.id_jovem}&nome="${dados_jovem.nome_completo}"`; // substitua com o nome real se for diferente
 
   }
     
