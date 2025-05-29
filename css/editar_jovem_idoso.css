@@ -1,0 +1,232 @@
+/*==========================================HEADER===========================================================================*/
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f9;
+    padding: 20px;
+}
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+    color: #5f28d0;
+    font-weight: bold;
+    
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  
+  .badge {
+    background-color: #d2268f;
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.2rem;
+  }
+  
+  .user-menu {
+    position: relative;
+  }
+  
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    width: 250px;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .dropdown.active {
+    display: block;
+  }
+  
+  .dropdown a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .premium {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .premium img {
+    width: 48px;
+    height: auto;
+  }
+  
+  .premium strong {
+    color: #a300ff; 
+    display: block;
+  }
+  /*=====================================================PERFIL- EDITAR -JOVEM - IDOSO ==============================================================================*/
+
+
+.profile-header {
+    display: flex; /* Alinha os itens (imagem e texto) em linha */
+    align-items: center; /* Centraliza verticalmente */
+    padding: 20px; /* Espaçamento interno */
+    background-color: #5432cf; /* Cor de fundo roxa (cor primária do site) */
+    color: #fff; /* Cor do texto: branco */
+}
+
+.profile-header .profile-image img {
+    width: 130px; /* Largura fixa da imagem */
+    height: 130px; /* Altura fixa da imagem */
+    border-radius: 50%; /* Transforma em círculo */
+    border: 4px solid #fff; /* Borda branca ao redor da imagem */
+    object-fit: cover; /* Garante que a imagem preencha o espaço sem distorcer */
+    margin-right: 20px; /* Espaço à direita da imagem (antes do texto) */
+}
+
+/* =============================
+   Informações principais do perfil (nome, usuário e descrição)
+   ============================= */
+.profile-info h1 {
+    font-size: 1.8rem; /* Tamanho do nome principal */
+    margin-bottom: 5px; /* Espaço abaixo do nome */
+}
+
+.profile-info .profile-username {
+    font-size: 1.2rem; /* Tamanho do @usuario */
+    color: #d9d7f3; /* Cor lilás clara */
+    font-style: italic; /* Deixa o @usuario em itálico */
+    margin: 5px 0; /* Espaço vertical acima e abaixo */
+}
+
+.profile-info .profile-description {
+    font-size: 0.9rem; /* Tamanho menor para a descrição */
+    margin-top: 10px; /* Espaço acima da descrição */
+    line-height: 1.5; /* Espaçamento entre linhas mais confortável */
+    color: #eaeaea; /* Cor clara para facilitar leitura */
+}
+
+/* =============================
+   Detalhes do perfil (como lista de informações adicionais)
+   ============================= */
+.profile-details {
+    padding: 20px; /* Espaçamento interno */
+    background-color: #fafafa; /* Fundo cinza bem claro */
+}
+
+.profile-details h2 {
+    font-size: 1.5rem; /* Título da seção */
+    color: #3d2c79; /* Cor roxa escura */
+    margin-bottom: 15px; /* Espaço abaixo do título */
+    border-bottom: 2px solid #ddd; /* Linha decorativa abaixo do título */
+    padding-bottom: 5px; /* Espaço interno abaixo do texto */
+}
+
+.profile-details ul {
+    list-style: none; /* Remove os marcadores de lista padrão */
+    padding-left: 0; /* Remove o recuo da lista */
+}
+
+.profile-details li {
+    margin-bottom: 10px; /* Espaço entre os itens da lista */
+    font-size: 1rem; /* Tamanho padrão do texto */
+    color: #555; /* Cor cinza escura */
+}
+
+.profile-details li strong {
+    color: #333; /* Cor um pouco mais escura para destacar o texto em negrito */
+}
+
+/* =============================
+   Rodapé do perfil (área com botões de ação)
+   ============================= */
+.profile-footer {
+    display: flex; /* Coloca os botões em linha */
+    justify-content: space-around; /* Espaço igual entre os botões */
+    padding: 15px; /* Espaçamento interno */
+    background-color: #5432cf; /* Mesma cor de fundo do cabeçalho */
+    border-top: 2px solid #4321a7; /* Borda superior separando do conteúdo */
+}
+
+/* Estilos base para os botões */
+.profile-footer .btn-edit,
+.profile-footer .btn-save {
+    padding: 12px 25px; /* Espaçamento interno dos botões */
+    font-size: 1rem; /* Tamanho do texto */
+    font-weight: bold; /* Texto em negrito */
+    border: none; /* Remove borda padrão */
+    border-radius: 5px; /* Arredondamento dos cantos */
+    cursor: pointer; /* Mostra o ponteiro clicável */
+    transition: all 0.3s ease-in-out; /* Suaviza transformações (hover) */
+    color: #fff; /* Cor do texto branca */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Sombra no texto para melhor contraste */
+}
+
+/* =============================
+   Botão Editar (estilizado com roxo)
+   ============================= */
+.profile-footer .btn-edit {
+    background-color: #5432cf; /* Cor de fundo roxa */
+}
+
+.profile-footer .btn-edit:hover {
+    background-color: #9721a7; /* Cor mais escura ao passar o mouse */
+    transform: scale(1.05); /* Aumenta levemente o botão (efeito visual) */
+}
+
+/* =============================
+   Botão Salvar (estilizado com vermelho)
+   ============================= */
+.profile-footer .btn-save {
+    background-color: #ff6b6b; /* Cor de fundo vermelha clara */
+}
+
+.profile-footer .btn-save:hover {
+    background-color: #e63946; /* Cor vermelha mais escura ao passar o mouse */
+    transform: scale(1.05); /* Mesmo efeito de aumento no hover */
+}
+
+.btn   {
+    background-color: #5432cf;     /* Cor de fundo roxa */
+  color: white;                  /* Texto branco */
+  padding: 12px 24px;            /* Espaçamento interno para aumentar a área clicável */
+  border: none;                  /* Remove a borda padrão */
+  font-weight: bold;            /* Texto em negrito para dar destaque */
+  border-radius: 12px;           /* Bordas arredondadas para um visual mais suave */
+  cursor: pointer;              /* Cursor em forma de mão para indicar interatividade */
+  font-size: 1rem;               /* Tamanho da fonte padrão */
+  transition: background-color 0.3s ease;  /* Transição suave na troca de cor ao passar o mouse */
+}
+
