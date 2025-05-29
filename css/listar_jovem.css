@@ -1,3 +1,6 @@
+
+
+
 .carrossel-wrapper {
   position: relative;
   display: flex;
@@ -7,28 +10,21 @@
 }
 
 .carrossel-container {
-    width: 100vw; /* Ocupa toda a largura da tela */
-  overflow-x: auto; /* Permite rolar horizontalmente */
-  overflow-y: hidden;
-  display: flex; /* Cards em linha */
-  gap: 20px; /* Espaço entre os cards */
-  padding: 20px;
-  box-sizing: border-box;
-  scroll-behavior: smooth; /* Rolagem suave */
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 1rem 0;
 }
 
 .card-jovem {
-  flex: 0 0 auto; /* Impede quebra de linha */  background: #fff;
+  flex: 0 0 250px;
+  background: #fff;
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   padding: 1rem;
   text-align: center;
   transition: transform 0.3s ease;
-  width: 250px;
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  padding: 16px;
 }
 .card-jovem img {
   width: 100%;
@@ -67,11 +63,4 @@
 }
 .carrossel-btn:hover {
   color: #007bff;
-}
-
-/* Responsividade (opcional) */
-@media (max-width: 768px) {
-  .card-jovem {
-    width: 200px;
-  }
 }

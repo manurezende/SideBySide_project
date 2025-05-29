@@ -1,0 +1,96 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #eaf2fb;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .logo {
+    font-size: 1.6rem;
+    color: #5f28d0;
+    font-weight: bold;
+    
+  }
+  
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    position: relative;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-size: 0.95rem;
+  }
+  
+  .badge {
+    background-color: #d2268f;
+    color: white;
+    font-size: 0.7rem;
+    border-radius: 50%;
+    padding: 0.2rem 0.5rem;
+    margin-left: 0.2rem;
+  }
+  
+  .user-menu {
+    position: relative;
+  }
+  
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+  
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    width: 250px;
+    overflow: hidden;
+    z-index: 1000;
+  }
+  
+  .dropdown.active {
+    display: block;
+  }
+  
+  .dropdown a {
+    display: block;
+    padding: 1rem;
+    text-decoration: none;
+    color: #333;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .premium {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .premium img {
+    width: 48px;
+    height: auto;
+  }
+  
+  .premium strong {
+    color: #a300ff; 
+    display: block;
+  }
