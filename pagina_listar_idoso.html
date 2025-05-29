@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <title>SIDEBYSIDE</title>
   <link rel="stylesheet" href="css/style3.css" />
+  <link rel="stylesheet" href="./css/listar_idoso.css">
 </head>
 <body>
   <header>
@@ -32,11 +33,18 @@
   </header>
   <main>
   <section class="carrossel-idosos">
-    <h2>Últimos idosos cadastrados</h2>
-    <div class="carrossel-container" id="carrosselIdosos">
-      <!-- Aqui os cards dos idosos serão inseridos via JavaScript.. -->
-    </div>
-  </section>
+      <h2>Últimos Idosos cadastrados</h2>
+    
+      <div class="carrossel-wrapper">
+        <button class="carrossel-btn esquerda" onclick="scrollCarrossel(-1)">❮</button>
+        
+        <div class="carrossel-container" id="carrosselIdosos">
+          <!-- Os cards dos jovens serão inseridos aqui via JS -->
+        </div>
+    
+        <button class="carrossel-btn direita" onclick="scrollCarrossel(1)">❯</button>
+      </div>
+    </section>
 </main>
 <script src="./js/pagina_listar_idosos.js"></script>
 

@@ -52,3 +52,8 @@ function verPerfil(idIdoso) {
   // Redireciona para a página de perfil
   window.location.href = `perfil_idoso.html?id_idoso=${idIdoso}`;
 }
+  function scrollCarrossel(direcao) {
+    const container = document.getElementById("carrosselIdosos");
+    const larguraCard = container.querySelector(".card-idoso")?.offsetWidth || 250;
+    container.scrollLeft += direcao * (larguraCard + 16); // 16 = gap entre os cards
+  }
