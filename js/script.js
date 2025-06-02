@@ -92,33 +92,71 @@ socket.addEventListener("open", () => {
   }
 });
 }
-
-function cadastrar_jovem() {
-  // Campos de endereço .
-  const cep = document.getElementById("cep");
-  const logradouro = document.getElementById("logradouro");
-  const logradouro_nome = document.getElementById("logradouro_nome");
-  const cidade = document.getElementById("cidade");
-  const estado = document.getElementById("estado");
-  const bairro = document.getElementById("bairro");
-  const pais = document.getElementById("pais");
-  const complemento = document.getElementById("complemento");
-  const numero = document.getElementById("numero");
+async function cadastrar_jovem() {
+ 
 
 
-  // Campos do idoso
-  const id_usuario = document.getElementById("id_usuario");
-  const cpf_jovem = document.getElementById("cpf_jovem");
-  const valor_jovem = document.getElementsByName("valor_jovem");
-  const telefone_jovem = document.getElementById("telefone_jovem");
-  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem");
-  const foto_jovem = document.getElementById("foto_jovem");
-  const experiencia_jovem = document.getElementsByName("experiencia_jovem");
-  const descricao_jovem = document.getElementById("descricao_jovem");
-  const assinante_jovem = document.getElementById("assinante_jovem");
-  const genero_jovem =document.getElementsByName("genero_jovem")[0]
+  // Campos do jovem (certifique-se que o id_usuario no HTML é o ID do jovem para esta operação)
+  // Se id_usuario no HTML representa o ID do jovem, pegue-o aqui.
+  const id_usuario = document.getElementById("id_usuario") ? document.getElementById("id_usuario").value : null;
 
-  // Envio para o backend;
+  const cpf_jovem = document.getElementById("cpf_jovem").value;
+  const valor_jovem_radio = document.querySelector('input[name="valor_jovem"]:checked');
+  const valor_jovem = valor_jovem_radio ? valor_jovem_radio.value : '';
+  const telefone_jovem = document.getElementById("telefone_jovem").value;
+  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value;
+  const inputFotoJovem = document.getElementById("foto_jovem"); // O input do tipo file
+  const arquivoFoto = inputFotoJovem.files[0];
+
+  const experiencia_jovem_radio = document.querySelector('input[name="experiencia_jovem"]:checked');
+  const experiencia_jovem = experiencia_jovem_radio ? experiencia_jovem_radio.value : '';
+  const descricao_jovem = document.getElementById("descricao_jovem").value;
+  const assinante_jovem = document.getElementById("assinante_jovem").checked;
+  const genero_jovem_radio = document.querySelector('input[name="genero_jovem"]:checked');
+  const genero_jovem = genero_jovem_radio ? genero_jovem_radio.value : '';
+
+
+  // --- 1. PRIMEIRO: UPLOAD DA FOTO (SE HOUVER) ---
+  if (arquivoFoto) {
+      if (!id_usuario) { // Verifica se o ID do jovem está disponível antes de tentar o upload da foto
+          document.getElementById("msg_erro_jovem").innerHTML = "Erro: ID do jovem não disponível para upload da foto.";
+          alert("Erro: ID do jovem não disponível para upload da foto. Certifique-se de que o campo 'id_usuario' está preenchido.");
+          return; // Impede o envio se o ID for nulo
+      }
+
+      const formData = new FormData();
+      formData.append('foto_jovem', arquivoFoto);
+      //formData.append('id_jovem', id_usuario); // <<<< ADICIONADO: Enviando o ID do jovem junto com a foto
+
+      try {
+          const uploadResponse = await fetch("http://localhost:3000/upload/foto-jovem", {
+              method: "POST",
+              body: formData,
+          });
+
+          if (!uploadResponse.ok) {
+              const errorText = await uploadResponse.text();
+              console.error("Erro no upload da foto:", errorText);
+              document.getElementById("msg_erro_jovem").innerHTML = `Erro ao fazer upload da foto: ${errorText}`;
+              alert(`Erro ao fazer upload da foto: ${errorText}`);
+              return;
+          }
+
+          alert("Foto enviada e associada ao jovem com sucesso!");
+
+      } catch (error) {
+          console.error("Erro de rede ou outro erro no upload da foto:", error);
+          document.getElementById("msg_erro_jovem").innerHTML = `Erro de conexão ao enviar foto: ${error.message}`;
+          alert(`Erro de conexão ao enviar foto: ${error.message}`);
+          return;
+      }
+  } else {
+      alert("Nenhuma foto selecionada. O cadastro do jovem prosseguirá sem foto (se a foto for opcional).");
+  }
+
+
+  // --- 2. SEGUNDO: CADASTRO/ATUALIZAÇÃO DOS DEMAIS DADOS DO JOVEM ---
+  // Esta requisição não precisa mais enviar a foto, pois ela já foi tratada acima.
   fetch("http://localhost:3000/jovem/cadastrar", {
       method: "POST",
       headers: {
@@ -126,27 +164,19 @@ function cadastrar_jovem() {
           "content-type": "application/json"
       },
       body: JSON.stringify({
-        cep: cep.value,
-        logradouro: logradouro.value,
-        logradouro_nome: logradouro_nome.value,
-        cidade: cidade.value,
-        estado: estado.value,
-        bairro: bairro.value,
-        pais: pais.value,
-        numero: numero.value,
-        complemento: complemento.value, 
+          
 
-        id_usuario: id_usuario.value,
-        cpf_jovem: cpf_jovem.value,
-        valor_jovem: valor_jovem.value,
-        telefone_jovem: telefone_jovem.value,
-        data_nascimento_jovem: data_nascimento_jovem.value,
-        foto_jovem: foto_jovem.value,
-        experiencia_jovem: experiencia_jovem.value,
-        descricao_jovem: descricao_jovem.value,
-        assinante_jovem: assinante_jovem.value,
-        genero_jovem: genero_jovem.value
-        
+          // Dados do jovem (assegure-se que o id_usuario é o ID do jovem)
+          id_usuario: id_usuario, // Este id_usuario pode ser usado para identificar o jovem a ser cadastrado/atualizado
+          cpf_jovem: cpf_jovem,
+          valor_jovem: valor_jovem,
+          telefone_jovem: telefone_jovem,
+          data_nascimento_jovem: data_nascimento_jovem,
+          // foto_jovem: fotoJovemUrl, // Remover ou deixar comentado, pois a foto já foi atualizada pelo upload
+          experiencia_jovem: experiencia_jovem,
+          descricao_jovem: descricao_jovem,
+          assinante_jovem: assinante_jovem,
+          genero_jovem: genero_jovem
       })
   })
   .then(res => res.json())
@@ -156,10 +186,14 @@ function cadastrar_jovem() {
       } else {
           alert(rs.msg);
           document.getElementById("form-jovem").reset();
-          if (rs.msg == "jovem cadastrado") {
+          if (rs.msg === "jovem cadastrado") {
               window.location.href = "pagina_listar_idoso.html";
           }
       }
+  })
+  .catch(error => {
+      console.error("Erro ao cadastrar jovem:", error);
+      document.getElementById("msg_erro_jovem").innerHTML = `Erro ao cadastrar jovem: ${error.message}`;
   });
 }
 
