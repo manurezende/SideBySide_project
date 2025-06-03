@@ -11,7 +11,7 @@
 <body onload="dadosUsuarios()">
 
   <!-- Formulário principal .-->
-  <form id="form-idoso" class="form_idoso" action="#" method="post" onsubmit="return false" enctype="multipart/form-data">
+  <form id="form-idoso" class="form_idoso" action="http://localhost:3000/idoso/cadastrar" method="post" enctype="multipart/form-data">
 
 
     <input type="hidden" id="id_usuario">
@@ -131,7 +131,7 @@
       <div class="form-navigation">
         <label for="" id="msg_erro_idoso"></label>
         <button type="button" class="btn-past" onclick="form_past7()">Voltar</button>
-        <button type="submit" class="btn-submit" onclick="cadastrar_idoso()">Cadastrar</button>
+        <button type="button" class="btn-submit" onclick="cadastrar_idoso()">Cadastrar</button>
       </div>
     </div>
 

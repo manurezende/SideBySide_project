@@ -12,31 +12,36 @@ function calcularIdade(dataNascimento) {
 
 // Função para carregar e exibir os idosos no carrossel
 function carregarIdosos() {
-  fetch("http://localhost:3000/idoso/listar_pos_cadastro")
-    .then(res => res.json())
-    .then(dados => {
-      const container = document.getElementById("carrosselIdosos");
-
-      dados.msg.forEach(idoso => {
-        const idade = calcularIdade(idoso.data_nascimento);
-        const online = Math.random() > 0.5; // Simula se o idoso está online;
-
-        const card = document.createElement("div");
-        card.classList.add("card-idoso");
-        card.innerHTML = `
-          <img src="${idoso.foto_idoso}" alt="Foto de idoso">
-          <h3>${idoso.nome_completo || 'Idoso'}</h3>
-          <p><strong>Idade:</strong> ${idade} anos</p>
-          <p><strong>Status:</strong> <span style="color:${online ? 'green' : 'gray'}">${online ? 'Online' : 'Offline'}</span></p>
-           <a href=perfil_idoso.html?idIdoso=${idoso.id_idoso}>Ver perfil</a>
-        `;
-        container.appendChild(card);
-      });
-    })
-    .catch(error => {
-      console.error("Erro ao carregar idosos:", error);
-    });
-}
+    fetch("http://localhost:3000/idoso/listar_pos_cadastro")
+      .then(res => res.json())
+      .then(dados => {
+        const container = document.getElementById("carrosselIdosos");
+  
+        dados.msg.forEach(idoso => {
+              // Seus console.log estão ok aqui
+  
+              const idade = calcularIdade(idoso.data_nascimento);
+              const online = Math.random() > 0.5; // Simula se o idoso está online;
+  
+              // Mantenha esta linha para montar a URL completa
+              const fotoUrlCompleta = `http://localhost:3000${idoso.foto_idoso}`;
+  
+              const card = document.createElement("div");
+              card.classList.add("card-idoso");
+              card.innerHTML = `
+                  <img src="${fotoUrlCompleta}" alt="Foto de idoso" onerror="this.onerror=null;this.src='./img/placeholder.jpg';" class="card-foto">
+                  <h3>${idoso.nome_completo || 'Idoso'}</h3>
+                  <p><strong>Idade:</strong> ${idade} anos</p>
+                  <p><strong>Status:</strong> <span style="color:${online ? 'green' : 'gray'}">${online ? 'Online' : 'Offline'}</span></p>
+                  <a href="perfil_idoso.html?idIdoso=${idoso.id_idoso}">Ver perfil</a>
+              `;
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Erro ao carregar idosos:", error);
+      });
+  }
 
 
 

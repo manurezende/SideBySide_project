@@ -654,75 +654,156 @@ function logar_usuario(){
 }
 
 
-function cadastrar_idoso() {
-  // Campos de endereço .
-  const cep = document.getElementById("cep");
-  const logradouro = document.getElementById("logradouro");
-  const logradouro_nome = document.getElementById("logradouro_nome");
-  const cidade = document.getElementById("cidade");
-  const estado = document.getElementById("estado");
-  const bairro = document.getElementById("bairro");
-  const pais = document.getElementById("pais");
-  const complemento = document.getElementById("complemento");
-  const numero = document.getElementById("numero");
+// A função DEVE receber o objeto 'event' para usar event.preventDefault()
+// A função DEVE receber o objeto 'event' para usar event.preventDefault()
+async function cadastrar_idoso() {
+
+  // 1. Coleta de dados dos campos de endereço (valores .value)
+  const cep = document.getElementById("cep").value;
+  const logradouro = document.getElementById("logradouro").value;
+  const logradouro_nome = document.getElementById("logradouro_nome").value;
+  const cidade = document.getElementById("cidade").value;
+  const estado = document.getElementById("estado").value;
+  const bairro = document.getElementById("bairro").value;
+  const pais = document.getElementById("pais").value;
+  const complemento = document.getElementById("complemento").value;
+  const numero = document.getElementById("numero").value;
+
+  // 2. Coleta de dados dos campos específicos do IDOSO (valores .value)
+  const id_usuario = document.getElementById("id_usuario").value; // ID do usuário associado
+  const cpf = document.getElementById("cpf_idoso").value; // CPF do idoso
+  const data_nascimento = document.getElementById("data_nascimento_idoso").value; // Data de nascimento do idoso
+  const tipo_comorbidade = document.getElementById("tipo_comorbidade").value; // Tipo de comorbidade (campo de texto)
+  const descricao = document.getElementById("descricao_idoso").value; // Descrição do idoso
+  const telefone_idoso = document.getElementById("telefone_celular_idoso").value; // Telefone do idoso
+
+  // 3. Coleta do arquivo de foto
+  const foto_idoso_input = document.getElementById("foto_idoso"); // Referência ao INPUT do tipo file
+
+  // 4. Coleta de dados para checkboxes e radio buttons/selects (adapte conforme seu HTML)
+
+  // Checkbox para assinante_idoso
+  const assinante_idoso_checked = document.getElementById("assinante_idoso").checked;
+  
+  // Radio buttons para comorbidade (exemplo, ajuste se for select ou outro tipo)
+  let comorbidade_selecionada = '';
+  const comorbidade_elements = document.getElementsByName("comorbidade"); // "comorbidade" é o atributo name
+  for (const element of comorbidade_elements) {
+      if (element.type === 'radio' && element.checked) {
+          comorbidade_selecionada = element.value;
+          break;
+      }
+      // Se for um <select> com id="comorbidade", você usaria:
+      // const comorbidade_select = document.getElementById("comorbidade");
+      // comorbidade_selecionada = comorbidade_select.value;
+  }
+
+  // Radio buttons ou select para genero_idoso (exemplo, ajuste conforme seu HTML)
+  let genero_selecionado = '';
+  const genero_idoso_elements = document.getElementsByName("genero_idoso"); // "genero_idoso" é o atributo name
+  for (const element of genero_idoso_elements) {
+      if (element.type === 'radio' && element.checked) {
+          genero_selecionado = element.value;
+          break;
+      } else if (element.tagName === 'SELECT') { // Se for um <select>
+          genero_selecionado = element.value;
+          break;
+      }
+  }
 
 
-  // Campos do jovem
-  const id_usuario = document.getElementById("id_usuario");
-  const foto_idoso = document.getElementById("foto_idoso");
-  const assinante_idoso = document.getElementById("assinante_idoso");
-  const cpf = document.getElementById("cpf_idoso");
-  const data_nascimento = document.getElementById("data_nascimento_idoso");
-  const comorbidade =document.getElementsByName("comorbidade")[0]
-  const tipo_comorbidade = document.getElementById("tipo_comorbidade");
-  const descricao = document.getElementById("descricao_idoso");
-  const telefone_idoso = document.getElementById("telefone_celular_idoso");
-  const genero =document.getElementsByName("genero_idoso")[0]
+  // --- CRIAÇÃO DO FormData ---
+  const formData = new FormData();
 
-  // Envio para o backend
-  fetch("http://localhost:3000/idoso/cadastrar", {
-      method: "POST",
-      headers: {
-          "accept": "application/json",
-          "content-type": "application/json"
-      },
-      body: JSON.stringify({
-        cep: cep.value,
-        logradouro: logradouro.value,
-        logradouro_nome: logradouro_nome.value,
-        cidade: cidade.value,
-        estado: estado.value,
-        bairro: bairro.value,
-        pais: pais.value,
-        numero: numero.value,
-        complemento: complemento.value,      
-        id_usuario: id_usuario.value,
-        foto_idoso: foto_idoso.value,
-        assinante_idoso:assinante_idoso.value,
-        cpf:cpf.value,
-        data_nascimento: data_nascimento.value,
-        comorbidade: comorbidade.value,
-        tipo_comorbidade: tipo_comorbidade.value,
-        descricao: descricao.value,
-        telefone_idoso: telefone_idoso.value,
-        genero: genero.value
-        
-      })
-  })
-  .then(res => res.json())
-  .then(rs => {
+  // 5. Adicione a foto ao FormData - IMPORTANTE!
+  if (foto_idoso_input.files.length > 0) {
+      formData.append('foto_idoso', foto_idoso_input.files[0]); // 'foto_idoso' deve corresponder ao nome do campo no Multer no backend
+  } else {
+      alert('Por favor, selecione uma foto para o idoso.');
+      return; // Interrompe a função se nenhuma foto for selecionada
+  }
+
+  // 6. Adicione os outros campos de texto ao FormData
+  // Campos de endereço
+  formData.append('cep', cep);
+  formData.append('logradouro', logradouro);
+  formData.append('logradouro_nome', logradouro_nome);
+  formData.append('cidade', cidade);
+  formData.append('estado', estado);
+  formData.append('bairro', bairro);
+  formData.append('pais', pais);
+  formData.append('numero', numero);
+  formData.append('complemento', complemento);
+
+  // Campos específicos do idoso
+  formData.append('id_usuario', id_usuario);
+  formData.append('cpf', cpf); // Nome do campo 'cpf' no backend
+  formData.append('data_nascimento', data_nascimento); // Nome do campo 'data_nascimento' no backend
+  formData.append('comorbidade', comorbidade_selecionada);
+  formData.append('tipo_comorbidade', tipo_comorbidade);
+  formData.append('descricao', descricao);
+  formData.append('telefone_idoso', telefone_idoso);
+  
+  // 7. Converta booleanos para 1 ou 0 se as colunas no DB são BOOLEAN/TINYINT(1)
+  // Se a coluna 'assinante_idoso' no DB for BOOLEAN:
+  formData.append('assinante_idoso', assinante_idoso_checked ? 1 : 0); 
+  // Se a coluna 'genero' no DB for BOOLEAN:
+  formData.append('genero', genero_selecionado ? 1 : 0); 
+  // Se a coluna 'genero' no DB for VARCHAR ou ENUM, use:
+  // formData.append('genero', genero_selecionado);
+
+  // 8. Envio para o backend;
+  try {
+      const response = await fetch("http://localhost:3000/idoso/cadastrar", {
+          method: "POST",
+          // IMPORTANTE: NÃO defina o 'Content-Type' manualmente para 'multipart/form-data'.
+          // O navegador faz isso automaticamente e adiciona o 'boundary' necessário ao usar FormData.
+          body: formData // Envie o objeto FormData diretamente
+      });
+
+      // Verifica se a resposta foi bem-sucedida (status 2xx) antes de tentar parsear como JSON
+      if (!response.ok) {
+          // Se não for sucesso, tente ler a resposta como texto ou JSON para depurar
+          const errorText = await response.text();
+          console.error('Erro na resposta do servidor (HTTP status diferente de 2xx):', response.status, errorText);
+          throw new Error(`Erro do servidor: ${response.status} - ${errorText.substring(0, 100)}...`); // Lança um erro para o catch
+      }
+
+      const rs = await response.json(); // Tenta parsear a resposta como JSON
+
       if (rs.erro) {
-          document.getElementById("msg_erro_idoso").innerHTML = rs.erro;
+          const msgErroIdoso = document.getElementById("msg_erro_idoso");
+          if (msgErroIdoso) {
+              msgErroIdoso.innerHTML = rs.erro;
+          } else {
+              console.error("Elemento 'msg_erro_idoso' não encontrado.", rs.erro);
+              alert(`Erro: ${rs.erro}`);
+          }
       } else {
           alert(rs.msg);
-          document.getElementById("form-idoso").reset();
-          if (rs.msg === "idoso cadastrado") {
-              window.location.href = "pagina_listar_jovens.html";
+          const formIdoso = document.getElementById("form-idoso");
+          if (formIdoso) {
+              formIdoso.reset();
+          } else {
+              console.warn("Elemento 'form-idoso' não encontrado para resetar.");
+          }
+          
+          // Ajuste a mensagem para coincidir com o backend ("Idoso cadastrado com sucesso!")
+          if (rs.msg === "Idoso cadastrado com sucesso!") { 
+              window.location.href = "pagina_listar_jovens.html"; // Ou para a página de listar idosos
           }
       }
-  });
+  } catch (error) {
+      console.error('Erro na requisição (rede, servidor ou parse do JSON):', error);
+      // Exiba a mensagem de erro detalhada no elemento HTML
+      const msgErroIdoso = document.getElementById("msg_erro_idoso");
+      if (msgErroIdoso) {
+          msgErroIdoso.innerHTML = `Ocorreu um erro: ${error.message || error}`;
+      } else {
+          alert(`Ocorreu um erro ao tentar cadastrar: ${error.message || error}. Verifique o console.`);
+      }
+  }
 }
-
 
 ////////////////////    modal    ///////////////
 
