@@ -92,109 +92,132 @@ socket.addEventListener("open", () => {
   }
 });
 }
-async function cadastrar_jovem() {
- 
+
+function cadastrar_jovem() {
+    // Campos de endereço .
+    const cep = document.getElementById("cep").value;
+    const logradouro = document.getElementById("logradouro").value;
+    const logradouro_nome = document.getElementById("logradouro_nome").value;
+    const cidade = document.getElementById("cidade").value;
+    const estado = document.getElementById("estado").value;
+    const bairro = document.getElementById("bairro").value;
+    const pais = document.getElementById("pais").value;
+    const complemento = document.getElementById("complemento").value;
+    const numero = document.getElementById("numero").value;
+
+    // Campos do jovem
+    const id_usuario = document.getElementById("id_usuario").value;
+    const cpf_jovem = document.getElementById("cpf_jovem").value;
+    // Para radio buttons ou checkboxes, você precisa pegar o valor do item selecionado
+    // ou se é um checkbox, se está marcado.
+    // Exemplo para radio:
+    let valor_jovem_selecionado = '';
+    const valor_jovem_radios = document.getElementsByName("valor_jovem");
+    for (const radio of valor_jovem_radios) {
+        if (radio.checked) {
+            valor_jovem_selecionado = radio.value;
+            break;
+        }
+    }
+    const telefone_jovem = document.getElementById("telefone_jovem").value;
+    const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value;
+    const foto_jovem_input = document.getElementById("foto_jovem"); // Referência ao INPUT do tipo file
+    // Para radio buttons ou checkboxes, você precisa pegar o valor do item selecionado
+    let experiencia_jovem_selecionada = '';
+    const experiencia_jovem_radios = document.getElementsByName("experiencia_jovem");
+    for (const radio of experiencia_jovem_radios) {
+        if (radio.checked) {
+            experiencia_jovem_selecionada = radio.value;
+            break;
+        }
+    }
+    const descricao_jovem = document.getElementById("descricao_jovem").value;
+    // Para checkbox: use .checked para boolean
+    const assinante_jovem = document.getElementById("assinante_jovem").checked;
+    
+    // Para gênero, se for um radio ou select, pegue o valor selecionado
+    let genero_jovem_selecionado = '';
+    const genero_jovem_elements = document.getElementsByName("genero_jovem");
+    for (const element of genero_jovem_elements) {
+        if (element.type === 'radio' && element.checked) {
+            genero_jovem_selecionado = element.value;
+            break;
+        } else if (element.tagName === 'SELECT') { // Se for um <select>
+            genero_jovem_selecionado = element.value;
+            break;
+        }
+    }
 
 
-  // Campos do jovem (certifique-se que o id_usuario no HTML é o ID do jovem para esta operação)
-  // Se id_usuario no HTML representa o ID do jovem, pegue-o aqui.
-  const id_usuario = document.getElementById("id_usuario") ? document.getElementById("id_usuario").value : null;
+    // --- CRIAÇÃO DO FormData ---
+    const formData = new FormData();
 
-  const cpf_jovem = document.getElementById("cpf_jovem").value;
-  const valor_jovem_radio = document.querySelector('input[name="valor_jovem"]:checked');
-  const valor_jovem = valor_jovem_radio ? valor_jovem_radio.value : '';
-  const telefone_jovem = document.getElementById("telefone_jovem").value;
-  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value;
-  const inputFotoJovem = document.getElementById("foto_jovem"); // O input do tipo file
-  const arquivoFoto = inputFotoJovem.files[0];
+    // Adicione a foto - IMPORTANTE!
+    if (foto_jovem_input.files.length > 0) {
+        formData.append('foto_jovem', foto_jovem_input.files[0]); // 'foto_jovem' deve corresponder ao nome do campo no Multer no backend
+    } else {
+        alert('Por favor, selecione uma foto para o jovem.');
+        return; // Interrompe a função se nenhuma foto for selecionada
+    }
 
-  const experiencia_jovem_radio = document.querySelector('input[name="experiencia_jovem"]:checked');
-  const experiencia_jovem = experiencia_jovem_radio ? experiencia_jovem_radio.value : '';
-  const descricao_jovem = document.getElementById("descricao_jovem").value;
-  const assinante_jovem = document.getElementById("assinante_jovem").checked;
-  const genero_jovem_radio = document.querySelector('input[name="genero_jovem"]:checked');
-  const genero_jovem = genero_jovem_radio ? genero_jovem_radio.value : '';
+    // Adicione os outros campos de texto
+    formData.append('cep', cep);
+    formData.append('logradouro', logradouro);
+    formData.append('logradouro_nome', logradouro_nome);
+    formData.append('cidade', cidade);
+    formData.append('estado', estado);
+    formData.append('bairro', bairro);
+    formData.append('pais', pais);
+    formData.append('numero', numero);
+    formData.append('complemento', complemento);
 
+    formData.append('id_usuario', id_usuario);
+    formData.append('cpf_jovem', cpf_jovem);
+    formData.append('valor_jovem', valor_jovem_selecionado); // Use o valor selecionado
+    formData.append('telefone_jovem', telefone_jovem);
+    formData.append('data_nascimento_jovem', data_nascimento_jovem);
+    formData.append('experiencia_jovem', experiencia_jovem_selecionada); // Use o valor selecionado
+    formData.append('descricao_jovem', descricao_jovem);
+    formData.append('assinante_jovem', assinante_jovem); // É boolean, será convertido para "true" ou "false" string
+    formData.append('genero_jovem', genero_jovem_selecionado); // Use o valor selecionado
 
-  // --- 1. PRIMEIRO: UPLOAD DA FOTO (SE HOUVER) ---
-  if (arquivoFoto) {
-      if (!id_usuario) { // Verifica se o ID do jovem está disponível antes de tentar o upload da foto
-          document.getElementById("msg_erro_jovem").innerHTML = "Erro: ID do jovem não disponível para upload da foto.";
-          alert("Erro: ID do jovem não disponível para upload da foto. Certifique-se de que o campo 'id_usuario' está preenchido.");
-          return; // Impede o envio se o ID for nulo
-      }
-
-      const formData = new FormData();
-      formData.append('foto_jovem', arquivoFoto);
-      //formData.append('id_jovem', id_usuario); // <<<< ADICIONADO: Enviando o ID do jovem junto com a foto
-
-      try {
-          const uploadResponse = await fetch("http://localhost:3000/upload/foto-jovem", {
-              method: "POST",
-              body: formData,
-          });
-
-          if (!uploadResponse.ok) {
-              const errorText = await uploadResponse.text();
-              console.error("Erro no upload da foto:", errorText);
-              document.getElementById("msg_erro_jovem").innerHTML = `Erro ao fazer upload da foto: ${errorText}`;
-              alert(`Erro ao fazer upload da foto: ${errorText}`);
-              return;
-          }
-
-          alert("Foto enviada e associada ao jovem com sucesso!");
-
-      } catch (error) {
-          console.error("Erro de rede ou outro erro no upload da foto:", error);
-          document.getElementById("msg_erro_jovem").innerHTML = `Erro de conexão ao enviar foto: ${error.message}`;
-          alert(`Erro de conexão ao enviar foto: ${error.message}`);
-          return;
-      }
-  } else {
-      alert("Nenhuma foto selecionada. O cadastro do jovem prosseguirá sem foto (se a foto for opcional).");
-  }
-
-
-  // --- 2. SEGUNDO: CADASTRO/ATUALIZAÇÃO DOS DEMAIS DADOS DO JOVEM ---
-  // Esta requisição não precisa mais enviar a foto, pois ela já foi tratada acima.
-  fetch("http://localhost:3000/jovem/cadastrar", {
-      method: "POST",
-      headers: {
-          "accept": "application/json",
-          "content-type": "application/json"
-      },
-      body: JSON.stringify({
-          
-
-          // Dados do jovem (assegure-se que o id_usuario é o ID do jovem)
-          id_usuario: id_usuario, // Este id_usuario pode ser usado para identificar o jovem a ser cadastrado/atualizado
-          cpf_jovem: cpf_jovem,
-          valor_jovem: valor_jovem,
-          telefone_jovem: telefone_jovem,
-          data_nascimento_jovem: data_nascimento_jovem,
-          // foto_jovem: fotoJovemUrl, // Remover ou deixar comentado, pois a foto já foi atualizada pelo upload
-          experiencia_jovem: experiencia_jovem,
-          descricao_jovem: descricao_jovem,
-          assinante_jovem: assinante_jovem,
-          genero_jovem: genero_jovem
-      })
-  })
-  .then(res => res.json())
-  .then(rs => {
-      if (rs.erro) {
-          document.getElementById("msg_erro_jovem").innerHTML = rs.erro;
-      } else {
-          alert(rs.msg);
-          document.getElementById("form-jovem").reset();
-          if (rs.msg === "jovem cadastrado") {
-              window.location.href = "pagina_listar_idoso.html";
-          }
-      }
-  })
-  .catch(error => {
-      console.error("Erro ao cadastrar jovem:", error);
-      document.getElementById("msg_erro_jovem").innerHTML = `Erro ao cadastrar jovem: ${error.message}`;
-  });
+    // Envio para o backend;
+    fetch("http://localhost:3000/jovem/cadastrar", {
+            method: "POST",
+            // IMPORTANTE: NÃO defina o 'Content-Type' manualmente para 'multipart/form-data'.
+            // O navegador faz isso automaticamente e adiciona o 'boundary' necessário ao usar FormData.
+            // Remova os 'headers' de 'accept' e 'content-type' se for só 'FormData'
+            body: formData // Envie o objeto FormData diretamente
+        })
+        .then(res => res.json())
+        .then(rs => {
+            if (rs.erro) {
+                // É bom verificar se o elemento existe antes de tentar manipulá-lo
+                const msgErroJovem = document.getElementById("msg_erro_jovem");
+                if (msgErroJovem) {
+                    msgErroJovem.innerHTML = rs.erro;
+                } else {
+                    console.error("Elemento 'msg_erro_jovem' não encontrado.", rs.erro);
+                    alert(`Erro: ${rs.erro}`);
+                }
+            } else {
+                alert(rs.msg);
+                const formJovem = document.getElementById("form-jovem");
+                if (formJovem) {
+                    formJovem.reset();
+                } else {
+                     console.warn("Elemento 'form-jovem' não encontrado para resetar.");
+                }
+               
+                if (rs.msg === "Jovem cadastrado com sucesso!") { // Ajuste a mensagem para coincidir com o backend
+                    window.location.href = "pagina_listar_idoso.html";
+                }
+            }
+        })
+        .catch(error => {
+            console.error('Erro na requisição ou no parse do JSON:', error);
+            alert('Ocorreu um erro ao tentar cadastrar. Verifique o console para mais detalhes.');
+        });
 }
 
 

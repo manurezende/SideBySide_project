@@ -12,7 +12,7 @@
 <body onload="dadosUsuarios()">
  
   <!-- Formulário principal. -->
-  <form id="form-jovem" class="form_jovem" action="http://127.0.0.1:3000/upload/foto-jovem" method="post" enctype="multipart/form-data">
+  <form id="form-jovem" class="form_jovem" action="http://localhost:3000/jovem/cadastrar" method="post" enctype="multipart/form-data">
  
     <!-- Barra de progresso no topo. -->
     <div class="progress-container">
@@ -235,8 +235,8 @@
       <label class="erro-msg" id="erro-etapa-11"></label>
       <div class="form-navigation">
         <button type="button" class="btn-past" onclick="form_past10_jovem()">Voltar</button>
-        <button type="submit" class="btn-submit" onclick="cadastrar_jovem()">Cadastrar</button>
-      </div>
+        <button type="button" class="btn-submit" onclick="cadastrar_jovem()">Cadastrar</button>      
+    </div>
     </div>
  
   </form>
