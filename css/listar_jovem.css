@@ -1,66 +1,307 @@
+/* Estilos Globais e Fundo Ondulado (Baseado em Capturar.jpg) */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif; /* Fonte mais comum */
+  background-color: #f0f8ff; /* Um azul bem clarinho para o fundo base */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23BE93D4" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,149,768,203,864,213.3C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 280px; /* Altura da onda ajustada */
+  min-height: 100vh; /* Garante que a onda aparece no rodapé */
+}
+
+/* Estilos do Cabeçalho (Unificados de header.css) */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Sombra mais pronunciada */
+  border-radius: 0 0 15px 15px; /* Bordas arredondadas na parte inferior */
+}
+
+.logo {
+  font-size: 1.8rem; /* Um pouco maior */
+  color: #5f28d0; /* Roxo principal */
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Mais espaçamento entre os links */
+  position: relative;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-size: 1rem; /* Tamanho padrão */
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #5f28d0; /* Roxo principal ao passar o mouse */
+}
+
+/* Badge (se for usado) */
+.badge {
+  background-color: #d2268f; /* Cor rosa/magenta */
+  color: white;
+  font-size: 0.7rem;
+  border-radius: 50%;
+  padding: 0.2rem 0.5rem;
+  margin-left: 0.2rem;
+}
+
+.user-menu {
+  position: relative;
+}
+
+.avatar {
+  width: 42px; /* Avatar um pouco maior */
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid #5f28d0; /* Borda roxa no avatar */
+  transition: border-color 0.3s ease;
+}
+
+.avatar:hover {
+  border-color: #3b22a0; /* Roxo mais escuro no hover */
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 55px; /* Ajuste a posição para baixo do avatar */
+  right: 0;
+  background-color: white;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Sombra mais forte */
+  border-radius: 12px; /* Mais arredondado */
+  width: 250px;
+  overflow: hidden;
+  z-index: 1000;
+  opacity: 0; /* Começa invisível para a transição */
+  transform: translateY(-10px); /* Começa um pouco acima */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown.active {
+  display: block;
+  opacity: 1; /* Fica visível */
+  transform: translateY(0); /* Desliza para a posição normal */
+}
+
+.dropdown a {
+  display: block;
+  padding: 1rem;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.dropdown a:last-child {
+  border-bottom: none; /* Remove a borda do último item */
+}
+
+.dropdown a:hover {
+  background-color: #f5f5f5;
+  color: #5f28d0;
+}
+
+.premium {
+  background-color: #f2e6ff; /* Fundo mais claro para premium */
+  padding: 1rem;
+  display: flex; /* Para alinhar o conteúdo interno */
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid #eee; /* Borda superior para separar */
+  border-bottom-left-radius: 12px; /* Arredondar as bordas de baixo */
+  border-bottom-right-radius: 12px;
+}
+
+.premium strong {
+  color: #5f28d0;
+  display: block;
+  font-size: 1rem;
+}
+
+.premium p {
+  font-size: 0.85rem;
+  color: #666;
+  margin: 0; /* Remove margem padrão do parágrafo */
+}
+.premium a {
+  display: inline; /* Para o link não ocupar toda a linha dentro do premium */
+  padding: 0; /* Remove padding que pode ser herdado */
+  color: #5f28d0; /* Garante a cor do link */
+  text-decoration: underline;
+  font-weight: normal; /* Remove negrito se for o caso */
+  border-bottom: none; /* Garante que não tenha borda inferior */
+}
+.premium a:hover {
+  background-color: transparent; /* Não muda o fundo no hover */
+  color: #3b22a0; /* Roxo mais escuro para o link premium no hover */
+}
 
 
+/* Estilos para a Seção do Carrossel */
+.carrossel-jovens {
+  padding: 2rem 1rem;
+  margin-top: 3rem; /* Espaço do header */
+  text-align: center;
+}
+
+.carrossel-jovens h2 {
+  color: #5f28d0; /* Cor do título */
+  font-size: 2rem;
+  margin-bottom: 2.5rem; /* Mais espaço abaixo do título */
+  font-weight: bold;
+}
 
 .carrossel-wrapper {
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
-  padding: 1rem;
+  justify-content: center; /* Centraliza o carrossel na página */
+  overflow: hidden; /* Esconde o que está fora do container */
+  padding: 0 2rem; /* Padding horizontal para os botões ficarem um pouco para dentro */
 }
 
 .carrossel-container {
   display: flex;
-  gap: 16px;
+  gap: 25px; /* Aumenta o espaço entre os cards */
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 1rem 0;
+  padding: 1.5rem 0; /* Mais padding vertical */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  width: 100%; /* Garante que o container ocupe a largura disponível */
+  max-width: 1200px; /* Limita a largura máxima para não ficar muito grande em telas largas */
+}
+
+.carrossel-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .card-jovem {
-  flex: 0 0 250px;
+  flex: 0 0 260px; /* Aumenta a largura do card, mantendo o aspecto da imagem */
   background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  padding: 1rem;
+  border-radius: 20px; /* Mais arredondado (como na imagem) */
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15); /* Sombra mais forte e difusa */
+  padding: 1.8rem; /* Mais padding interno */
   text-align: center;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #f0f0f0; /* Borda sutil */
+  position: relative; /* Para os elementos internos, se houver */
 }
+
+.card-jovem:hover {
+  transform: translateY(-10px); /* Efeito de elevação mais pronunciado */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2); /* Sombra ainda maior no hover */
+}
+
 .card-jovem img {
   width: 100%;
-  height: 180px;
+  height: 200px; /* Altura da imagem */
   object-fit: cover;
-  border-radius: 15px;
-  margin-bottom: 0.5rem;
+  border-radius: 18px; /* Arredondamento da imagem, um pouco menor que o card */
+  margin-bottom: 1.2rem; /* Mais margem inferior */
+  border: 3px solid #f8f8f8; /* Borda suave na imagem */
 }
+
 .card-jovem h3 {
-  margin: 0.5rem 0;
+  margin: 0.75rem 0 0.5rem;
   color: #333;
+  font-size: 1.4rem; /* Título maior */
+  font-weight: 600;
 }
+
 .card-jovem p {
-  color: #555;
-  font-size: 14px;
+  color: #666;
+  font-size: 1rem; /* Texto maior */
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
 }
+
+.card-jovem p strong {
+  color: #5f28d0; /* Destaca a informação "Idade" */
+}
+
 .card-jovem a {
   display: inline-block;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   text-decoration: none;
-  background-color: #5432cf;
+  background-color: #5f28d0; /* Roxo principal */
   color: #fff;
-  padding: 5px;
-  border-radius: 4px;
+  padding: 0.8rem 1.6rem; /* Padding do botão maior */
+  border-radius: 8px; /* Mais arredondado */
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.card-jovem a:hover {
+  background-color: #3b22a0; /* Roxo mais escuro no hover */
+  transform: translateY(-2px);
 }
 
 .carrossel-btn {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.9); /* Fundo quase opaco */
   border: none;
-  border-radius: 70%;
-  font-size: 2rem;
+  border-radius: 50%;
+  font-size: 2.8rem; /* Ícone bem maior */
   cursor: pointer;
-  padding: 0 1rem;
-  transition: 0.2s;
-  z-index: 1;
+  padding: 0.8rem 1.2rem; /* Mais padding para o círculo ficar maior */
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  z-index: 5; /* Garante que os botões fiquem acima dos cards */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra para os botões */
+  color: #5f28d0; /* Cor do ícone roxo */
+  position: absolute; /* Posiciona os botões de forma absoluta em relação ao wrapper */
+  top: 50%;
+  transform: translateY(-50%);
 }
+
+.carrossel-btn.esquerda {
+  left: 0;
+}
+
+.carrossel-btn.direita {
+  right: 0;
+}
+
 .carrossel-btn:hover {
-  color: #007bff;
+  background-color: #5f28d0; /* Fundo roxo no hover */
+  color: #fff; /* Ícone branco no hover */
+  transform: translateY(-50%) scale(1.05); /* Pequeno zoom no hover */
+}
+
+/* Opcional: Estilos para elementos flutuantes na imagem de exemplo (estrelas, corações) */
+/* Isso exigiria que você adicionasse elementos HTML específicos nos cards ou na página */
+/* .floating-element {
+  position: absolute;
+  opacity: 0.7;
+  pointer-events: none;
+} */
+/* .floating-star { top: 10%; right: 5%; width: 30px; } */
+/* .floating-heart { bottom: 20%; left: 10%; width: 40px; } */
+
+
+/* Estilos do QR Code (manter se necessário, mas não é parte do design principal da listagem) */
+#qrcode-container {
+  display: none; /* Esconde por padrão */
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1rem;
+  border: 1px dashed #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+#qrcode {
+  margin: 10px auto;
 }

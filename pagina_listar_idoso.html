@@ -1,67 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <title>SIDEBYSIDE</title>
-  <link rel="stylesheet" href="./css/header.css" />
-  <link rel="stylesheet" href="./css/listar_idoso.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIDEBYSIDE - Idosos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./css/listar_idoso.css">
 </head>
-<body>
-  <header>
-    <div class="logo">SIDEBYSIDE</div>
-     <a href="pagina_listar_idoso.html"></a>
-    <nav>
-      <a href="pagina_listar_idoso.html">Idosos</a>
-      <a href="./pagina_salvo_do_jovem.html">Salvo</a>
-      <a href="./mensagens_do_jovem.html">Mensagens </a>
-      <div class="user-menu">
-        <!-- <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" /> -->
-        <div class="dropdown" id="dropdown">
-          <a href="editar_jovem.html">Meu perfil</a>
-          <a href="#">Ajustes da conta</a>
-          <div class="premium">
-            <div>
-              <strong>Obter Premium</strong>
-              <a href="premium_do_jovem.html"><p>Converse com quantos Idosos você quiser.</p></a>
-              
+<body onload="carregarIdosos()">
+    <header>
+        <div class="logo">SIDEBYSIDE</div>
+        <nav>
+            <a href="pagina_listar_idoso.html">Idosos</a>
+            <a href="./pagina_salvo_do_jovem.html">Salvos</a>
+            <a href="./mensagens_do_jovem.html">Mensagens</a>
+            <div class="user-menu">
+                <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+                <div class="dropdown" id="dropdown">
+                    <a href="editar_jovem.html">Meu perfil</a>
+                    <a href="#">Ajustes da conta</a>
+                    <div class="premium">
+                        <div>
+                            <strong>Obter Premium</strong>
+                            <a href="premium_do_jovem.html"><p>Converse com quantos Idosos você quiser.</p></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-           
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
-  <main>
-  <section class="carrossel-idosos">
-      <h2>Últimos Idosos cadastrados</h2>
-    
-      <div class="carrossel-wrapper">
-        <button class="carrossel-btn esquerda" onclick="scrollCarrossel(-1)">❮</button>
-        
-        <div class="carrossel-container" id="carrosselIdosos">
-          <!-- Os cards dos jovens serão inseridos aqui via JS -->
-        </div>
-    
-        <button class="carrossel-btn direita" onclick="scrollCarrossel(1)">❯</button>
-      </div>
-    </section>
-</main>
-<script src="./js/pagina_listar_idosos.js"></script>
+        </nav>
+    </header>
+    <main>
+        <section class="carrossel-idosos">
+            <h2>Últimos idosos cadastrados</h2>
 
+            <div class="carrossel-wrapper">
+                <button class="carrossel-btn esquerda" onclick="scrollCarrossel(-1)">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
 
-  <script>
-    function toggleDropdown() {
-      const menu = document.getElementById("dropdown");
-      menu.classList.toggle("active");
-    }
+                <div class="carrossel-container" id="carrosselIdosos">
+                    </div>
 
-    window.onclick = function(e) {
-      if (!e.target.matches('.avatar')) {
-        const dropdown = document.getElementById("dropdown");
-        dropdown.classList.remove("active");
-      }
-    }
-  </script>
+                <button class="carrossel-btn direita" onclick="scrollCarrossel(1)">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="./js/pagina_listar_idosos.js"></script>
+
+    <script>
+        function toggleDropdown() {
+            const menu = document.getElementById("dropdown");
+            menu.classList.toggle("active");
+        }
+
+        window.onclick = function(e) {
+            if (!e.target.matches('.avatar')) {
+                const dropdown = document.getElementById("dropdown");
+                if (dropdown.classList.contains("active")) {
+                    dropdown.classList.remove("active");
+                }
+            }
+        }
+    </script>
 </body>
 </html>
-<!--  -->

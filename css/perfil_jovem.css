@@ -1,64 +1,204 @@
+/* Estilos Globais e Fundo Ondulado */
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f8fc;
   margin: 0;
-  padding: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background-color: #f0f8ff; /* Azul bem clarinho para o fundo base */
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23BE93D4" fill-opacity="1" d="M0,160L48,176C96,192,192,224,288,213.3C384,203,480,149,576,149.3C672,192,768,203,864,213.3C960,224,1056,192,1152,170.7C1248,149,1344,139,1392,133.3L1440,128L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 280px;
+  min-height: 100vh;
 }
 
+/* Estilos do Cabeçalho */
 header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background-color: white;
   padding: 1rem 2rem;
-  border-bottom: 1px solid #ddd;
-  font-weight: bold;
-  color: #5f28d0;
-  font-size: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-radius: 0 0 15px 15px;
 }
 
+header .logo {
+  font-size: 1.8rem;
+  color: #5f28d0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+header .logo a {
+  text-decoration: none;
+  color: inherit; /* Herda a cor do .logo */
+}
+
+
+/* Estilos do Container Principal */
 .container {
-  max-width: 600px;
-  margin: 2rem auto;
+  max-width: 400px; /* Aumenta a largura máxima do container */
+  margin: 3rem auto; /* Mais margem superior/inferior */
   background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  padding: 3rem; /* Mais padding interno */
+  border-radius: 18px; /* Mais arredondado */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra mais forte e difusa */
   text-align: center;
 }
 
-.perfil-box img {
-  width: 120px;
-  height: 120px;
+/* Estilos da Box de Perfil */
+.perfil-box {
+  display: flex;
+  flex-direction: column; /* Coloca a imagem e info em coluna */
+  align-items: center;
+  gap: 1.5rem; /* Espaçamento entre os blocos de conteúdo */
+  color: #333;
+}
+
+.perfil-header {
+  display: flex;
+  flex-direction: column; /* Em telas menores, foto e nome ficam empilhados */
+  align-items: center;
+  gap: 1.5rem;
+  width: 100%; /* Ocupa a largura total */
+}
+
+@media (min-width: 768px) {
+  .perfil-header {
+      flex-direction: row; /* Em telas maiores, foto e nome ficam lado a lado */
+      justify-content: center; /* Centraliza horizontalmente */
+      text-align: left; /* Alinha o texto à esquerda */
+  }
+  .perfil-header .perfil-info-basica {
+      text-align: left; /* Garante alinhamento do texto à esquerda */
+  }
+}
+
+
+.perfil-img {
+  width: 150px; /* Tamanho da imagem de perfil maior */
+  height: 150px;
   object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1rem;
+  border-radius: 50%; /* Circular */
+  border: 5px solid #5f28d0; /* Borda roxa vibrante */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* Sombra na imagem */
+  transition: transform 0.3s ease;
 }
 
-.perfil-box h2 {
-  margin: 0.5rem 0;
+.perfil-img:hover {
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
 }
 
-.perfil-box p {
-  color: #555;
-  margin: 0.2rem 0;
+.perfil-info-basica h2 {
+  margin: 0.5rem 0 0.3rem;
+  font-size: 2.2rem; /* Nome maior */
+  color: #5f28d0; /* Cor do nome principal */
 }
 
-.botoes {
+.perfil-info-basica .idade-status {
+  font-size: 1.1rem;
+  color: #666;
+  margin: 0;
+}
+
+.perfil-info-basica .status {
+  font-weight: bold;
+}
+
+.perfil-info-basica .status.online {
+  color: #28a745; /* Verde para online */
+}
+
+.perfil-info-basica .status.offline {
+  color: #dc3545; /* Vermelho para offline */
+}
+
+/* Seções de Detalhes e Descrição */
+.perfil-detalhes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas flexíveis */
+  gap: 1rem;
   margin-top: 2rem;
+  width: 100%;
+  text-align: left; /* Alinha o texto à esquerda nas grades */
+}
+
+.detalhe-item {
+  background-color: #f8f8f8; /* Fundo suave para cada item */
+  padding: 0.8rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Espaço entre ícone e texto */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.detalhe-item strong {
+  color: #5f28d0;
+  font-weight: 600;
+}
+
+.detalhe-item i { /* Ícones */
+  color: #5f28d0;
+  font-size: 1.1rem;
+}
+
+.perfil-secao {
+  background-color: #ffffff; /* Fundo branco, mas com bordas arredondadas e sombra */
+  padding: 1.5rem;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  margin-top: 2rem;
+  text-align: left; /* Alinha o texto à esquerda nas seções */
+  width: 100%;
+}
+
+.perfil-secao h3 {
+  color: #5f28d0;
+  font-size: 1.6rem;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #eee; /* Linha de separação */
+  padding-bottom: 0.5rem;
+  display: flex; /* Para alinhar ícone e texto */
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.perfil-secao h3 i {
+  color: #5f28d0;
+  font-size: 1.3rem;
+}
+
+.perfil-secao p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+}
+
+/* Botões de Ação */
+.botoes {
+  margin-top: 3rem; /* Mais espaço para os botões */
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 25px; /* Mais espaço entre os botões */
 }
 
 .botoes button {
-  padding: 12px 24px;
+  padding: 14px 30px; /* Botões maiores */
   border: none;
-  border-radius: 8px;
-  background-color: #5f28d0;
+  border-radius: 10px; /* Mais arredondado */
+  background-color: #5f28d0; /* Roxo principal */
   color: white;
   cursor: pointer;
-  font-size: 1rem;
-  transition: background-color 0.3s;
+  font-size: 1.1rem; /* Fonte maior */
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* Sombra para os botões */
 }
 
 .botoes button:hover {
-  background-color: #4721a8;
+  background-color: #4721a8; /* Roxo mais escuro no hover */
+  transform: translateY(-3px); /* Pequeno efeito de elevação */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* Sombra maior no hover */
 }
