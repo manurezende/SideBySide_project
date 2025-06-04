@@ -182,6 +182,7 @@ function cadastrar_jovem() {
                 }
             } else {
                 alert(rs.msg);
+                console.log(rs)
                 const formJovem = document.getElementById("form-jovem");
                 if (formJovem) {
                     formJovem.reset();
@@ -189,9 +190,9 @@ function cadastrar_jovem() {
                      console.warn("Elemento 'form-jovem' não encontrado para resetar.");
                 }
                
-                if (rs.msg === "Jovem cadastrado com sucesso!") { // Ajuste a mensagem para coincidir com o backend
-                    window.location.href = `pagina_listar_idoso.html`;
-                }
+                // if (rs.msg === "Jovem cadastrado com sucesso!") { // Ajuste a mensagem para coincidir com o backend
+                //     window.location.href = `pagina_listar_idoso.html`;
+                // }
             }
         })
         .catch(error => {

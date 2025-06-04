@@ -42,6 +42,39 @@ function calcularIdade(dataNascimento) {
         console.error("Erro ao carregar jovem:", error);
       });
   }
+
+  // Função para carregar e exibir os idosos no carrossel;
+  function carregar_foto_perfil() {
+    fetch("http://localhost:3000/jovem/cadastrar")
+      .then(res => res.json())
+      .then(dados => {
+        // const container = document.getElementById("carrosselJovens");
+  
+        dados.pay.forEach(jovem => {
+          const idade = calcularIdade(jovem.data_nascimento_jovem);
+          const online = Math.random() > 0.5; // Simula se o idoso está online
+
+          const fotoUrlCompleta = `http://localhost:3000${jovem.foto_jovem}`;
+
+  
+          const card = document.createElement("div");
+          card.classList.add("card-jovem");
+          card.innerHTML = `
+          <img src="${fotoUrlCompleta}" alt="Foto de jovem">
+          <h3>${jovem.nome_completo || 'Jovem'}</h3>
+          <p><strong>Idade:</strong> ${idade} anos</p>
+          <p><strong>Status:</strong> <span style="color:${online ? 'green' : 'gray'}">${online ? 'Online' : 'Offline'}</span></p>
+           <a href=perfil_jovem.html?idJovem=${jovem.id_jovem}>Ver perfil</a>
+
+        `;
+  
+          container.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Erro ao carregar jovem:", error);
+      });
+  }
   
   
   
