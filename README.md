@@ -366,28 +366,8 @@ ALTER TABLE avaliacao ADD CONSTRAINT fk_avaliacao_agendamento FOREIGN KEY (id_ag
 -- Mensagens
 ALTER TABLE mensagens ADD CONSTRAINT fk_mensagens_de FOREIGN KEY (id_de) REFERENCES usuario(id_usuario);
 ALTER TABLE mensagens ADD CONSTRAINT fk_mensagens_para FOREIGN KEY (id_para) REFERENCES usuario(id_usuario);
-🔗 Modelo de Entidade Relacional
-O modelo de entidade relacional é a visualização gráfica mais próxima do banco de dados real, com todas as tabelas, campos, chaves primárias e estrangeiras definidas, mostrando as ligações entre as entidades.
-
-✅ Finalização
-Este documento reúne todas as etapas da construção do projeto Side By Side, desde a análise do problema e a proposta de valor, passando pela modelagem conceitual, lógica e de normalização do banco de dados, até a implementação física SQL. As tecnologias utilizadas e a estrutura do projeto também foram detalhadas para facilitar a compreensão e a colaboração.
 
 📞 Contato
-Seu Nome/GitHub: [SEU NOME OU LINK DO GITHUB AQUI]
+ Nome/GitHub: [SEU NOME OU LINK DO GITHUB AQUI]
 Email: [SEU EMAIL AQUI]
 
----
-
-**Instruções Finais:**
-
-1.  **Copie todo o código acima** e cole-o em um arquivo chamado `README.md` na **raiz** do seu projeto `SideBySide`.
-2.  **Substitua os Placeholders:**
-    * `[SEU NOME OU LINK DO GITHUB AQUI]` pelo seu nome ou link do seu perfil no GitHub.
-    * `[SEU EMAIL AQUI]` pelo seu endereço de e-mail.
-3.  **Organize as Imagens:**
-    * Crie uma pasta chamada `imagens` na raiz do seu projeto `SideBySide` (onde o `README.md` está).
-    * Coloque os arquivos `modelo-conceitual.png`, `modelo-logico.png`, `normalizacao1.png`, `normalizacao2.png`, `normalizacao3.png`, `normalizacao4.png`, `modelo-entidade-relacional.png` dentro desta pasta `imagens`.
-    * Para as screenshots das telas da aplicação, crie a pasta `frontend/img/screenshots/` (se ainda não existir) e coloque as imagens como `cadastro_usuario.png`, `logar_usuario.png`, etc., dentro dela.
-4.  **Verifique os Caminhos:** Certifique-se de que os caminhos para as imagens no `README.md` correspondem exatamente onde você as colocou. Se você decidir usar um caminho diferente para as screenshots, como `assets/screenshots/`, lembre-se de atualizar todos os caminhos no README.
-
-Pronto! Seu `README.md` está completo e pronto para ser usado.
