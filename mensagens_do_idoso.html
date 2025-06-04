@@ -16,12 +16,12 @@
       <div class="user-menu">
         <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
         <div class="dropdown" id="dropdown">
-          <a href="#">Meu perfil</a>
-          <a href="#">Ajustes da conta</a>
+          <a href="perfil_idoso.html">Meu perfil</a>
+          <a href="editar_idoso.html">Ajustes da conta</a>
           <div class="premium">
             <div>
               <strong>Obter Premium</strong>
-              <a href="premium_do_idoso.html"><p>Converse com quantos Idosos você quiser.</p></a>
+              <a href="premium_do_idoso.html"><p>Converse com quantos Jovens você quiser.</p></a>
               
             </div>
            
@@ -54,6 +54,24 @@
         <button onclick="enviarMensagem()">Enviar</button>
       </footer>
     </main>
+    <script>
+      // Função para alternar a exibição do dropdown
+      function toggleDropdown() {
+          const menu = document.getElementById("dropdown");
+          menu.classList.toggle("active"); // Adiciona ou remove a classe 'active'
+      }
+
+      // Fechar o dropdown ao clicar fora dele
+      window.onclick = function (event) {
+          const avatar = document.querySelector('.avatar');
+          const dropdown = document.getElementById("dropdown");
+
+          // Verifica se o clique não foi no avatar ou no dropdown
+          if (!dropdown.contains(event.target) && event.target !== avatar) {
+              dropdown.classList.remove("active");
+          }
+      }
+  </script>
 
   </div>
 

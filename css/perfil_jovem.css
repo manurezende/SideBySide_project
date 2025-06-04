@@ -38,11 +38,14 @@ header .logo a {
 .container {
   max-width: 400px; /* Aumenta a largura máxima do container */
   margin: 3rem auto; /* Mais margem superior/inferior */
+  height: 300px;
   background-color: white;
-  padding: 3rem; /* Mais padding interno */
+  padding: 5rem; /* Mais padding interno */
   border-radius: 18px; /* Mais arredondado */
   box-shadow: 0 10px 30px rgba(0,0,0,0.1); /* Sombra mais forte e difusa */
   text-align: center;
+  max-width: 500px 
+  
 }
 
 /* Estilos da Box de Perfil */
@@ -116,8 +119,8 @@ header .logo a {
 .perfil-detalhes {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas flexíveis */
-  gap: 1rem;
-  margin-top: 2rem;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
   width: 100%;
   text-align: left; /* Alinha o texto à esquerda nas grades */
 }
@@ -132,6 +135,7 @@ header .logo a {
   gap: 0.8rem; /* Espaço entre ícone e texto */
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
+ .descricao_perfil
 
 .detalhe-item strong {
   color: #5f28d0;
@@ -202,3 +206,5 @@ header .logo a {
   transform: translateY(-3px); /* Pequeno efeito de elevação */
   box-shadow: 0 6px 18px rgba(0,0,0,0.15); /* Sombra maior no hover */
 }
+/*##############################################*/
+
