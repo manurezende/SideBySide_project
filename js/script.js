@@ -181,13 +181,6 @@ function cadastrar_jovem() {
                     alert(`Erro: ${rs.erro}`);
                 }
             } else {
-
-               // criando o cookie
-              let jovem = 
-              {idjovem:rs.payload.insertId}
-              document.cookie = `jovem_id=${JSON.stringify(jovem)};`
-
-          // terminando de criar o cookie
                 alert(rs.msg);
                 const formJovem = document.getElementById("form-jovem");
                 if (formJovem) {
@@ -206,6 +199,7 @@ function cadastrar_jovem() {
             alert('Ocorreu um erro ao tentar cadastrar. Verifique o console para mais detalhes.');
         });
 }
+
 
 
 // barra de progresso

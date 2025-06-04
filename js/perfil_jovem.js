@@ -40,10 +40,10 @@ function calcularIdade(dataNascimento) {
       container.innerHTML = `
         <img src="${fotoUrlCompleta}" alt="Foto de idoso" onerror="this.onerror=null;this.src='./img/placeholder.jpg';" class="perfil-img">
         <h2>${jovem.msg[0].nome_completo}</h2>
-        <p><strong>Idade:</strong> ${idade} anos</p>
-        <p><strong>Nascimento:</strong> ${jovem.msg[0].data_nascimento_jovem.substring(0,10)}</p>
-        <p><strong>Descrição:</strong> ${jovem.msg[0].descricao_jovem}</p>
-        <p><strong>Valor:</strong> ${jovem.msg[0].valor_jovem}</p>
+        <p class="perfil-descricao"><strong>Idade:</strong> ${idade} anos</p>
+        <p class="perfil-descricao"><strong>Nascimento:</strong> ${jovem.msg[0].data_nascimento_jovem.substring(0,10)}</p>
+        <p class="perfil-descricao"><strong>Descrição:</strong> ${jovem.msg[0].descricao_jovem}</p>
+        <p class="perfil-descricao"><strong>Valor:</strong> ${jovem.msg[0].valor_jovem}</p>
       `;
     } catch (erro) {
       console.error("Erro ao carregar dados:", erro);
