@@ -33,12 +33,12 @@ function calcularIdade(dataNascimento) {
       console.log(jovem)
       dados_jovem = jovem.msg[0]
   
-      
+      const fotoUrlCompleta = `http://localhost:3000${jovem.foto_jovem}`;
       const container = document.getElementById("perfilJovem");
       const idade = calcularIdade(jovem.msg[0].data_nascimento_jovem);
   
       container.innerHTML = `
-        <img src="${jovem.msg[0].foto_jovem}" alt="Foto do jovem">
+        <img src="${fotoUrlCompleta}" alt="Foto de idoso" onerror="this.onerror=null;this.src='./img/placeholder.jpg';" class="card-foto">
         <h2>${jovem.msg[0].nome_completo}</h2>
         <p><strong>Idade:</strong> ${idade} anos</p>
         <p><strong>Nascimento:</strong> ${jovem.msg[0].data_nascimento_jovem.substring(0,10)}</p>

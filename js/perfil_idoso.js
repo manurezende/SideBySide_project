@@ -31,12 +31,13 @@ async function carregarPerfilIdosos(){
     dados_idoso = idoso.msg[0]
 
 
-    
+    const fotoUrlCompleta = `http://localhost:3000${dados_idoso.foto_idoso}`; 
     const container = document.getElementById("perfilIdoso");
     const idade = calcularIdade(idoso.msg[0].data_nascimento);
+    console.log(fotoUrlCompleta)
 
     container.innerHTML = `
-      <img src="${idoso.msg[0].foto_idoso}" alt="Foto do idoso">
+      <img src="${fotoUrlCompleta}" alt="Foto de idoso" onerror="this.onerror=null;this.src='./img/placeholder.jpg';" class="card-foto">
       <h2>${idoso.msg[0].nome_completo}</h2>
       <p><strong>Idade:</strong> ${idade} anos</p>
       <p><strong>Nascimento:</strong> ${idoso.msg[0].data_nascimento.substring(0,10)}</p>

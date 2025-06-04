@@ -45,8 +45,6 @@ function carregarIdosos() {
 
 
 
-// Quando o DOM estiver carregado, chama a função
-document.addEventListener("DOMContentLoaded", carregarIdosos);
 
 // Função que salva o ID do idoso no cookie e redireciona para a página de perfil
 function verPerfil(idIdoso) {

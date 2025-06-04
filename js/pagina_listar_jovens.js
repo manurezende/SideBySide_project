@@ -20,11 +20,14 @@ function calcularIdade(dataNascimento) {
         dados.msg.forEach(jovem => {
           const idade = calcularIdade(jovem.data_nascimento_jovem);
           const online = Math.random() > 0.5; // Simula se o idoso está online
+
+          const fotoUrlCompleta = `http://localhost:3000${jovem.foto_jovem}`;
+
   
           const card = document.createElement("div");
           card.classList.add("card-jovem");
           card.innerHTML = `
-          <img src="${jovem.foto_jovem}" alt="Foto de jovem">
+          <img src="${fotoUrlCompleta}" alt="Foto de jovem">
           <h3>${jovem.nome_completo || 'Jovem'}</h3>
           <p><strong>Idade:</strong> ${idade} anos</p>
           <p><strong>Status:</strong> <span style="color:${online ? 'green' : 'gray'}">${online ? 'Online' : 'Offline'}</span></p>
