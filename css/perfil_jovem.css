@@ -38,7 +38,7 @@ header .logo a {
 .container {
   max-width: 400px; /* Aumenta a largura máxima do container */
   margin: 3rem auto; /* Mais margem superior/inferior */
-  height: 300px;
+ 
   background-color: white;
   padding: 5rem; /* Mais padding interno */
   border-radius: 18px; /* Mais arredondado */
@@ -135,8 +135,12 @@ header .logo a {
   gap: 0.8rem; /* Espaço entre ícone e texto */
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
- .descricao_perfil
-
+.editar_perfil  {
+  font-size: 12px;
+  margin: 0;
+  padding: 0;
+  
+}
 .detalhe-item strong {
   color: #5f28d0;
   font-weight: 600;
