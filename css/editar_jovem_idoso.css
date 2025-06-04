@@ -229,4 +229,26 @@ body {
   font-size: 1rem;               /* Tamanho da fonte padrão */
   transition: background-color 0.3s ease;  /* Transição suave na troca de cor ao passar o mouse */
 }
+/*############################################################*/
+.dropdown {
+  display: none;
+  position: absolute;
+  top: 48px;
+  right: 0;
+  background-color: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  width: 250px;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.dropdown.active {
+  display: block;
+}
+
+.avatar {
+  cursor: pointer;
+}
+
 
