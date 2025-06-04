@@ -74,131 +74,152 @@ function cadastrar_usuario(){
 
 
 function cadastrar_jovem() {
-    // Campos de endereço .
-    const cep = document.getElementById("cep").value;
-    const logradouro = document.getElementById("logradouro").value;
-    const logradouro_nome = document.getElementById("logradouro_nome").value;
-    const cidade = document.getElementById("cidade").value;
-    const estado = document.getElementById("estado").value;
-    const bairro = document.getElementById("bairro").value;
-    const pais = document.getElementById("pais").value;
-    const complemento = document.getElementById("complemento").value;
-    const numero = document.getElementById("numero").value;
+  // Campos de endereço .
+  const cep = document.getElementById("cep").value;
+  const logradouro = document.getElementById("logradouro").value;
+  const logradouro_nome = document.getElementById("logradouro_nome").value;
+  const cidade = document.getElementById("cidade").value;
+  const estado = document.getElementById("estado").value;
+  const bairro = document.getElementById("bairro").value;
+  const pais = document.getElementById("pais").value;
+  const complemento = document.getElementById("complemento").value;
+  const numero = document.getElementById("numero").value;
 
-    // Campos do jovem
-    const id_usuario = document.getElementById("id_usuario").value;
-    const cpf_jovem = document.getElementById("cpf_jovem").value;
-    // Para radio buttons ou checkboxes, você precisa pegar o valor do item selecionado
-    // ou se é um checkbox, se está marcado.
-    // Exemplo para radio:
-    let valor_jovem_selecionado = '';
-    const valor_jovem_radios = document.getElementsByName("valor_jovem");
-    for (const radio of valor_jovem_radios) {
-        if (radio.checked) {
-            valor_jovem_selecionado = radio.value;
-            break;
-        }
-    }
-    const telefone_jovem = document.getElementById("telefone_jovem").value;
-    const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value;
-    const foto_jovem_input = document.getElementById("foto_jovem"); // Referência ao INPUT do tipo file
-    // Para radio buttons ou checkboxes, você precisa pegar o valor do item selecionado
-    let experiencia_jovem_selecionada = '';
-    const experiencia_jovem_radios = document.getElementsByName("experiencia_jovem");
-    for (const radio of experiencia_jovem_radios) {
-        if (radio.checked) {
-            experiencia_jovem_selecionada = radio.value;
-            break;
-        }
-    }
-    const descricao_jovem = document.getElementById("descricao_jovem").value;
-    // Para checkbox: use .checked para boolean
-    const assinante_jovem = document.getElementById("assinante_jovem").checked;
-    
-    // Para gênero, se for um radio ou select, pegue o valor selecionado
-    let genero_jovem_selecionado = '';
-    const genero_jovem_elements = document.getElementsByName("genero_jovem");
-    for (const element of genero_jovem_elements) {
-        if (element.type === 'radio' && element.checked) {
-            genero_jovem_selecionado = element.value;
-            break;
-        } else if (element.tagName === 'SELECT') { // Se for um <select>
-            genero_jovem_selecionado = element.value;
-            break;
-        }
-    }
+  // Campos do jovem
+  const id_usuario = document.getElementById("id_usuario").value;
+  const cpf_jovem = document.getElementById("cpf_jovem").value;
+  
+  let valor_jovem_selecionado = '';
+  const valor_jovem_radios = document.getElementsByName("valor_jovem");
+  for (const radio of valor_jovem_radios) {
+      if (radio.checked) {
+          valor_jovem_selecionado = radio.value;
+          break;
+      }
+  }
+  const telefone_jovem = document.getElementById("telefone_jovem").value;
+  const data_nascimento_jovem = document.getElementById("data_nascimento_jovem").value;
+  const foto_jovem_input = document.getElementById("foto_jovem"); 
+  
+  let experiencia_jovem_selecionada = '';
+  const experiencia_jovem_radios = document.getElementsByName("experiencia_jovem");
+  for (const radio of experiencia_jovem_radios) {
+      if (radio.checked) {
+          experiencia_jovem_selecionada = radio.value;
+          break;
+      }
+  }
+  const descricao_jovem = document.getElementById("descricao_jovem").value;
+  const assinante_jovem = document.getElementById("assinante_jovem").checked;
+  
+  let genero_jovem_selecionado = '';
+  const genero_jovem_elements = document.getElementsByName("genero_jovem");
+  for (const element of genero_jovem_elements) {
+      if (element.type === 'radio' && element.checked) {
+          genero_jovem_selecionado = element.value;
+          break;
+      } else if (element.tagName === 'SELECT') {
+          genero_jovem_selecionado = element.value;
+          break;
+      }
+  }
 
+  // --- CRIAÇÃO DO FormData ---
+  const formData = new FormData();
 
-    // --- CRIAÇÃO DO FormData ---
-    const formData = new FormData();
+  // Adicione a foto - IMPORTANTE!
+  if (foto_jovem_input.files.length > 0) {
+      formData.append('foto_jovem', foto_jovem_input.files[0]); 
+  } else {
+      alert('Por favor, selecione uma foto para o jovem.');
+      return; 
+  }
 
-    // Adicione a foto - IMPORTANTE!
-    if (foto_jovem_input.files.length > 0) {
-        formData.append('foto_jovem', foto_jovem_input.files[0]); // 'foto_jovem' deve corresponder ao nome do campo no Multer no backend
-    } else {
-        alert('Por favor, selecione uma foto para o jovem.');
-        return; // Interrompe a função se nenhuma foto for selecionada
-    }
+  // Adicione os outros campos de texto
+  formData.append('cep', cep);
+  formData.append('logradouro', logradouro);
+  formData.append('logradouro_nome', logradouro_nome);
+  formData.append('cidade', cidade);
+  formData.append('estado', estado);
+  formData.append('bairro', bairro);
+  formData.append('pais', pais);
+  formData.append('numero', numero);
+  formData.append('complemento', complemento);
 
-    // Adicione os outros campos de texto
-    formData.append('cep', cep);
-    formData.append('logradouro', logradouro);
-    formData.append('logradouro_nome', logradouro_nome);
-    formData.append('cidade', cidade);
-    formData.append('estado', estado);
-    formData.append('bairro', bairro);
-    formData.append('pais', pais);
-    formData.append('numero', numero);
-    formData.append('complemento', complemento);
+  formData.append('id_usuario', id_usuario);
+  formData.append('cpf_jovem', cpf_jovem);
+  formData.append('valor_jovem', valor_jovem_selecionado); 
+  formData.append('telefone_jovem', telefone_jovem);
+  formData.append('data_nascimento_jovem', data_nascimento_jovem);
+  formData.append('experiencia_jovem', experiencia_jovem_selecionada); 
+  formData.append('descricao_jovem', descricao_jovem);
+  formData.append('assinante_jovem', assinante_jovem); 
+  formData.append('genero_jovem', genero_jovem_selecionado); 
 
-    formData.append('id_usuario', id_usuario);
-    formData.append('cpf_jovem', cpf_jovem);
-    formData.append('valor_jovem', valor_jovem_selecionado); // Use o valor selecionado
-    formData.append('telefone_jovem', telefone_jovem);
-    formData.append('data_nascimento_jovem', data_nascimento_jovem);
-    formData.append('experiencia_jovem', experiencia_jovem_selecionada); // Use o valor selecionado
-    formData.append('descricao_jovem', descricao_jovem);
-    formData.append('assinante_jovem', assinante_jovem); // É boolean, será convertido para "true" ou "false" string
-    formData.append('genero_jovem', genero_jovem_selecionado); // Use o valor selecionado
+  // Envio para o backend;
+  fetch("http://localhost:3000/jovem/cadastrar", {
+      method: "POST",
+      body: formData 
+  })
+  .then(res => {
+      // Sempre verifique se a resposta foi bem-sucedida antes de tentar parsear como JSON
+      if (!res.ok) {
+          // Se a resposta não for OK, tente ler o erro do corpo da resposta, se houver
+          return res.json().then(errorData => {
+              throw new Error(errorData.erro || `Erro de rede ou servidor: ${res.status}`);
+          });
+      }
+      return res.json();
+  })
+  .then(rs => {
+      if (rs.erro) {
+          const msgErroJovem = document.getElementById("msg_erro_jovem");
+          if (msgErroJovem) {
+              msgErroJovem.innerHTML = rs.erro;
+          } else {
+              console.error("Elemento 'msg_erro_jovem' não encontrado.", rs.erro);
+              alert(`Erro: ${rs.erro}`);
+          }
+      } else {
+          alert(rs.msg);
+          console.log("Resposta completa do backend:", rs); // Para depuração
 
-    // Envio para o backend;
-    fetch("http://localhost:3000/jovem/cadastrar", {
-            method: "POST",
-            // IMPORTANTE: NÃO defina o 'Content-Type' manualmente para 'multipart/form-data'.
-            // O navegador faz isso automaticamente e adiciona o 'boundary' necessário ao usar FormData.
-            // Remova os 'headers' de 'accept' e 'content-type' se for só 'FormData'
-            body: formData // Envie o objeto FormData diretamente
-        })
-        .then(res => res.json())
-        .then(rs => {
-            if (rs.erro) {
-                // É bom verificar se o elemento existe antes de tentar manipulá-lo
-                const msgErroJovem = document.getElementById("msg_erro_jovem");
-                if (msgErroJovem) {
-                    msgErroJovem.innerHTML = rs.erro;
-                } else {
-                    console.error("Elemento 'msg_erro_jovem' não encontrado.", rs.erro);
-                    alert(`Erro: ${rs.erro}`);
-                }
-            } else {
-                alert(rs.msg);
-                console.log(rs)
-                const formJovem = document.getElementById("form-jovem");
-                if (formJovem) {
-                    formJovem.reset();
-                } else {
-                     console.warn("Elemento 'form-jovem' não encontrado para resetar.");
-                }
-               
-                // if (rs.msg === "Jovem cadastrado com sucesso!") { // Ajuste a mensagem para coincidir com o backend
-                //     window.location.href = `pagina_listar_idoso.html`;
-                // }
-            }
-        })
-        .catch(error => {
-            console.error('Erro na requisição ou no parse do JSON:', error);
-            alert('Ocorreu um erro ao tentar cadastrar. Verifique o console para mais detalhes.');
-        });
+          // --- NOVO CÓDIGO AQUI: ATUALIZAR A FOTO DE PERFIL ---
+          // O backend retorna um array no 'payload', pegue o primeiro elemento
+          const jovemCadastrado = rs.payload && rs.payload.length > 0 ? rs.payload[0] : null;
+
+          if (jovemCadastrado && jovemCadastrado.foto_jovem) {
+              const fotoUrlCompleta = `http://localhost:3000${jovemCadastrado.foto_jovem}`;
+              const imgPerfilAvatar = document.getElementById("fotoPerfilAvatar"); // Seu <img> com o ID
+
+              if (imgPerfilAvatar) {
+                  imgPerfilAvatar.src = fotoUrlCompleta;
+                  console.log("Foto de perfil do avatar atualizada para:", fotoUrlCompleta);
+              } else {
+                  console.warn("Elemento 'fotoPerfilAvatar' não encontrado no HTML. Adicione id='fotoPerfilAvatar' à sua tag <img> do avatar.");
+              }
+          } else {
+              console.warn("Não foi possível encontrar a foto do jovem recém-cadastrado na resposta do backend.");
+          }
+          // --- FIM DO NOVO CÓDIGO ---
+
+          const formJovem = document.getElementById("form-jovem");
+          if (formJovem) {
+              formJovem.reset();
+          } else {
+              console.warn("Elemento 'form-jovem' não encontrado para resetar.");
+          }
+          
+          // Você pode redirecionar o usuário ou fazer outra ação aqui
+          if (rs.msg === "Jovem cadastrado com sucesso!") {
+              window.location.href = `pagina_listar_idoso.html`;
+          }
+      }
+  })
+  .catch(error => {
+      console.error('Erro na requisição ou no processamento da resposta:', error);
+      alert(`Ocorreu um erro ao tentar cadastrar: ${error.message}. Verifique o console para mais detalhes.`);
+  });
 }
 
 
