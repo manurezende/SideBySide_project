@@ -238,134 +238,111 @@ Abaixo estão as etapas de normalização do banco de dados, aplicadas para gara
 Abaixo está o script SQL com a criação completa das tabelas e relacionamentos. Esse código pode ser executado diretamente em um SGBD como MySQL para configurar o banco de dados.
 
 ```sql
-CREATE DATABASE sidedb;
-USE sidedb;
+create database sidedb;
+use sidedb;
+CREATE TABLE usuario ( 
+id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+email VARCHAR(50) NOT NULL,
+nome_completo VARCHAR(80) NOT NULL,
+nome_usuario VARCHAR(25) NOT NULL,
+senha VARCHAR(255) NOT NULL,
+tipo_usuario BOOLEAN NOT NULL);
+ 
+ 
 
-CREATE TABLE usuario (
-    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
-    tipo_usuario BOOLEAN NOT NULL,
-    nome_usuario VARCHAR(25) NOT NULL,
-    senha VARCHAR(15) NOT NULL,
-    foto_usuario VARCHAR(50), -- Coluna para o caminho da foto de perfil do usuário, pode ser nula
-    email VARCHAR(50) NOT NULL UNIQUE,
-    nome_completo VARCHAR(100) NOT NULL
-);
+ 
+CREATE TABLE endereco ( 
+id_endereco INT AUTO_INCREMENT PRIMARY KEY,
+logradouro VARCHAR(20) NOT NULL,
+logradouro_nome VARCHAR(50) NOT NULL,
+numero VARCHAR(5) NOT NULL,
+complemento VARCHAR(20),
+cidade VARCHAR(30) NOT NULL,
+estado VARCHAR(20) NOT NULL,
+bairro VARCHAR(30) NOT NULL,
+cep VARCHAR(9) NOT NULL,
+pais VARCHAR(20) NOT NULL DEFAULT 'Brasil' );
 
-CREATE TABLE agendamento (
-    id_agendamento INT AUTO_INCREMENT PRIMARY KEY,
-    id_jovem INT NOT NULL,
-    id_idoso INT NOT NULL,
-    data_hora DATETIME NOT NULL,
-    duracao INT NOT NULL, -- Duração em minutos ou horas
-    valor DECIMAL(10,2), -- Valor total do agendamento
-    confirmar_idoso BOOLEAN NOT NULL DEFAULT FALSE, -- Confirmação do idoso
-    confirmar_jovem BOOLEAN NOT NULL DEFAULT FALSE -- Confirmação do jovem
-);
 
-CREATE TABLE endereco (
-    id_endereco INT AUTO_INCREMENT PRIMARY KEY,
-    logradouro ENUM('Rua', 'Avenida', 'Alameda', 'Travessa', 'Praça', 'Estrada', 'Rodovia', 'Viela') NOT NULL,
-    logradouro_nome VARCHAR(50) NOT NULL,
-    numero VARCHAR(10) NOT NULL,
-    complemento VARCHAR(20),
-    cidade VARCHAR(30) NOT NULL,
-    estado VARCHAR(20) NOT NULL,
-    bairro VARCHAR(30) NOT NULL,
-    cep VARCHAR(9) NOT NULL,
-    pais VARCHAR(20) NOT NULL DEFAULT 'Brasil'
-);
-
-CREATE TABLE pagamento (
-    id_pagamento INT AUTO_INCREMENT PRIMARY KEY,
-    id_agendamento INT NOT NULL,
-    status VARCHAR(20) NOT NULL -- Ex: 'Pendente', 'Concluido', 'Cancelado', 'Falhou'
-);
-
-CREATE TABLE contato (
-    id_contato INT AUTO_INCREMENT PRIMARY KEY,
-    telefone_celular VARCHAR(15) NOT NULL,
-    telefone_fixo VARCHAR(15),
-    email VARCHAR(50) NOT NULL UNIQUE
-);
 
 CREATE TABLE jovem (
-    id_jovem INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    id_endereco INT NOT NULL,
-    id_contato INT NOT NULL,
-    cpf VARCHAR(14) UNIQUE NOT NULL,
-    data_nascimento DATE NOT NULL,
-    experiencia TEXT,
-    chave_pix VARCHAR(50),
-    descricao VARCHAR(150) NOT NULL,
-    genero VARCHAR(15) NOT NULL, -- 'Masculino', 'Feminino', 'Não Binário', etc.
-    foto_jovem VARCHAR(50), -- Caminho da foto do jovem
-    valor_jovem DECIMAL(10,2), -- Taxa horária do jovem
-    assinante_jovem BOOLEAN DEFAULT FALSE -- Indica se o jovem é assinante premium, etc.
-);
+id_jovem INT AUTO_INCREMENT PRIMARY KEY,
+id_usuario INT NOT NULL,
+id_endereco INT NOT NULL,
+cpf_jovem VARCHAR(14) UNIQUE NOT NULL,
+valor_jovem varchar(20),
+foto_jovem varchar(255),
+assinante_jovem BOOLEAN NOT NULL,
+data_nascimento_jovem DATE NOT NULL,
+experiencia_jovem TEXT,
+descricao_jovem VARCHAR(150) NOT NULL,
+telefone_jovem VARCHAR(14) UNIQUE NOT NULL,
+genero_jovem BOOLEAN NOT NULL);
+
 
 CREATE TABLE idoso (
-    id_idoso INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
-    id_endereco INT NOT NULL,
-    id_contato INT NOT NULL,
-    cpf VARCHAR(14) UNIQUE NOT NULL,
-    data_nascimento DATE NOT NULL,
-    comorbidade BOOLEAN NOT NULL DEFAULT FALSE, -- Indica se possui comorbidades
-    tipo_comorbidade VARCHAR(50), -- Descrição do tipo de comorbidade
-    descricao VARCHAR(150) NOT NULL,
-    genero VARCHAR(15) NOT NULL, -- 'Masculino', 'Feminino', 'Não Binário', etc.
-    foto_idoso VARCHAR(50), -- Caminho da foto do idoso
-    assinante_idoso BOOLEAN DEFAULT FALSE -- Indica se o idoso é assinante premium, etc.
-);
-
-CREATE TABLE receber (
-    id_receber INT AUTO_INCREMENT PRIMARY KEY,
-    id_agendamento INT NOT NULL,
-    status VARCHAR(20) NOT NULL, -- Ex: 'Pendente', 'Pago', 'Estornado'
-    trabalho_realizado BOOLEAN NOT NULL -- Confirmação do trabalho realizado
-);
+id_idoso INT AUTO_INCREMENT PRIMARY KEY,
+id_usuario INT NOT NULL,
+id_endereco INT NOT NULL,
+foto_idoso varchar(255),
+assinante_idoso BOOLEAN NOT NULL,
+cpf VARCHAR(14) UNIQUE NOT NULL,
+data_nascimento DATE NOT NULL,
+comorbidade BOOLEAN NOT NULL,
+tipo_comorbidade VARCHAR(50),
+descricao VARCHAR(150) NOT NULL,
+telefone_idoso VARCHAR(14) UNIQUE NOT NULL,
+genero BOOLEAN NOT NULL);
 
 CREATE TABLE avaliacao (
-    id_avaliacao INT AUTO_INCREMENT PRIMARY KEY,
-    id_agendamento INT, -- Pode ser NULL se a avaliação não for vinculada a um agendamento específico (ex: geral)
-    nota DECIMAL(3,2) NOT NULL, -- Ex: 4.50
-    avaliacao VARCHAR(150) NOT NULL -- Comentário da avaliação
+id_avaliacao int auto_increment primary key,
+id_agendamento int,
+nota decimal (3,2) not null,
+avaliacao varchar(150) not null
 );
+
 
 CREATE TABLE mensagens (
-    id_mensagem INT AUTO_INCREMENT PRIMARY KEY,
-    id_de INT NOT NULL, -- ID do usuário remetente
-    id_para INT NOT NULL, -- ID do usuário destinatário
+    id_messagem INT AUTO_INCREMENT PRIMARY KEY,
+    id_remetente INT NOT NULL,        -- -> id da tabela 'usuario'
+    id_destinatario INT NOT NULL,     -- -> id da tabela 'usuario'
     conteudo TEXT NOT NULL,
-    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP
+    data_envio DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (id_remetente) REFERENCES usuario(id_usuario),
+    FOREIGN KEY (id_destinatario) REFERENCES usuario(id_usuario)
 );
 
 
--- Chaves Estrangeiras
 
-ALTER TABLE agendamento ADD CONSTRAINT fk_agendamento_jovem FOREIGN KEY (id_jovem) REFERENCES jovem(id_jovem);
-ALTER TABLE agendamento ADD CONSTRAINT fk_agendamento_idoso FOREIGN KEY (id_idoso) REFERENCES idoso(id_idoso);
 
-ALTER TABLE pagamento ADD CONSTRAINT fk_pagamento_agendamento FOREIGN KEY (id_agendamento) REFERENCES agendamento(id_agendamento);
+-- relacionar a tabela jovem com a tabela usuario
+ALTER TABLE jovem
+ADD CONSTRAINT `fk_jovem_pk_usuario` 
+FOREIGN KEY jovem(`id_usuario`)
+REFERENCES usuario(`id_usuario`);
+ 
+-- relacionar a tabela jovem com a tabela endereco
+ALTER TABLE jovem
+ADD CONSTRAINT `fk_jovem_pk_endereco` 
+FOREIGN KEY jovem(`id_endereco`)
+REFERENCES endereco(`id_endereco`);
+-- relacionar a tabela idoso com a tabela usuario
+ALTER TABLE idoso
+ADD CONSTRAINT `fk_idoso_pk_usuario` 
+FOREIGN KEY idoso(`id_usuario`)
+REFERENCES usuario(`id_usuario`);
+-- relacionar a tabela idoso com a tabela endereço .
+ALTER TABLE idoso
+ADD CONSTRAINT `fk_idoso_pk_endereco` 
+FOREIGN KEY idoso(`id_endereco`)
+REFERENCES endereco(`id_endereco`);
 
--- Jovem
-ALTER TABLE jovem ADD CONSTRAINT fk_jovem_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
-ALTER TABLE jovem ADD CONSTRAINT fk_jovem_contato FOREIGN KEY (id_contato) REFERENCES contato(id_contato);
-ALTER TABLE jovem ADD CONSTRAINT fk_jovem_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco);
-
--- Idoso
-ALTER TABLE idoso ADD CONSTRAINT fk_idoso_usuario FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario);
-ALTER TABLE idoso ADD CONSTRAINT fk_idoso_endereco FOREIGN KEY (id_endereco) REFERENCES endereco(id_endereco);
-ALTER TABLE idoso ADD CONSTRAINT fk_idoso_contato FOREIGN KEY (id_contato) REFERENCES contato(id_contato);
-
-ALTER TABLE receber ADD CONSTRAINT fk_receber_agendamento FOREIGN KEY (id_agendamento) REFERENCES agendamento(id_agendamento);
-
-ALTER TABLE avaliacao ADD CONSTRAINT fk_avaliacao_agendamento FOREIGN KEY (id_agendamento) REFERENCES agendamento(id_agendamento);
-
--- Mensagens
-ALTER TABLE mensagens ADD CONSTRAINT fk_mensagens_de FOREIGN KEY (id_de) REFERENCES usuario(id_usuario);
-ALTER TABLE mensagens ADD CONSTRAINT fk_mensagens_para FOREIGN KEY (id_para) REFERENCES usuario(id_usuario);
+-- relacionar a tabela avaliação com a tabela agendamento
+ALTER TABLE avaliacao
+ADD CONSTRAINT `fk_avalicao_pk_agendamento` 
+FOREIGN KEY avaliacao(`id_agendamento`)
+REFERENCES agendamento(`id_agendamento`);
+```
 
 📞 Contato
  Nome/GitHub: [SEU NOME OU LINK DO GITHUB AQUI]
