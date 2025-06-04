@@ -71,27 +71,7 @@ function cadastrar_usuario(){
 
 }
 
-function getCookie(nome) {
-  const valor = `; ${document.cookie}`;
-  const partes = valor.split(`; ${nome}=`);
-  if (partes.length === 2) return partes.pop().split(';').shift();
-}
 
-
-function ligarcookies(){
-const socket = new WebSocket("http://127.0.0.1:3000");
-
-socket.addEventListener("open", () => {
-  const id = getCookie("id_usuario"); // pega o ID do cookie
-
-  if (id) {
-    socket.send(JSON.stringify({
-      tipo: "login",
-      id: parseInt(id) // envia para o backend
-    }));
-  }
-});
-}
 
 function cadastrar_jovem() {
     // Campos de endereço .
@@ -201,6 +181,13 @@ function cadastrar_jovem() {
                     alert(`Erro: ${rs.erro}`);
                 }
             } else {
+
+               // criando o cookie
+              let jovem = 
+              {idjovem:rs.payload.insertId}
+              document.cookie = `jovem_id=${JSON.stringify(jovem)};`
+
+          // terminando de criar o cookie
                 alert(rs.msg);
                 const formJovem = document.getElementById("form-jovem");
                 if (formJovem) {
@@ -210,7 +197,7 @@ function cadastrar_jovem() {
                 }
                
                 if (rs.msg === "Jovem cadastrado com sucesso!") { // Ajuste a mensagem para coincidir com o backend
-                    window.location.href = "pagina_listar_idoso.html";
+                    window.location.href = `pagina_listar_idoso.html`;
                 }
             }
         })

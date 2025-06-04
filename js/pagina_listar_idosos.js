@@ -43,7 +43,12 @@ function carregarIdosos() {
       });
   }
 
+  document.addEventListener('DOMContentLoaded', () => {
+    carregarIdosos(); // Chama a função carregarIdosos quando o DOM estiver pronto
 
+    // Se você tiver a função exibirFotoUsuarioLogado, chame-a aqui também
+    // exibirFotoUsuarioLogado(); 
+});
 
 
 // Função que salva o ID do idoso no cookie e redireciona para a página de perfil
