@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -10,7 +10,7 @@
     <div class="logo">SIDEBYSIDE</div>
      <a href="pagina_listar_idoso.html"></a>
     <nav>
-      <a href="./pagina_listar_idoso.html">Idosos</a>
+      <a href="./pagina_listar_idoso.html">Jovens</a>
       <a href="./pagina_salvo_do_jovem.html">Salvo</a>
       <a href="./mensagens_do_jovem.html">Mensagens </a>
       <div class="user-menu">
@@ -61,21 +61,14 @@
           menu.classList.toggle("active"); // Adiciona ou remove a classe 'active'
       }
 
-      // Fechar o dropdown ao clicar fora dele
-      window.onclick = function (event) {
-          const avatar = document.querySelector('.avatar');
-          const dropdown = document.getElementById("dropdown");
+        window.onclick = function (event) {
+            const avatar = document.querySelector('.avatar');
+            const dropdown = document.getElementById("dropdown");
 
-          // Verifica se o clique não foi no avatar ou no dropdown
-          if (!dropdown.contains(event.target) && event.target !== avatar) {
-              dropdown.classList.remove("active");
-          }
-      }
-  </script>
-
-  </div>
-       <script src="./js/script.js"></script> <script src="./js/foto_header.js"></script>
-
-  <script src="js/mensagens_do_jovem.js"></script>
+            if (!dropdown.contains(event.target) && event.target !== avatar) {
+                dropdown.classList.remove("active");
+            }
+        }
+    </script>
 </body>
 </html>

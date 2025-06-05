@@ -1,89 +1,106 @@
-// Função auxiliar para pegar cookies
-let buscar_dados = window.location.search;
-buscar_dados=buscar_dados.split("&")
-let id_usuario = buscar_dados[0]
-id_usuario = id_usuario.split("=")
-id_usuario = id_usuario[1]
-nome_completo=buscar_dados[2]
-nome_completo=nome_completo.split("=" && "%" )
-let primeiro_nome = nome_completo[1]
-primeiro_nome=primeiro_nome.split("2" )
-primeiro_nome=primeiro_nome[2]
-let segundo_nome = nome_completo[2]
-segundo_nome=segundo_nome.split("20" )
-segundo_nome=segundo_nome[1]
+// login elements
+const login = document.querySelector(".login")
+const loginForm = login.querySelector(".login__form")
+const loginInput = login.querySelector(".login__input")
 
-// nome_completo=nome_completo.split("2")
+// chat elements
+const chat = document.querySelector(".chat")
+const chatForm = chat.querySelector(".chat__form")
+const chatInput = chat.querySelector(".chat__input")
+const chatMessages = chat.querySelector(".chat__messages")
 
+const colors = [
+    "cadetblue",
+    "darkgoldenrod",
+    "cornflowerblue",
+    "darkkhaki",
+    "hotpink",
+    "gold"
+]
 
-// console.log(id_usuario)
+const user = { id: "", name: "", color: "" }
 
-console.log(id_usuario)
-console.log(primeiro_nome)
-console.log(segundo_nome)
+let websocket
 
+const createMessageSelfElement = (content) => {
+    const div = document.createElement("div")
 
-  
+    div.classList.add("message--self")
+    div.innerHTML = content
 
-
-// // Pegamos o ID do idoso selecionado
-
-
-// Simulação de nome (no real, virá do banco)
-document.getElementById("nomeContato").innerText = "Conversando com " + primeiro_nome +" "+ segundo_nome;
-
-// Simulação de mensagens
-const mensagens = [
-  
-  { texto: "Olá! Tudo bem?", tipo: "recebida" },
-  { texto: "Oi! Tudo sim, e com você?", tipo: "enviada" }
-];
-
-// Renderiza mensagens simuladas
-const areaMensagens = document.getElementById("mensagens");
-
-mensagens.forEach(msg => {
-  const div = document.createElement("div");
-  div.classList.add("mensagem", msg.tipo);
-  div.innerText = msg.texto;
-  areaMensagens.appendChild(div);
-});
-
-
-function adicionarContatoLateral(id, nomeCompleto) {
-  // Verifica se já existe (evita duplicar)
-  const jaExiste = document.getElementById("contato-" + id);
-  if (jaExiste) return;
-
-  const li = document.createElement("li");
-  li.id = "contato-" + id;
-  li.textContent = nomeCompleto;
-
-  // Evento de clique para abrir a conversa (opcional)
-  li.addEventListener("click", () => {
-    document.getElementById("nomeContato").innerText = "Conversando com " + nomeCompleto;
-  });
-
-  document.getElementById("listaContatos").appendChild(li);
+    return div
 }
 
-// Envia nova mensagem
-function enviarMensagem() {
-  const input = document.getElementById("mensagemInput");
-  const texto = input.value.trim();
-  if (texto === "") return;
+const createMessageOtherElement = (content, sender, senderColor) => {
+    const div = document.createElement("div")
+    const span = document.createElement("span")
 
-  const novaMsg = document.createElement("div");
-  novaMsg.classList.add("mensagem", "enviada");
-  novaMsg.innerText = texto;
-  areaMensagens.appendChild(novaMsg);
+    div.classList.add("message--other")
 
-  input.value = "";
-  areaMensagens.scrollTop = areaMensagens.scrollHeight;
+    span.classList.add("message--sender")
+    span.style.color = senderColor
 
-  // Adiciona o contato ao aside (se ainda não estiver)
-  const nomeCompleto = primeiro_nome + " " + segundo_nome;
-  adicionarContatoLateral(id_usuario, nomeCompleto);
+    div.appendChild(span)
+
+    span.innerHTML = sender
+    div.innerHTML += content
+
+    return div
 }
 
+const getRandomColor = () => {
+    const randomIndex = Math.floor(Math.random() * colors.length)
+    return colors[randomIndex]
+}
 
+const scrollScreen = () => {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    })
+}
+
+const processMessage = ({ data }) => {
+    const { userId, userName, userColor, content } = JSON.parse(data)
+
+    const message =
+        userId == user.id
+            ? createMessageSelfElement(content)
+            : createMessageOtherElement(content, userName, userColor)
+
+    chatMessages.appendChild(message)
+
+    scrollScreen()
+}
+
+const handleLogin = (event) => {
+    event.preventDefault()
+
+    user.id = crypto.randomUUID()
+    user.name = loginInput.value
+    user.color = getRandomColor()
+
+    login.style.display = "none"
+    chat.style.display = "flex"
+
+    websocket = new WebSocket("ws://localhost:8080")
+    websocket.onmessage = processMessage
+}
+
+const sendMessage = (event) => {
+    event.preventDefault()
+
+    const message = {
+        userId: user.id,
+        userName: user.name,
+        userColor: user.color,
+        content: chatInput.value
+    }
+
+    websocket.send(JSON.stringify(message))
+
+    chatInput.value = ""
+}
+
+loginForm.addEventListener("submit", handleLogin)
+chatForm.addEventListener("submit", sendMessage)
