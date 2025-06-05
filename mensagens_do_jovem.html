@@ -1,81 +1,76 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Mensagens</title>
-  <link rel="stylesheet" href="css/mensagens.css" />
-</head>
-<header>
-    <div class="logo">SIDEBYSIDE</div>
-     <a href="pagina_listar_idoso.html"></a>
-    <nav>
-      <a href="./pagina_listar_idoso.html">Jovens</a>
-      <a href="./pagina_salvo_do_jovem.html">Salvo</a>
-      <a href="./mensagens_do_jovem.html">Mensagens </a>
-      <div class="user-menu">
-        <img src="./img/fotos.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
-        <div class="dropdown" id="dropdown">
-          <a href="./editar_jovem.html">Meu perfil</a>
-          <a href="editar_jovem.html">Ajustes da conta</a>
-          <div class="premium">
-            <div>
-              <strong>Obter Premium</strong>
-              <a href="premium_do_jovem.html"><p>Converse com quantos Idosos você quiser.</p></a>
-              
-            </div>
-           
-          </div>
-        </div>
-      </div>
-    </nav>
-  </header>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens | SIDEBYSIDE</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="./css/header.css">         <link rel="stylesheet" href="./css/mensagens.css">      </head>
 <body>
-  <div class="container">
+    <header>
+        <div class="logo">SIDEBYSIDE</div>
+        <nav>
+            <a href="./pagina_listar_idoso.html">Idosos</a> <a href="./pagina_salvo_do_jovem.html">Salvos</a>
+            <a href="./mensagens_do_jovem.html">Mensagens</a>
+            <div class="user-menu">
+                <img src="./img/vl.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+                <div class="dropdown" id="dropdown">
+                    <a href="./perfil_jovem.html">Meu perfil</a>
+                    <a href="./editar_jovem.html">Ajustes da conta</a>
+                    <div class="premium">
+                        <div>
+                            <strong>Obter Premium</strong>
+                            <a href="premium_do_jovem.html"><p>Converse com quantos idosos você quiser.</p></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
 
-    <!-- Lateral com contatos -->
-    <aside class="contatos">
-      <h2>Conversas</h2>
-      <ul id="listaContatos">
-        <!-- Contatos serão adicionados aqui via JS -->
-      </ul>
-    </aside>
+    <section class="container">
 
-    <!-- Janela de chat -->
-    <main class="chat">
-      <header id="nomeContato">
-        <!-- Nome do contato aparecerá aqui -->
-      </header>
-      <div id="mensagens" class="mensagens">
-        <!-- Mensagens trocadas aparecerão aqui -->
-      </div>
-      <footer>
-        <input type="text" id="mensagemInput" placeholder="Digite sua mensagem..."/>
-        <button onclick="enviarMensagem()">Enviar</button>
-      </footer>
-    </main>
-    <script>
-      // Função para alternar a exibição do dropdown
-      function toggleDropdown() {
-          const menu = document.getElementById("dropdown");
-          menu.classList.toggle("active"); // Adiciona ou remove a classe 'active'
-      }
+        <section class="login">
+            <h2>Login</h2>
+            <form class="login__form">
+                <input type="text" class="login__input" placeholder="Seu nome" required />
+                <button type="submit" class="login__button">Entrar</button>
+            </form>
+        </section>
 
-      // Fechar o dropdown ao clicar fora dele
-      window.onclick = function (event) {
-          const avatar = document.querySelector('.avatar');
-          const dropdown = document.getElementById("dropdown");
+        <section class="chat">
+            <section class="chat__messages">
+                </section>
 
-          // Verifica se o clique não foi no avatar ou no dropdown
-          if (!dropdown.contains(event.target) && event.target !== avatar) {
-              dropdown.classList.remove("active");
-          }
-      }
-  </script>
+            <form class="chat__form">
+                <input type="text" class="chat__input" placeholder="Digite uma mensagem" required />
+                <button type="submit" class="chat__button">
+                    <span class="material-symbols-outlined">send</span>
+                </button>
+            </form>
+        </section>
 
-  </div>
-       <script src="./js/script.js"></script> <script src="./js/foto_header.js"></script>
+    </section>
 
-  <script src="js/mensagens_do_jovem.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+    <script src="./js/script.js"></script>          <script src="./js/header_utils.js"></script>    <script src="./js/mensagens_do_idoso.js"></script> <script>
+        function toggleDropdown() {
+            const menu = document.getElementById("dropdown");
+            menu.classList.toggle("active");
+        }
+
+        window.onclick = function (event) {
+            const avatar = document.querySelector('.avatar');
+            const dropdown = document.getElementById("dropdown");
+
+            if (!dropdown.contains(event.target) && event.target !== avatar) {
+                dropdown.classList.remove("active");
+            }
+        }
+    </script>
 </body>
 </html>

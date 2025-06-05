@@ -798,7 +798,17 @@ async function cadastrar_idoso() {
         alert(`Erro: ${rs.erro}`);
       }
     } else {
-      alert(rs.msg);
+    alert(rs.msg);
+
+    // NOVO: TRIMMING a mensagem para garantir comparação exata e mais robusta
+    const mensagemSucessoBackend = rs.msg ? rs.msg.trim() : ''; // Garante que rs.msg não é null/undefined antes de trim()
+
+    if (mensagemSucessoBackend === "idoso cadastrado com sucesso!") {
+        console.log("Redirecionando para pagina_listar_jovens.html...");
+        window.location.href = "pagina_listar_jovens.html";
+    } else {
+        console.warn("Mensagem de sucesso do backend não corresponde para redirecionamento:", rs.msg);
+    }
       // --- CÓDIGO ADICIONADO/MODIFICADO PARA SALVAR NO LOCALSTORAGE (IGUAL AO JOVEM) ---
       const idosoCadastrado = rs.payload && rs.payload.length > 0 ? rs.payload[0] : null;
 
@@ -1149,3 +1159,22 @@ function form_past7() {
   document.getElementsByClassName("form-step")[6].style.display = "none";
   updateProgressBar(6);
 }
+
+
+// Funções para ativar/desativar campo de comorbidade no cadastro de idoso
+function ativar_comorbidade() {
+    const tipoComorbidadeInput = document.getElementById('tipo_comorbidade');
+    if (tipoComorbidadeInput) {
+        tipoComorbidadeInput.style.display = 'block';
+        tipoComorbidadeInput.value = ''; // Limpa o campo ao ativar
+    }
+}
+
+function desativar_comorbidade() {
+    const tipoComorbidadeInput = document.getElementById('tipo_comorbidade');
+    if (tipoComorbidadeInput) {
+        tipoComorbidadeInput.style.display = 'none';
+        tipoComorbidadeInput.value = 'Nenhuma'; // Define como 'Nenhuma' ao desativar
+    }
+}
+

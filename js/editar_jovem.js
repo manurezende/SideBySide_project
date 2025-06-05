@@ -1,31 +1,31 @@
-// Este código deve ser colocado dentro da tag <script> no seu HTML,
-// preferencialmente no final do <body>, logo antes da tag de fechamento </body>.
+// js/editar_jovem.js
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Referências aos elementos dos formulários ---
     const formUsuario = document.getElementById('formUsuario');
-    const formJovem = document.getElementById('formJovem');
+    const formJovem = document.getElementById('formJovem'); // Este é o formulário de dados pessoais do jovem
     const formEndereco = document.getElementById('formEndereco');
 
-    // Campos do Usuário
+    // Campos do Usuário (seção "Dados da Conta")
     const inputNomeCompleto = document.getElementById('nome_completo');
     const inputNomeUsuario = document.getElementById('nome_usuario');
     const inputEmail = document.getElementById('email');
-    const inputSenhaAtual = document.getElementById('senha_atual');
-    const inputNovaSenha = document.getElementById('nova_senha');
+    // Você pode adicionar inputs para senha aqui se for permitir a alteração na mesma tela:
+    // const inputSenhaAtual = document.getElementById('senha_atual');
+    // const inputNovaSenha = document.getElementById('nova_senha');
 
-    // Campos do Jovem
+    // Campos do Jovem (seção "Dados Pessoais do Jovem")
     const inputCpf = document.getElementById('cpf');
     const inputDataNascimento = document.getElementById('data_nascimento');
     const inputTelefone = document.getElementById('telefone');
     const selectGenero = document.getElementById('genero');
-    const textareaExperiencia = document.getElementById('experiencia');
+    const textareaExperiencia = document.getElementById('experiencia'); // Seu HTML de edição tem 'experiencia'
     const textareaDescricao = document.getElementById('descricao');
     const inputValorHora = document.getElementById('valor_hora');
-    const imgPerfilJovem = document.getElementById('imgPerfilJovem');
-    const btnTrocarFoto = document.getElementById('btnTrocarFoto');
+    const imgPerfilJovem = document.getElementById('imgPerfilJovem'); // A fotona
+    const inputFotoJovem = document.getElementById('foto_perfil'); // ID do input type="file" no HTML de edição do jovem
 
-    // Campos do Endereço
+    // Campos do Endereço (seção "Endereço")
     const inputLogradouro = document.getElementById('logradouro');
     const inputLogradouroNome = document.getElementById('logradouro_nome');
     const inputNumero = document.getElementById('numero');
@@ -35,122 +35,97 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputEstado = document.getElementById('estado');
     const inputCep = document.getElementById('cep');
 
-    const API_BASE_URL = 'http://127.0.0.1:3000'; // URL base do seu back-end
+    const API_BASE_URL = 'http://127.0.0.1:3000';
 
-    // --- Variáveis para armazenar os IDs do jovem, usuário e endereço ---
+    // --- Variáveis para armazenar os IDs do jovem, usuário e endereço (carregados da API) ---
     let idJovemGlobal = null;
     let idUsuarioGlobal = null;
     let idEnderecoGlobal = null;
 
-    // --- Função para simular um ID de usuário logado (PARA TESTE APENAS!) ---
-    // EM PRODUÇÃO: Este ID deve vir da sua lógica de autenticação segura (sessão, token, etc.).
-    function getSimulatedUserId() {
-        let userId = localStorage.getItem('simulated_user_id');
-        if (!userId) {
-            userId = 1; // SUBSTITUA POR UM ID DE USUÁRIO EXISTENTE NO SEU DB PARA TESTAR!
-            localStorage.setItem('simulated_user_id', userId);
+    // --- Função para obter o ID do usuário logado do localStorage ---
+    function getLoggedUserId() {
+        const usuarioLogadoJSON = localStorage.getItem('usuarioLogado');
+        if (usuarioLogadoJSON) {
+            const usuarioLogado = JSON.parse(usuarioLogadoJSON);
+            // Certifique-se que você está salvando o id_usuario no localStorage durante o login/cadastro
+            return usuarioLogado.id_usuario;
         }
-        return userId;
+        return null;
     }
-    const currentUserId = getSimulatedUserId(); // Pega o ID do usuário simulado
+    const currentUserId = getLoggedUserId();
 
     // --- Função para carregar os dados e pré-preencher todos os formulários ---
     async function carregarDadosCompletos() {
         if (!currentUserId) {
-            alert('ID do usuário não encontrado. Não é possível carregar o perfil.');
-            window.location.href = './pagina_de_login.html'; // Exemplo de redirecionamento
+            alert('ID do usuário não encontrado. Por favor, faça login novamente.');
+            window.location.href = './index.html'; // Redireciona para a página inicial/login
             return;
         }
 
         try {
-            // Buscamos o jovem associado ao id_usuario (PODE REQUERER NOVA ROTA NO BACKEND)
-            const responseJovem = await fetch(`${API_BASE_URL}/jovem/listar`);
-            if (!responseJovem.ok) {
-                throw new Error(`Erro ao buscar dados do jovem: ${responseJovem.statusText}`);
-            }
-            const dataJovem = await responseJovem.json();
+            // Nova rota GET para buscar perfil completo do jovem
+            const response = await fetch(`${API_BASE_URL}/jovem/perfil_completo/${currentUserId}`);
 
-            let jovemEncontrado = null;
-            if (dataJovem.msg && Array.isArray(dataJovem.msg)) {
-                jovemEncontrado = dataJovem.msg.find(jovem => jovem.id_usuario == currentUserId);
+            if (!response.ok) {
+                // Se a resposta não for OK, pode ser que o perfil não exista, ou erro no servidor
+                const errorData = await response.json();
+                throw new Error(errorData.msg || `Erro ao buscar perfil: ${response.statusText}`);
             }
 
-            if (!jovemEncontrado) {
-                alert('Perfil de jovem não encontrado para este usuário.');
-                return;
-            }
+            const data = await response.json();
+            const perfilCompleto = data.payload;
 
-            // Armazena os IDs para uso posterior
-            idJovemGlobal = jovemEncontrado.id_jovem;
-            idUsuarioGlobal = jovemEncontrado.id_usuario;
-            idEnderecoGlobal = jovemEncontrado.id_endereco;
-
-            // Carregar dados do USUÁRIO
-            const responseUsuario = await fetch(`${API_BASE_URL}/usuario/listar`);
-            if (!responseUsuario.ok) {
-                throw new Error(`Erro ao buscar dados do usuário: ${responseUsuario.statusText}`);
-            }
-            const dataUsuario = await responseUsuario.json();
-            let usuarioEncontrado = null;
-            if (dataUsuario.msg && Array.isArray(dataUsuario.msg)) {
-                usuarioEncontrado = dataUsuario.msg.find(user => user.id_usuario == idUsuarioGlobal);
-            }
-
-            // Carregar dados do ENDEREÇO
-            const responseEndereco = await fetch(`${API_BASE_URL}/endereco/listar`);
-            if (!responseEndereco.ok) {
-                throw new Error(`Erro ao buscar dados do endereço: ${responseEndereco.statusText}`);
-            }
-            const dataEndereco = await responseEndereco.json();
-            let enderecoEncontrado = null;
-            if (dataEndereco.msg && Array.isArray(dataEndereco.msg)) {
-                enderecoEncontrado = dataEndereco.msg.find(end => end.id_endereco == idEnderecoGlobal);
-            }
-
-            if (!usuarioEncontrado || !enderecoEncontrado) {
+            if (!perfilCompleto) {
                 alert('Dados completos do perfil não encontrados. Pode haver inconsistência.');
                 return;
             }
 
+            // Armazena os IDs para uso posterior nas atualizações
+            idJovemGlobal = perfilCompleto.id_jovem;
+            idUsuarioGlobal = perfilCompleto.id_usuario;
+            idEnderecoGlobal = perfilCompleto.id_endereco;
+
             // --- Pré-preencher o formulário de USUÁRIO ---
-            inputNomeCompleto.value = usuarioEncontrado.nome_completo || '';
-            inputNomeUsuario.value = usuarioEncontrado.nome_usuario || '';
-            inputEmail.value = usuarioEncontrado.email || '';
-            // Senha não é pré-preenchida
+            inputNomeCompleto.value = perfilCompleto.nome_completo || '';
+            inputNomeUsuario.value = perfilCompleto.nome_usuario || '';
+            inputEmail.value = perfilCompleto.email || '';
 
             // --- Pré-preencher o formulário de JOVEM ---
-            inputCpf.value = jovemEncontrado.cpf_jovem || '';
-            inputDataNascimento.value = jovemEncontrado.data_nascimento_jovem ? new Date(jovemEncontrado.data_nascimento_jovem).toISOString().split('T')[0] : '';
-            inputTelefone.value = jovemEncontrado.telefone_jovem || '';
-            selectGenero.value = jovemEncontrado.genero_jovem !== null ? jovemEncontrado.genero_jovem.toString() : '';
-            textareaExperiencia.value = jovemEncontrado.experiencia_jovem || '';
-            textareaDescricao.value = jovemEncontrado.descricao_jovem || '';
-            inputValorHora.value = jovemEncontrado.valor_jovem || '';
+            inputCpf.value = perfilCompleto.cpf_jovem || '';
+            // Formatar data para YYYY-MM-DD para input type="date"
+            inputDataNascimento.value = perfilCompleto.data_nascimento_jovem ? new Date(perfilCompleto.data_nascimento_jovem).toISOString().split('T')[0] : '';
+            inputTelefone.value = perfilCompleto.telefone_jovem || '';
+            // Gênero: 1 para masculino, 0 para feminino. Certifique-se que o select tem essas options.
+            selectGenero.value = perfilCompleto.genero_jovem !== null ? perfilCompleto.genero_jovem.toString() : '';
+            textareaExperiencia.value = perfilCompleto.experiencia_jovem || '';
+            textareaDescricao.value = perfilCompleto.descricao_jovem || '';
+            inputValorHora.value = perfilCompleto.valor_jovem || ''; // Valor por hora pode ser string ou number, dependendo do seu DB
 
-            // Atualizar foto de perfil
-            if (jovemEncontrado.foto_jovem) {
-                imgPerfilJovem.src = `${API_BASE_URL}${jovemEncontrado.foto_jovem}`;
+            // Atualizar foto de perfil na "fotona"
+            if (perfilCompleto.foto_jovem) {
+                imgPerfilJovem.src = `${API_BASE_URL}${perfilCompleto.foto_jovem}`;
             } else {
-                imgPerfilJovem.src = './img/j.jpg'; // Imagem padrão
+                imgPerfilJovem.src = './img/fotos.jpg'; // Imagem padrão
             }
 
             // --- Pré-preencher o formulário de ENDEREÇO ---
-            inputLogradouro.value = enderecoEncontrado.logradouro || '';
-            inputLogradouroNome.value = enderecoEncontrado.logradouro_nome || '';
-            inputNumero.value = enderecoEncontrado.numero || '';
-            inputBairro.value = enderecoEncontrado.bairro || '';
-            inputComplemento.value = enderecoEncontrado.complemento || '';
-            inputCidade.value = enderecoEncontrado.cidade || '';
-            inputEstado.value = enderecoEncontrado.estado || '';
-            inputCep.value = enderecoEncontrado.cep || '';
+            inputLogradouro.value = perfilCompleto.logradouro || '';
+            inputLogradouroNome.value = perfilCompleto.logradouro_nome || '';
+            inputNumero.value = perfilCompleto.numero || '';
+            inputBairro.value = perfilCompleto.bairro || '';
+            inputComplemento.value = perfilCompleto.complemento || '';
+            inputCidade.value = perfilCompleto.cidade || '';
+            inputEstado.value = perfilCompleto.estado || '';
+            inputCep.value = perfilCompleto.cep || '';
 
         } catch (error) {
             console.error("Erro ao carregar dados do perfil:", error);
-            alert("Erro ao carregar seu perfil. Tente novamente mais tarde.");
+            alert(`Erro ao carregar seu perfil: ${error.message}. Tente novamente mais tarde.`);
         }
     }
 
     // --- Lógica para o envio do Formulário de Usuário ---
+    // (Este código permanece o mesmo que discutimos para atualização de dados da conta)
     formUsuario.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -163,23 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
             nome_completo: inputNomeCompleto.value,
             nome_usuario: inputNomeUsuario.value,
             email: inputEmail.value,
+            // Adicione campos de senha se houver
+            // senha_atual: inputSenhaAtual ? inputSenhaAtual.value : '',
+            // nova_senha: inputNovaSenha ? inputNovaSenha.value : ''
         };
-
-        // Lógica de senha (precisa de verificação no back-end!)
-        const senhaAtual = inputSenhaAtual.value;
-        const novaSenha = inputNovaSenha.value;
-
-        if (novaSenha) {
-            if (!senhaAtual) {
-                alert('Para definir uma nova senha, por favor, insira sua senha atual.');
-                return;
-            }
-            // Aqui você enviaria a senha atual e a nova senha para o backend
-            // para que ele possa verificar a senha atual antes de atualizar.
-            // Para simplicidade, estamos enviando a nova senha diretamente.
-            // O BACK-END DEVE VALIDAR A SENHA ATUAL E HASH A NOVA SENHA.
-            dadosUsuario.senha = novaSenha;
-        }
 
         try {
             const response = await fetch(`${API_BASE_URL}/usuario/atualizar/${idUsuarioGlobal}`, {
@@ -194,8 +156,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             alert('Dados da conta atualizados com sucesso!');
-            inputSenhaAtual.value = ''; // Limpa os campos de senha após sucesso
-            inputNovaSenha.value = '';
+            // Opcional: Limpar campos de senha
+            // if (inputSenhaAtual) inputSenhaAtual.value = '';
+            // if (inputNovaSenha) inputNovaSenha.value = '';
+            
+            // Atualizar nome_completo no localStorage se foi alterado
+            const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+            if (usuarioLogado && usuarioLogado.nome_completo !== dadosUsuario.nome_completo) {
+                usuarioLogado.nome_completo = dadosUsuario.nome_completo;
+                localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+            }
+
             carregarDadosCompletos(); // Recarrega para garantir dados atualizados
         } catch (error) {
             console.error("Erro ao atualizar dados da conta:", error);
@@ -203,7 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Lógica para o envio do Formulário de Jovem ---
+    // --- Lógica para o envio do Formulário de Jovem (Dados Pessoais + FOTO) ---
+    // Você precisa adicionar a rota de PUT no seu backend para `/jovem/atualizar/:id_jovem`
     formJovem.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -212,37 +184,59 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        const dadosJovem = {
-            cpf_jovem: inputCpf.value,
-            data_nascimento_jovem: inputDataNascimento.value,
-            telefone_jovem: inputTelefone.value,
-            genero_jovem: parseInt(selectGenero.value),
-            experiencia_jovem: textareaExperiencia.value,
-            descricao_jovem: textareaDescricao.value,
-            valor_jovem: parseFloat(inputValorHora.value),
-        };
+        const formData = new FormData();
 
+        // Adicione todos os campos do formulário de jovem ao FormData
+        formData.append('cpf_jovem', inputCpf.value);
+        formData.append('data_nascimento_jovem', inputDataNascimento.value);
+        formData.append('telefone_jovem', inputTelefone.value);
+        formData.append('genero_jovem', selectGenero.value); // Já é 1 ou 0
+        formData.append('experiencia_jovem', textareaExperiencia.value);
+        formData.append('descricao_jovem', textareaDescricao.value);
+        formData.append('valor_jovem', inputValorHora.value);
+
+        // Se uma nova foto foi selecionada, adicione-a ao FormData
+        if (inputFotoJovem && inputFotoJovem.files.length > 0) {
+            formData.append('foto_jovem', inputFotoJovem.files[0]);
+        }
+        
         try {
             const response = await fetch(`${API_BASE_URL}/jovem/atualizar/${idJovemGlobal}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(dadosJovem)
+                method: 'PUT', // Ou 'POST' se o backend não suportar PUT com FormData facilmente
+                body: formData // Envie o FormData diretamente
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(`Erro ao atualizar dados pessoais: ${errorData.erro || response.statusText}`);
+                const errorData = await response.json(); // Tenta ler erro como JSON
+                throw new Error(`Erro ao atualizar dados pessoais do jovem: ${errorData.erro || response.statusText}`);
             }
 
-            alert('Dados pessoais atualizados com sucesso!');
-            carregarDadosCompletos();
+            const rs = await response.json();
+            alert(rs.msg || 'Dados pessoais atualizados com sucesso!');
+            console.log("Resposta atualização jovem:", rs);
+
+            // Se a atualização foi bem-sucedida e o backend retorna o novo caminho da foto,
+            // atualize o localStorage e a imagem do header/fotona.
+            if (rs.payload && rs.payload.length > 0 && rs.payload[0].foto_jovem) {
+                const jovemAtualizado = rs.payload[0];
+                const usuarioLogado = JSON.parse(localStorage.getItem('usuarioLogado'));
+                if (usuarioLogado) {
+                    usuarioLogado.foto_perfil_url = jovemAtualizado.foto_jovem;
+                    localStorage.setItem('usuarioLogado', JSON.stringify(usuarioLogado));
+                    // Chamar a função que atualiza as fotos no DOM (se estiver em um script separado)
+                    // window.carregarFotoPerfilDoLocalStorage(); // Assumindo que essa função é global
+                }
+            }
+
+            carregarDadosCompletos(); // Recarrega o formulário com os dados mais recentes do DB
         } catch (error) {
-            console.error("Erro ao atualizar dados pessoais:", error);
+            console.error("Erro ao atualizar dados pessoais do jovem:", error);
             alert(`Erro ao atualizar dados pessoais: ${error.message}.`);
         }
     });
 
     // --- Lógica para o envio do Formulário de Endereço ---
+    // (Este código permanece o mesmo que discutimos para atualização de endereço)
     formEndereco.addEventListener('submit', async (event) => {
         event.preventDefault();
 
@@ -282,32 +276,35 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Lógica para o botão "Trocar Foto" (exemplo básico, requer rota no backend) ---
-    btnTrocarFoto.addEventListener('click', () => {
-        alert('Funcionalidade de trocar foto em desenvolvimento! Precisaria de uma rota específica para upload.');
-        // Para implementar:
-        // 1. Criar um input invisível do tipo file.
-        // 2. Acioná-lo com um clique programático.
-        // 3. Ao selecionar o arquivo, criar um FormData e enviar para uma rota de upload de foto no backend.
-        // 4. Atualizar o src da imagem de perfil após o sucesso do upload.
-    });
+    // --- Lógica para o botão "Trocar Foto" (aciona o input file) ---
+    // Adicione um botão no HTML: <button class="btn btn-outline-secondary btn-sm" id="btnTrocarFoto">Trocar Foto</button>
+    // E um input file: <input type="file" id="inputFotoJovem" name="foto_jovem" accept="image/*" style="display: none;">
+    const btnTrocarFoto = document.getElementById('btnTrocarFoto');
+    const inputFotoJovemElement = document.getElementById('foto_perfil'); // ID do seu input file
 
+    if (btnTrocarFoto && inputFotoJovemElement) {
+        btnTrocarFoto.addEventListener('click', () => {
+            inputFotoJovemElement.click(); // Simula o clique no input file
+        });
 
-    // --- Lógica do Dropdown do Header (já existente) ---
-    function toggleDropdown() {
-        const menu = document.getElementById("dropdown");
-        menu.classList.toggle("active");
+        // Opcional: pré-visualização da imagem ao selecionar
+        inputFotoJovemElement.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imgPerfilJovem.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
     }
 
-    window.onclick = function(e) {
-        if (!e.target.matches('.avatar')) {
-            const dropdown = document.getElementById("dropdown");
-            dropdown.classList.remove("active");
-        }
-    }
-
-    window.toggleDropdown = toggleDropdown; // Torna a função acessível globalmente
-
+    // --- Lógica do Dropdown do Header (geralmente em header_utils.js ou script.js) ---
+    // Se você tem a função toggleDropdown e window.onclick em um script global como header_utils.js,
+    // não precisa delas aqui. Se não, mantenha ou mova para um script compartilhado.
+    // window.toggleDropdown = toggleDropdown; // Pode ser necessário se a função for definida aqui e usada no HTML
+    
     // --- Carrega todos os dados ao iniciar a página ---
     carregarDadosCompletos();
 });

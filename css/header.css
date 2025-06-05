@@ -53,6 +53,10 @@ body {
     cursor: pointer;
   }
   
+nav a:hover {
+  color: #5f28d0; /* Roxo principal ao passar o mouse */
+}
+
   .dropdown {
     display: none;
     position: absolute;

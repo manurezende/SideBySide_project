@@ -1,109 +1,194 @@
-/* Reset básico */
+/* Importação de fontes (mantido, mas 'Segoe UI' será a principal) */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap"); /* Adicionado Poppins do seu style.css */
+
+/* Reset básico e fontes */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f5f5f5;
-  }
-  
-  /* Layout principal */
-  .container {
+    font-family: 'Segoe UI', Arial, sans-serif; /* Usando a fonte principal do seu site */
+}
+
+:root {
+    font-size: 16px;
+}
+
+/* Estilo do corpo da página */
+body {
+    /* Usando a cor de fundo clara principal do seu site */
+    background-color: #f0f8ff; /* Cor azul bem clarinha */
+    color: #333; /* Cor de texto padrão */
+}
+
+/* Container principal (centraliza o login/chat na tela) */
+.container {
+    width: 100%;
+    height: calc(100dvh - 80px); /* Altura total da tela menos a altura aproximada do header */
     display: flex;
-    height: 100vh;
-  }
-  
-  /* Contatos à esquerda */
-  .contatos {
-    width: 25%;
-    background-color: #ececec;
-    border-right: 1px solid #ccc;
-    padding: 1rem;
-    overflow-y: auto;
-  }
-  
-  .contatos h2 {
-    margin-bottom: 1rem;
-  }
-  
-  .contatos ul {
-    list-style: none;
-  }
-  
-  .contatos li {
-    padding: 10px;
-    cursor: pointer;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .contatos li:hover {
-    background-color: #ddd;
-  }
-  
-  /* Área de chat à direita */
-  .chat {
-    width: 75%;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* --- Estilos para a Seção de Login --- */
+.login {
+    width: 100%;
+    max-width: 380px;
+    background-color: #ffffff; /* Fundo branco */
+    border-radius: 12px; /* Bordas arredondadas */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    padding: 30px;
+}
+
+.login > h2 {
+    text-align: center;
+    font-family: "Poppins", sans-serif; /* Título com fonte Poppins */
+    font-weight: bold;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #5f28d0; /* Roxo principal */
+}
+
+.login__form {
     display: flex;
     flex-direction: column;
-  }
-  
-  .chat header {
-    padding: 1rem;
-    background-color: #4CAF50;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .mensagens {
-    flex: 1;
-    padding: 1rem;
-    overflow-y: auto;
-    background-color: #fff;
-  }
-  
-  .mensagem {
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border-radius: 10px;
-    max-width: 60%;
-  }
-  
-  .enviada {
-    background-color: #dcf8c6;
-    align-self: flex-end;
-  }
-  
-  .recebida {
-    background-color: #f1f0f0;
-    align-self: flex-start;
-  }
-  
-  footer {
-    display: flex;
-    padding: 1rem;
-    border-top: 1px solid #ccc;
-    background-color: #eee;
-  }
-  
-  footer input {
-    flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  footer button {
-    margin-left: 0.5rem;
-    padding: 0.5rem 1rem;
-    background-color: #4CAF50;
+    gap: 15px;
+}
+
+.login__input {
+    border: 1px solid #ccc; /* Borda cinza clara */
+    padding: 12px;
+    font-size: 1rem;
+    background-color: #f9f9f9; /* Fundo mais claro para inputs */
+    color: #333;
+    outline: none;
+    border-radius: 8px; /* Bordas arredondadas */
+    transition: border-color 0.3s ease;
+}
+
+.login__input:focus {
+    border-color: #5f28d0; /* Roxo principal no foco */
+    box-shadow: 0 0 0 0.2rem rgba(95, 40, 208, 0.25);
+}
+
+.login__button {
     border: none;
+    padding: 12px 20px;
+    border-radius: 20px; /* Bordas arredondadas */
+    font-size: 1rem;
+    font-weight: bold;
+    background-color: #5432cf; /* Roxo dos seus botões */
     color: white;
-    border-radius: 5px;
     cursor: pointer;
-  }
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 10px;
+}
+
+.login__button:hover {
+    background-color: #6f4fd6; /* Roxo um pouco mais claro no hover */
+}
+
+/* --- Estilos para a Seção de Chat --- */
+.chat {
+    width: 100%;
+    max-width: 800px; /* Largura máxima para o chat */
+    height: 90vh; /* Altura do chat */
+    display: none; /* Mantido como 'none' para ser controlado por JS */
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffffff; /* Fundo branco para o chat */
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    overflow: hidden; /* Garante que as mensagens não saiam da caixa */
+}
+
+.chat__messages {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto; /* Rolagem para mensagens */
+    justify-content: flex-end; /* Mensagens no final */
+}
+
+.chat__form {
+    background-color: #f9f9f9; /* Fundo claro para a barra de digitação */
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+}
+
+.chat__input {
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 20px;
+    flex-grow: 1;
+    background-color: #ffffff;
+    outline: none;
+    color: #333;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.chat__input:focus {
+    border-color: #5f28d0;
+    box-shadow: 0 0 0 0.2rem rgba(95, 40, 208, 0.25);
+}
+
+.chat__button {
+    border: none;
+    background-color: #5432cf; /* Cor dos seus botões */
+    color: white; /* Cor do texto/ícone */
+    cursor: pointer;
+    padding: 10px; /* Mais padding para o ícone */
+    border-radius: 50%; /* Circular */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat__button:hover {
+    background-color: #3b22a0; /* Roxo mais escuro no hover */
+}
+
+.chat__button .material-symbols-outlined { /* Estilo para o ícone do Material Symbols */
+    font-size: 24px; /* Tamanho do ícone */
+}
+
+/* --- Estilos para as Mensagens (Bolhas) --- */
+.chat__messages > div {
+    padding: 10px 15px;
+    max-width: 75%; /* Mensagens ocupam até 75% da largura */
+    font-size: 0.95rem;
+    margin-bottom: 8px; /* Menos espaço entre mensagens */
+    line-height: 1.4;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.message--self {
+    background-color: #e6e6ff; /* Azul claro/roxo suave para mensagens enviadas por você */
+    color: #333; /* Texto escuro */
+    border-radius: 15px 15px 5px 15px; /* Bordas arredondadas e canto reto inferior esquerdo */
+    align-self: flex-end; /* Alinha à direita */
+}
+
+.message--other {
+    background-color: #f9f9f9; /* Fundo muito claro para mensagens recebidas */
+    color: #333; /* Texto escuro */
+    border-radius: 15px 15px 15px 5px; /* Bordas arredondadas e canto reto inferior direito */
+    align-self: flex-start; /* Alinha à esquerda */
+}
+
+.message--sender {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #5f28d0; /* Roxo principal para o nome do remetente */
+}
   
   header {
     display: flex;
