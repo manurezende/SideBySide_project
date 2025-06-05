@@ -305,3 +305,27 @@ nav a:hover {
 #qrcode {
   margin: 10px auto;
 }
+/* <!-- Estilo interno do botão --> */
+
+ .btn-mostrar-todos {
+            background-color: #5432cf;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn-mostrar-todos:hover {
+            background-color: #3b25a1;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }

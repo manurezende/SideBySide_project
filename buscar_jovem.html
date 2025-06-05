@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Jovens Cadastrados</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/listar_jovem.css" />
+  <link rel="stylesheet" href="css/ondas.css">
+</head>
+<body>
+
+  <!-- Reader e Dropdown já prontos do seu projeto -->
+ <header>
+    <div class="logo">SIDEBYSIDE</div>
+    <a href="./pagina_listar_jovens.html"></a>
+    <nav>
+      <a href="./pagina_listar_jovens.html">Jovens</a>
+      <a href="./pagina_salvo_do_idoso.html">Salvo</a>
+      <a href="./mensagens_do_idoso.html">Mensagens</a>
+      <div class="user-menu">
+        <img src="./img/vl.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+        <div class="dropdown" id="dropdown">
+          <a href="./editar_idoso.html">Meu perfil</a>
+          <a href="./editar_idoso.html">Ajustes da conta</a>
+          <div class="premium">
+            <div>
+              <strong>Obter Premium</strong>
+              <a href="premium_do_idoso.html"><p>Converse com quantos Jovens você quiser.</p></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Título -->
+  <section class="text-center my-5">
+    <h1 style="color: #5432cf; font-weight: bold;">Jovens Cadastrados</h1>
+  </section>
+
+  <!-- Lista de Jovens -->
+  <div class="container pb-5">
+    <div class="row" id="lista-jovens">
+      <!-- Cards são inseridos aqui via JavaScript (ou backend futuramente) -->
+    </div>
+  </div>
+
+  <script>
+    // Dados falsos para simular os jovens cadastrados
+    const jovens = [
+      { nome: "Ana Beatriz", cidade: "São Paulo", experiencia: "2 anos", imagem: "img/jovem1.jpg" },
+      { nome: "Lucas Oliveira", cidade: "Campinas", experiencia: "1 ano", imagem: "img/jovem2.jpg" },
+      { nome: "Mariana Souza", cidade: "Santos", experiencia: "3 anos", imagem: "img/jovem3.jpg" },
+      { nome: "João Pedro", cidade: "Jundiaí", experiencia: "6 meses", imagem: "img/jovem4.jpg" },
+      { nome: "Larissa Lima", cidade: "Sorocaba", experiencia: "2 anos", imagem: "img/jovem5.jpg" },
+      { nome: "Matheus Reis", cidade: "Curitiba", experiencia: "1 ano", imagem: "img/jovem6.jpg" },
+      { nome: "Camila Martins", cidade: "Recife", experiencia: "2 anos", imagem: "img/jovem7.jpg" },
+      { nome: "Pedro Henrique", cidade: "RJ", experiencia: "1 ano", imagem: "img/jovem8.jpg" },
+      { nome: "Juliana Alves", cidade: "SP", experiencia: "3 anos", imagem: "img/jovem9.jpg" },
+      { nome: "Vinicius Silva", cidade: "BH", experiencia: "4 meses", imagem: "img/jovem10.jpg" }
+    ];
+
+    const lista = document.getElementById('lista-jovens');
+
+    jovens.forEach(jovem => {
+      const card = document.createElement('div');
+      card.className = 'col-md-4 col-lg-3 mb-4';
+      card.innerHTML = `
+        <div class="card shadow-sm border-0 h-100">
+          <img src="${jovem.imagem}" class="card-img-top" alt="${jovem.nome}">
+          <div class="card-body">
+            <h5 class="card-title">${jovem.nome}</h5>
+            <p class="card-text text-muted">${jovem.cidade}</p>
+            <p class="mb-1">Experiência: <strong>${jovem.experiencia}</strong></p>
+            <button class="btn w-100 text-white" style="background-color: #5432cf;">Ver Perfil</button>
+          </div>
+        </div>
+      `;
+      lista.appendChild(card);
+    });
+
+    // Dropdown
+    function toggleDropdown() {
+      const menu = document.getElementById("dropdown");
+      menu.classList.toggle("active");
+    }
+
+    window.onclick = function(e) {
+      if (!e.target.matches('.avatar')) {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.remove("active");
+      }
+    };
+  </script>
+</body>
+</html>
+
+<!-- Os cards são gerados via JavaScript dinâmico, ou seja: quando for conectar com o backend, 
+ você só precisa trocar o const jovens = [...] por um fetch() ou uma lista vinda do banco.
+Cada jovem pode vir do banco com nome, cidade, experiencia e foto. -->

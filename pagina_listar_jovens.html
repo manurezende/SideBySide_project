@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./css/listar_jovem.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
-<body >
+<body>
     <header>
         <div class="logo">SIDEBYSIDE</div>
         <nav>
@@ -29,6 +29,7 @@
             </div>
         </nav>
     </header>
+
     <main>
         <section class="carrossel-jovens">
             <h2>Últimos jovens cadastrados</h2>
@@ -39,25 +40,31 @@
                 </button>
 
                 <div class="carrossel-container" id="carrosselJovens">
-                    </div>
+                    <!-- Jovens serão inseridos aqui via JS -->
+                </div>
 
                 <button class="carrossel-btn direita" onclick="scrollCarrossel(1)">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             </div>
+
+            <!-- Botão "Mostrar todos os Idosos " -->
+            <div class="text-center mt-4">
+                <a href="./buscar_jovem.html" class="btn-mostrar-todos">Mostrar todos os jovens</a>
+            </div>
         </section>
     </main>
-    <script src="./js/script.js"></script> <script src="./js/foto_header.js"></script>
+
+    <script src="./js/script.js"></script>
+    <script src="./js/foto_header.js"></script>
     <script src="./js/pagina_listar_jovens.js"></script>
 
     <script>
-        // Função para alternar o dropdown do menu do usuário
         function toggleDropdown() {
             const menu = document.getElementById("dropdown");
             menu.classList.toggle("active");
         }
 
-        // Fecha o dropdown se clicar fora dele
         window.onclick = function(e) {
             if (!e.target.matches('.avatar')) {
                 const dropdown = document.getElementById("dropdown");
