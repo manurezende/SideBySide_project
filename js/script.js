@@ -660,7 +660,7 @@ function logar_usuario() {
         if (rs.usuario.tipo_usuario == 0) {
           window.location.href = "./pagina_listar_idoso.html"; // Para jovens
         }
-        else if (rs.usuario.tipo_usuario == 0) {
+        else if (rs.usuario.tipo_usuario == 1) {
           window.location.href = "./pagina_listar_jovens.html"; // Para idosos
         }
       }
