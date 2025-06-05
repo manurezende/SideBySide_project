@@ -35,7 +35,6 @@
         <div class="row">
             <div class="col-md-4 text-center">
                 <img src="./img/fotos.jpg" class="img-fluid rounded-circle mb-3" alt="Foto de perfil" id="imgPerfilJovem">
-                <button class="btn btn-outline-secondary btn-sm" id="btnTrocarFoto">Trocar Foto</button>
             </div>
 
             <div class="col-md-8">
@@ -81,8 +80,8 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="experiencia" class="form-label">tempo de experiencia</label>
-                        <textarea class="form-control" id="experiencia" rows="3" placeholder="quanto "></textarea>
+                        <label for="experiencia" class="form-label">Tempo de Experiência</label>
+                        <textarea class="form-control" id="experiencia" rows="3" placeholder="Quanto tempo de experiência..."></textarea>
                     </div>
                     <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição</label>
@@ -91,6 +90,10 @@
                     <div class="mb-3">
                         <label for="valor_hora" class="form-label">Valor por Hora</label>
                         <input type="number" class="form-control" id="valor_hora" placeholder="Exemplo: 50">
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_perfil" class="form-label">Trocar Foto de Perfil</label>
+                        <input type="file" class="form-control" id="foto_perfil" accept="image/*">
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Salvar Dados Pessoais</button>
@@ -132,24 +135,22 @@
                             <label for="estado" class="form-label">Estado</label>
                             <input type="text" class="form-control" id="estado">
                         </div>
-                       
                     </div>
                     <div class="text-end">
                         <button type="submit" class="btn btn-primary">Salvar Endereço</button>
                     </div>
                 </form>
-
             </div>
         </div>
     </main>
-         <script src="./js/script.js"></script> <script src="./js/foto_header.js"></script>
 
-
-     <script>
+    <script src="./js/script.js"></script>
+    <script src="./js/foto_header.js"></script>
+    <script>
         // Função para alternar a exibição do dropdown
         function toggleDropdown() {
             const menu = document.getElementById("dropdown");
-            menu.classList.toggle("active"); // Adiciona ou remove a classe 'active'
+            menu.classList.toggle("active");
         }
 
         // Fechar o dropdown ao clicar fora dele
@@ -157,7 +158,6 @@
             const avatar = document.querySelector('.avatar');
             const dropdown = document.getElementById("dropdown");
 
-            // Verifica se o clique não foi no avatar ou no dropdown
             if (!dropdown.contains(event.target) && event.target !== avatar) {
                 dropdown.classList.remove("active");
             }

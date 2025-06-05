@@ -15,7 +15,7 @@
             <a href="./pagina_salvo_do_idoso.html">Salvos</a>
             <a href="./mensagens_do_idoso.html">Mensagens</a>
             <div class="user-menu">
-                <img src="#" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
+                <img src="./img/vl.jpg" alt="Avatar" class="avatar" onclick="toggleDropdown()" />
                 <div class="dropdown" id="dropdown">
                     <a href="./perfil_idoso.html">Meu perfil</a>
                     <a href="./editar_idoso.html">Ajustes da conta</a>
@@ -29,13 +29,12 @@
             </div>
         </nav>
     </header>
-<!--  -->
+
     <main class="container py-5">
         <h2 class="mb-4 text-center">Editar Perfil</h2>
         <div class="row">
             <div class="col-md-4 text-center">
                 <img src="./img/vl.jpg" class="img-fluid rounded-circle mb-3" alt="Foto de perfil" id="imgPerfilJovem">
-                <button class="btn btn-outline-secondary btn-sm" id="btnTrocarFoto">Trocar Foto</button>
             </div>
 
             <div class="col-md-8">
@@ -61,6 +60,7 @@
 
                 <form id="formJovem" class="mb-5">
                     <h3>Dados Pessoais do Idoso</h3>
+                    
                     <div class="mb-3">
                         <label for="cpf" class="form-label">CPF</label>
                         <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00">
@@ -81,7 +81,6 @@
                         </select>
                     </div>
 
-                    <!-- Radio para comorbidade -->
                     <div class="mb-3">
                         <label class="form-label d-block">Possui comorbidade?</label>
                         <div class="form-check form-check-inline">
@@ -94,7 +93,6 @@
                         </div>
                     </div>
 
-                    <!-- Campo que só aparece se marcar "Sim" -->
                     <div class="mb-3" id="campoComorbidade" style="display: none;">
                         <label for="experiencia" class="form-label">Tipo de comorbidade</label>
                         <textarea class="form-control" id="experiencia" rows="3" placeholder="Descreva a comorbidade"></textarea>
@@ -103,6 +101,10 @@
                     <div class="mb-3">
                         <label for="descricao" class="form-label">Descrição</label>
                         <textarea class="form-control" id="descricao" rows="2" placeholder="Descrição breve..."></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto_perfil" class="form-label">Foto de Perfil</label>
+                        <input type="file" class="form-control" id="foto_perfil" accept="image/*">
                     </div>
 
                     <div class="text-end">
@@ -153,17 +155,17 @@
             </div>
         </div>
     </main>
-    <script src="./js/script.js"></script> <script src="./js/foto_header.js"></script>
+
+    <script src="./js/script.js"></script> 
+    <script src="./js/foto_header.js"></script>
 
     <!-- Scripts -->
     <script>
-        // Alterna o menu do usuário (dropdown)
         function toggleDropdown() {
             const menu = document.getElementById("dropdown");
             menu.classList.toggle("active");
         }
 
-        // Fecha o dropdown ao clicar fora
         window.onclick = function (event) {
             const avatar = document.querySelector('.avatar');
             const dropdown = document.getElementById("dropdown");
@@ -173,18 +175,17 @@
             }
         }
 
-        // Exibe ou oculta o campo de comorbidade
         document.addEventListener('DOMContentLoaded', () => {
             const sim = document.getElementById('comorbidadeSim');
             const nao = document.getElementById('comorbidadeNao');
             const campo = document.getElementById('campoComorbidade');
 
             sim.addEventListener('change', () => {
-                campo.style.display = 'block'; // mostra se "Sim" for marcado
+                campo.style.display = 'block';
             });
 
             nao.addEventListener('change', () => {
-                campo.style.display = 'none'; // esconde se "Não" for marcado
+                campo.style.display = 'none';
             });
         });
     </script>
